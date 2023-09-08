@@ -1,0 +1,49 @@
+This might help with multiproject builds...
+
+http://www.petrikainulainen.net/programming/gradle/getting-started-with-gradle-creating-a-multi-project-build/
+
+Regarding HDF5
+--------------
+
+This code was originally written and tested using the HDF5 1.8 series.  More recently, we have migrated to HDF5-1.10.  Errors were found in the Java interface and some of them were corrected in a local branch and mailed back to the HDF5 mailing list as notes, diffs, and patches.
+
+HDF5 development GIT repository can be found at:
+https://bitbucket.hdfgroup.org/projects/HDFFV/repos/hdf5/browse
+
+https://www.hdfgroup.org/2018/03/release-of-hdf5-1-10-2-newsletter-160/
+
+Regarding MINGW64
+-----------------
+
+ISSUE #1:
+As of 1.10.5, a small change is needed in H5win32defs.h.  The _open macro is a variadic extension which
+needs to be changed from _open(..., __VA_ARGS__) to _open(..., ##__VA_ARGS__).  This is a gcc extension
+which removes the leading comma when no variable args are given.
+
+ISSUE #2:
+
+I was able to build HDF5 for the current MINGW64 platform using cmake. A few lines in UseJava.cmake required changes due to the way CMake handles platform differences. Javac expects Windows style path separators, while /bin/make, /bin/sh expect Unix style path separators, which is not something CMake is prepared to handle. The CMake build system makes it hard if not impossible to implicitly support this mixed mode environment or to explicitly include double quotes around command line arguments in the generated build.make file. Escaping the double quote will not work in a custom command.
+
+My solution was to write the -classpath and -d command line options to an external "@" file, which javac natively supports. This is the same method used for passing source files to javac. This change should work on all platforms, although it is untested except in my configuration. The diff is as follows:
+
++++ hdf5-1.10.1-rev/config/cmake/UseJava.cmake 2018-07-11 17:38:07.284635900 -0500
+@@ -613,13 +613,16 @@
+endif()
+
+     # Compile the java files and create a list of class files
+  set(_JAVAC_OPTIONS_FILE ${CMAKE_JAVA_CLASS_OUTPUT_PATH}/javac_options)
+  file(WRITE ${_JAVAC_OPTIONS_FILE} "-cp \"${CMAKE_JAVA_INCLUDE_PATH_FINAL}\"\r\n")
+  file(APPEND ${_JAVAC_OPTIONS_FILE} "-d ${CMAKE_JAVA_CLASS_OUTPUT_PATH}\r\n")
+  set(java_sources_filelists_string "${_JAVA_SOURCES_FILELISTS}")
+   add_custom_command(
+       # NOTE: this command generates an artificial dependency file
+       OUTPUT ${CMAKE_JAVA_CLASS_OUTPUT_PATH}/java_compiled_${_TARGET_NAME}
+       COMMAND ${Java_JAVAC_EXECUTABLE}
+           ${CMAKE_JAVA_COMPILE_FLAGS}
+           -classpath "${CMAKE_JAVA_INCLUDE_PATH_FINAL}"
+           -d ${CMAKE_JAVA_CLASS_OUTPUT_PATH}
+          "@${_JAVAC_OPTIONS_FILE}"
+           ${_JAVA_SOURCES_FILELISTS}
+       COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_JAVA_CLASS_OUTPUT_PATH}/java_compiled_${_TARGET_NAME}
+       DEPENDS ${_JAVA_COMPILE_FILES} ${_JAVA_COMPILE_FILELISTS} ${_JAVA_COMPILE_DEPENDS}
+

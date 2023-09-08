@@ -1,0 +1,78 @@
+cmake_minimum_required(VERSION 2.8)
+
+set (DDS_IMPLEMENTATION connext)
+project (dds_tests_${DDS_IMPLEMENTATION})
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR}/cmake)
+
+project(temperature_${DDS_IMPLEMENTATION})
+
+# Connext specific macros
+include (MacroConnext)
+set (ARCHITECTURE x64Linux2.6gcc4.4.5)
+find_package (Connext REQUIRED)
+
+include_directories(
+    ${PROJECT_SOURCE_DIR}
+    ${Connext_INCLUDE_DIRS}
+)
+
+# IDL files:
+set (MY_CODE_DIR ../temperature)
+set (idls ${MY_CODE_DIR}/idl/TempControl.idl)
+
+if(NOT EXISTS "./gen")
+	file(MAKE_DIRECTORY "./gen")
+endif()
+
+# Generate cpp code from IDL file
+foreach(idl ${idls})
+	Connext_IDLGEN (${idl})
+	string (REGEX REPLACE "${MY_CODE_DIR}/idl/\(.*\).idl" "./gen/\\1.cxx" VARS_1 ${idl})
+	string (REGEX REPLACE "${MY_CODE_DIR}/idl/\(.*\).idl" "./gen/\\1.hpp" VARS_2 ${idl})
+	string (REGEX REPLACE "${MY_CODE_DIR}/idl/\(.*\).idl" "./gen/\\1Impl.cxx" VARS_3 ${idl})
+	string (REGEX REPLACE "${MY_CODE_DIR}/idl/\(.*\).idl" "./gen/\\1Impl.h" VARS_4 ${idl})
+	string (REGEX REPLACE "${MY_CODE_DIR}/idl/\(.*\).idl" "./gen/\\1ImplPlugin.cxx" VARS_5 ${idl})
+	string (REGEX REPLACE "${MY_CODE_DIR}/idl/\(.*\).idl" "./gen/\\1ImplPlugin.h" VARS_6 ${idl})
+	string (REGEX REPLACE "${MY_CODE_DIR}/idl/\(.*\).idl" "./gen/\\1ImplSupport.cxx" VARS_7 ${idl})
+	string (REGEX REPLACE "${MY_CODE_DIR}/idl/\(.*\).idl" "./gen/\\1ImplSupport.h" VARS_8 ${idl})
+	set(Connext_DATAMODEL ${Connext_DATAMODEL} ${VARS_1} ${VARS_2} ${VARS_3} ${VARS_4} ${VARS_5} ${VARS_6} ${VARS_7} ${VARS_8})
+endforeach(idl)
+
+
+set (PUB_SOURCES
+	${MY_CODE_DIR}/tspub.cpp
+	${MY_CODE_DIR}/util.cpp
+)
+set (SUB_SOURCES
+	${MY_CODE_DIR}/tssub.cpp
+	${MY_CODE_DIR}/util.cpp
+)
+
+set (PUB_EXE ${DDS_IMPLEMENTATION}_temp_pub)
+set (SUB_EXE ${DDS_IMPLEMENTATION}_temp_sub)
+set (DATAMODEL ${DDS_IMPLEMENTATION}_datamodel)
+
+SET (DEFINITIONS ${DEFINITIONS} " -DDDS_IMPLEMENTATION_${DDS_IMPLEMENTATION}")
+
+add_executable (${PUB_EXE} ${PUB_SOURCES})
+add_executable (${SUB_EXE} ${SUB_SOURCES})
+add_library (${DATAMODEL} SHARED ${Connext_DATAMODEL})
+
+add_definitions (
+	${Connext_DEFINITIONS}
+	${DEFINITIONS}
+)
+target_link_libraries (
+	${DATAMODEL}
+	${Connext_LIBRARIES}
+)
+
+target_link_libraries (${PUB_EXE}
+	${Connext_LIBRARIES}
+	${DATAMODEL}
+)
+target_link_libraries (${SUB_EXE}
+	${Connext_LIBRARIES}
+	${DATAMODEL}
+)

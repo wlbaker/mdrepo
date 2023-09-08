@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>console</headerType>
+  <jar>tsoffline-beta.jar</jar>
+  <outfile>V:\HiFi Research\5. ISR - (Baker &amp; Salinas)\apps\tsOffline\bin\tsoffline-betaC64.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\william.l.baker2\git\tsoffline\deploy\offline.ico</icon>
+  <var>R_HOME=%EXEDIR%\..</var>
+  <var>PATH=%PATH%;%EXEDIR%\x64</var>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion>9.0.0</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64</runtimeBits>
+    <initialHeapSize>512</initialHeapSize>
+    <maxHeapSize>1564</maxHeapSize>
+    <opt>-Djava.library.path=&quot;%EXEDIR%/../lib&quot;</opt>
+  </jre>
+</launch4jConfig>

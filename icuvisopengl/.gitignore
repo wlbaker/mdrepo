@@ -1,0 +1,12 @@
+/.gradle/
+/.settings/
+/bin/
+/**/.gradle
+/**/.settings
+/**/build
+/**/bin
+/**/ui
+/**/*.project
+/**/*.classpath
+/**/*.metadata
+

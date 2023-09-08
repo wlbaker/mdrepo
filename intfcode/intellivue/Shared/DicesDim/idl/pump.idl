@@ -1,0 +1,42 @@
+/**
+ * @file    pump.idl
+ * @author  M Szwaja
+ * @date    SEP 2014
+ * @brief   DICES DIM Pump
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Pump data
+ */
+
+/**
+ * See Table A.7.7.2 for the bit string values for pump modes.
+ * Pump Mode Indication Bits
+ */
+typedef BITS32 PumpMode;
+enum PumpModeBits
+{
+  pump_mode_nominal = 0,
+  pump_mode_delayed = 3,
+  pump_mode_multi_step = 4,
+  pump_mode_titration = 5,
+  pump_mode_bolus_dosing = 6,
+  pump_mode_drug_dosing = 7,
+  pump_mode_multi_dosing = 8,
+  pump_mode_ramp_taper = 9,
+  pump_mode_pca = 10,
+  pump_mode_multi_channel = 11,
+  pump_mode_closed_loop = 12,
+  pump_mode_circadian = 13,
+  pump_mode_primary = 14, // This is a temporary fix for the fresenius optima pump. TODO This needs to be confirmed.
+  pump_mode_secondary = 15, // This is a temporary fix for the fresenius optima pump. TODO This needs to be confirmed.
+  pump_mode_manufacturer = 31
+};
+
+};

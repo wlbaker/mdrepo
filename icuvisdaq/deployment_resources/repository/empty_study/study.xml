@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-study-impl xmlns="http://idea.mil/rp">
+    <identifier>empty_study</identifier>
+    <title>empty_study</title>
+    <pi>bbaker</pi>
+    <startDate>07:47:06.554-06:00</startDate>
+    <hardware>
+        <name>untitled-hw-config</name>
+    </hardware>
+    <analysis/>
+</rp-study-impl>

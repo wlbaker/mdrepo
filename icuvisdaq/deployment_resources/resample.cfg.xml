@@ -1,0 +1,34 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>console</headerType>
+  <jar>C:\opt\resample.jar</jar>
+  <outfile>C:\opt\c3e-daq\bin\resample.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <customProcName>true</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>C:\opt\workspace\caddo\cardioStrip\deployment_resources\biosig.ico</icon>
+  <jre>
+    <path></path>
+    <minVersion>1.5.0</minVersion>
+    <maxVersion>7.1.9</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>C3E-DAQ</txtFileVersion>
+    <fileDescription>C3E-DAQ</fileDescription>
+    <copyright>US Army Institute of Surgical Research</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>C3EDaq</txtProductVersion>
+    <productName>C3E-DAQ</productName>
+    <companyName>idea</companyName>
+    <internalName>c3e-daq</internalName>
+    <originalFilename>C3E-DAQ.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>

@@ -1,0 +1,166 @@
+// #include <pcap.h>
+// #include <net/ethernet.h>
+#include <netinet/ip.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+
+#include "light_pcapng_ext.h"
+
+#include <arpa/inet.h>
+#include <sys/types.h>  // MSG_CONFIRM
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>  // memset
+
+//#include "infinityNet.h"
+
+#include <errno.h>
+#include <unistd.h>
+
+#define MAXLINE 1024
+
+void packetHandler( /*const light_pcapng packet,*/ void *data, size_t feature_count ) {
+		// u_char *userData, const struct pcap_pkthdr* pkthdr, const u_char* packet) {
+    uint32_t *body = NULL;
+    size_t body_size = 0;
+    // uint32_t type = LIGHT_UNKNOWN_DATA_BLOCK;
+    uint8_t protocol_version;
+    uint8_t ip_header_length;
+    uint8_t *octets;
+    int i;
+
+    // light_get_block_info(packet, LIGHT_INFO_BODY, &body, &body_size);
+    // light_get_block_info(packet, LIGHT_INFO_TYPE, &type, NULL);
+
+
+    /*
+  if (ntohs(ethernetHeader->ether_type) == ETHERTYPE_IP) {
+      ipHeader = (struct ip*)(packet + sizeof(struct ether_header));
+      inet_ntop(AF_INET, &(ipHeader->ip_src), sourceIp, INET_ADDRSTRLEN);
+      inet_ntop(AF_INET, &(ipHeader->ip_dst), destIp, INET_ADDRSTRLEN);
+
+
+      if (ipHeader->ip_p == IPPROTO_UDP) {
+        const struct udphdr* udpHeader;
+          udpHeader = (struct udphdr*)(packet + sizeof(struct ether_header) + sizeof(struct ip));
+          sourcePort = ntohs(udpHeader->source);
+          destPort = ntohs(udpHeader->dest);
+          data = (u_char*)(packet + sizeof(struct ether_header) + sizeof(struct ip) + sizeof(struct udphdr));
+          dataLength = pkthdr->len - (sizeof(struct ether_header) + sizeof(struct ip) + sizeof(struct udphdr));
+
+        printf( "*** packet protocol:%x dest:%d len:%d\n", (int)ipHeader->ip_p, destPort, dataLength );
+        if( destPort == 2050 ) {
+            infinityNet_parsePacket( data, dataLength );
+        } else {
+            printf("  Discovery/Announcement packet to port: %d\n", destPort );
+        }
+      }
+  }
+  */
+}
+
+int postValueToDDS(char *namedValue, int value)
+{
+
+
+}
+
+int sockfd;
+struct sockaddr_in     servaddr;
+int prep_client( int port )
+{
+
+    char buffer[MAXLINE];
+    char *hello = "Hello from client";
+
+	 // Creating socket file descriptor
+    if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) {
+        perror("socket creation failed");
+        exit(EXIT_FAILURE);
+    }
+
+    memset(&servaddr, 0, sizeof(servaddr));
+
+    // Filling server information
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_port = htons(port);
+    servaddr.sin_addr.s_addr = INADDR_ANY;
+
+    int n, len;
+
+    sendto(sockfd, (const char *)hello, strlen(hello),
+        MSG_DONTWAIT, (const struct sockaddr *) &servaddr,
+            sizeof(servaddr));
+    printf("Hello message sent.\n");
+
+
+}
+
+int main(int argc, char *argv[]) {
+
+  int port = 9902;
+
+  if( argc < 2 ) {
+    fprintf(stdout,"usage: %s <cap-file>\n", argv[0] );
+    return 0;
+  }
+  char * cap_file = argv[1];
+
+  printf("outputing UDP packets to localhost:%d\n", port);
+  prep_client( port );
+
+  sleep(5);
+
+  // 1- open ICE
+  // 2- grab handle to TOPIC: ice--MDS to insert our device record
+
+  // open capture file for offline processing
+  light_pcapng_t *descr = light_pcapng_open_read( cap_file, LIGHT_FALSE );
+  // descr = pcap_open_offline(cap_file, errbuf);
+  if (descr == NULL) {
+      fprintf(stdout, "pcap file open failed: %d", errno );
+      return 1;
+  }
+
+  int index = 1;
+
+  while( 1 ) {
+	  light_packet_header pkt_header;
+	  const uint8_t *pkt_data = NULL;
+	  int res = 0;
+
+  	  sleep(1);
+	  res = light_get_next_packet( descr, &pkt_header, &pkt_data );
+	  if( !res) break;
+
+	  if( pkt_data != NULL) {
+		printf( "packet %d res=%d orig_len=%d, cap_len=%d, data_link=%d, timestamp=%d.%06d",
+			index, res, 
+			pkt_header.original_length,
+			pkt_header.captured_length,
+			pkt_header.data_link,
+			(int)pkt_header.timestamp.tv_sec,
+			(int)pkt_header.timestamp.tv_usec );
+		printf("\n");
+    		sendto(sockfd, pkt_data, pkt_header.original_length,
+        		MSG_DONTWAIT, (const struct sockaddr *) &servaddr,
+            		sizeof(servaddr));
+		index++;
+	  }
+  }
+
+  // start packet processing loop, just like live capture
+  //if (pcap_loop(descr, 0, packetHandler, NULL) < 0) {
+      //printf( "pcap_loop() failed: %d\n", pcap_geterr(descr) );
+      //return 1;
+  //}
+
+
+  // 4- friendly close
+  printf( "processing finished\n" );
+  light_pcapng_close( descr );
+
+  return 0;
+}
+

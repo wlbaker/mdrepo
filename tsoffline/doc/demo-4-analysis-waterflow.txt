@@ -1,0 +1,121 @@
+
+Hello, my name is Bill Baker.  Welcome to our continuation of tutorials on tsOffline,
+the analysis software developed at the US Army Institute of Surgical Research.
+
+--------
+
+In this demo, we will look at some classic waterfall diagrams of cardiac pressure 
+signals.
+
+We will be continuing our analysis of Active Duty Normal soldiers from the 
+Hemodynamic Waveform Library of the Cardiology Service at Brooke Army Medical Center.  
+If you are following our videos, you can open our data file from the recently opened
+list of files.  Select File/BAMC 0049 tutorial 2.
+
+----------
+
+For this analysis, we will need to find a previously segmented data set
+with thirty to fifty beats of ectopy free signal.
+Press the letter A to see an overview of the entire dataset, and zoom in to
+the area where R-waves begin.  We will use this as our starting point.
+
+To begin the analysis, select Run/Analysis Waterfall, and next.  
+Select the Displayed time frame, and press Next.
+
+The Left Distal pressure measurement will be selected to demonstrate
+Left Ventricular Pressures and press Next. The analysis script can be easily modified 
+to adjust display features of the plot for research or clinical interest, 
+but for now we will accept the default script.  And press Next.
+
+The resulting image is a classic waterfall plot. Each wireframe profile represents a 
+signal cardiac cycle.  28 consecutive beats are presented in this waterfall plot.  We
+have chosen in our default script to begin the display of each beat 150 milliseconds
+before the ECG R wave peak, which is our fiducial marker.
+
+Although not drawn in this display, the fiducial
+point is at time zero on the X-axis and also corresponds to
+the moment in time of left ventricular end-diastolic pressure.  The
+end of each cardiac cycle reflects the respiratory variability in this patient. 
+Inspiration decreases ventricular pressures slightly and increases heart rate, thus
+shortening the cardiac cycles. The influence of the respiratory cycle on cardiac
+pressures will be more apparent later in this demo.
+
+#Alter your script to change the angle of the display..  When display is shown..
+# Note with this display angle, respiratory changes in left ventricular end-diastolic
+# pressure can clearly be seen.
+
+#
+# insert images here
+#
+To illustrate the utility of the waterfall plots, we've taken two cases
+ from different datasets which demonstrate phenomena difficult
+to appreciate in standard time domain recordings.   
+
+The first case is a waterfall plot of 100 consecutive Aortic Pressure
+waveforms in a normal 35yo male showing late systolic peaking.  This
+late systole is a reflected wave from the peripheral
+vasculature and cannot be palpated during a physical exam.
+
+In contrast, here is a second case that demonstrates the change
+in the aortic pressure waveform as a catheter is passed from the
+brachial artery to the aorta  in a young Active Duty patient with
+a cardiac condition associated with sudden death called hypertrophic
+cardiomyopathy.  This diagram shows an initial rapid rise and peaking  of
+systolic pressure with a secondary pulse becoming apparent as the 
+catheter is advanced closer to the heart.
+
+This secondary pulse can palpated as a double pulsation in the
+carotid pulse, a finding known as a bifid pulse which has 
+diagnostic significance.
+
+-----------
+
+In these overlapping images it can be difficult to clearly distinguish
+some features and variations between beets.  To improve the graph, we can
+use standard 3D visualization techniques to create a surface with
+color and shading.  We call this variation a surface map.
+
+-------
+
+Press Previous until the list of available analyses appear, select
+waterfall-contour and press Next.  Select the display time range, L dist pressures, and
+press Next until the graph appears.
+
+In this waterfall variation, we have both a 2D and 3D image.  A 2D contour
+image is projected onto the Z axis plane above a 3D surface image which is 
+is color hilighted for position and angle.
+ 
+In this graph, moving along the Z axis from front to back, 
+the respiratory variability can clearly be seen as a pressure variation between beets.
+
+Along the X axis from left-to-right, rapid changes in ventricular pressure can be seen by both
+changes in color within the three dimensional plot and by the proximity of the pressure
+isobars in the contour map on the top of the display cube.  The rate of pressure
+development within the heart is an index of contractility.  Similarly, the rate of fall
+in pressure is an index of the relaxation properties of the hear.
+
+Users may tweak the script to alter both color changes and distance 
+between isobars.  Thus providing both quantitative and qualitative 
+assessments of heart function.
+
+In a similar manner, waterfall plots of the Aortic Pressure waveform, 
+ may be used to assess the compliance of the systemic vasculature and
+ventricular vascular coupling.  Press Previous twice, select L prox which is our
+Aortic Pressure, and press Next twice.  In the contour plot, the onset of the dense 
+isobars reflects the onset of blood ejection from the left ventricle and are followed
+by a cluster of isobar lines at end systole indicate closure of the aortic valves. 
+
+Contour plots of pressure waveforms may also be color coded as a novel way
+to present the potential energy available during the cardiac cycle to propel blood
+through the cardiovascular system.   
+
+-------
+
+# For a traditional contour or heat map, press 
+# previous until the list of available analyses appear, select
+# waterfall-heatmap and press Next.  Accept the display time range, select 
+# the L dist pressure, and press Next until the graph appears.
+#
+# -------
+
+This concludes our waterfall analysis tutorial.

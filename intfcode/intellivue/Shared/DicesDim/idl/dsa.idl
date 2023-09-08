@@ -1,0 +1,82 @@
+/**
+ * @file    dsa.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Distribution Sample Array (DSA) object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <sa.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Distribution Sample Array (DSA) object
+ *
+ * A Sample Array that represents linear value distributions in the form of
+ * arrays containing scaled sample values. The index of a value within an
+ * observation array denotes a spatial value, not a time point. Thus, the
+ * observed value array can be considered an x-y coordinate system where the y
+ * axis is specified by the attributes inherited from the Metric object and the
+ * x axis is specified by attributes defined in the Distribution Sample Array
+ * object.
+ */
+
+/**
+ * distribution_range_specification attribute defines the absolute value for
+ * the first and last array element. A linear scale is assumed here unless a
+ * specific compression scheme is defined
+ * (last-value - first-value)/no.of.array elements == step width
+*/
+struct DsaRangeSpec
+{
+  FLOATType first_element_value;
+  FLOATType last_element_value;
+}; //@top-level false
+
+/**
+ * dsa_marker_list attribute allows the annotation of samples by
+ * referencing the sample with an index.
+ */
+struct MarkerEntryIndex
+{
+  OIDType marker_id;    // from VMO::Type or x73 Metric-Id-Partition partition
+  INTU16 marker_index;
+}; //@top-level false
+typedef sequence<MarkerEntryIndex> MarkerListIndex;
+
+struct DSAContext : SampleArrayContext
+{
+  DsaRangeSpec distribution_range_specification;  // Maps array index to abs val.
+  OIDType x_unit_code;
+  string<MEDIUM_STRING_LEN> x_unit_label_string;
+}; //@top-level true
+
+struct DSAObservedValue : SampleArrayObservedValue
+{
+  MarkerListIndex dsa_marker_list;  // Use to mark positions in DSA samples.
+}; //@top-level true
+
+/**
+ * DSA Measurement
+ */
+const string DSAMeasContextTopic = "ice--DSAMeasContext";
+const string DSAMeasContextReqTopic = "ice--DSAMeasContextReq";
+const string DSAMeasObservedValueTopic = "ice--DSAMeasObservedValue";
+
+/**
+ * DSA Calculation
+ */
+const string DSACalcContextTopic = "ice--DSACalcContext";
+const string DSACalcContextReqTopic = "ice--DSACalcContextReq";
+const string DSACalcObservedValueTopic = "ice--DSACalcObservedValue";
+
+/**
+ * DSA Setting
+ */
+const string DSASettContextTopic = "ice--DSASettContext";
+const string DSASettContextReqTopic = "ice--DSASettContextReq";
+const string DSASettObservedValueTopic = "ice--DSASettObservedValue";
+
+};

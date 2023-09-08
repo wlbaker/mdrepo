@@ -1,0 +1,55 @@
+/**
+ * @file    battery.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Battery object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Battery object
+ */
+
+typedef BITS16 BatteryStatus;
+enum BatteryStatusBits
+{
+  batt_discharged = 0x1,
+  batt_full = 0x2,          // 95% of capacity
+  batt_discharging = 0x4,
+  batt_chargingFull = 0x100,
+  batt_chargingTrickle = 0x200,
+  batt_malfunction = 0x1000,
+  batt_needs_conditioning = 0x2000  // battery needs conditioning
+};
+
+struct BatMeasure
+{
+  /**
+   * Measures about the battery are values with their dimensions
+   */
+  FLOATType value;
+  OIDType unit;   // from dimensions nomenclature partition
+}; //@top-level false
+
+struct Battery : Top
+{
+  BatteryStatus battery_status;
+  ProductionSpec production_specification;
+  BatMeasure capacity_remaining;
+  BatMeasure capacity_full_charge;  // Battery capacity after a full charge.
+  BatMeasure capacity_specified;    // Specified capacity of new battery.
+  BatMeasure remaining_battery_time;
+  BatMeasure voltage;
+  BatMeasure voltage_specified;
+  BatMeasure current;  // Present current delivered by/to bat. Neg if charging.
+  BatMeasure temperature;
+  INTU32 charge_cycles;
+}; //@top-level true
+const string BatteryTopic = "ice--Battery";
+
+};

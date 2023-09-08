@@ -1,0 +1,11 @@
+*.pro.user
+*.txt.user*
+*.directory
+bin/
+obj/
+build/
+build-*
+*-build/
+nbproject/
+*~
+rti_workspace/

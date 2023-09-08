@@ -1,0 +1,32 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+version = '0.80'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+
+    compile 'net.java.dev.jna:jna:4.1.0'
+    
+    compile( 'idea.idea:dm-core:0.80') { changing = true }
+    compile( 'idea.idea:idea-core:0.80') { changing = true }
+    compile( 'idea.idea:idea-core-jpa:0.80') { changing = true }
+    compile( 'idea.idea:idea-rp-schema:0.80') { changing = true }
+
+    compile 'com.jgoodies:jgoodies-forms:1.7.2'
+    compile 'com.jgoodies:jgoodies-binding:2.6.1'
+
+	implementation 'net.sf.jasperreports:jasperreports:6.8.0'
+	implementation 'com.lowagie:itext:2.1.7'  // for jasper reports
+
+    testCompile 'junit:junit:4.12'
+}
+

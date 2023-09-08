@@ -1,0 +1,71 @@
+
+String osName = System.getProperty("os.name").toLowerCase()
+String osArch = System.getProperty("os.arch").toLowerCase()
+String osClassifier = osName
+if( osName.startsWith( "win" ) ) {
+    osClassifier = "windows"
+}
+osClassifier += "-"
+if( osArch.equals( "amd64" )  ) {
+    osClassifier += "x86_64"
+} else {
+    osClassifier += osArch
+}
+System.out.println( "osName = " + osName )
+
+// String rLibraryDir = "../../tools/r/R-3.2.1/library/"
+// String rLibraryDir = "/usr/lib64/R/library/"
+String rDir = "/usr/local/lib/R/library/"
+if( osName.contains("windows") ) {
+    rDir = "c:/opt/tools/r/latest/library/"
+} else if( osName.contains("mac") ) {
+    rDir = "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/"
+}
+
+ext {
+   rLibraryDir = "/usr/local/lib/R/library/"
+}
+
+
+subprojects {
+     
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    }
+
+    publishing {
+        repositories {
+            maven {
+                url "${rootProject.buildDir}/repo" // change to point to your repo, e.g. http://my.org/repo
+            }
+        }
+    }
+
+    task sourceJar(type: Jar) {
+        from sourceSets.main.allJava
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+    
+                artifact sourceJar {
+                    classifier "sources"
+                }
+    
+            }
+        }
+    }
+}
+

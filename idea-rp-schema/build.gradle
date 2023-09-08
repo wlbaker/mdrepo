@@ -1,0 +1,21 @@
+
+description "Rp protocol defs"
+
+// System.setProperty('javax.xml.accessExternalSchema', 'file')
+
+configurations {
+    deployerJars
+}
+
+
+dependencies {
+    println "IDEACORE COMPILING SUB: " + project.name
+    println "                  ROOT: " + project.rootDir
+
+    deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
+    deployerJars 'org.apache.maven.wagon:wagon-webdav:1.0-beta-2'
+    
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+}
+
+

@@ -1,0 +1,373 @@
+/**
+ * @file    common.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   ICE DIM common data types.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201 (x73)
+ */
+
+module ice
+{
+//=============================================================================
+/**
+ * DDS definitions
+ */
+const long DDS_DOMAIN_ID_COORDINATOR  = 3;
+const long DDS_DOMAIN_ID_MANAGER      = 2;
+
+const long SHORTSHORT_STRING_LEN  = 16;
+const long SHORT_STRING_LEN   = 32;
+const long MEDIUM_STRING_LEN  = 64;
+const long LONG_STRING_LEN    = 128;
+const long LONGLONG_STRING_LEN    = 250;
+
+const unsigned long DIM_HANDLE_MANAGER = 1;
+const unsigned long DIM_HANDLE_MDS = 10;
+
+const long NOT_A_NUMBER = 0x7fffff;
+
+/**
+ * Integer and bit string types
+ */
+typedef octet OCTET;
+typedef OCTET INTU8;
+typedef short INT16;
+typedef unsigned short INTU16;
+typedef long INT32;
+typedef unsigned long INTU32;
+typedef unsigned long long INTU64;
+typedef INTU16 BITS16;
+typedef INTU32 BITS32;
+typedef INTU64 BITS64;
+
+typedef long TIME_T;
+typedef boolean BOOL;
+
+/**
+ * Identification types
+ */
+typedef INTU16 OIDType;     // See x73-10101 for set of valid OIDs
+typedef INTU16 PrivateOid;  // For IDs not part of the standard nomenclature
+
+typedef INTU16 HANDLE;
+
+/**
+ * ICE_ID uniquely identifies a device within the context of a single
+ * responsible organization.
+ */
+
+const long MAX_LEN_ICE_ID = 16;
+typedef string<MAX_LEN_ICE_ID> ICE_ID;
+
+/**
+ * Use the instance number data type to distinguish class or object instances
+ * of the same type or object instances that are not directly manageable.
+ */
+typedef INTU16 InstNumber;
+
+typedef float FLOATType;
+
+/**
+ * MDS Context ID
+ */
+typedef INTU16 MdsContext;
+
+/**
+ * Use the global handle to distinguish objects within multiple device system.
+ */
+struct GLBHANDLE
+{
+  MdsContext context_id;
+  HANDLE handle;
+}; //@top-level false
+
+/**
+ * Managed OID as a type for complete global object identification
+ */
+struct ManagedObjectId
+{
+  OIDType m_obj_class;
+  GLBHANDLE m_obj_inst;
+}; //@top-level false
+
+/**
+ * Example: A medical device may interface with further medical devices (ie,
+ * sub-devices). In the MDIB, this device may model these sub-devices as
+ * individual MDS objects with their own naming context. In this way, name
+ * space collisions (e.g., duplicate handle values, duplicate nomenclature
+ * codes) can be avoided without reassigning handle values. A manager system 
+ * needs to interpret the MDS context IDs together with handle values to
+ * uniquely identify object instances within this composite MDIB. The context
+ * IDs are assigned when the MDIB is created by Context Scanner object create
+ * notifications.
+ */
+
+enum NomPartition
+{
+  nom_part_unspec = 0,
+  nom_part_obj = 1,     // object-oriented partition
+  nom_part_metric = 2,  // metric (SCADA) partition
+  nom_part_alert = 3,   // alerts/events partition
+  nom_part_dim = 4,     // dimensions partition
+  nom_part_vattr = 5,   // virtual attribute partition for Operation objects
+  nom_part_pgrp = 6,    // parameter group ID partition
+  nom_part_sites = 7,   // measurement and body site locations
+  nom_part_infrastruct = 8, // infrastructure elements partition
+  nom_part_fef = 9,         // file exchange format partition
+  nom_part_ecg_extn = 10,   // ECG extensions partition
+  nom_part_ext_nom = 256,   // IDs of other nomenclatures and dictionaries
+  nom_part_priv = 1024      // private partiotin
+};
+
+struct TYPE
+{
+  NomPartition partition;
+  OIDType code;
+}; //@top-level false
+
+/**
+ * Time represented by the number of seconds and fractional seconds (nanosecs).
+ *
+ * Use a Timespec time to specify wall clock time (or x73 Absolute Time).
+ *
+ * Timespec specifies the number of seconds and nanoseconds since
+ * 1970-01-01 00:00:00 UTC.
+ */
+struct Timespec
+{
+  long seconds;
+  long nanoseconds;  // Fractional second, always less than one billion.
+}; //@top-level false
+
+/**
+ * Duration Time represented by the number of seconds and fractional
+ * seconds (nanosecs).
+ *
+ * Use a Duration type to specify a time interval.
+ *
+ * Specifies a high-resolution time interval, or a time relative to some
+ * event (e.g., a synchronization event at startup).
+ *
+ * Use Duration Time to represent x73 Relative Time.
+ */
+struct Duration
+{
+  long seconds;
+  long nanoseconds;  // Fractional second, always less than one billion.
+}; //@top-level false
+
+/**
+ * The date data type specifies a certain calendar date. (NOT BCD-encoded.)
+ */
+struct Date
+{
+  INTU8 century;  // Ex: for year 2011, century = 20, ...
+  INTU8 year;     // and year = 11
+  INTU8 month;    // January = 1
+  INTU8 day;
+}; //@top-level false
+
+enum SimpleColor
+{
+  // The color data type represents basic RGB colors
+  //                   R G B
+  col_black = 0,    // 0 0 0
+  col_red = 1,      // 1 0 0
+  col_green = 2,    // 0 1 0
+  col_yellow = 3,   // 1 1 0
+  col_blue = 4,     // 0 0 1
+  col_magenta = 5,  // 1 0 1
+  col_cyan = 6,     // 0 1 1
+  col_white = 7     // 1 1 1
+};
+
+/**
+ * Locale data type
+ *
+ * @see notes in 11073-10201, section 7.1.2.18 "Locale data type"
+ */
+enum CharSet
+{
+  charset_unspec = 0,
+
+  // ISO 10646 two-octet character encoding scheme big endian
+  charset_iso_10646_ucs_2 = 1000,
+
+  // ISO 10646 four-octet character encoding scheme, big endian
+  charset_iso_10646_ucs_4 = 1001,
+
+  charset_iso_8859_1 = 4, // ISO/IEC 8859 Part 1
+  charset_iso_8859_2 = 5, // ISO/IEC 8859 Part 2
+
+  charset_iso_8859_3 = 6, // ISO/IEC 8859 Part 3
+  charset_iso_8859_4 = 7, // ISO/IEC 8859 Part 4
+  charset_iso_8859_5 = 8, // ISO/IEC 8859 Part 5
+  charset_iso_8859_6 = 9, // ISO/IEC 8859 Part 6
+  charset_iso_8859_7 = 10, // ISO/IEC 8859 Part 7
+  charset_iso_8859_8 = 11, // ISO/IEC 8859 Part 8
+  charset_iso_8859_9 = 12, // ISO/IEC 8859 Part 9
+  charset_iso_8859_10 = 13, // ISO/IEC 8859 Part 10
+  charset_iso_8859_13 = 109, // ISO/IEC 8859 Part 13
+  charset_iso_8859_14 = 110, // ISO/IEC 8859 Part 14
+  charset_iso_8859_15 = 111, // ISO/IEC 8859 Part 15
+  charset_iso_2022_kr = 37, // RFC 1557 (Korean Character Encoding)
+  charset_ks_c_5601 = 36, // Korean Industrial Standard, KSC 5601-1987
+  charset_iso_2022_jp = 39, // RFC 1468 (Japanese Character Encoding)
+  charset_iso_2022_jp_2 = 40, // RFC 1554 (Japanese Character Encoding)
+  charset_jis_x0208 = 63,     // JIS X0208:1983,1990
+  charset_iso_2022_cn = 104,  // RFC 1922 (Chinese Character Encoding)
+  charset_gb_2312 = 2025  // Chinese Graphic Character Set, GB 2312:1980
+};
+
+typedef BITS16 StringFlags;
+enum StringFlagsBits
+{
+  str_flag_nt = 0x1 // strings are null terminated
+};
+
+struct StringSpec
+{
+  INTU16 str_max_len; // maximum string length
+  StringFlags str_flags;  // specific flags for string representation & coding
+}; //@top-level false
+
+struct Locale
+{
+  INTU32 language;
+  INTU32 country;
+  CharSet charset;
+  StringSpec str_spec;
+}; //@top-level false
+
+/*
+ * Locale constants for current implementation
+ */
+const INTU32 LocaleLanguageEnglish  = 0x656E0000; // "en"
+const INTU32 LocaleCountryUSA       = 0x55530000; // "US"
+// LocaleCharSetUTF8 is a long because RTI Recording Service failed to parse
+// the CharSet type in xml. When using this constant, cast long to CharSet.
+// The value 4 comes from CharSet::charset_iso_8859_1
+const long LocaleCharSetUTF8 = 4; // this ok?
+const INTU16 LocaleStrMaxLen = 256; // this ok?
+/*
+ * Note  Generates typecast error
+const BITS16 LocaleStrFlagNt = str_flag_nt;
+ */
+
+struct ExtNomenRef
+{
+  // External nomenclature ID from external nomenclature partition
+  OIDType nomenclature_id;
+
+  string<LONG_STRING_LEN> nomenclature_code;
+}; //@top-level false
+
+struct SystemModel
+{
+  string<MEDIUM_STRING_LEN> manufacturer;
+  string<MEDIUM_STRING_LEN> model_number;
+}; //@top-level false
+
+enum ProdSpecType
+{
+  unspecified   = 0,
+  serial_number = 1,
+  part_number = 2,
+  hw_revision = 3,
+  sw_revision = 4,
+  fw_revision = 5,
+  protocol_revision = 6,
+
+  // Global Medical Device Nomenclature. GMDN is based on
+  // ISO 15225, developed under auspices of CEN TC257 SC1.
+  prod_spec_gmdn = 7,
+
+  // Universal Device Identifier. Specifies UDI for devices with
+  // more than one component/module. For example, 
+  // consider a multiparameter monitor to which one or more
+  // modular devices may connect. The monitor specifies its
+  // UDI in its MDSIdentification object. Each modular device
+  // connected to the monitor uses prod_spec_udi to specify
+  // the module's UDI.
+  prod_spec_udi = 8
+};
+
+struct ProdSpecEntry
+{
+  ProdSpecType spec_type;
+  PrivateOid component_id;
+  string<LONG_STRING_LEN> prod_spec;
+}; //@top-level false
+typedef sequence<ProdSpecEntry> ProductionSpec;
+
+/**
+ * Alert-Op-State attribute defines the current limit alert state
+ * NOTE--The bits refer to the limit alarm only, not to the global alert
+ * state of the metric
+ */
+typedef BITS16 CurLimAlStat;
+enum CurLimAlStatBits
+{
+  lim_alert_off = 0x1,  // if this bit is set, all alerts (high & low) are off
+  lim_low_off = 0x2,    // low-limit violation detection is off
+  lim_high_off = 0x4    // high-limit violation detection is off
+};
+
+/**
+ * Current-Limits attribute
+ */
+struct CurLimAlVal
+{
+  FLOATType lower;
+  FLOATType upper;
+}; //@top-level false
+
+struct EventReport
+{
+  OIDType object_class; //@key
+  HANDLE object_instance; //@key
+};
+
+//=============================================================================
+/**
+ * Top object
+ *
+ * The Top object is the common inheritance base for all objects in the DIM.
+ */
+struct Top
+{
+  ICE_ID ice_id;          //@key
+  HANDLE handle;          //@key
+  HANDLE parent_handle;   //@key
+
+  // Timestamp obtained from host system when sample is passed to DataWriter
+  Timespec source_timestamp;
+}; //@top-level false
+
+//=============================================================================
+/**
+ * Virtual Medical Object (VMO)
+ *
+ * The VMO is the base class for all medical-related objects in the x73 DIM. It
+ * provides consistent naming and identification across the x73 Medical Package
+ * model.
+ */
+
+/**
+ * Note: The VMO defines the Label-String attribute as the sole member of
+ * the object's VMO Dynamic Context Group. You must implement the attribute as
+ * a member of derived object's Dynamic Context Group object.
+ */
+
+struct VMO : Top
+{
+  TYPE type;
+
+  /**
+   * Relationship Attribute Group
+   * - Not yet implmented
+   */
+}; //@top-level false
+
+};

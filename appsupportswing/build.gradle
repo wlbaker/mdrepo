@@ -1,0 +1,80 @@
+
+
+// how to exclude a file or directory
+// ...i bet it works with eclipse project generation as well
+//
+// if(JavaVersion.current() != JavaVersion.VERSION_1_8) {
+//   throw new GradleException("This build must be run with java 8")
+// }
+
+System.out.println( "java version: " + JavaVersion.current() )
+
+sourceSets {
+    main {
+        java {
+            include '**'
+            exclude 'idea/wizfx/**'
+        }
+    }
+    test {
+        java {
+            include '**'
+            if( JavaVersion.current() <= JavaVersion.VERSION_11) {
+                exclude 'java9/**'
+                exclude 'idea/wizfx/**'
+            }
+        }
+    }
+}
+
+
+
+dependencies {
+
+   		implementation project(":idea-rp-schema")
+   		implementation project(":idea-core-jpa")
+   		implementation project(":idea-core")
+   		implementation project(":dm-core")
+
+    // runtime( 'idea.pista:pista:0.90') { changing = true }
+    implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+    implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+    implementation 'org.apache.poi:poi-ooxml:4.1.0'
+    implementation 'org.apache.poi:poi-ooxml-schemas:4.1.0'
+    implementation 'org.apache.poi:poi:4.1.0'
+    implementation 'com.fazecast:jSerialComm:2.5.2'
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+    
+    implementation "org.mini2Dx:universal-tween-engine:6.3.3"
+    
+    // implementation project(":icuvisopengl")
+    
+    implementation 'com.jgoodies:jgoodies-forms:1.7.2'
+    implementation 'com.jgoodies:jgoodies-binding:2.9.1'
+    implementation 'com.toedter:jcalendar:1.4'
+    implementation 'org.jfree:jfreechart:1.0.19'
+    
+    implementation 'com.jtattoo:JTattoo:1.6.11'
+
+    // implementation 'com.github.insubstantial:substance:7.3'
+    
+    //implementation files('lib/substance-7.3.1-jdk9.jar', 
+              //'lib/trident-7.3.1-jdk9.jar')
+    // implementation files('lib/synthetica.jar')
+
+    // implementation files('../ideadrivers/lib/phidget.jar' )  // fixme: to be removed!
+    implementation files('lib/phidget.jar' )  // fixme: to be removed!
+
+}
+
+configurations {
+    implementation {
+        description = "implementation classpath"
+        transitive = true
+    }
+    runtime {
+        extendsFrom implementation
+    }
+}
+
+

@@ -1,0 +1,26 @@
+July 12, 2016 TODO:
+* Assemble two i2c sensor/clock packs.
+* Write data-driver interface for i2c sensors
+* Collect Alarms from Zoll
+* Polling/alarms from 731
+* Polling/alarms from Bodyguard 
+
+-------------
+
+REF for QT and Avahi: https://doc.qt.io/archives/qq/qq23-bonjour.html
+USING Bonjour compat layer: dnf install avahi-compat-libdns_sd avahi-compat-libdns_sd-devel
+USING Bonjour docs: https://developer.apple.com/bonjour/
+
+USING Avahi directly (c): http://avahi.org/download/doxygen/client-browse-services_8c-example.html
+
+JAVA Direct: https://code.google.com/archive/p/avahi4j/wikis/ProgrammingExamples.wiki
+
+REF for QT and mixing C++ and java: http://www.kdab.com/qt-android-episode-6/
+ FYI: for mingw checks, see doc/w32.m4...might not be necessary
+
+ANDROID SERVICE: https://codereview.qt-project.org/#/c/110625/
+https://www.kdab.com/qt-android-episode-7/
+
+?- building c++ with hard coded DLL_BUILD...fix
+?- python bindings?
+?- js bindings?

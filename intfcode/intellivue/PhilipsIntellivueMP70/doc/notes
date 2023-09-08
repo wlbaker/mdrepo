@@ -1,0 +1,38 @@
+module 2 EASI nellcor oximax works here
+M3001A
+D-71034
+SN DE907VV1614
+Service# 451261015191
+opt.: A02C06
+press
+temp
+nbp
+spo2
+ecg resp
+
+module 1
+m3014A
+ref 862187
+opt.:c05
+sn de83718014
+service#451261009311
+d-71034
+press
+temp
+press
+co2
+c.o.
+
+recvfrom return errno strerror() when idle
+
+INFO  - IntellivueInterface::ReceiveMessage() recvfrom error: Resource temporarily unavailable 
+
+
+
+Unplugged ethernet while driver was running. Then escape key was pressed. received this error:
+
+INFO  - Dash::SendCommand() writing lan 
+[D0100|DELETE Participant]NDDS_Transport_UDPv4_unblock_receive_rrEA:OS sendto() failure, error 0X16
+[D0100|DELETE Participant]RTINetioReceiver_removeEntryport:!unblock_receive_rrEA
+INFO  - Stopped. 
+

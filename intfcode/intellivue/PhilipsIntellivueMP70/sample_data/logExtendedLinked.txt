@@ -1,0 +1,1607 @@
+SPpdu:
+	session_id=0xe100
+	p_context_id=0x0002 (2)
+ROapdus:
+	ro_type= ROLRS_APDU
+	length= 904
+ROLRSapdu:
+	state: 1
+	count: 1
+	invoke_id: 5
+	command_type: CMD_CONFIRMED_ACTION
+	length= 896
+ActionResult:
+	managed_object= NOM_MOC_VMS_MDS
+	GlbHandle:
+		context_id=0
+		handle=0
+	action_type= NOM_ACT_POLL_MDIB_DATA_EXT
+	length= 886
+PollMdibDataReplyExt:
+	poll_number= 2
+	sequence_no= 2
+	rel_time_stamp= 20414720
+	abs_time_stamp:
+		century= 255
+		year= 255
+		month= 255
+		day= 255
+		hour= 255
+		minute= 255
+		second= 255
+		sec_fractions= 255
+	Type:
+		partition= NOM_PART_OBJ
+		code= NOM_MOC_VMO_METRIC_NU
+	polled_attr_grp= 0
+
+
+PollInfoList:
+	count= 2
+	length= 860
+
+
+	SingleContextPoll:
+		context_id= 0
+		poll_info
+			count= 6
+			length= 464
+		handle= 34377
+AttributeList:
+	count= 7
+	length= 70
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 34377
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_PRESS_CEREB_PERF
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	CPP   
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 3
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_MAGENTA
+
+
+		handle= 34402
+AttributeList:
+	count= 7
+	length= 70
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 34402
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: LS_NOM_RES_VASC_SYS
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	SVR   
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 4
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+		handle= 34427
+AttributeList:
+	count= 7
+	length= 70
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 34427
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_PULS_OXIM_SAT_O2_DIFF
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	”SpO ‚ 
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 4
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+		handle= 34452
+AttributeList:
+	count= 8
+	length= 84
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 34452
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_TEMP_DIFF
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	”Temp 
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 3
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_TEMP_DIFF
+	state: DEMO_DATA, 
+	unit_code: °C ( degree-celsius )
+	exponent: -2
+	mantissa: -2
+	absolute value: -0.020000
+
+
+		handle= 34502
+AttributeList:
+	count= 7
+	length= 70
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 34502
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_SAT_DIFF_O2_ART_VEN
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	Sp-vO ‚
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 4
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+		handle= 34566
+AttributeList:
+	count= 6
+	length= 64
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 34566
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_CALCULATION
+		access: UPD_PERIODIC, MSMT_NONCONTINUOUS, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_PRESS_BLD_ART_PULM_WEDGE
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	PAWP  
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_YELLOW
+
+
+	SingleContextPoll:
+		context_id= 1
+		poll_info
+			count= 4
+			length= 384
+		handle= 33398
+AttributeList:
+	count= 9
+	length= 122
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33398
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, MSMT_NONCONTINUOUS, 
+		ms_struct: 1
+		ms_comp_no: 3
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_PRESS_BLD_NONINV
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	NBP   
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_MAGENTA
+
+
+NOM_ATTR_TIME_STAMP_ABS, Absolute Time Stamp, 
+	DOB
+		century: 32
+		year 18
+		month: 1
+		day: 6
+		hour: 20
+		minute:6
+		second: 4
+		sec_fractions: 0
+
+
+Undefined, Undefined, 
+	Unknown
+
+NOM_ATTR_NU_CMPD_VAL_OBS, Compound Numeric Observed Value, 
+	count: 3
+	length: 30
+	physio_id: NOM_PRESS_BLD_NONINV_SYS
+	state: DEMO_DATA,  (1024)
+	unit_code: mmHg ( mm mercury )
+	exponent: 0
+	mantissa: 120
+	absolute value: 120.000000
+	physio_id: NOM_PRESS_BLD_NONINV_DIA
+	state: DEMO_DATA,  (1024)
+	unit_code: mmHg ( mm mercury )
+	exponent: 0
+	mantissa: 80
+	absolute value: 80.000000
+	physio_id: NOM_PRESS_BLD_NONINV_MEAN
+	state: DEMO_DATA,  (1024)
+	unit_code: mmHg ( mm mercury )
+	exponent: 0
+	mantissa: 90
+	absolute value: 90.000000
+-----end-------
+
+		handle= 33401
+AttributeList:
+	count= 9
+	length= 96
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33401
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, MSMT_NONCONTINUOUS, 
+		ms_struct: 0
+		ms_comp_no: 1
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: Unknown
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	Pulse 
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 3
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_MAGENTA
+
+
+NOM_ATTR_TIME_STAMP_ABS, Absolute Time Stamp, 
+	DOB
+		century: 32
+		year 18
+		month: 1
+		day: 6
+		hour: 20
+		minute:6
+		second: 4
+		sec_fractions: 0
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: Unknown
+	state: DEMO_DATA, 
+	unit_code: bpm ( beats per minute, used e.g. for HR/PULSE )
+	exponent: 0
+	mantissa: 60
+	absolute value: 60.000000
+
+
+		handle= 33485
+AttributeList:
+	count= 7
+	length= 78
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33485
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_ECG_CARD_BEAT_RATE
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	HR    
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_ECG_CARD_BEAT_RATE
+	state: DEMO_DATA, 
+	unit_code: bpm ( beats per minute, used e.g. for HR/PULSE )
+	exponent: 0
+	mantissa: 60
+	absolute value: 60.000000
+
+
+		handle= 33492
+AttributeList:
+	count= 6
+	length= 64
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33492
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_RESP_RATE
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	RR    
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_WHITE
+
+
+________________________________________________________________________________________________________________
+SPpdu:
+	session_id=0xe100
+	p_context_id=0x0002 (2)
+ROapdus:
+	ro_type= ROLRS_APDU
+	length= 744
+ROLRSapdu:
+	state: 2
+	count: 2
+	invoke_id: 5
+	command_type: CMD_CONFIRMED_ACTION
+	length= 736
+ActionResult:
+	managed_object= NOM_MOC_VMS_MDS
+	GlbHandle:
+		context_id=0
+		handle=0
+	action_type= NOM_ACT_POLL_MDIB_DATA_EXT
+	length= 726
+PollMdibDataReplyExt:
+	poll_number= 2
+	sequence_no= 2
+	rel_time_stamp= 20414720
+	abs_time_stamp:
+		century= 255
+		year= 255
+		month= 255
+		day= 255
+		hour= 255
+		minute= 255
+		second= 255
+		sec_fractions= 255
+	Type:
+		partition= NOM_PART_OBJ
+		code= NOM_MOC_VMO_METRIC_NU
+	polled_attr_grp= 0
+
+
+PollInfoList:
+	count= 1
+	length= 700
+
+
+	SingleContextPoll:
+		context_id= 1
+		poll_info
+			count= 10
+			length= 694
+		handle= 33497
+AttributeList:
+	count= 8
+	length= 160
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33497
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 1
+		ms_comp_no: 12
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_ECG_AMPL_ST
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	ST    
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+NOM_ATTR_NU_CMPD_VAL_OBS, Compound Numeric Observed Value, 
+	count: 8
+	length: 80
+	physio_id: NOM_ECG_AMPL_ST_I
+	state: INVALID, DEMO_DATA,  (33792)
+	unit_code: mm ( millimeter )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+	physio_id: NOM_ECG_AMPL_ST_II
+	state: INVALID, DEMO_DATA,  (33792)
+	unit_code: mm ( millimeter )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+	physio_id: NOM_ECG_AMPL_ST_III
+	state: INVALID, DEMO_DATA,  (33792)
+	unit_code: mm ( millimeter )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+	physio_id: NOM_ECG_AMPL_ST_AVR
+	state: INVALID, DEMO_DATA,  (33792)
+	unit_code: mm ( millimeter )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+	physio_id: NOM_ECG_AMPL_ST_AVL
+	state: INVALID, DEMO_DATA,  (33792)
+	unit_code: mm ( millimeter )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+	physio_id: NOM_ECG_AMPL_ST_AVF
+	state: INVALID, DEMO_DATA,  (33792)
+	unit_code: mm ( millimeter )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+	physio_id: NOM_ECG_AMPL_ST_V2
+	state: INVALID, DEMO_DATA,  (33792)
+	unit_code: mm ( millimeter )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+	physio_id: NOM_ECG_AMPL_ST_V5
+	state: INVALID, DEMO_DATA,  (33792)
+	unit_code: mm ( millimeter )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+-----end-------
+
+NOM_ATTR_TIME_STAMP_REL, Relative Time Stamp, 
+	relative time: 20306432
+
+
+		handle= 33503
+AttributeList:
+	count= 3
+	length= 30
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33503
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_EPISODIC, 
+		ms_struct: 1
+		ms_comp_no: 12
+		relevance: 128
+
+
+		handle= 33505
+AttributeList:
+	count= 6
+	length= 64
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33505
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_CALCULATION
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_ECG_AMPL_ST_INDEX
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	STindx
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+		handle= 33508
+AttributeList:
+	count= 6
+	length= 64
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33508
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_ECG_V_P_C_CNT
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	PVC   
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+		handle= 33521
+AttributeList:
+	count= 6
+	length= 64
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33521
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: Unknown
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	QT    
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+		handle= 33523
+AttributeList:
+	count= 6
+	length= 64
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33523
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: Unknown
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	QTc   
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+		handle= 33525
+AttributeList:
+	count= 6
+	length= 64
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33525
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: Unknown
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	”QTc  
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+		handle= 33527
+AttributeList:
+	count= 6
+	length= 64
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33527
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: Unknown
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	QT-HR 
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+		handle= 33531
+AttributeList:
+	count= 3
+	length= 30
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33531
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_EPISODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 128
+
+
+		handle= 33533
+AttributeList:
+	count= 3
+	length= 30
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33533
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_EPISODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 128
+
+
+________________________________________________________________________________________________________________
+SPpdu:
+	session_id=0xe100
+	p_context_id=0x0002 (2)
+ROapdus:
+	ro_type= ROLRS_APDU
+	length= 966
+ROLRSapdu:
+	state: 2
+	count: 3
+	invoke_id: 5
+	command_type: CMD_CONFIRMED_ACTION
+	length= 958
+ActionResult:
+	managed_object= NOM_MOC_VMS_MDS
+	GlbHandle:
+		context_id=0
+		handle=0
+	action_type= NOM_ACT_POLL_MDIB_DATA_EXT
+	length= 948
+PollMdibDataReplyExt:
+	poll_number= 2
+	sequence_no= 2
+	rel_time_stamp= 20414720
+	abs_time_stamp:
+		century= 255
+		year= 255
+		month= 255
+		day= 255
+		hour= 255
+		minute= 255
+		second= 255
+		sec_fractions= 255
+	Type:
+		partition= NOM_PART_OBJ
+		code= NOM_MOC_VMO_METRIC_NU
+	polled_attr_grp= 0
+
+
+PollInfoList:
+	count= 1
+	length= 922
+
+
+	SingleContextPoll:
+		context_id= 1
+		poll_info
+			count= 10
+			length= 916
+		handle= 33683
+AttributeList:
+	count= 7
+	length= 102
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33683
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 1
+		ms_comp_no: 3
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_PRESS_BLD_ART_PULM
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	PAP   
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_YELLOW
+
+
+NOM_ATTR_NU_CMPD_VAL_OBS, Compound Numeric Observed Value, 
+	count: 3
+	length: 30
+	physio_id: NOM_PRESS_BLD_ART_PULM_MEAN
+	state: DEMO_DATA, MSMT_STATE_IN_ALARM,  (1026)
+	unit_code: mmHg ( mm mercury )
+	exponent: 0
+	mantissa: 21
+	absolute value: 21.000000
+	physio_id: NOM_PRESS_BLD_ART_PULM_SYS
+	state: DEMO_DATA,  (1024)
+	unit_code: mmHg ( mm mercury )
+	exponent: 0
+	mantissa: 28
+	absolute value: 28.000000
+	physio_id: NOM_PRESS_BLD_ART_PULM_DIA
+	state: DEMO_DATA,  (1024)
+	unit_code: mmHg ( mm mercury )
+	exponent: 0
+	mantissa: 15
+	absolute value: 15.000000
+-----end-------
+
+		handle= 33690
+AttributeList:
+	count= 7
+	length= 78
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33690
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_PRESS_NAMES_PULSE_FROM_PAP
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	Pulse 
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_YELLOW
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_PULS_RATE
+	state: DEMO_DATA, MSMT_STATE_AL_INHIBITED, 
+	unit_code: bpm ( beats per minute, used e.g. for HR/PULSE )
+	exponent: 0
+	mantissa: 60
+	absolute value: 60.000000
+
+
+		handle= 33721
+AttributeList:
+	count= 8
+	length= 84
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33721
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_TEMP
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	Temp  
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 2
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: Unknown
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_TEMP
+	state: DEMO_DATA, 
+	unit_code: °C ( degree-celsius )
+	exponent: -2
+	mantissa: 3700
+	absolute value: 37.000000
+
+
+		handle= 33744
+AttributeList:
+	count= 8
+	length= 84
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33744
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_TEMP_RECT
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	Trect 
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 2
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: Unknown
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_TEMP_RECT
+	state: DEMO_DATA, 
+	unit_code: °C ( degree-celsius )
+	exponent: -2
+	mantissa: 3700
+	absolute value: 37.000000
+
+
+		handle= 33807
+AttributeList:
+	count= 9
+	length= 90
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33807
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_PULS_OXIM_SAT_O2
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	SpO ‚  
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 3
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_CYAN
+
+
+NOM_SAT_O2_TONE_FREQ, Private Attribute, 
+	Unknown
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_PULS_OXIM_SAT_O2
+	state: DEMO_DATA, 
+	unit_code: % ( percentage )
+	exponent: -1
+	mantissa: 950
+	absolute value: 95.000000
+
+
+		handle= 33816
+AttributeList:
+	count= 7
+	length= 78
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33816
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_PULS_OXIM_PULS_RATE
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	Pulse 
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_CYAN
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_PLETH_PULS_RATE
+	state: DEMO_DATA, MSMT_STATE_AL_INHIBITED, 
+	unit_code: bpm ( beats per minute, used e.g. for HR/PULSE )
+	exponent: 0
+	mantissa: 60
+	absolute value: 60.000000
+
+
+		handle= 33823
+AttributeList:
+	count= 8
+	length= 84
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33823
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_PULS_OXIM_PERF_REL
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	Perf  
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 2
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_CYAN
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_PULS_OXIM_PERF_REL
+	state: DEMO_DATA, 
+	unit_code: - ( no dimension )
+	exponent: -1
+	mantissa: 100
+	absolute value: 10.000000
+
+
+		handle= 33868
+AttributeList:
+	count= 8
+	length= 88
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33868
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 1
+		ms_comp_no: 2
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_AWAY_CO2
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	CO ‚   
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 3
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_WHITE
+
+
+NOM_ATTR_NU_CMPD_VAL_OBS, Compound Numeric Observed Value, 
+	count: 1
+	length: 10
+	physio_id: NOM_AWAY_CO2_ET
+	state: DEMO_DATA,  (1024)
+	unit_code: mmHg ( mm mercury )
+	exponent: 0
+	mantissa: 30
+	absolute value: 30.000000
+-----end-------
+
+		handle= 33872
+AttributeList:
+	count= 8
+	length= 84
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33872
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_AWAY_RESP_RATE
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	awRR  
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 3
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_WHITE
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_AWAY_RESP_RATE
+	state: DEMO_DATA, 
+	unit_code: rpm ( respiration breathes per minute )
+	exponent: 0
+	mantissa: 30
+	absolute value: 30.000000
+
+
+		handle= 33903
+AttributeList:
+	count= 8
+	length= 84
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33903
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_TEMP_BLD
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	Tblood
+
+
+NOM_ATTR_DISP_RES, Display Resolution, 
+	numbers before decimal: 2
+	numbers after decimal: 9
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_YELLOW
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_TEMP_BLD
+	state: DEMO_DATA, 
+	unit_code: °C ( degree-celsius )
+	exponent: -2
+	mantissa: 3702
+	absolute value: 37.020000
+
+
+________________________________________________________________________________________________________________
+SPpdu:
+	session_id=0xe100
+	p_context_id=0x0002 (2)
+ROapdus:
+	ro_type= ROLRS_APDU
+	length= 242
+ROLRSapdu:
+	state: 3
+	count: 4
+	invoke_id: 5
+	command_type: CMD_CONFIRMED_ACTION
+	length= 234
+ActionResult:
+	managed_object= NOM_MOC_VMS_MDS
+	GlbHandle:
+		context_id=0
+		handle=0
+	action_type= NOM_ACT_POLL_MDIB_DATA_EXT
+	length= 224
+PollMdibDataReplyExt:
+	poll_number= 2
+	sequence_no= 2
+	rel_time_stamp= 20414720
+	abs_time_stamp:
+		century= 255
+		year= 255
+		month= 255
+		day= 255
+		hour= 255
+		minute= 255
+		second= 255
+		sec_fractions= 255
+	Type:
+		partition= NOM_PART_OBJ
+		code= NOM_MOC_VMO_METRIC_NU
+	polled_attr_grp= 0
+
+
+PollInfoList:
+	count= 1
+	length= 198
+
+
+	SingleContextPoll:
+		context_id= 1
+		poll_info
+			count= 2
+			length= 192
+		handle= 33925
+AttributeList:
+	count= 8
+	length= 90
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33925
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: AVAIL_INTERMITTEND, UPD_PERIODIC, MSMT_NONCONTINUOUS, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_OUTPUT_CARD
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	C.O.  
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_YELLOW
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_OUTPUT_CARD
+	state: UNAVAILABLE, DEMO_DATA, 
+	unit_code: l/min ( liter per minutes, used e.g. for MINVOL )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+
+
+NOM_ATTR_TIME_STAMP_ABS, Absolute Time Stamp, 
+	DOB
+		century: 255
+		year 255
+		month: 255
+		day: 255
+		hour: 255
+		minute:255
+		second: 255
+		sec_fractions: 255
+
+
+		handle= 33927
+AttributeList:
+	count= 8
+	length= 90
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 33927
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_NU
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 8192
+		category: AUTO_MEASUREMENT
+		access: AVAIL_INTERMITTEND, UPD_PERIODIC, MSMT_NONCONTINUOUS, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_OUTPUT_CARD_INDEX
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	C.I.  
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_YELLOW
+
+
+NOM_ATTR_NU_VAL_OBS, Numeric Observed Value, 
+	physio_id: NOM_OUTPUT_CARD_INDEX
+	state: UNAVAILABLE, DEMO_DATA, 
+	unit_code: l/min/m2 ( used for CI )
+	exponent: 0
+	mantissa: 8388607
+	absolute_value: NaN (Not a Number)
+
+
+NOM_ATTR_TIME_STAMP_ABS, Absolute Time Stamp, 
+	DOB
+		century: 255
+		year 255
+		month: 255
+		day: 255
+		hour: 255
+		minute:255
+		second: 255
+		sec_fractions: 255
+
+
+________________________________________________________________________________________________________________
+SPpdu:
+	session_id=0xe100
+	p_context_id=0x0002 (2)
+ROapdus:
+	ro_type= RORS_APDU
+	length= 42
+RORSapdu:
+	invoke_id= 5
+	command_type= CMD_CONFIRMED_ACTION
+	length= 36
+ActionResult:
+	managed_object= NOM_MOC_VMS_MDS
+	GlbHandle:
+		context_id=0
+		handle=0
+	action_type= NOM_ACT_POLL_MDIB_DATA_EXT
+	length= 26

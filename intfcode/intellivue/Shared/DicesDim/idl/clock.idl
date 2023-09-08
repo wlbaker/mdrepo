@@ -1,0 +1,161 @@
+/**
+ * @file    clock.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Clock object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Clock object
+ *
+ * Refer to the notes for the Clock object in 11073-10201, section 7.5.10
+ */
+
+typedef BITS32 TimeCapability;
+enum TimeCapabilityBits
+{
+ // the device includes hardware support for time (including battery power)
+  time_capab_real_time_clock = 0x1,
+
+  // time can be set locally/manually ("eyeball and wristwatch" or "EBWW")
+  time_capab_ebww = 0x2,
+
+  // supports adjustment of time for leap-seconds (SNTP-related)
+  time_capab_leap_second_aware = 0x4,
+
+  // supports time zone-related attributes
+  time_capab_time_zone_aware = 0x8,
+
+  // date/time is used only internally to the device; not displayed to operator
+  time_capab_internal_only = 0x10,
+
+  // date/time can be displayed continually on the device versus in a menu
+  time_capab_time_displayed = 0x20,
+
+  // date/time is used in critical patient care algorithms/protocols
+  time_capab_patient_care = 0x30,
+
+  // timestamp annotations supported for real-time waveform data =
+  // (Real Time Sample Array objects)
+  time_capab_rtsa_time_sync_annotations = 0x40,
+
+  // Real Time Sample Array objects support attributes for high precision
+  // sample timestamps
+  time_capab_rtsa_time_sync_high_precision = 0x50,
+
+  // Clock object supports the set time action
+  time_capab_set_time_action_sup = 0x10000,
+
+  // Clock object supports the set time zone action
+  time_capab_set_time_zone_action_sup = 0x20000,
+
+  // Clock object supports the set leap-seconds action
+  time_capab_set_leap_sec_action_sup = 0x30000,
+
+  //Clock object supports the set time ISO action
+  time_capab_set_time_iso_sup = 0x40000
+};
+
+/**
+ * Time-Support attribute provides general information about time-related
+ * services that are provided by the device. Some of this information could be
+ * determined by examining the presence/absence of various attributes in a
+ * containment tree; however, its presence here simplifies time management for
+ * device managers
+ *
+ * NOTES
+ * 1--If remote date/time synchronization is supported (e.g., SNTP), then
+ * either Date-And-Time or ISO-Date-And-Time attribute must also be supported
+ * 2--If the device is also a server of time information (e.g., an SNTP
+ * server), this fact should be indicated in the time protocol IDs
+ */
+
+typedef OIDType TimeProtocolId;
+
+struct TimeSupport
+{
+  // Flags indicating general time support
+  TimeCapability time_capability;
+
+  // Time between actual ticks in microseconds.
+  // All bits set if not defined or specified.
+  INTU32 relative_resolution; // See Note below
+
+  // List of external time protocols supported
+  sequence<TimeProtocolId> time_protocols;
+}; //@top-level false
+
+// Timestamp ID (e.g., for SNTP timestamps)
+// from the infrastructure nomenclature partition
+typedef OIDType TimeStampId;
+
+// Extended timestamp (e.g., SNTP timestamp value)
+struct ExtTimeStamp
+{
+  TimeStampId time_stamp_id;
+  string<LONG_STRING_LEN> time_stamp;     // ANY DEFINED BY time-stamp-id
+}; //@top-level false
+typedef sequence<ExtTimeStamp> ExtTimeStampList;
+
+// Date/time usage flags indicate dynamic usage status for date and time in the
+// device. No bits set indicates unknown/indeterminate status.
+typedef BITS16 DateTimeUsage;
+enum DateTimeUsageBits
+{
+  dt_use_remote_sync = 0x1,   // date/time is synchronized to external source
+  dt_use_operator_set = 0x2,  // date/time set by operator (i.e., EBWW)
+  dt_use_rtc_synced = 0x4,    // date/time in the RTC has been synchronized to
+                              // a remote time source
+  dt_use_critical_use = 0x8,  // date/time is actively being used in care
+                              // algorithms/protocols
+  dt_use_displayed = 0x10     // date/time is actively displayed to operator
+};
+
+// Date-Time-Status attribute defines the current/active usage status for date
+// and time in the device
+struct DateTimeStatus
+{
+  DateTimeUsage usage_status;   // flags indicating dynamic time usage
+  Timespec clock_last_set;  // time the absolute time was last set
+
+  // decimal number indicating the accuracy or max error of the absolute time
+  // relative to a primary reference clock source (in secs)
+  FLOATType clock_accuracy;
+
+  // protocol actively being used for time synchronization
+  TimeProtocolId active_sync_protocol;
+}; //@top-level false
+
+// Time-Zone attribute supports time zone information for UTC
+struct UTCTimeZone
+{
+  // Device's local time zone (i.e., at the point of care), relative to UTC.
+  // Format is +hh for time zones east of GMT and -hh for locations west of GMT
+  INT16 time_zone_offset_hours;
+
+  // Minutes offset from GMT (if specified). Format conventions match
+  // conventions for hours, but they are not signed (always a positive value).
+  // Default is 0.
+  INTU16 time_zone_offset_minutes; 
+
+  // Device's local time zone label, e.g., PST or PDT.
+  // See device's Locale attribute for string encoding.
+  string<8> time_zone_label;
+}; //@top-level false
+
+struct Clock : Top
+{
+  TimeSupport time_support;
+  DateTimeStatus date_time_status;
+  UTCTimeZone time_zone;  
+}; //@top-level true
+const string ClockTopic = "ice--Clock";
+const string ClockTopicReq = "ice--ClockReq";
+
+};

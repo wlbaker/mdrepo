@@ -1,0 +1,40 @@
+require( grid )
+
+print.arrangelist <- function (x, ...) 
+lapply(x, function(.x) {
+    grid.newpage()
+    grid.draw(.x)
+}, ...)
+
+arrangeGraphs <- function (grobs, ncol, nrow, ..., top = quote(paste("page", g, "of", pages))) 
+{
+    n <- length(grobs)
+    nlay <- nrow * ncol
+    pages <- n%/%nlay + as.logical(n%%nlay)
+    groups <- split(seq_along(grobs), gl(pages, nlay, n))
+    pl <- vector(mode = "list", length = pages)
+    for (page in seq_along(groups)) {
+        g <- page
+        params <- modifyList(list(...), list(top = eval(top), 
+            nrow = nrow, ncol = ncol))
+        pl[[g]] <- do.call(arrangeGrob, c(grobs[groups[[g]]], 
+            params))
+    }
+    class(pl) <- c("arrangelist", class(pl))
+    
+    lapply(pl, function(.x) {
+    	grid.newpage()
+    	grid.draw(.x)
+    } )
+}
+}
+
+theme_bw()+
+
+plot1 <- ggplot(data=temp1)+
+geom_bar(aes(x=label,y=value,fill=variable),stat="identity",width=1)+
+scale_y_continuous(expand=c(0,0))+labs(x=NULL,y=NULL)+
+ theme(plot.margin = unit(c(0,1,1,1), "cm")) +
+ theme(legend.position="none",axis.text=element_blank(),axis.ticks=element_blank())
+grid.arrange(plot1, plot1)
+

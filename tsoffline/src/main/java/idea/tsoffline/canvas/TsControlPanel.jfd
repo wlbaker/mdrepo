@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.2" class="java.beans.XMLDecoder">
+ <object class="com.jformdesigner.model.FormModel">
+  <void property="contentType">
+   <string>form/swing</string>
+  </void>
+  <void property="root">
+   <object class="com.jformdesigner.model.FormRoot">
+    <void method="add">
+     <object class="com.jformdesigner.model.FormContainer">
+      <string>javax.swing.JPanel</string>
+      <object class="com.jformdesigner.model.FormLayoutManager">
+       <class>java.awt.BorderLayout</class>
+       <void method="setProperty">
+        <string>hgap</string>
+        <int>4</int>
+       </void>
+      </object>
+      <void method="setProperty">
+       <string>border</string>
+       <object class="com.jformdesigner.model.FormObject" field="NULL_VALUE"/>
+      </void>
+      <void property="name">
+       <string>this</string>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormContainer">
+        <string>javax.swing.JPanel</string>
+        <object class="com.jformdesigner.model.FormLayoutManager">
+         <class>com.jgoodies.forms.layout.FormLayout</class>
+         <void method="setProperty">
+          <string>$columnSpecs</string>
+          <string>max(default;100dlu):grow</string>
+         </void>
+         <void method="setProperty">
+          <string>$rowSpecs</string>
+          <string>default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, fill:default:grow, default, linegap, default, linegap, default, linegap, default</string>
+         </void>
+        </object>
+        <void property="name">
+         <string>optionsPanel</string>
+        </void>
+       </object>
+       <object class="com.jformdesigner.model.FormLayoutConstraints">
+        <class>java.lang.String</class>
+        <void method="setProperty">
+         <string>value</string>
+         <string>East</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormContainer">
+        <string>javax.swing.JToolBar</string>
+        <object class="com.jformdesigner.model.FormLayoutManager">
+         <class>javax.swing.JToolBar</class>
+        </object>
+        <void property="name">
+         <string>toolBar1</string>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object class="com.jformdesigner.model.FormReference">
+            <string>cursorEditType</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>CTRL-LMB: Select maximum around the cursor</string>
+          </void>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/max-maximum-27-unsel.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/max-maximum-27.png</string>
+           </object>
+          </void>
+          <void property="name">
+           <string>featureMax</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>featureMaxActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object class="com.jformdesigner.model.FormReference">
+            <string>cursorEditType</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>SHIFT-LMB: Select minimum around the cursor</string>
+          </void>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/min-minimum-27-unsel.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/min-minimum-27.png</string>
+           </object>
+          </void>
+          <void property="name">
+           <string>featureMin</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>featureMinActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object class="com.jformdesigner.model.FormReference">
+            <string>cursorEditType</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>CTRL+SHFIT+LMB: Select exact cursor position</string>
+          </void>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/ext-exact-27-unsel.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/ext-exact-27.png</string>
+           </object>
+          </void>
+          <void property="name">
+           <string>featureExact</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>featureExactActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToolBar$Separator</string>
+          <void property="name">
+           <string>separator8</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>Explore</string>
+          </void>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object class="com.jformdesigner.model.FormReference">
+            <string>buttonGroup1</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/explore-27-unsel.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/explore-27.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selected</string>
+           <boolean>true</boolean>
+          </void>
+          <void property="name">
+           <string>buttonExplore</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>buttonExploreActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object class="com.jformdesigner.model.FormReference">
+            <string>buttonGroup1</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/add-wf-27-unsel.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/add-wf-27.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>Add waveforms</string>
+          </void>
+          <void property="name">
+           <string>buttonUnused</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>buttonUnusedActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.SwingIcon" id="SwingIcon0">
+            <int>0</int>
+            <string>/idea/tsoffline/images/ruler-27-unsel.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.SwingIcon" id="SwingIcon1">
+            <int>0</int>
+            <string>/idea/tsoffline/images/ruler-27.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>Graph setup and ranges</string>
+          </void>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object class="com.jformdesigner.model.FormReference" id="FormReference0">
+            <string>buttonGroup1</string>
+           </object>
+          </void>
+          <void property="name">
+           <string>buttonGraphParams</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>buttonGraphParamsActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>icon</string>
+           <object idref="SwingIcon0"/>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object idref="SwingIcon1"/>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>Intersections</string>
+          </void>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object idref="FormReference0"/>
+          </void>
+          <void property="name">
+           <string>buttonIntersection</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>buttonIntersectionActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/filter-27-unsel.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/filter-27.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>Filters</string>
+          </void>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object idref="FormReference0"/>
+          </void>
+          <void property="name">
+           <string>buttonFilters</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>buttonFiltersActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/calibrate-27-unsel.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/calibrate-27.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>Calibration</string>
+          </void>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object idref="FormReference0"/>
+          </void>
+          <void property="name">
+           <string>buttonC</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>buttonCActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>text</string>
+           <string>B2B</string>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>Beat to Beat Analysis</string>
+          </void>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object class="com.jformdesigner.model.FormReference">
+            <string>buttonGroup1</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/analysis-27.png</string>
+           </object>
+          </void>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.SwingIcon">
+            <int>0</int>
+            <string>/idea/tsoffline/images/analysis-27-unsel.png</string>
+           </object>
+          </void>
+          <void property="name">
+           <string>buttonB2B</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>buttonB2BActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToggleButton</string>
+          <void method="setProperty">
+           <string>icon</string>
+           <object class="com.jformdesigner.model.FormObject" field="NULL_VALUE"/>
+          </void>
+          <void method="setProperty">
+           <string>selectedIcon</string>
+           <object class="com.jformdesigner.model.FormObject" field="NULL_VALUE"/>
+          </void>
+          <void method="setProperty">
+           <string>toolTipText</string>
+           <string>Analysis</string>
+          </void>
+          <void method="setProperty">
+           <string>$buttonGroup</string>
+           <object idref="FormReference0"/>
+          </void>
+          <void method="setProperty">
+           <string>text</string>
+           <string>AN</string>
+          </void>
+          <void property="name">
+           <string>buttonAN</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>buttonANActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JToolBar$Separator</string>
+          <void property="name">
+           <string>separator9</string>
+          </void>
+         </object>
+        </void>
+       </object>
+       <object class="com.jformdesigner.model.FormLayoutConstraints">
+        <class>java.lang.String</class>
+        <void method="setProperty">
+         <string>value</string>
+         <string>North</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormContainer">
+        <string>javax.swing.JToolBar</string>
+        <object class="com.jformdesigner.model.FormLayoutManager">
+         <class>javax.swing.JToolBar</class>
+        </object>
+        <void method="setProperty">
+         <string>minimumSize</string>
+         <object class="java.awt.Dimension">
+          <int>33</int>
+          <int>32</int>
+         </object>
+        </void>
+        <void method="setProperty">
+         <string>preferredSize</string>
+         <object class="java.awt.Dimension">
+          <int>33</int>
+          <int>32</int>
+         </object>
+        </void>
+        <void property="name">
+         <string>toolBar2</string>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormContainer">
+          <string>javax.swing.JPanel</string>
+          <object class="com.jformdesigner.model.FormLayoutManager">
+           <class>java.awt.FlowLayout</class>
+           <void method="setProperty">
+            <string>alignment</string>
+            <int>0</int>
+           </void>
+          </object>
+          <void property="name">
+           <string>layerSelectionPanel</string>
+          </void>
+         </object>
+        </void>
+       </object>
+       <object class="com.jformdesigner.model.FormLayoutConstraints">
+        <class>java.lang.String</class>
+        <void method="setProperty">
+         <string>value</string>
+         <string>South</string>
+        </void>
+       </object>
+      </void>
+     </object>
+     <object class="com.jformdesigner.model.FormLayoutConstraints">
+      <null/>
+      <void method="setProperty">
+       <string>location</string>
+       <object class="java.awt.Point">
+        <int>0</int>
+        <int>0</int>
+       </object>
+      </void>
+      <void method="setProperty">
+       <string>size</string>
+       <object class="java.awt.Dimension">
+        <int>625</int>
+        <int>400</int>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.jformdesigner.model.FormNonVisual">
+      <string>javax.swing.ButtonGroup</string>
+      <void property="name">
+       <string>menuGroup</string>
+      </void>
+     </object>
+     <object class="com.jformdesigner.model.FormLayoutConstraints">
+      <null/>
+      <void method="setProperty">
+       <string>location</string>
+       <object class="java.awt.Point">
+        <int>45</int>
+        <int>415</int>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.jformdesigner.model.FormContainer">
+      <string>javax.swing.JPopupMenu</string>
+      <object class="com.jformdesigner.model.FormLayoutManager">
+       <class>javax.swing.JPopupMenu</class>
+      </object>
+      <void property="name">
+       <string>majorPopupMenu</string>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JMenuItem</string>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Save Screenshot to Clipboard</string>
+        </void>
+        <void property="name">
+         <string>copyImage</string>
+        </void>
+        <void method="addEvent">
+         <object class="com.jformdesigner.model.FormEvent">
+          <string>java.awt.event.ActionListener</string>
+          <string>actionPerformed</string>
+          <string>copyImageActionPerformed</string>
+          <boolean>true</boolean>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JMenuItem</string>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Save Screenshot to File</string>
+        </void>
+        <void property="name">
+         <string>saveImage</string>
+        </void>
+        <void method="addEvent">
+         <object class="com.jformdesigner.model.FormEvent">
+          <string>java.awt.event.ActionListener</string>
+          <string>actionPerformed</string>
+          <string>saveImageActionPerformed</string>
+          <boolean>true</boolean>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormContainer">
+        <string>javax.swing.JMenu</string>
+        <object class="com.jformdesigner.model.FormLayoutManager">
+         <class>javax.swing.JMenu</class>
+        </object>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Copy</string>
+        </void>
+        <void property="name">
+         <string>menu1</string>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JMenuItem</string>
+          <void method="setProperty">
+           <string>text</string>
+           <string>Selected Signal</string>
+          </void>
+          <void method="setProperty">
+           <string>enabled</string>
+           <boolean>false</boolean>
+          </void>
+          <void property="name">
+           <string>menuItem2</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JMenuItem</string>
+          <void method="setProperty">
+           <string>text</string>
+           <string>Selected Graph</string>
+          </void>
+          <void method="setProperty">
+           <string>enabled</string>
+           <boolean>false</boolean>
+          </void>
+          <void property="name">
+           <string>menuItem3</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JMenuItem</string>
+          <void method="setProperty">
+           <string>text</string>
+           <string>All Graphs</string>
+          </void>
+          <void method="setProperty">
+           <string>enabled</string>
+           <boolean>false</boolean>
+          </void>
+          <void property="name">
+           <string>menuItem4</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="com.jformdesigner.model.FormComponent">
+          <string>javax.swing.JMenuItem</string>
+          <void method="setProperty">
+           <string>text</string>
+           <string>Copy Data to Clipboard</string>
+          </void>
+          <void property="name">
+           <string>copyData</string>
+          </void>
+          <void method="addEvent">
+           <object class="com.jformdesigner.model.FormEvent">
+            <string>java.awt.event.ActionListener</string>
+            <string>actionPerformed</string>
+            <string>copyDataActionPerformed</string>
+            <boolean>true</boolean>
+           </object>
+          </void>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JMenuItem</string>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Paste</string>
+        </void>
+        <void method="setProperty">
+         <string>enabled</string>
+         <boolean>false</boolean>
+        </void>
+        <void property="name">
+         <string>pasteFromClipboard</string>
+        </void>
+        <void method="addEvent">
+         <object class="com.jformdesigner.model.FormEvent">
+          <string>java.awt.event.ActionListener</string>
+          <string>actionPerformed</string>
+          <string>pasteFromClipboardActionPerformed</string>
+          <boolean>true</boolean>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JPopupMenu$Separator</string>
+        <void property="name">
+         <string>separator2</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JMenuItem</string>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Split Graph</string>
+        </void>
+        <void property="name">
+         <string>graphSplit</string>
+        </void>
+        <void method="addEvent">
+         <object class="com.jformdesigner.model.FormEvent">
+          <string>java.awt.event.ActionListener</string>
+          <string>actionPerformed</string>
+          <string>graphSplitActionPerformed</string>
+          <boolean>true</boolean>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JMenuItem</string>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Join Graph Below</string>
+        </void>
+        <void property="name">
+         <string>graphJoin</string>
+        </void>
+        <void method="addEvent">
+         <object class="com.jformdesigner.model.FormEvent">
+          <string>java.awt.event.ActionListener</string>
+          <string>actionPerformed</string>
+          <string>graphJoinActionPerformed</string>
+          <boolean>true</boolean>
+         </object>
+        </void>
+       </object>
+      </void>
+     </object>
+     <object class="com.jformdesigner.model.FormLayoutConstraints">
+      <null/>
+      <void method="setProperty">
+       <string>location</string>
+       <object class="java.awt.Point">
+        <int>0</int>
+        <int>505</int>
+       </object>
+      </void>
+      <void method="setProperty">
+       <string>size</string>
+       <object class="java.awt.Dimension">
+        <int>190</int>
+        <int>165</int>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.jformdesigner.model.FormContainer">
+      <string>javax.swing.JPopupMenu</string>
+      <object class="com.jformdesigner.model.FormLayoutManager">
+       <class>javax.swing.JPopupMenu</class>
+      </object>
+      <void property="name">
+       <string>annotationOptionsMenu</string>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JMenuItem</string>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Delete Annotation    [DEL]</string>
+        </void>
+        <void property="name">
+         <string>deleteAnnotation</string>
+        </void>
+        <void method="addEvent">
+         <object class="com.jformdesigner.model.FormEvent">
+          <string>java.awt.event.ActionListener</string>
+          <string>actionPerformed</string>
+          <string>deleteAnnotationActionPerformed</string>
+          <boolean>true</boolean>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JPopupMenu$Separator</string>
+        <void property="name">
+         <string>separator1</string>
+        </void>
+       </object>
+      </void>
+     </object>
+     <object class="com.jformdesigner.model.FormLayoutConstraints">
+      <null/>
+      <void method="setProperty">
+       <string>location</string>
+       <object class="java.awt.Point">
+        <int>240</int>
+        <int>540</int>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.jformdesigner.model.FormNonVisual">
+      <string>javax.swing.ButtonGroup</string>
+      <void property="name">
+       <string>cursorEditType</string>
+      </void>
+     </object>
+     <object class="com.jformdesigner.model.FormLayoutConstraints">
+      <null/>
+      <void method="setProperty">
+       <string>location</string>
+       <object class="java.awt.Point">
+        <int>170</int>
+        <int>415</int>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.jformdesigner.model.FormNonVisual">
+      <string>javax.swing.ButtonGroup</string>
+      <void property="name">
+       <string>buttonGroup1</string>
+      </void>
+     </object>
+     <object class="com.jformdesigner.model.FormLayoutConstraints">
+      <null/>
+      <void method="setProperty">
+       <string>location</string>
+       <object class="java.awt.Point">
+        <int>0</int>
+        <int>680</int>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.jformdesigner.model.FormContainer">
+      <string>javax.swing.JPopupMenu</string>
+      <object class="com.jformdesigner.model.FormLayoutManager">
+       <class>javax.swing.JPopupMenu</class>
+      </object>
+      <void property="name">
+       <string>minorPopupMenu</string>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JMenuItem</string>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Save Screenshot to Clipboard</string>
+        </void>
+        <void property="name">
+         <string>copyImage2</string>
+        </void>
+        <void method="addEvent">
+         <object class="com.jformdesigner.model.FormEvent">
+          <string>java.awt.event.ActionListener</string>
+          <string>actionPerformed</string>
+          <string>copyImageActionPerformed</string>
+          <boolean>true</boolean>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JMenuItem</string>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Save Screenshot to File</string>
+        </void>
+        <void property="name">
+         <string>saveImage2</string>
+        </void>
+        <void method="addEvent">
+         <object class="com.jformdesigner.model.FormEvent">
+          <string>java.awt.event.ActionListener</string>
+          <string>actionPerformed</string>
+          <string>saveImageActionPerformed</string>
+          <boolean>true</boolean>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JMenuItem</string>
+        <void method="setProperty">
+         <string>text</string>
+         <string>Copy Data to Clipboard</string>
+        </void>
+        <void property="name">
+         <string>copyData2</string>
+        </void>
+        <void method="addEvent">
+         <object class="com.jformdesigner.model.FormEvent">
+          <string>java.awt.event.ActionListener</string>
+          <string>actionPerformed</string>
+          <string>copyDataActionPerformed</string>
+          <boolean>true</boolean>
+         </object>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="com.jformdesigner.model.FormComponent">
+        <string>javax.swing.JPopupMenu$Separator</string>
+        <void property="name">
+         <string>separator3</string>
+        </void>
+       </object>
+      </void>
+     </object>
+     <object class="com.jformdesigner.model.FormLayoutConstraints">
+      <null/>
+      <void method="setProperty">
+       <string>location</string>
+       <object class="java.awt.Point">
+        <int>0</int>
+        <int>732</int>
+       </object>
+      </void>
+      <void method="setProperty">
+       <string>size</string>
+       <object class="java.awt.Dimension">
+        <int>175</int>
+        <int>135</int>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

@@ -1,0 +1,62 @@
+syntax = "proto3";
+package infinity;
+
+option java_package = "pista.model";
+
+message ident {
+     string model = 1;  //[9];
+  	 string serial_no = 2; // [10];
+     bytes cpu_id = 3; // [18];
+     bytes adapter_id = 4; // [18];
+     string pim_id = 5; // [18];
+     string spm_model = 6; // [9];
+     string spm_serial = 7; // [10];
+     string silent_mode = 8; // [18];
+     int32 contrast = 9; // ;
+     string emv_version = 10; // [9];
+ }
+
+message inf_measurements { // basic vitals
+        int32 nibp_sys = 1;
+        int32 nibp_dia = 2;
+        int32 nibp_mean = 3;
+        int32 spo2_hr = 4;
+        int32 cvp_mean = 5;
+        int32 pa_pwp = 6;
+        int32 pa_mean = 7;
+        int32 pa_sys = 8;
+        int32 pa_dia = 9;
+        int32 art_mean = 10;
+        int32 art_sys = 11;
+        int32 art_dia = 12;
+        int32 art_pwp = 13;
+        int32 art_hr = 14;
+        int32 ecg_pp = 15;
+        int32 ecg_arr = 16;
+        int32 ecg_pvc = 17;
+        int32 ecg_hr = 18;
+        int32 spo2_sat = 19;
+        int32 spo2_pr = 20;
+        int32 art_pr = 21;
+        int32 tbasic_a = 22;
+        int32 tbasic_b = 23;
+        int32 tbasic_delta = 24;
+        int32 temp1_a = 25;
+        int32 temp1_b = 26;
+        int32 gp1_sys = 27;
+        int32 gp1_dia = 28;
+        int32 gp1_mean = 29;
+        int32 gp2_sys = 30;
+        int32 gp2_dia = 31;
+        int32 gp2_mean = 32;
+}
+
+message sensors {
+	repeated int32 ecg0 = 1;
+	repeated int32 ecg1 = 2;
+	repeated int32 ecg2 = 3;
+	repeated int32 ecg3 = 4;
+	repeated int32 abp  = 5;
+	repeated int32 pa   = 6;
+}
+

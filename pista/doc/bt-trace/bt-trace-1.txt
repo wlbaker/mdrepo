@@ -1,0 +1,603 @@
+Bluetooth monitor ver 5.50
+= Note: Linux version 4.18.16-300.fc29.x86_64 (x86_64)                 0.715440
+= Note: Bluetooth subsystem version 2.22                               0.715444
+= New Index: 00:1A:7D:DA:71:11 (Primary,USB,hci0)               [hci0] 0.715445
+= Open Index: 00:1A:7D:DA:71:11                                 [hci0] 0.715446
+= Index Info: 00:1A:7D:DA:71:11 (Cambridge Silicon Radio)       [hci0] 0.715446
+@ MGMT Open: bluetoothd (privileged) version 1.14             {0x0001} 0.715447
+@ MGMT Open: btmon (privileged) version 1.14                  {0x0002} 0.715474
+> HCI Event: Connect Request (0x04) plen 10                 #1 [hci0] 38.117613
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Class: 0x02091c
+          Major class: Health
+          Minor class: 0x07
+          Networking (LAN, Ad hoc)
+        Link type: ACL (0x01)
+< HCI Command: Accept Connection Re.. (0x01|0x0009) plen 7  #2 [hci0] 38.117649
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Role: Master (0x00)
+> HCI Event: Command Status (0x0f) plen 4                   #3 [hci0] 38.120614
+      Accept Connection Request (0x01|0x0009) ncmd 1
+        Status: Success (0x00)
+> HCI Event: Connect Complete (0x03) plen 11                #4 [hci0] 38.140617
+        Status: Success (0x00)
+        Handle: 65
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Link type: ACL (0x01)
+        Encryption: Disabled (0x00)
+< HCI Command: Read Remote Supporte.. (0x01|0x001b) plen 2  #5 [hci0] 38.140708
+        Handle: 65
+> HCI Event: Page Scan Repetition Mode Cha.. (0x20) plen 7  #6 [hci0] 38.142617
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Page scan repetition mode: R1 (0x01)
+> HCI Event: Command Status (0x0f) plen 4                   #7 [hci0] 38.146616
+      Read Remote Supported Features (0x01|0x001b) ncmd 0
+        Status: Success (0x00)
+> HCI Event: Max Slots Change (0x1b) plen 3                 #8 [hci0] 38.181615
+        Handle: 65
+        Max slots: 5
+> HCI Event: Command Status (0x0f) plen 4                   #9 [hci0] 38.184614
+      NOP (0x00|0x0000) ncmd 1
+        Status: Success (0x00)
+> HCI Event: Read Remote Supported Featu.. (0x0b) plen 11  #10 [hci0] 38.191617
+        Status: Success (0x00)
+        Handle: 65
+        Features: 0xff 0xfe 0x2d 0xfe 0xdb 0xff 0x7b 0x87
+          3 slot packets
+          5 slot packets
+          Encryption
+          Slot offset
+          Timing accuracy
+          Role switch
+          Hold mode
+          Sniff mode
+          Power control requests
+          Channel quality driven data rate (CQDDR)
+          SCO link
+          HV2 packets
+          HV3 packets
+          u-law log synchronous data
+          A-law log synchronous data
+          CVSD synchronous data
+          Power control
+          Transparent synchronous data
+          Flow control lag (middle bit)
+          Enhanced Data Rate ACL 2 Mbps mode
+          Enhanced Data Rate ACL 3 Mbps mode
+          Enhanced inquiry scan
+          Interlaced inquiry scan
+          Interlaced page scan
+          RSSI with inquiry results
+          Extended SCO link (EV3 packets)
+          EV4 packets
+          EV5 packets
+          AFH capable slave
+          AFH classification slave
+          LE Supported (Controller)
+          3-slot Enhanced Data Rate ACL packets
+          5-slot Enhanced Data Rate ACL packets
+          Sniff subrating
+          Pause encryption
+          AFH capable master
+          AFH classification master
+          Enhanced Data Rate eSCO 2 Mbps mode
+          Enhanced Data Rate eSCO 3 Mbps mode
+          3-slot Enhanced Data Rate eSCO packets
+          Extended Inquiry Response
+          Simultaneous LE and BR/EDR (Controller)
+          Secure Simple Pairing
+          Encapsulated PDU
+          Erroneous Data Reporting
+          Non-flushable Packet Boundary Flag
+          Link Supervision Timeout Changed Event
+          Inquiry TX Power Level
+          Enhanced Power Control
+          Extended features
+< HCI Command: Read Remote Extende.. (0x01|0x001c) plen 3  #11 [hci0] 38.191647
+        Handle: 65
+        Page: 1
+> HCI Event: Command Status (0x0f) plen 4                  #12 [hci0] 38.196617
+      Read Remote Extended Features (0x01|0x001c) ncmd 1
+        Status: Success (0x00)
+> HCI Event: Read Remote Extended Features (0x23) plen 13  #13 [hci0] 38.205618
+        Status: Success (0x00)
+        Handle: 65
+        Page: 1/1
+        Features: 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+          Secure Simple Pairing (Host Support)
+< HCI Command: Remote Name Request (0x01|0x0019) plen 10   #14 [hci0] 38.205658
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Page scan repetition mode: R2 (0x02)
+        Page scan mode: Mandatory (0x00)
+        Clock offset: 0x0000
+< ACL Data TX: Handle 65 flags 0x00 dlen 10                #15 [hci0] 38.205665
+      L2CAP: Information Request (0x0a) ident 1 len 2
+        Type: Extended features supported (0x0002)
+> HCI Event: IO Capability Response (0x32) plen 9          #16 [hci0] 38.211614
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        IO capability: NoInputNoOutput (0x03)
+        OOB data: Authentication data not present (0x00)
+        Authentication: Dedicated Bonding - MITM not required (0x02)
+> HCI Event: IO Capability Request (0x31) plen 6           #17 [hci0] 38.213617
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+> HCI Event: Command Status (0x0f) plen 4                  #18 [hci0] 38.215619
+      Remote Name Request (0x01|0x0019) ncmd 1
+        Status: Success (0x00)
+< HCI Command: IO Capability Reque.. (0x01|0x002b) plen 9  #19 [hci0] 38.215648
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        IO capability: DisplayYesNo (0x01)
+        OOB data: Authentication data not present (0x00)
+        Authentication: Dedicated Bonding - MITM not required (0x02)
+> HCI Event: Command Complete (0x0e) plen 10               #20 [hci0] 38.220614
+      IO Capability Request Reply (0x01|0x002b) ncmd 1
+        Status: Success (0x00)
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+> HCI Event: Number of Completed Packets (0x13) plen 5     #21 [hci0] 38.228615
+        Num handles: 1
+        Handle: 65
+        Count: 1
+> ACL Data RX: Handle 65 flags 0x02 dlen 16                #22 [hci0] 38.229621
+      L2CAP: Information Response (0x0b) ident 1 len 8
+        Type: Extended features supported (0x0002)
+        Result: Success (0x0000)
+        Features: 0x000000b8
+          Enhanced Retransmission Mode
+          Streaming Mode
+          FCS Option
+          Fixed Channels
+< ACL Data TX: Handle 65 flags 0x00 dlen 10                #23 [hci0] 38.229642
+      L2CAP: Information Request (0x0a) ident 2 len 2
+        Type: Fixed channels supported (0x0003)
+> HCI Event: Number of Completed Packets (0x13) plen 5     #24 [hci0] 38.237616
+        Num handles: 1
+        Handle: 65
+        Count: 1
+> ACL Data RX: Handle 65 flags 0x02 dlen 20                #25 [hci0] 38.237632
+      L2CAP: Information Response (0x0b) ident 2 len 12
+        Type: Fixed channels supported (0x0003)
+        Result: Success (0x0000)
+        Channels: 0x0000000000000002
+          L2CAP Signaling (BR/EDR)
+> HCI Event: Remote Name Req Complete (0x07) plen 255      #26 [hci0] 38.272614
+        Status: Success (0x00)
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Name: ZOLL-AI17A005890
+@ MGMT Event: Device Connected (0x000b) plen 36       {0x0002} [hci0] 38.272649
+        BR/EDR Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Flags: 0x00000000
+        Data length: 23
+        Name (complete): ZOLL-AI17A005890
+        Class: 0x02091c
+          Major class: Health
+          Minor class: 0x07
+          Networking (LAN, Ad hoc)
+@ MGMT Event: Device Connected (0x000b) plen 36       {0x0001} [hci0] 38.272649
+        BR/EDR Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Flags: 0x00000000
+        Data length: 23
+        Name (complete): ZOLL-AI17A005890
+        Class: 0x02091c
+          Major class: Health
+          Minor class: 0x07
+          Networking (LAN, Ad hoc)
+> HCI Event: User Confirmation Request (0x33) plen 10      #27 [hci0] 38.329615
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Passkey: 611729
+< HCI Command: User Confirmation R.. (0x01|0x002c) plen 6  #28 [hci0] 38.329653
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+> HCI Event: Command Complete (0x0e) plen 10               #29 [hci0] 38.338609
+      User Confirmation Request Reply (0x01|0x002c) ncmd 1
+        Status: Success (0x00)
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+> HCI Event: Simple Pairing Complete (0x36) plen 7         #30 [hci0] 38.702610
+        Status: Success (0x00)
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+> HCI Event: Link Key Notification (0x18) plen 23          #31 [hci0] 38.723604
+        Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Link key: e4995bc57d022b3017ff13f9c215cb36
+        Key type: Unauthenticated Combination key from P-192 (0x04)
+@ MGMT Event: New Link Key (0x0009) plen 26           {0x0002} [hci0] 38.723632
+        Store hint: Yes (0x01)
+        BR/EDR Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Key type: Unauthenticated Combination key from P-192 (0x04)
+        Link key: e4995bc57d022b3017ff13f9c215cb36
+        PIN length: 0
+@ MGMT Event: New Link Key (0x0009) plen 26           {0x0001} [hci0] 38.723632
+        Store hint: Yes (0x01)
+        BR/EDR Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Key type: Unauthenticated Combination key from P-192 (0x04)
+        Link key: e4995bc57d022b3017ff13f9c215cb36
+        PIN length: 0
+> HCI Event: Encryption Change (0x08) plen 4               #32 [hci0] 38.754610
+        Status: Success (0x00)
+        Handle: 65
+        Encryption: Enabled with E0 (0x01)
+< HCI Command: Read Encryption Key.. (0x05|0x0008) plen 2  #33 [hci0] 38.754642
+        Handle: 65
+> HCI Event: Command Complete (0x0e) plen 7                #34 [hci0] 38.759604
+      Read Encryption Key Size (0x05|0x0008) ncmd 1
+        Status: Success (0x00)
+        Handle: 65
+        Key size: 16
+> ACL Data RX: Handle 65 flags 0x02 dlen 10                #35 [hci0] 38.760605
+      L2CAP: Information Request (0x0a) ident 1 len 2
+        Type: Extended features supported (0x0002)
+< ACL Data TX: Handle 65 flags 0x00 dlen 16                #36 [hci0] 38.760625
+      L2CAP: Information Response (0x0b) ident 1 len 8
+        Type: Extended features supported (0x0002)
+        Result: Success (0x0000)
+        Features: 0x000002b8
+          Enhanced Retransmission Mode
+          Streaming Mode
+          FCS Option
+          Fixed Channels
+          Unicast Connectionless Data Reception
+> HCI Event: Number of Completed Packets (0x13) plen 5     #37 [hci0] 38.766604
+        Num handles: 1
+        Handle: 65
+        Count: 1
+> ACL Data RX: Handle 65 flags 0x02 dlen 10                #38 [hci0] 38.769609
+      L2CAP: Information Request (0x0a) ident 2 len 2
+        Type: Fixed channels supported (0x0003)
+< ACL Data TX: Handle 65 flags 0x00 dlen 20                #39 [hci0] 38.769637
+      L2CAP: Information Response (0x0b) ident 2 len 12
+        Type: Fixed channels supported (0x0003)
+        Result: Success (0x0000)
+        Channels: 0x0000000000000006
+          L2CAP Signaling (BR/EDR)
+          Connectionless reception
+> HCI Event: Number of Completed Packets (0x13) plen 5     #40 [hci0] 38.776605
+        Num handles: 1
+        Handle: 65
+        Count: 1
+> ACL Data RX: Handle 65 flags 0x02 dlen 12                #41 [hci0] 38.779606
+      L2CAP: Connection Request (0x02) ident 3 len 4
+        PSM: 1 (0x0001)
+        Source CID: 64
+< ACL Data TX: Handle 65 flags 0x00 dlen 16                #42 [hci0] 38.779649
+      L2CAP: Connection Response (0x03) ident 3 len 8
+        Destination CID: 64
+        Source CID: 64
+        Result: Connection successful (0x0000)
+        Status: No further information available (0x0000)
+< ACL Data TX: Handle 65 flags 0x00 dlen 23                #43 [hci0] 38.779654
+      L2CAP: Configure Request (0x04) ident 3 len 15
+        Destination CID: 64
+        Flags: 0x0000
+        Option: Retransmission and Flow Control (0x04) [mandatory]
+          Mode: Basic (0x00)
+          TX window size: 0
+          Max transmit: 0
+          Retransmission timeout: 0
+          Monitor timeout: 0
+          Maximum PDU size: 0
+> HCI Event: Number of Completed Packets (0x13) plen 5     #44 [hci0] 38.786609
+        Num handles: 1
+        Handle: 65
+        Count: 1
+> HCI Event: Number of Completed Packets (0x13) plen 5     #45 [hci0] 38.788604
+        Num handles: 1
+        Handle: 65
+        Count: 1
+> ACL Data RX: Handle 65 flags 0x02 dlen 23                #46 [hci0] 38.789606
+      L2CAP: Configure Request (0x04) ident 4 len 15
+        Destination CID: 64
+        Flags: 0x0000
+        Option: Retransmission and Flow Control (0x04) [mandatory]
+          Mode: Basic (0x00)
+          TX window size: 0
+          Max transmit: 0
+          Retransmission timeout: 0
+          Monitor timeout: 0
+          Maximum PDU size: 0
+< ACL Data TX: Handle 65 flags 0x00 dlen 18                #47 [hci0] 38.789631
+      L2CAP: Configure Response (0x05) ident 4 len 10
+        Source CID: 64
+        Flags: 0x0000
+        Result: Success (0x0000)
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 672
+> ACL Data RX: Handle 65 flags 0x02 dlen 18                #48 [hci0] 38.791604
+      L2CAP: Configure Response (0x05) ident 3 len 10
+        Source CID: 64
+        Flags: 0x0000
+        Result: Success (0x0000)
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 672
+> HCI Event: Number of Completed Packets (0x13) plen 5     #49 [hci0] 38.799604
+        Num handles: 1
+        Handle: 65
+        Count: 1
+> ACL Data RX: Handle 65 flags 0x02 dlen 24                #50 [hci0] 38.804607
+      Channel: 64 len 20 [PSM 1 mode 0] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 0 len 15
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 0
+< ACL Data TX: Handle 65 flags 0x00 dlen 310               #51 [hci0] 39.263070
+< ACL Data TX: Handle 65 flags 0x01 dlen 310               #52 [hci0] 39.263089
+< ACL Data TX: Handle 65 flags 0x01 dlen 4                 #53 [hci0] 39.263092
+      Channel: 64 len 620 [PSM 1 mode 0] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 0 len 615
+        Attribute bytes: 612
+          Attribute list: [len 103] {position 0}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010001
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                A/V Remote Control (0x110e)
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                A/V Remote Control Controller (0x110f)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0017
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  AVCTP (0x0017)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0103
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  A/V Remote Control (0x110e)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0106
+            Attribute: Additional Protocol Descriptor List (0x000d) [len 2]
+              Sequence (6) with 16 bytes [8 extra bits] len 18
+                Sequence (6) with 6 bytes [8 extra bits] len 8
+                  UUID (3) with 2 bytes [0 extra bits] len 3
+                    L2CAP (0x0100)
+                  Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                    0x001b
+                Sequence (6) with 6 bytes [8 extra bits] len 8
+                  UUID (3) with 2 bytes [0 extra bits] len 3
+                    AVCTP (0x0017)
+                  Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                    0x0103
+            Attribute: Unknown (0x0100) [len 2]
+              AVRCP CT [len 8]
+            Attribute: Unknown (0x0311) [len 2]
+              0x004f
+          Attribute list: [len 100] {position 1}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010002
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                A/V Remote Control Target (0x110c)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0017
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  AVCTP (0x0017)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0103
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  A/V Remote Control (0x110e)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0105
+            Attribute: Additional Protocol Descriptor List (0x000d) [len 2]
+              Sequence (6) with 16 bytes [8 extra bits] len 18
+                Sequence (6) with 6 bytes [8 extra bits] len 8
+                  UUID (3) with 2 bytes [0 extra bits] len 3
+                    L2CAP (0x0100)
+                  Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                    0x001b
+                Sequence (6) with 6 bytes [8 extra bits] len 8
+                  UUID (3) with 2 bytes [0 extra bits] len 3
+                    AVCTP (0x0017)
+                  Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                    0x0103
+            Attribute: Unknown (0x0100) [len 2]
+              AVRCP TG [len 8]
+            Attribute: Unknown (0x0311) [len 2]
+              0x005f
+          Attribute list: [len 81] {position 2}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010003
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Audio Source (0x110a)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0019
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  AVDTP (0x0019)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0103
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  Advanced Audio Distribution (0x110d)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0103
+            Attribute: Unknown (0x0100) [len 2]
+              Audio Source [len 12]
+            Attribute: Unknown (0x0311) [len 2]
+              0x000f
+          Attribute list: [len 79] {position 3}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010004
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Audio Sink (0x110b)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0019
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  AVDTP (0x0019)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0103
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  Advanced Audio Distribution (0x110d)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0103
+            Attribute: Unknown (0x0100) [len 2]
+              Audio Sink [len 10]
+            Attribute: Unknown (0x0311) [len 2]
+              0x000f
+          Attribute list: [len 83] {position 4}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010005
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Headset AG (0x1112)
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Generic Audio (0x1203)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+              Sequence (6) with 5 bytes [8 extra bits] len 7
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  RFCOMM (0x0003)
+                Unsigned Integer (1) with 1 byte [0 extra bits] len 2
+                  0x0c
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  Headset (0x1108)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0102
+            Attribute: Unknown (0x0100) [len 2]
+              Headset Voice gateway [len 21]
+          Attribute list: [len 151] {position 5}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010006
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 16 bytes [0 extra bits] len 17
+                00001108-0000-1000-8000-00805f9b34fb
+                Headset
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+              Sequence (6) with 5 bytes [8 extra bits] len 7
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  RFCOMM (0x0003)
+                Unsigned Integer (1) with 1 byte [0 extra bits] len 2
+                  0x03
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 20 bytes [8 extra bits] len 22
+                UUID (3) with 16 bytes [0 extra bits] len 17
+                  00001108-0000-1000-8000-00805f9b34fb
+                  Headset
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0102
+            Attribute: Unknown (0x0100) [len 2]
+              :1.298/Profile/HSPHSProfile/00001108-0000-1000-8000-00805f9b34fb [len 64]
+        Continuation state: 0
+> HCI Event: Number of Completed Packets (0x13) plen 5     #54 [hci0] 39.277604
+        Num handles: 1
+        Handle: 65
+        Count: 3
+> ACL Data RX: Handle 65 flags 0x02 dlen 24                #55 [hci0] 39.315605
+      Channel: 64 len 20 [PSM 1 mode 0] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 1 len 15
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 0
+< ACL Data TX: Handle 65 flags 0x00 dlen 88                #56 [hci0] 39.315787
+      Channel: 64 len 84 [PSM 1 mode 0] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 1 len 79
+        Attribute bytes: 76
+          Attribute list: [len 72] {position 0}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010000
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                PnP Information (0x1200)
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  PnP Information (0x1200)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0103
+            Attribute: Unknown (0x0200) [len 2]
+              0x0103
+            Attribute: Unknown (0x0201) [len 2]
+              0x1d6b
+            Attribute: Unknown (0x0202) [len 2]
+              0x0246
+            Attribute: Unknown (0x0203) [len 2]
+              0x0532
+            Attribute: Unknown (0x0204) [len 2]
+              true
+            Attribute: Unknown (0x0205) [len 2]
+              0x0002
+        Continuation state: 0
+> HCI Event: Number of Completed Packets (0x13) plen 5     #57 [hci0] 39.343603
+        Num handles: 1
+        Handle: 65
+        Count: 1
+> ACL Data RX: Handle 65 flags 0x02 dlen 12                #58 [hci0] 41.350578
+      L2CAP: Disconnection Request (0x06) ident 5 len 4
+        Destination CID: 64
+        Source CID: 64
+< ACL Data TX: Handle 65 flags 0x00 dlen 12                #59 [hci0] 41.350628
+      L2CAP: Disconnection Response (0x07) ident 5 len 4
+        Destination CID: 64
+        Source CID: 64
+> HCI Event: Disconnect Complete (0x05) plen 4             #60 [hci0] 41.432578
+        Status: Success (0x00)
+        Handle: 65
+        Reason: Remote User Terminated Connection (0x13)
+@ MGMT Event: Device Disconnected (0x000c) plen 8     {0x0002} [hci0] 41.432612
+        BR/EDR Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Reason: Connection terminated by remote host (0x03)
+@ MGMT Event: Device Disconnected (0x000c) plen 8     {0x0001} [hci0] 41.432612
+        BR/EDR Address: 04:A3:16:56:33:00 (Texas Instruments)
+        Reason: Connection terminated by remote host (0x03)

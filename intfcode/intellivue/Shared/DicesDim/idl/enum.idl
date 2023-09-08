@@ -1,0 +1,167 @@
+/**
+ * @file    enum.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Enumeration object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <metric.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ *  Enumeration object
+ */
+
+/*
+ * Record data type with structure and contents defined by a nomenclature ID
+ * from the VMO::Type or x73 Metric-Id-Partition partition.
+ */
+struct EnumRecordMetric
+{
+  OIDType record_type_code; // from VMO::Type or Metric-Id-Partition partition
+  string<LONGLONG_STRING_LEN> record_data;  // x73 type ANY DEFINED BY record_type_code
+}; //@top-level false
+
+/*
+ * Record data type with structure and contents defined by a nomenclature ID
+ * from the x73 object-oriented partition.
+ */
+struct EnumRecordOo
+{
+  OIDType record_type_code; // From object-oriented nomenclature partition
+  string<LONGLONG_STRING_LEN> record_data;  // x73 type ANY DEFINED BY record_type_code
+}; //@top-level false
+
+enum EnumValType
+{
+  // Use to communicate a metric OID, e.g., as an annotation or other event
+  // defined in the VMO::Type or x73 Metric-Id-Partition partition.
+  e_obj_id = 1,
+
+  // Use to communicate a free text string (e.g., a status message).
+  e_text_string = 2,    // OCTET STRING, free text
+
+  // Use to provide the code of an external nomenclature (e.g., could be used
+  // for procedure codes not covered in the standard nomenclature).
+  e_external_code = 8,
+
+  // Use to code bit string values. The bit string data type must be defined
+  // separately, e.g., in the nomenclature or in a device-specific standard.
+  e_bit_str = 16,
+
+  // Use to identify additional data types by a nomenclature code from the
+  // VMO::Type or x73 Metric-Id-Partition partition; the appended data type
+  // must be defined separately, e.g., in a device-specific std.
+  e_record_metric = 33,
+
+  // record type defined by ID from object-oriented nomenclature partition
+  e_record_oo = 34,
+
+  // Use to provide numeral enumerated values that must be defined
+  // separately, e.g., in a device-specific standard. Do not use this type
+  // for numeric measurements.
+  e_numeral = 64
+};
+
+union EnumVal switch(EnumValType)
+{
+  // From VMO::Type or x73 Metric-Id-Partition partition
+  case e_obj_id:
+    OIDType obj_id;
+
+  // free text
+  case e_text_string:
+    string<LONGLONG_STRING_LEN> text_string;
+
+  // code defined in other coding system
+  case e_external_code:
+    ExtNomenRef external_code;
+
+  // bit string
+  case e_bit_str:
+    BITS32 bit_str;
+
+  // record type defined by ID from VMO::Type or x73 Metric-Id-Partition
+  case e_record_metric:
+    EnumRecordMetric record_metric;
+
+  // record type defined by ID from x73 object-oriented nomenclature partition
+  case e_record_oo:
+    EnumRecordOo record_oo;
+
+  // enumerated integer value
+  case e_numeral:
+  default:
+    INTU32 numeral;
+}; //@top-level false
+
+struct EnumObsValue
+{
+  OIDType metric_id;  //@key
+  MeasurementStatus state;
+  EnumVal value;      // Supports different value data types
+}; //@top-level false
+
+/*
+ * enum_measure_range_labels attribute defines both the set of potential
+ * (i.e., legal) values of the enum_observed_value attribute as well as a text
+ * label that can be associated with each enumeration value.
+ */
+struct EnumMsmtRangeLabel
+{
+  EnumVal value;      // specific enumeration setting
+  string<LONG_STRING_LEN> label;  // textual label associated with value
+}; //@top-level false
+typedef sequence<EnumMsmtRangeLabel> EnumMsmtRangeLabels;
+
+/* from VMO::Type or x73 Metric-Id-Partition partition */
+typedef sequence<OIDType> EnumMsmtRange;
+
+struct EnumerationContext : MetricContext
+{
+  EnumMsmtRange enum_measure_range;
+  BITS32 enum_measure_range_bits; //@Optional
+  EnumMsmtRangeLabels enum_measure_range_labels;
+}; //@top-level true
+
+struct EnumerationObservedValue : MetricObservedValue
+{
+  EnumObsValue enum_observed_value;
+}; //@top-level true
+
+/**
+ * Enumeration Measurement
+ */
+const string EnumerationMeasContextTopic =
+  "ice--EnumerationMeasContext";
+const string EnumerationMeasContextReqTopic =
+  "ice--EnumerationMeasContextReq";
+const string EnumerationMeasObservedValueTopic =
+  "ice--EnumerationMeasObservedValue";
+
+/**
+ * Enumeration Calculation
+ */
+const string EnumerationCalcContextTopic =
+  "ice--EnumerationCalcContext";
+const string EnumerationCalcContextReqTopic =
+  "ice--EnumerationCalcContextReq";
+const string EnumerationCalcObservedValueTopic =
+  "ice--EnumerationCalcObservedValue";
+
+/**
+ * Enumeration Setting
+ */
+const string EnumerationSettContextTopic =
+  "ice--EnumerationSettContext";
+const string EnumerationSettContextReqTopic =
+  "ice--EnumerationSettContextReq";
+const string EnumerationSettObservedValueTopic =
+  "ice--EnumerationSettObservedValue";
+const string EnumerationSettObservedValueReqTopic =
+  "ice--EnumerationSettObservedValueReq";
+
+};

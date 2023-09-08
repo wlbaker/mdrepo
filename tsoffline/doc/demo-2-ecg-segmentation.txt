@@ -1,0 +1,133 @@
+Hello, my name is Bill Baker and in this video we are continuing our tour of tsOffline,
+the analysis software developed at the US Army Institute of Surgical Research.
+
+In this tutorial, we will be segmenting the ECG signal and preparing to looking at both
+standard and novel approaches to physiologic waveform analysis.  We will be
+continuing with the data set for Active Duty Normal soldiers from 
+the cardiology department of Brooke Army Medical Center.
+
+If you completed our first tutorial, then the data session that we will be 
+using will be in the list of Recently Opened Files, found in the File menu.
+Select the session file for BAMC subject 0049, a 34 yo M.
+
+--------
+
+As we have seen previously, our data of interest begins close to
+the middle of the dataset.  Much of the data before that
+point consists of preparation of the patient, placement of the catheter, and 
+calibration of the data capture system.  As a quick review, we can drag the
+timeline indicator to a point of interest and use the "+" key to zoom in on features.
+
+In this video, we will segment the ECG signal using the R wave as the fiducial marker
+which is a prerequisite for some of the analysis methods.
+
+To segment the ECG signal, select Run/Analysis, ECG Segmentation and Next.  Our 
+source _device_ will be the file that we have opened, the source _signal_ will be 
+the ECG waveform, and data will be segmented using the PT1 algorithm, which is the
+original Pan Thompkins algorithm.  Press Next.
+
+----------
+
+The lines that appear over the top of the graphs are the ECG R wave indicators
+found by PT1.  The R wave indicators are number sequentially.  This algorithm has
+identified 1000's of R waves in this dataset.  The segmentation data is segregated 
+into a layer which overlays our ECG and pressure waveforms.  It is possible to have
+multiple separate layers overlaying  the graphs.  These overlays may include 
+information such as R waves, phases of the study, significant study events, anomolies,
+and other points of interest in the data.
+
+The available overlay layers are displayed in the toolbar at the top of the screen.
+The small square box beside the layer name indicates the color of the layer and 
+it's state.  Layers can be toggled between three states by clicking on the layer name: 
+visible, editable, and not visible.  Only one layer is editable at a time.
+
+There are several ways to edit a layer.  When a layer is editable, a small 
+circular ball will appear close to the bottom of each position indicator.  Click twice to
+make this layer editable.  The mouse
+can be used to select this feature and drag the indicator from one position
+to another. 
+
+Once an indicator is selected with the mouse, we can move it or
+deleted by pressing the "Delete" key.  We can also manually insert additional R-wave 
+indicators into the layer that is being currently edited.  
+
+The position of the new R indicator will depend on a several
+factors.  First, activate the ECG signal as the active signal.  Next select one of three
+position modifiers.  These modifiers will cause the R
+wave to be placed at a local Maximum or local minimum in the ECG signal.  We can also 
+select the modifier that disregards the active signal and places the indicator exactly
+where the mouse is positioned.  Regardless of these settings, we can always drag
+the indicator to the desired position.  Select the "local maximum" modifier.  Move the 
+mouse to the desired R-wave position, and press the "R" key.
+
+Pressing the R key actually causes two actions to be performed: first, it deletes
+any R-wave indicators within a 50ms window, it then inserts a new R wave 
+indicator according to the position modifier just described. 
+
+-----------
+
+Although we have thorough coverage of the data set with indicators, we are really only 
+interested in a small area for our study.  And to reduce confusion and clutter, we can
+remove the excess indicators.  Scrolling through the display, we pick a position
+of interest and decide to remove all the indicators before that position.  I've chosen 
+the indicator at sequence number 1901.  
+
+Select View/Annotations.  [CUT] The R-wave indicator is one type of annotation.
+Select the first annotation to be removed, scroll through the table and press
+SHIFT while selecting the last annotation to be removed, right click and select
+DELETE.  [CUT]  We have now removed the first 1900 of our indicators
+and the remainder have been renumbered.  Select "OK" and let's review the data.
+
+Scrolling through the data, we can see again the sequence number of the R wave at
+the top of the screen and the letter R telling us the annotation type.
+At the bottom of the graph is the relative time in the study, such as 33 
+minutes and 16 seconds since data recording was started.  At the very bottom, we have
+the timeline showing the year,month,day and clock time, as well as our relative
+position inside the entire dataset.
+
+We can now drag the timeline indicator to
+find the position where data of interest is no longer being captured.  [X-CUT] It appears
+that the data after R-wave indicator number 1600 is no longer of interest, so we repeat
+the procedure used previously to remove all indicators after 1600.
+
+Select View/Annotations.  [CUT] Scroll down to the first annotation that we wish to remove,
+approximately 1600, and select this item.  Scroll 
+to the bottom of the table, press SHIFT while selecting the last item, right click
+and select DELETE.  [CUT]
+
+Now select OK to close the dialog.
+
+---------
+
+
+Now we have a large dataset of pressure waveforms, the ECG signal, and R wave
+annotations.  Some of these values are scaled off the screen, so if we move
+the mouse position indicator over the ECG graph and press "C", the ECG signal is now
+centered in the display area as we wish again.  Let's center the pressure waves as well.
+Press "C" to center all the displayed data.
+
+[XCUT]
+  
+The Pan Thompkins algorithm that we used to create the segmentation is not as 
+precise as we might wish.  Lets zoom in on one of the
+R-wave peaks and see how well it did.  [??XCUT] We notice a slight offset 
+from the R-wave peak to the actual indicator.  This offset 
+is somewhat uniform throughout the data, trailing the peak by 10 to 12 milliseconds
+and sometimes further.  We can correct the indicator position using "Auto-adjust".  
+Right-click over the graph and select the Auto-adjust menu item.  
+
+Select the feature "ECG Segmentation: PT1".  Our reference signal, will be the ECG waveform
+and align this feature with a local maximum of the ECG signal 
+within a tolerance of 40 ms.  This procedure will correct the R-wave
+indicators to correspond with the maximum of each ECG peak.
+
+-----------
+
+Now that we have segmented our ECG and pressure waveforms, we are ready for additional
+analysis which we will be covering in subsequent demonstrations.
+
+--------
+
+
+Select "File/Save Session" to store the R-wave indicators.  Name the file, tutorial 2.  
+This concludes the ECG segmentation tutorial.

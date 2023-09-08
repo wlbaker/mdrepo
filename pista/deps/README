@@ -1,0 +1,107 @@
+
+Patch to Openssl-1.1.1:
+
+Read openssl-1.1.1/NOTES.ANDROID
+
+Configurations/15-android.conf
+Add line 11:
+  "android-arm"    => "arm-linux-androideabi",
+
+fuzz/client.c --> remove time() definition...defined in !_WIN32
+fuzz/server.c --> remove time() definition
+
+----------------------------------------------
+Built in lab with this env
+----------------------------------------------
+
+diff -Naur openssl-1.1.1 openssl-1.1.1-wlb > openssl-1.1.1-wlb.patch1
+
+./Configure android-x86_64 --prefix=/home/bbaker/git/pista/deps/../distribution/libs/x86_64 --with-zlib-include=/opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/lib/x86_64-linux-android --with-zlib-lib=/opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/lib/x86_64-linux-android zlib no-asm no-shared no-unit-test -D__ANDROID_API__=26
+
+
+----------------------------------------------
+Built in lab with this env
+----------------------------------------------
+
+QTINC=/usr/lib64/qt-3.3/include
+ANDROID_HOME=/opt/tools/Android/Sdk
+CCACHE_COMPRESS=1
+MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH
+LANG=en_US.UTF-8
+GDM_LANG=en_US.UTF-8
+HISTCONTROL=ignoredups
+DISPLAY=:0
+GUESTFISH_RESTORE=\e[0m
+HOSTNAME=linlab.localdomain
+OLDPWD=/home/bbaker/git/pista/deps/curl-7.61.1
+QTDIR=/usr/lib64/qt-3.3
+GTK_OVERLAY_SCROLLING=0
+COLORTERM=truecolor
+GUESTFISH_INIT=\e[1;34m
+USERNAME=bbaker
+KDEDIRS=/usr
+XDG_VTNR=2
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+ANDROID_NDK=/opt/tools/Android/Sdk/ndk-bundle
+NDK_PATH=/opt/tools/Android/Sdk/ndk-bundle
+XDG_SESSION_ID=2
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+USER=bbaker
+ENV=/usr/share/Modules/init/profile.sh
+GUESTFISH_PS1=\[\e[1;32m\]><fs>\[\e[0;31m\] 
+DESKTOP_SESSION=cinnamon
+TARGET_ARCH=armeabi-v7a
+TOOL=android-armeabiv7a
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/c8154ce8_a358_477c_a319_4ce85aba8df5
+ANDROID_SDKROOT=/opt/tools/Android/Sdk/
+PWD=/home/bbaker/git/pista/deps
+SSH_ASKPASS=/usr/libexec/openssh/lxqt-openssh-askpass
+HOME=/home/bbaker
+NDK=/opt/Android-Studio/ndk-bundle
+SSH_AGENT_PID=2344
+CCACHE_DIR=/home/bbaker/.ccache
+XDG_SESSION_TYPE=x11
+BASH_ENV=/usr/share/Modules/init/bash
+XDG_DATA_DIRS=/home/bbaker/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/
+USE_CCACHE=1
+DISTRIB_PATH=/home/bbaker/git/pista/deps/../distribution/libs/armeabi-v7a
+XDG_SESSION_DESKTOP=cinnamon
+GJS_DEBUG_OUTPUT=stderr
+NDK_HOME=/opt/tools/Android/Sdk/ndk-bundle
+LOADEDMODULES=
+ANDROID_NSK=/opt/tools/Android/Sdk/ndk-bundle
+ANDROID_JACK_VM_ARGS=-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4G
+MAIL=/var/spool/mail/bbaker
+ANDROID_SDK=/opt/tools/Android/Sdk
+QTLIB=/usr/lib64/qt-3.3/lib
+WINDOWPATH=2
+NDK_ROOT=/opt/tools/Android/Sdk/ndk-bundle
+TERM=xterm-256color
+VTE_VERSION=5202
+SHELL=/bin/bash
+XDG_CURRENT_DESKTOP=X-Cinnamon
+GNOME_TERMINAL_SERVICE=:1.70
+TOOLCHAIN_PATH=/opt/Android-Studio/ndk-bundle/prebuilt/windows-x86_64/bin
+SHLVL=2
+XDG_SEAT=seat0
+SDK=/opt/Android-Studio
+MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+GDMSESSION=cinnamon
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+LOGNAME=bbaker
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+XDG_RUNTIME_DIR=/run/user/1000
+XAUTHORITY=/run/user/1000/gdm/Xauthority
+MODULEPATH_modshare=/usr/share/modulefiles:1:/etc/modulefiles:1:/usr/share/Modules/modulefiles:1
+HAXE_STD_PATH=/home/bbaker/opt/tools/haxe-3.2.0/std
+PATH=/opt/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin:/opt/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin:/home/bbaker/bin:/opt/tools/gradle-4.0.2/bin:/usr/lib64/qt-3.3/bin:/usr/share/Modules/bin:/usr/lib64/ccache:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/home/bbaker/.local/bin:/home/bbaker/opt/tools/haxe-3.2.0:/opt/tools/android-19/bin
+GUESTFISH_OUTPUT=\e[0m
+CINNAMON_VERSION=3.8.8
+MODULESHOME=/usr/share/Modules
+HISTSIZE=1000
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/2328,unix/unix:/tmp/.ICE-unix/2328
+PLATFORM_PREFIX=/opt/tools/android-19
+CVS_RSH=ssh
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+ 

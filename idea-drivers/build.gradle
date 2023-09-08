@@ -1,0 +1,77 @@
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+	java {
+	    exclude 'idea/discovery/**'
+	}
+    }
+}
+
+
+dependencies {
+
+    implementation files( 'lib/phidget.jar', 'lib/TempusListener.jar' )
+    
+    implementation 'net.java.dev.jna:jna:4.1.0'  // not sure if this is necessary since moving PISTA related items to PISTA
+    
+   		implementation project(":idea-rp-schema")
+   		implementation project(":idea-core-jpa")
+   		implementation project(":idea-core")
+   		implementation project(":dm-core")
+
+    //implementation( 'idea.idea:pista-bindings:0.81') { changing = true }
+    //implementation( 'idea.idea:jDAQmx:0.70') { changing = true }
+
+ implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+ implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+
+implementation 'com.fazecast:jSerialComm:2.5.2'
+implementation 'org.hibernate:hibernate-entitymanager:5.4.6.Final'
+implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+
+
+    // HL7 support for Mindray
+    implementation 'ca.uhn.hapi:hapi-base:2.2'
+    implementation 'ca.uhn.hapi:hapi-structures-v26:2.2'
+    implementation 'ca.uhn.hapi:hapi-hl7overhttp:2.2'
+    
+    // HL7 for Aesculon
+    implementation 'ca.uhn.hapi:hapi-structures-v23:2.2'
+    
+    // HL7 for test messages
+    implementation 'ca.uhn.hapi:hapi-structures-v25:2.2'
+    
+    // websocket -- needed for zoll, also pulls in bountycastle needed by Tempus
+	implementation 'org.glassfish.tyrus.ext:tyrus-client-java8:1.12'	
+	implementation 'org.glassfish.tyrus:tyrus-container-grizzly-server:1.12'
+	
+    // JSON -- needed for zoll 
+    implementation 'com.google.code.gson:gson:2.6.2'
+    
+    // one driver uses and FTP client
+    implementation 'commons-net:commons-net:3.3'
+
+	testImplementation 'com.jgoodies:jgoodies-forms:1.7.2'
+	testImplementation 'com.jgoodies:jgoodies-binding:2.6.1'
+    testImplementation 'junit:junit:4.12'
+    testImplementation files('../dm-core/lib/jarhdf5-1.10.5.jar')
+}
+
+//publishing {
+   	//publications {
+       	
+       	//phidget(MavenPublication) {
+       		//artifactId 'phidget'
+       		//version '1.0'
+  			//artifact file("lib/phidget.jar")
+  		//}
+   	//}
+//}
+

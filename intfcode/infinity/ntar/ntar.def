@@ -1,0 +1,18 @@
+LIBRARY	ntar
+
+EXPORTS
+	ntar_open
+	ntar_close
+	ntar_create_section
+	ntar_close_section
+	ntar_create_block
+	ntar_close_block
+	ntar_add_block_option	
+	ntar_get_next_section
+	ntar_get_section_options
+	ntar_get_next_block
+	ntar_get_block_data
+	ntar_get_block_options
+	ntar_add_section_option
+	ntar_get_block_type
+	ntar_getversion

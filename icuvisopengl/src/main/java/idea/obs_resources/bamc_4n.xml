@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-repository xmlns="http://idea.mil/rp">
+    <name>ISR Animal ICU</name>
+    <hardware>
+        <device>
+            <name>ICU_T1</name>
+            <protocol>INFINITY</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>192.168.50.140</connectionValue>
+        </device>
+        <device>
+            <name>ICU_T2</name>
+            <protocol>INFINITY</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>192.168.50.141</connectionValue>
+        </device>
+        <device>
+            <name>ICU_T3</name>
+            <protocol>INFINITY</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>192.168.50.142</connectionValue>
+        </device>
+        <device>
+            <name>ICU_T4</name>
+            <protocol>INFINITY</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>192.168.50.143</connectionValue>
+        </device>
+    </hardware>
+</rp-repository>

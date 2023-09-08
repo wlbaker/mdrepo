@@ -1,0 +1,129 @@
+JFDML JFormDesigner: "5.2.5.0.333" Java: "1.8.0_72" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "max(default;350dlu):grow"
+			"$rowSpecs": "fill:max(default;200dlu):grow, linegap, default:grow, linegap, default"
+		} ) {
+			name: "this"
+			"border": sfield com.jgoodies.forms.factories.Borders DLU4_BORDER
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "pref:grow"
+				"$rowSpecs": "fill:pref:grow"
+			} ) {
+				name: "contentPanel"
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "max(default;150dlu), labelcompgap, default:grow, labelcompgap, default, labelcompgap, default, labelcompgap, default, labelcompgap, default, labelcompgap, default"
+				"$rowSpecs": "default"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "gradientComboBox"
+					auxiliary() {
+						"JavaCodeGenerator.customCreateCode": "createGradientCombo();"
+					}
+					addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "gradientComboBoxItemStateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "message"
+					"text": "text"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 1
+				} )
+				add( new FormComponent( "javax.swing.JToggleButton" ) {
+					name: "record"
+					"text": "Record"
+					"toolTipText": "Record"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "recordActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 5
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "rewind"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/idea/image/rewind-hot-icon.png" )
+					"toolTipText": "Rewind"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "rewindActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 7
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "pause"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/idea/image/Pause-Normal-icon.png" )
+					"toolTipText": "Pause"
+					"maximumSize": &Dimension0 new java.awt.Dimension( 23, 23 )
+					"minimumSize": &Dimension1 new java.awt.Dimension( 23, 23 )
+					"preferredSize": &Dimension2 new java.awt.Dimension( 23, 23 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "pauseActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 9
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "speed"
+					"model": new javax.swing.DefaultComboBoxModel {
+						selectedItem: "10X"
+						addElement( "10X" )
+						addElement( "1X" )
+						addElement( "0.5X" )
+						addElement( "0.25X" )
+						addElement( "0.1X" )
+						addElement( "0.01X" )
+					}
+					"selectedIndex": 1
+					addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "speedItemStateChanged", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 11
+					"gridY": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "resume"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/idea/image/Play-1-Hot-icon.png" )
+					"toolTipText": "Resume"
+					"maximumSize": #Dimension0
+					"minimumSize": #Dimension1
+					"preferredSize": #Dimension2
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "resumeActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 13
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 5
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 820, 560 )
+		} )
+		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
+			name: "optionsPopupMenu"
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "copyImage"
+				"text": "Save Screenshot to Clipboard"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "copyImageActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "saveImage"
+				"text": "Save Screenshot to File"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "saveImageActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "copyData"
+				"text": "Copy Data to Clipboard"
+				"enabled": false
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "copyDataActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
+				name: "separator2"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 570 )
+			"size": new java.awt.Dimension( 175, 135 )
+		} )
+	}
+}

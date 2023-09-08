@@ -1,0 +1,4 @@
+
+Enable multiple DDS providers
+--> see https://github.com/Pro/dds-temperature
+--> see https://github.com/ADLINK-IST/dds-tutorial-cpp-ex/tree/master/cmake

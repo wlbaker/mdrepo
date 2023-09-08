@@ -1,0 +1,32 @@
+%
+% https://tex.stackexchange.com/questions/207240/drawing-simple-sequence-diagram
+%
+
+\documentclass{article}
+\usepackage{pgf-umlsd}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
+\begin{document}
+	\begin{figure}
+		\centering
+		\scalebox{1}
+		{  \begin{sequencediagram}
+				\newthread{A}{Application}{}
+				\newinst[1]{B}{Driver}{}
+				\newinst[1]{C}{Application}{}    
+				\begin{call}{A}{load}{B}{}
+				\end{call}
+				\begin{call}{A}{init}{B}{}
+				\end{call}
+			\begin{sdblock}{Block}{}
+				\begin{call}{A}{tick}{B}{}
+					\begin{call}{B}{callback}{C}{}
+					\end{call}
+				\end{call}
+			\end{sdblock}
+			
+			\end{sequencediagram}
+		}
+	\end{figure}
+\end{document}

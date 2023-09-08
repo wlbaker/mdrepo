@@ -1,0 +1,148 @@
+#
+# You will need to have VC98 or VS.net 2003 installed and
+# in your path in order for this to work.
+#
+
+CC=gcc
+
+MXOBJS = build/rhel/daqmx/jDAQmxBase.o build/rhel/daqmx/NIFuncs.o build/rhel/daqmx/Local.o build/rhel/daqmx/Task.o build/rhel/daqmx/AIChannel.o build/rhel/daqmx/Timing.o build/rhel/daqmx/AnalogMultiChannelReader.o build/rhel/jniUtil.o
+BASEOBJS = build/rhel/daqmxbase/jDAQmxBase.o build/rhel/daqmxbase/Local.o build/rhel/daqmxbase/Task.o build/rhel/daqmxbase/AIChannel.o build/rhel/daqmxbase/Timing.o build/rhel/daqmxbase/AnalogMultiChannelReader.o build/rhel/jniUtil.o build/rhel/daqmxbase/DaqStream.o build/rhel/daqmxbase/Test.o
+MXHEADERS = include/ni_DAQmx_Task.h include/ni_DAQmx_AIChannel.h include/ni_DAQmx_AOChannel.h include/ni_DAQmx_Timing.h include/ni_DAQmx_AnalogMultiChannelReader.h
+BASEHEADERS = include/ni_DAQmxBase_Task.h include/ni_DAQmxBase_AIChannel.h include/ni_DAQmxBase_AOChannel.h include/ni_DAQmxBase_Timing.h include/ni_DAQmxBase_AnalogMultiChannelReader.h include/ni_DAQcommon_DaqStream.h include/ni_DAQmxBase_Test.h
+
+PROJLIBS = 	-Llib/rhel
+
+# Set this variable to the location of your JDK
+JDKDIR =	"/usr/java/jdk1.6.0_16"
+
+CLASSPATH =	.:lib:build/linux/daqmx:../jdaqmx-java/bin
+
+JAVA =		$(JDKDIR)/bin/java -classpath $(CLASSPATH)
+JAVAC =		$(JDKDIR)/bin/javac
+JAVAH =		$(JDKDIR)/bin/javah
+JAR =           $(JDKDIR)/bin/jar
+DEL =		rm
+LINK =		gcc -g
+PROJSRC = ../src
+
+NIDIR= -L/usr/local/natinst/nidaqmxbase/lib
+
+INCLUDES =	-I$(JDKDIR)/include/linux \
+		-I$(JDKDIR)/include \
+		-I$(PROJSRC) \
+		-Isrc \
+		-Iinclude
+
+
+MXLIBS =		-lnidaqmx
+BASELIBS =		-lnidaqmxbase
+
+# all:		$(MXHEADERS) build/rhel/daqmx/libjDAQmx.so build/rhel/daqmxbase/libjDAQmxBase.so
+all:		$(MXHEADERS) $(BASEHEADERS) build/rhel/daqmxbase/libjDAQmxBase.so launch
+
+build/rhel/daqmx/libjDAQmx.so: $(MXOBJS) 
+	$(LINK) $(PROJLIBS) $(NIDIR) -shared -o build/rhel/daqmx/libjDAQmx.so $(MXOBJS) $(MXLIBS)
+
+build/rhel/daqmxbase/libjDAQmxBase.so: $(BASEOBJS) 
+	$(LINK) -L $(PROJLIBS) -L $(NIDIR) -shared -o build/rhel/daqmxbase/libjDAQmxBase.so $(BASEOBJS) $(BASELIBS)
+
+build/rhel/daqmx/jDAQmx.o: src/daqmx/jDAQmx.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -o build/rhel/daqmx/jDAQmx.o -c src/daqmx/jDAQmx.cpp
+
+build/rhel/daqmxbase/jDAQmxBase.o: src/daqmxbase/jDAQmxBase.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmxbase/jDAQmxBase.o -c src/daqmxbase/jDAQmxBase.cpp
+
+build/rhel/daqmx/NIFuncs.o: src/daqmx/NIFuncs.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmx/NIFuncs.o -c src/daqmx/NIFuncs.cpp
+
+build/rhel/daqmxbase/Local.o: src/daqmxbase/Local.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmxbase/Local.o -c src/daqmxbase/Local.cpp
+
+build/rhel/daqmx/Local.o: src/daqmx/Local.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmx/Local.o -c src/daqmx/Local.cpp
+
+build/rhel/daqmx/Task.o: src/daqmx/Task.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmx/Task.o -c src/daqmx/Task.cpp
+
+build/rhel/daqmxbase/Task.o: src/daqmxbase/Task.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmxbase/Task.o -c src/daqmxbase/Task.cpp
+
+build/rhel/daqmx/AIChannel.o: src/daqmx/AIChannel.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmx/AIChannel.o -c src/daqmx/AIChannel.cpp
+
+build/rhel/daqmx/AOChannel.o: src/daqmx/AOChannel.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmx/AOChannel.o -c src/daqmx/AOChannel.cpp
+
+build/rhel/daqmxbase/AIChannel.o: src/daqmxbase/AIChannel.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmxbase/AIChannel.o -c src/daqmxbase/AIChannel.cpp
+
+build/rhel/daqmx/Timing.o: src/daqmx/Timing.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmx/Timing.o -c src/daqmx/Timing.cpp
+
+build/rhel/daqmxbase/Timing.o: src/daqmxbase/Timing.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmxbase/Timing.o -c src/daqmxbase/Timing.cpp
+
+build/rhel/jniUtil.o: src/jniUtil.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/jniUtil.o -c src/jniUtil.cpp
+
+build/rhel/jniUtil.o: src/jniUtil.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/jniUtil.o -c src/jniUtil.cpp
+
+build/rhel/daqmxbase/AnalogMultiChannelReader.o: src/daqmxbase/AnalogMultiChannelReader.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmxbase/AnalogMultiChannelReader.o -c src/daqmxbase/AnalogMultiChannelReader.cpp
+
+build/rhel/daqmx/AnalogMultiChannelReader.o: src/daqmx/AnalogMultiChannelReader.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmx/AnalogMultiChannelReader.o -c src/daqmx/AnalogMultiChannelReader.cpp
+
+build/rhel/daqmxbase/DaqStream.o: src/daqmxbase/DaqStream.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmxbase/DaqStream.o -c src/daqmxbase/DaqStream.cpp
+
+build/rhel/daqmxbase/Test.o: src/daqmxbase/Test.cpp
+	$(CC) $(CFLAGS)  $(INCLUDES) -o build/rhel/daqmxbase/Test.o -c src/daqmxbase/Test.cpp
+
+include/ni_DAQmx_Task.h: ../jdaqmx-java/bin/ni/DAQmx/Task.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.Task
+
+include/ni_DAQmxBase_Task.h: ../jdaqmx-java/bin/ni/DAQmxBase/Task.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.Task
+
+include/ni_DAQmx_AIChannel.h: ../jdaqmx-java/bin/ni/DAQmx/AIChannel.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.AIChannel
+
+include/ni_DAQmx_AOChannel.h: ../jdaqmx-java/bin/ni/DAQmx/AOChannel.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.AOChannel
+
+include/ni_DAQmxBase_AIChannel.h: ../jdaqmx-java/bin/ni/DAQmxBase/AIChannel.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.AIChannel
+
+include/ni_DAQmxBase_AOChannel.h: ../jdaqmx-java/bin/ni/DAQmxBase/AOChannel.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.AOChannel
+
+include/ni_DAQmx_Timing.h: ../jdaqmx-java/bin/ni/DAQmx/Timing.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.Timing
+
+include/ni_DAQmxBase_Timing.h: ../jdaqmx-java/bin/ni/DAQmxBase/Timing.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.Timing
+
+include/ni_DAQmx_AnalogMultiChannelReader.h: ../jdaqmx-java/bin/ni/DAQmx/AnalogMultiChannelReader.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.AnalogMultiChannelReader
+
+include/ni_DAQmx_AnalogMultiChannelWriter.h: ../jdaqmx-java/bin/ni/DAQmx/AnalogMultiChannelWriter.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.AnalogMultiChannelWriter
+
+include/ni_DAQmxBase_AnalogMultiChannelReader.h: ../jdaqmx-java/bin/ni/DAQmxBase/AnalogMultiChannelReader.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.AnalogMultiChannelReader
+
+include/ni_DAQmxcommon_DaqStream.h: ../jdaqmx-java/bin/ni/DAQcommon/DaqStream.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQcommon.DaqStream
+
+include/ni_DAQmxBase_Test.h: ../jdaqmx-java/bin/ni/DAQmxBase/Test.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.Test
+
+clean:
+	$(DEL) build/rhel/daqmx\*
+	$(DEL) $(HEADERS)
+
+launch:
+	g++ -I /usr/java/jdk1.6.0_16/include -I /usr/java/jdk1.6.0_16/include/linux -I /usr/local/natinst/nidaqmxbase/include src/util/launch.cc -o launch -L /usr/java/jdk1.6.0_16/jre/lib/i386/client -ljvm -L /home/bbaker/workspace/nijava/jdaqmx-c/build/rhel/daqmxbase -ljDAQmxBase
+	cp launch /home/bbaker/icuf/bin

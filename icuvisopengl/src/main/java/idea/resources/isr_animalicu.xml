@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-repository xmlns="http://idea.mil/rp">
+    <name>ISR Animal ICU</name>
+    <hardware>
+        <device>
+            <name>BAY 1</name>
+            <protocol>IDEA</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>143.83.158.250</connectionValue>
+        </device>
+        <device>
+            <name>BAY 2</name>
+            <protocol>IDEA</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>143.83.159.3</connectionValue>
+        </device>
+        <device>
+            <name>BAY 3 **</name>
+            <protocol>IDEA</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>143.83.157.172</connectionValue>
+        </device>
+        <device>
+            <name>BAY 4 **</name>
+            <protocol>IDEA</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>143.83.157.92</connectionValue>
+        </device>
+    </hardware>
+</rp-repository>

@@ -1,0 +1,167 @@
+System property "mbrola.base" is undefined.  Will not use MBROLA voices.
+2014-02-13 15:00:00,504 ERROR [icuInterface.adapters.AesculonDriver] - got landmark: 28928 
+2014-02-13 15:00:00,504 ERROR [icuInterface.adapters.AesculonDriver] - got landmark: 28928 
+2014-02-13 15:00:00,663 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 15:00:00,663 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+  ff 90 70 e8 00 16 00 de 07 02 0d 0f 03 27 17 01 
+  00 5d e7 54 00 ff ff ff ff ff ff ff ff 64 00 32 
+  00 47 07 a3 04 5c 02 b0 00 9c ff fa fe a0 fe 71 
+  fe 5c fe 58 fe 5e fe 6b fe 7c fe a8 fe 03 ff 9a 
+  ff 5f 00 11 01 68 01 45 01 b1 00 ec ff 32 ff a0 
+  fe 43 fe 09 fe e7 fd d7 fd d1 fd c1 fd 46 fd 5d 
+  fb 55 f7 0b f2 60 ed c1 eb d0 ed 0e f2 96 f6 d2 
+  f9 bf fb fd fc e2 fd 91 fe 15 ff 76 ff c0 ff f6 
+  ff 20 00 43 00 64 00 32 00 29 f3 29 f3 24 f3 1c 
+  f3 12 f3 09 f3 03 f3 00 f3 01 f3 05 f3 0c f3 14 
+  f3 1c f3 24 f3 2c f3 32 f3 36 f3 38 f3 38 f3 37 
+  f3 34 f3 31 f3 2f f3 2e f3 2e f3 2d f3 2c f3 27 
+  f3 21 f3 19 f3 12 f3 0d f3 0b f3 0d f3 11 f3 14 
+  f3 15 f3 13 f3 0e f3 09 f3 06 f3 0a f3 15 f3 28 
+  f3 40 f3 5b f3 74 f3 89 f3 9b f3 a8 f3 b6 1c 
+  
+  ff 
+  90 70 // WF values 0x7090
+  e8 00 // len
+  16 00 // job ID
+  de 07 02 0d  // dt 
+  0f 03 27 17  // tm
+  01 00 // step cd
+  5d e7 54 00  // spl_counter 
+  ff ff ff ff  // RESVD1
+  ff ff ff ff  // RESVD2
+  64 00 // MFSIZ
+  32 00 // MFCNT
+  47 07 a3 04 5c 02 b0 00 9c ff fa fe a0 fe 71 fe 
+  5c fe 58 fe 5e fe 6b fe 7c fe a8 fe 03 ff 9a ff 
+  5f 00 11 01 68 01 45 01 b1 00 ec ff 32 ff a0 fe 
+  43 fe 09 fe e7 fd d7 fd d1 fd c1 fd 46 fd 5d fb 
+  55 f7 0b f2 60 ed c1 eb d0 ed 0e f2 96 f6 d2 f9 
+  bf fb fd fc e2 fd 91 fe 15 ff 76 ff c0 ff f6 ff 
+  20 00 43 00 
+  
+  64 00 
+  32 00 
+  29 f3 29 f3 24 f3 1c f3 12 f3 09 f3 03 f3 00 f3 
+  01 f3 05 f3 0c f3 14 f3 1c f3 24 f3 2c f3 32 f3 
+  36 f3 38 f3 38 f3 37 f3 34 f3 31 f3 2f f3 2e f3 
+  2e f3 2d f3 2c f3 27 f3 21 f3 19 f3 12 f3 0d f3 
+  0b f3 0d f3 11 f3 14 f3 15 f3 13 f3 0e f3 09 f3 
+  06 f3 0a f3 15 f3 28 f3 40 f3 5b f3 74 f3 89 f3 
+  9b f3 a8 f3
+  
+  b6 1c  // CRC
+  
+n2014-02-13 15:00:00,853 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 15:00:00,853 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+  ff 90 70 e8 00 16 00 de 07 02 0d 0f 03 27 30 01 
+  00 8f e7 54 00 ff ff ff ff ff ff ff ff 
+  64 00 32 00 
+  5d 00 74 00 87 00 99 00 ae 00 c8 00 ea 00 1a 01 
+  5b 01 be 01 64 02 76 03 1a 05 3a 07 70 09 18 0b 
+  92 0b a1 0a 89 08 eb 05 68 03 6a 01 0b 00 2f ff 
+  b1 fe 6a fe 47 fe 39 fe 38 fe 41 fe 4d fe 5f fe 
+  88 fe e0 fe 74 ff 38 00 eb 00 44 01 22 01 8d 00 
+  c6 ff 0c ff 78 fe 18 fe df fd c0 fd b5 fd b3 fd 
+  a4 fd 2a fd 
+  64 00 
+  32 00 
+  b3 f3 be f3 c8 f3 d2 f3 db f3 e0 f3 e0 f3 da f3 
+  cd f3 ba f3 a1 f3 83 f3 62 f3 40 f3 1e f3 fe f2 
+  e1 f2 c9 f2 b6 f2 a8 f2 9e f2 95 f2 8e f2 86 f2 
+  7e f2 76 f2 70 f2 6c f2 6c f2 72 f2 7d f2 8d f2 
+  a1 f2 b8 f2 cf f2 e6 f2 f9 f2 06 f3 0d f3 0c f3 
+  04 f3 f4 f2 e1 f2 ca f2 b5 f2 a3 f2 98 f2 94 f2 
+  9b f2 ac f2 
+  c7 b2 // CRC 
+2014-02-13 15:00:00,853 ERROR [icuInterface.adapters.AesculonDriver] - got landmark: 28928 
+2014-02-13 15:00:00,853 ERROR [icuInterface.adapters.AesculonDriver] - got landmark: 28928 
+2014-02-13 15:00:01,103 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 15:00:01,103 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+  ff 90 70 e8 00 16 00 de 07 02 0d 0f 03 27 49 01 
+  00 c1 e7 54 00 ff ff ff ff ff ff ff ff 64 00 32 
+  00 46 fb 41 f7 f3 f1 3b ed 89 eb 8e ed ce f1 60 
+  f6 a7 f9 97 fb d0 fc b3 fd 61 fe e7 fe 4e ff 9d 
+  ff da ff 08 00 2c 00 48 00 5f 00 72 00 84 00 96 
+  00 ab 00 c7 00 f1 00 2f 01 8f 01 2c 02 30 03 bf 
+  04 d0 06 08 09 c4 0a 64 0b 9a 0a 97 08 f4 05 58 
+  03 35 01 b3 ff bc fe 2a fe d7 fd a9 fd 8f fd 81 
+  fd 7c fd 7b fd 64 00 32 00 c4 f2 e2 f2 01 f3 1c 
+  f3 2e f3 37 f3 35 f3 2d f3 23 f3 1d f3 1e f3 2b 
+  f3 42 f3 62 f3 87 f3 ab f3 cb f3 e6 f3 fc f3 0c 
+  f4 1b f4 28 f4 33 f4 3d f4 42 f4 40 f4 36 f4 24 
+  f4 0d f4 f5 f3 e1 f3 d5 f3 d2 f3 d6 f3 dc f3 dc 
+  f3 cf f3 af f3 78 f3 2b f3 cd f2 65 f2 fb f1 95 
+  f1 3a f1 eb f0 ab f0 78 f0 52 f0 38 f0 4e d8 
+2014-02-13 15:00:01,173 ERROR [icuInterface.adapters.AesculonDriver] - got landmark: 28928 
+2014-02-13 15:00:01,173 ERROR [icuInterface.adapters.AesculonDriver] - got landmark: 28928 
+
+
+2014-02-13 14:56:16,067 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:16,067 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:16,277 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:16,277 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:16,307 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:16,307 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:16,567 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:16,567 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:16,637 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:16,637 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+n2014-02-13 14:56:16,807 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:16,807 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:17,008 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:17,008 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:17,058 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:17,058 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:17,308 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:17,308 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:17,358 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:17,358 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:17,558 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:17,558 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:17,698 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:17,698 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+n2014-02-13 14:56:17,808 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:17,808 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:18,059 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:18,059 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:18,059 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:18,059 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:18,319 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:18,319 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:18,419 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:18,419 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:18,559 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:18,559 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+n2014-02-13 14:56:18,789 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:18,789 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:18,809 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:18,809 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:19,060 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:19,060 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:19,130 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:19,130 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:19,300 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:19,300 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:19,500 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:19,500 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:19,550 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:19,550 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+n2014-02-13 14:56:19,810 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:19,810 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:19,871 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:19,871 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:20,061 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:20,061 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:20,231 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:20,231 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:20,301 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:20,301 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+ --> start:   53 ab 00 00 00 00 ab 45 
+2014-02-13 14:56:20,551 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:20,551 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:20,571 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:20,571 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+n2014-02-13 14:56:20,811 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:20,811 DEBUG [icuInterface.adapters.AesculonDriver] - Sending wf event: -1 / -1 
+2014-02-13 14:56:20,932 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 
+2014-02-13 14:56:20,932 ERROR [icuInterface.adapters.AesculonDriver] - Unknown message code: 28928 

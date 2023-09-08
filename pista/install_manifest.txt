@@ -1,0 +1,11 @@
+/opt/bernard/lib/libpista-bmp180.so
+/opt/bernard/lib/libpista-core.so
+/opt/bernard/lib/libx-support.so
+/opt/bernard/lib/libpista-simu.so
+/opt/bernard/lib/libpista-imp731.so
+/opt/bernard/lib/libpista-ht70.so
+/opt/bernard/lib/libpista-medsys3.so
+/opt/bernard/include/pista.h
+/usr/lib/cmake/PistaCore/cmake/PistaCoreConfig.cmake
+/usr/lib/cmake/PistaCore/cmake/PistaCoreConfig-debug.cmake
+/opt/bernard/bin/pista-prompt

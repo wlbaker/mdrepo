@@ -1,0 +1,34 @@
+
+HT70 Portable Ventilator
+
+After much tinkering with XML parsers, I'm using expat.  Included with most distros.
+sudo dnf install expat expat-devel
+
+
+##
+## OBSOLETE
+##
+## XML processing done by nelseric/sax
+## Check the "deps" directory.
+## 
+## git clone https://github.com/nelseric/sax
+
+sudo dnf search libwebsockets
+sudo dnf search yajl
+
+## 
+## OBSOLETE
+##
+## XML processing done by ooxi/xml.c.  Check the "deps" directory.
+## 
+## $ git clone https://github.com/ooxi/xml.c.git xml.c
+## $ mkdir xml.c/build; cd xml.c/build
+## $ cmake -DCMAKE_BUILD_TYPE=Release ..
+## $ make && ../run-tests.sh
+## 
+## THEN COPY DIST FILES TO /usr/local/include and /usr/local/lib or /usr/local/lib64
+
+
+Test procedure:
+    emu_ht70: writes sample-1.xml to USB8
+    screen /dev/ttyUSB0 38400: opens USB0 and displays incoming data, C-a k to exit.

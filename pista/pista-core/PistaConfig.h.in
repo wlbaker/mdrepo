@@ -1,0 +1,8 @@
+// does the platform provide exp and log functions?
+
+#define Pista_VERSION_MAJOR @Pista_VERSION_MAJOR@
+#define Pista_VERSION_MINOR @Pista_VERSION_MINOR@
+#cmakedefine USE_MYMATH
+
+#cmakedefine HAVE_LOG
+#cmakedefine HAVE_EXP

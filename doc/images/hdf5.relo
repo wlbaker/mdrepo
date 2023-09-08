@@ -1,0 +1,162 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slhdf5.relo> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "0" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node1713pq3ocx3833 .
+
+_:node1713pq3ocx3833 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2> ;
+	atxa-core:posX "107" ;
+	atxa-core:posY "279" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$H5GroupExporter> , <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$ExportWaveform> , <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$DatasetExporter> , <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$H5GroupImporter> , <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$ImportWaveform> , <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$ExportHeader> , <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$ImportHeader> , <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$DatasetImporter> .
+
+_:node1713pq3ocx3833 atxa-core:contains _:node1713pq3ocx3834 .
+
+_:node1713pq3ocx3834 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$H5GroupExporter> ;
+	atxa-core:posX "113" ;
+	atxa-core:posY "304" .
+
+_:node1713pq3ocx3794 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3834 ;
+	rdf:object _:node1713pq3ocx3835 .
+
+_:node1713pq3ocx3798 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3834 ;
+	rdf:object _:node1713pq3ocx3836 .
+
+_:node1713pq3ocx3833 atxa-core:contains _:node1713pq3ocx3836 .
+
+_:node1713pq3ocx3836 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$ExportWaveform> ;
+	atxa-core:posX "114" ;
+	atxa-core:posY "391" .
+
+_:node1713pq3ocx3833 atxa-core:contains _:node1713pq3ocx3837 .
+
+_:node1713pq3ocx3837 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$ExportHeader> ;
+	atxa-core:posX "276" ;
+	atxa-core:posY "304" .
+
+_:node1713pq3ocx3833 atxa-core:contains _:node1713pq3ocx3838 .
+
+_:node1713pq3ocx3838 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$ImportHeader> ;
+	atxa-core:posX "404" ;
+	atxa-core:posY "310" .
+
+_:node1713pq3ocx3833 atxa-core:contains _:node1713pq3ocx3835 .
+
+_:node1713pq3ocx3835 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$DatasetExporter> ;
+	atxa-core:posX "258" ;
+	atxa-core:posY "391" .
+
+_:node1713pq3ocx3833 atxa-core:contains _:node1713pq3ocx3839 .
+
+_:node1713pq3ocx3839 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$DatasetImporter> ;
+	atxa-core:posX "409" ;
+	atxa-core:posY "391" .
+
+_:node1713pq3ocx3833 atxa-core:contains _:node1713pq3ocx3840 .
+
+_:node1713pq3ocx3840 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$ImportWaveform> ;
+	atxa-core:posX "553" ;
+	atxa-core:posY "393" .
+
+_:node1713pq3ocx3833 atxa-core:contains _:node1713pq3ocx3841 .
+
+_:node1713pq3ocx3841 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager.hdf5_v2$H5GroupImporter> ;
+	atxa-core:posX "552" ;
+	atxa-core:posY "312" .
+
+_:node1713pq3ocx3830 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3841 ;
+	rdf:object _:node1713pq3ocx3839 .
+
+_:node1713pq3ocx3832 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3841 ;
+	rdf:object _:node1713pq3ocx3840 .
+
+atxa-core:docRoot atxa-core:contains _:node1713pq3ocx3842 .
+
+_:node1713pq3ocx3842 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager> ;
+	atxa-core:posX "119" ;
+	atxa-core:posY "122" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager$Hdf5Importer> , <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager$Hdf5Exporter> , <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager$Hdf5CompositeImporter> .
+
+_:node1713pq3ocx3842 atxa-core:contains _:node1713pq3ocx3843 .
+
+_:node1713pq3ocx3843 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager$Hdf5CompositeImporter> ;
+	atxa-core:posX "503" ;
+	atxa-core:posY "147" .
+
+_:node1713pq3ocx3814 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3843 ;
+	rdf:object _:node1713pq3ocx3844 .
+
+_:node1713pq3ocx3842 atxa-core:contains _:node1713pq3ocx3845 .
+
+_:node1713pq3ocx3845 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager$Hdf5Exporter> ;
+	atxa-core:posX "125" ;
+	atxa-core:posY "204" .
+
+_:node1713pq3ocx3786 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3845 ;
+	rdf:object _:node1713pq3ocx3834 .
+
+_:node1713pq3ocx3793 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3845 ;
+	rdf:object _:node1713pq3ocx3835 .
+
+_:node1713pq3ocx3818 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3845 ;
+	rdf:object _:node1713pq3ocx3837 .
+
+_:node1713pq3ocx3842 atxa-core:contains _:node1713pq3ocx3844 .
+
+_:node1713pq3ocx3844 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#idea.datamanager$Hdf5Importer> ;
+	atxa-core:posX "533" ;
+	atxa-core:posY "205" .
+
+_:node1713pq3ocx3819 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3844 ;
+	rdf:object _:node1713pq3ocx3841 .
+
+_:node1713pq3ocx3826 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3844 ;
+	rdf:object _:node1713pq3ocx3838 .
+
+_:node1713pq3ocx3831 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx3844 ;
+	rdf:object _:node1713pq3ocx3839 .
+

@@ -1,0 +1,122 @@
+package idea.repdef;
+
+import java.io.IOException;
+
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXException;
+
+import com.sun.codemodel.internal.JBlock;
+import com.sun.codemodel.internal.JCodeModel;
+import com.sun.codemodel.internal.JFieldVar;
+import com.sun.codemodel.internal.JMethod;
+import com.sun.codemodel.internal.JMod;
+import com.sun.codemodel.internal.JType;
+import com.sun.codemodel.internal.JVar;
+import com.sun.tools.internal.xjc.Plugin;
+import com.sun.tools.internal.xjc.BadCommandLineException;
+import com.sun.tools.internal.xjc.Options;
+import com.sun.tools.internal.xjc.outline.ClassOutline;
+import com.sun.tools.internal.xjc.outline.Outline;
+
+public class GetSetFieldsPlugin extends Plugin {
+	 
+	  public final static String GETTER = "getter";
+	  public final static String SETTER = "setter";
+		public static JType METHOD_TYPE = null;
+		public static JType NUMBER_TYPE = null;
+		public static JType INTEGER_TYPE = null;
+		public final static String INVERSE = "inverse";
+		public final static JType VOID_TYPE = new JCodeModel().VOID;
+		public final static String TRANSFORM = "transform";
+	 
+		static {
+			try {
+				METHOD_TYPE = new JCodeModel().parseType("java.lang.reflect.Method");
+				NUMBER_TYPE = new JCodeModel().parseType("java.lang.Number");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		@Override
+		public String getOptionName() {
+			return "Xgetset";
+		}
+	 
+		@Override
+		public int parseArgument(Options opt, String[] args, int i)
+				throws BadCommandLineException, IOException {
+			return 1;
+		}
+	 
+		@Override
+		public String getUsage() {
+			return "  -Xgetset    :  xjc plugin to create a getter and setter for persistent items";
+		}
+	 
+		@Override
+		public boolean run(Outline model, Options opt, ErrorHandler errorHandler)
+				throws SAXException {
+	 
+			for (ClassOutline classOutline : model.getClasses()) {
+				if( "RpMetric".equals(classOutline.implClass.name())) {
+					processRpMetric( classOutline );
+				}
+				if( "RpUnit".equals(classOutline.implClass.name())) {
+					proccessRpUnit( classOutline );
+				}
+				if( "RpLinearUnit".equals(classOutline.implClass.name())) {
+					proccessRpLinearUnit( classOutline );
+				}
+	 
+				//JMethod idGetterMethod = classOutline.implClass.method(JMod.PUBLIC,
+				//		METHOD_TYPE, ID_GETTER);
+				//JBlock idGetterBlock = idGetterMethod.body();
+				//idGetterBlock._return(globalId);
+	 
+				//JMethod idSetterMethod = classOutline.implClass.method(JMod.PUBLIC,
+				//		VOID_TYPE, ID_SETTER);
+				//JVar localId = idSetterMethod.param(METHOD_TYPE, "_" + GETTER);
+				//JBlock idSetterBlock = idSetterMethod.body();
+				//idSetterBlock.assign(globalId, localId);
+			}
+			return true;
+		}
+
+		private void proccessRpLinearUnit(ClassOutline classOutline) {
+			JMethod transform = classOutline.implClass.method(JMod.PUBLIC,
+					NUMBER_TYPE, TRANSFORM);
+			JVar var = transform.param(int.class, "val");
+			JBlock transformBlock = transform.body();
+			transformBlock._return( var );
+			
+			JMethod inverse = classOutline.implClass.method(JMod.PUBLIC,
+					NUMBER_TYPE, INVERSE);
+			JVar var2 = inverse.param(NUMBER_TYPE, "val");
+			JBlock inverseBlock = inverse.body();
+			inverseBlock._return( var2 );
+			
+		}
+
+		private void proccessRpUnit(ClassOutline classOutline) {
+			JMethod transform = classOutline.implClass.method(JMod.PUBLIC | JMod.ABSTRACT,
+					NUMBER_TYPE, TRANSFORM);
+			JVar var = transform.param(NUMBER_TYPE, "val");
+			JMethod inverse = classOutline.implClass.method(JMod.PUBLIC | JMod.ABSTRACT,
+					NUMBER_TYPE, INVERSE);
+			JVar var2 = inverse.param(NUMBER_TYPE, "val");
+			// inverse.
+ 
+		}
+
+		private void processRpMetric(ClassOutline classOutline) {
+			System.out.println("*impl=" + classOutline.implClass.name() );
+
+			// if( classOutline.implClass.binaryName())
+			JFieldVar globalGetter = classOutline.implClass.field(JMod.PUBLIC, // JMod.NONE,
+					METHOD_TYPE, GETTER);
+			JFieldVar globalSetter = classOutline.implClass.field(JMod.PUBLIC, // JMod.NONE,
+					METHOD_TYPE, SETTER);
+		}
+}

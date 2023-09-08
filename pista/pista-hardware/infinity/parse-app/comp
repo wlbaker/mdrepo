@@ -1,0 +1,9 @@
+#!/bin/sh
+
+gcc -g -O0 -c ../bytebuffer.c
+gcc -g -O0 -c ../log.c
+gcc -g -O0 -c ../map.c
+gcc -g -O0 -c -I. ../infinityNet.c
+gcc -g -O0 -c -I.. main.c
+echo "Linking..."
+gcc -g -o main main.o infinityNet.o map.o bytebuffer.o log.o -lpcap

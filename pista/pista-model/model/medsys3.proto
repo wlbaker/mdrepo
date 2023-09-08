@@ -1,0 +1,66 @@
+syntax = "proto3";
+package medsys3;
+
+option java_package = "pista.model";
+
+//
+// typical messages:
+//
+// [soh]cA QX00_X02!  B064 \r
+// [soh]d@$RX03_X02=15.67!  DB99 \r
+//
+
+message ident {
+     string model = 1;       //[9]  ??
+  	 string serial_no = 2;   // 23_03  (see page A-15)
+  	 string hospital_id = 3; // 24_03  (see page A-15)
+  	 string sw_expire = 4;   // 4C_03  (see page A-16)
+  	 string sw_version = 5;  // CE_03  (see page A-16)
+}
+
+message status {
+   //  int32 pa_rate       = 5;  // 00_00 ... rate setting
+   //  int32 pb_rate       = 6;  // 00_00
+   //  int32 pc_rate       = 7;  // 00_00
+        string drug_a = 2;  // 29_00
+        string drug_b = 3;  // 29_01
+        string drug_c = 4;  // 29_02
+}
+
+// QX00_X00;QX00_X01;QX00_X02!
+// --> RX00_X00=999.00;RX00_X01=275.00;RX00_X02=50.50!
+
+message measurement {  // ignoring timestamp: CF_03
+    int32 ins_status = 1;     // 0D_03
+
+    int32 pa_dev_status = 2;  // 0D_00
+    int32 pb_dev_status = 3;  // 0D_01
+    int32 pc_dev_status = 4; // 0D_02
+
+    int32 pa_inf_status = 5;  // 0F_00
+    int32 pb_inf_status = 6;  // 0F_01
+    int32 pc_inf_status = 7; // 0F_02
+
+    int32 pa_rate       = 8;  // C0_00 ...rate measurement
+    int32 pb_rate       = 9;  // C0_01
+    int32 pc_rate       = 10; // C0_02
+    int32 pa_infused    = 11;  // 0A_00
+    int32 pb_infused    = 12; // 0A_01
+    int32 pc_infused    = 13; // 0A_02
+
+    int32 pa_sec_infused = 14;  // 0B_00
+    int32 pb_sec_infused  = 15;  // 0B_01
+    int32 pc_sec_infused  = 16;  // 0B_02
+}
+
+// QxD1  
+// --> RxD1= {AI_NO_EVENT(=0)}
+// --> RxD1= {AI_AAF(=1),pump(=0,1,2),aaf_type,aaf_index}
+
+message sigevent {    
+    int32  code  = 1;
+    int32  pump  = 2;
+    int32  aaf_type  = 3;
+    int32  aaf_index = 4;
+}
+

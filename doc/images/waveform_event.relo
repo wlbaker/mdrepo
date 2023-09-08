@@ -1,0 +1,286 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slwaveform_unevent.relo> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "1" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node171ea0csbx1257 .
+
+_:node171ea0csbx1257 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message> ;
+	atxa-core:posX "167" ;
+	atxa-core:posY "114" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem> .
+
+_:node171ea0csbx1257 atxa-core:contains _:node171ea0csbx1258 .
+
+_:node171ea0csbx1258 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock> ;
+	atxa-core:posX "184" ;
+	atxa-core:posY "139" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.setTime(long,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.getTime()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.getDriver()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.getItems()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.getItem(Object,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.toString()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.AbstractBlock(SignalProducer,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.setDriver(SignalProducer,)> .
+
+_:node171ea0csbx1258 atxa-core:contains _:node171ea0csbx1259 .
+
+_:node171ea0csbx1259 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.AbstractBlock(SignalProducer,)> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "161" .
+
+_:node171ea0csbx1258 atxa-core:contains _:node171ea0csbx1260 .
+
+_:node171ea0csbx1260 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.getDriver()> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "177" .
+
+_:node171ea0csbx1258 atxa-core:contains _:node171ea0csbx1261 .
+
+_:node171ea0csbx1261 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.getItem(Object,)> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "193" .
+
+_:node171ea0csbx1258 atxa-core:contains _:node171ea0csbx1262 .
+
+_:node171ea0csbx1262 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.getItems()> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "209" .
+
+_:node171ea0csbx1258 atxa-core:contains _:node171ea0csbx1263 .
+
+_:node171ea0csbx1263 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.getTime()> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "225" .
+
+_:node171ea0csbx1258 atxa-core:contains _:node171ea0csbx1264 .
+
+_:node171ea0csbx1264 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.setDriver(SignalProducer,)> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "241" .
+
+_:node171ea0csbx1258 atxa-core:contains _:node171ea0csbx1265 .
+
+_:node171ea0csbx1265 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.setTime(long,)> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "257" .
+
+_:node171ea0csbx1258 atxa-core:contains _:node171ea0csbx1266 .
+
+_:node171ea0csbx1266 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$AbstractBlock.toString()> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "273" .
+
+_:node171ea0csbx1257 atxa-core:contains _:node171ea0csbx1267 .
+
+_:node171ea0csbx1267 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock> ;
+	atxa-core:posX "173" ;
+	atxa-core:posY "324" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.add(WaveformItem,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getItems()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getWaveforms()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.setWaveForms(ArrayList,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getItemByPosition(int,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getItem(Object,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getEvent(Object,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getAdapterName()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.WaveformBlock(SignalProducer,WaveformDescription[],)> .
+
+_:node171ea0csbx834 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node171ea0csbx1267 ;
+	rdf:object _:node171ea0csbx1268 .
+
+_:node171ea0csbx838 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171ea0csbx1267 ;
+	rdf:object _:node171ea0csbx1258 ;
+	atxa-core:bendpoint _:node171ea0csbx1269 .
+
+_:node171ea0csbx1269 atxa-core:bpLocation "345,310" ;
+	atxa-core:bpIndex "0" .
+
+_:node171ea0csbx838 atxa-core:bendpoint _:node171ea0csbx1270 .
+
+_:node171ea0csbx1270 atxa-core:bpLocation "294,310" ;
+	atxa-core:bpIndex "1" .
+
+_:node171ea0csbx1267 atxa-core:contains _:node171ea0csbx1271 .
+
+_:node171ea0csbx1271 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.add(WaveformItem,)> ;
+	atxa-core:posX "174" ;
+	atxa-core:posY "346" .
+
+_:node171ea0csbx1267 atxa-core:contains _:node171ea0csbx1272 .
+
+_:node171ea0csbx1272 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getAdapterName()> ;
+	atxa-core:posX "174" ;
+	atxa-core:posY "362" .
+
+_:node171ea0csbx1267 atxa-core:contains _:node171ea0csbx1273 .
+
+_:node171ea0csbx1273 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getEvent(Object,)> ;
+	atxa-core:posX "174" ;
+	atxa-core:posY "378" .
+
+_:node171ea0csbx1267 atxa-core:contains _:node171ea0csbx1274 .
+
+_:node171ea0csbx1274 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getItem(Object,)> ;
+	atxa-core:posX "174" ;
+	atxa-core:posY "394" .
+
+_:node171ea0csbx1267 atxa-core:contains _:node171ea0csbx1275 .
+
+_:node171ea0csbx1275 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getItemByPosition(int,)> ;
+	atxa-core:posX "174" ;
+	atxa-core:posY "410" .
+
+_:node171ea0csbx1267 atxa-core:contains _:node171ea0csbx1276 .
+
+_:node171ea0csbx1276 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getItems()> ;
+	atxa-core:posX "174" ;
+	atxa-core:posY "426" .
+
+_:node171ea0csbx1267 atxa-core:contains _:node171ea0csbx1277 .
+
+_:node171ea0csbx1277 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.getWaveforms()> ;
+	atxa-core:posX "174" ;
+	atxa-core:posY "442" .
+
+_:node171ea0csbx1267 atxa-core:contains _:node171ea0csbx1278 .
+
+_:node171ea0csbx1278 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.setWaveForms(ArrayList,)> ;
+	atxa-core:posX "174" ;
+	atxa-core:posY "458" .
+
+_:node171ea0csbx1267 atxa-core:contains _:node171ea0csbx1279 .
+
+_:node171ea0csbx1279 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformBlock.WaveformBlock(SignalProducer,WaveformDescription[],)> ;
+	atxa-core:posX "174" ;
+	atxa-core:posY "474" .
+
+_:node171ea0csbx1257 atxa-core:contains _:node171ea0csbx1268 .
+
+_:node171ea0csbx1268 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem> ;
+	atxa-core:posX "561" ;
+	atxa-core:posY "330" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.WaveformItem(WaveformDescription,int[],int,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.setValues(int[],)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.getValues()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.getFrequency()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.toString()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.clear()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.getValue()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.getDescription()> .
+
+_:node171ea0csbx1268 atxa-core:contains _:node171ea0csbx1280 .
+
+_:node171ea0csbx1280 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.clear()> ;
+	atxa-core:posX "562" ;
+	atxa-core:posY "352" .
+
+_:node171ea0csbx1268 atxa-core:contains _:node171ea0csbx1281 .
+
+_:node171ea0csbx1281 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.getDescription()> ;
+	atxa-core:posX "562" ;
+	atxa-core:posY "368" .
+
+_:node171ea0csbx1268 atxa-core:contains _:node171ea0csbx1282 .
+
+_:node171ea0csbx1282 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.getFrequency()> ;
+	atxa-core:posX "562" ;
+	atxa-core:posY "384" .
+
+_:node171ea0csbx1268 atxa-core:contains _:node171ea0csbx1283 .
+
+_:node171ea0csbx1283 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.getValue()> ;
+	atxa-core:posX "562" ;
+	atxa-core:posY "400" .
+
+_:node171ea0csbx1268 atxa-core:contains _:node171ea0csbx1284 .
+
+_:node171ea0csbx1284 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.getValues()> ;
+	atxa-core:posX "562" ;
+	atxa-core:posY "416" .
+
+_:node171ea0csbx1268 atxa-core:contains _:node171ea0csbx1285 .
+
+_:node171ea0csbx1285 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.setValues(int[],)> ;
+	atxa-core:posX "562" ;
+	atxa-core:posY "432" .
+
+_:node171ea0csbx1268 atxa-core:contains _:node171ea0csbx1286 .
+
+_:node171ea0csbx1286 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.toString()> ;
+	atxa-core:posX "562" ;
+	atxa-core:posY "448" .
+
+_:node171ea0csbx1268 atxa-core:contains _:node171ea0csbx1287 .
+
+_:node171ea0csbx1287 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.message$WaveformItem.WaveformItem(WaveformDescription,int[],int,)> ;
+	atxa-core:posX "562" ;
+	atxa-core:posY "464" .
+
+atxa-core:docRoot atxa-core:contains _:node171ea0csbx1288 .
+
+_:node171ea0csbx1288 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events> ;
+	atxa-core:posX "545" ;
+	atxa-core:posY "67" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent> .
+
+_:node171ea0csbx1288 atxa-core:contains _:node171ea0csbx1289 .
+
+_:node171ea0csbx1289 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent> ;
+	atxa-core:posX "551" ;
+	atxa-core:posY "92" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.getWaveformBlock()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.WaveformEvent(Object,WaveformBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.setWaveFormBlock(WaveformBlock,)> .
+
+_:node171ea0csbx850 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node171ea0csbx1289 ;
+	rdf:object _:node171ea0csbx1267 .
+
+_:node171ea0csbx1289 atxa-core:contains _:node171ea0csbx1290 .
+
+_:node171ea0csbx1290 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.getWaveformBlock()> ;
+	atxa-core:posX "552" ;
+	atxa-core:posY "114" .
+
+_:node171ea0csbx1289 atxa-core:contains _:node171ea0csbx1291 .
+
+_:node171ea0csbx1291 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.setWaveFormBlock(WaveformBlock,)> ;
+	atxa-core:posX "552" ;
+	atxa-core:posY "130" .
+
+_:node171ea0csbx1289 atxa-core:contains _:node171ea0csbx1292 .
+
+_:node171ea0csbx1292 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.WaveformEvent(Object,WaveformBlock,)> ;
+	atxa-core:posX "552" ;
+	atxa-core:posY "146" .
+

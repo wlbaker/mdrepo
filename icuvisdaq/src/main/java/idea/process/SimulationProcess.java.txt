@@ -1,0 +1,148 @@
+package idea.process;
+
+import icuInterface.adapters.NIDAQmxOutputDriver;
+import icuInterface.conf.dev.NIDAQConfiguration;
+import idea.intf.AdapterInterface;
+import idea.intf.AdapterUtil;
+import idea.intf.DataTyp;
+import idea.intf.StreamConsumer;
+import idea.intf.StreamProducer;
+import idea.message.StreamID;
+import idea.model.PersistentItem;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import idea.analysis.AnalysisPanelInterface;
+import idea.schema.rp.RpAnalysis;
+import idea.schema.rp.RpDevice;
+import idea.schema.rp.RpLinearUnit;
+import idea.schema.rp.RpMetric;
+import idea.schema.rp.RpUnit;
+import idea.schema.rp.StringStringMap;
+
+public class SimulationProcess implements AnalysisPanelInterface, StreamConsumer {
+
+	private RpAnalysis anal;
+	private String destName;
+	private String srcName;
+	private boolean enabled;
+	Map<String, String> bindings = new HashMap<String, String>();
+
+	AdapterInterface src = null;
+	AdapterInterface dest = null;
+	private AdapterInterface driver;
+	private StreamConsumer output_dev;
+	private int tick;
+
+	public SimulationProcess(StreamProducer[] drivers, RpAnalysis anal) throws IOException {
+		this.anal = anal;
+
+		StringStringMap params = anal.getParam();
+		for (String key : params.keySet()) {
+			String val = params.get(key);
+			if (key.equals("enabled")) {
+				enabled = "1".equals(val);
+			} else if (key.equals("output")) {
+				destName = val;
+			} else if (key.equals("input")) {
+				srcName = val;
+			} else {
+				bindings.put(key, val);
+			}
+		}
+
+		wire(drivers);
+	}
+
+	public void wire(StreamProducer[] drivers) throws IOException {
+
+		System.out.println("simulator wiring drivers: " + enabled);
+		if (enabled == false) {
+			return;
+		}
+
+		for (StreamProducer driver : drivers) {
+			RpDevice conf = driver.getConfiguration();
+
+			String driverName = null;
+			if (conf != null && conf.getName() != null) {
+				driverName = conf.getName();
+				if (driverName.length() == 0) {
+					driverName = null;
+				}
+
+			}
+
+			if (driverName == null) {
+				System.err.println("error wiring banner process: driver name not found");
+			} else {
+				if (driverName.equals(srcName)) {
+					System.out.println("signal simulator added listener: " + srcName);
+					driver.addStreamListener(StreamID.WAVEFORM, this);
+					break;
+				}
+			}
+
+		}
+
+		NIDAQConfiguration conf = (NIDAQConfiguration) NIDAQmxOutputDriver.createConfigInstance();
+		conf.setRate(500);
+
+		RpMetric [] arr = new RpMetric[ bindings.size() ];
+		int idx = 0;
+		for (String output : bindings.keySet()) {
+			RpUnit unit = new RpLinearUnit(1, 0, "mV");
+			RpMetric desc = new RpMetric(output, output, output, unit,  DataTyp.INT_ARR_TYP);
+			desc.setSampleRate(500);
+			desc.setSamplesPerPacket(250);
+			arr[idx++] = desc;
+			System.out.println("adding conf binding to waveform: " + output);
+		}
+		Class<? extends PersistentItem> cl = AdapterUtil.buildMetricsClass( conf.getName(), Arrays.asList(arr));
+		conf.addStream(StreamID.WAVEFORM, cl);
+
+		System.out.println("starting nidaqmx output driver");
+		driver = new NIDAQmxOutputDriver(conf);
+
+		driver.connect();
+
+		output_dev = (StreamConsumer) driver;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void streamEvent(int jobID, StreamProducer source, StreamID sid, PersistentItem block) {
+
+			tick = 0;
+			output_dev.streamEvent(0, source, sid, block);
+	}
+
+	@Override
+	public void autoscale() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public StreamProducer[] getSignalProducers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void tick() {
+		tick++;
+		if (tick > 20) {
+			clear();
+		}
+
+	}
+}

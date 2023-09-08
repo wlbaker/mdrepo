@@ -1,0 +1,88 @@
+/**
+ * @file    vmd.idl
+ * @author  WMS
+ * @date    OCT 2013
+ * @brief   DICES DIM Virtual Medical Device (VMD) object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * VMD object
+ *
+ * The VMD object defines an abstraction of a medical-related subsystem of a
+ * medical device. The subsystem may consist of hardware or purely software.
+ */
+
+/**
+ * VMD status indication bits. All bits 0 indicate that VMD is operational
+ */
+typedef BITS16 VMDStatus;
+enum VMDStatusBits
+{
+  vmd_off = 0x1,
+  vmd_not_ready = 0x2,  // e.g., for an infusion pump that is not ready
+  vmd_standby = 0x4,    // e.g., for device powered, but not active
+  vmd_transduc_discon = 0x100,  // transducer disconnected
+  vmd_hw_discon = 0x200         // measurement hardware disconnected
+};
+
+/**
+ * Physical principle of the measurement (multiple bits may be set)
+ */
+typedef BITS16 MsmtPrinciple;
+enum MsmtPrincipleBits
+{
+  msp_other = 0x1,
+  msp_chemical = 0x2,
+  msp_electrical = 0x4,
+  msp_impedance = 0x8,
+  msp_nuclear = 0x10,
+  msp_optical = 0x20,
+  msp_thermal = 0x40,
+  msp_biological = 0x80,
+  msp_mechanical = 0x100,
+  msp_acoustical = 0x200,
+  msp_manual = 0x8000
+};
+
+struct VMD : VMO
+{
+  /**
+   * VMD Static Context Group
+   */
+  // If > 1 instance of the same VMD exist, this helps to order the sequence.
+  InstNumber instance_number;
+  MsmtPrinciple measurement_principle; //@Optional
+  Locale locale;
+
+  /**
+   * VMD Dynamic Context Group
+   */
+  string<LONG_STRING_LEN> vmo_label_string; // From VMO Dynamic Context Group
+  VMDStatus vmd_status;
+
+  /**
+   * VMD Application Attribute Group
+   */
+  INTU16 position;  // Example: slot # 0xffff marks invalid or unknown position.
+  INTU32 operating_hours; //@Optional
+  // Example: number of measurements taken.
+  INTU32 operation_cycles; //@Optional
+
+  /**
+   * VMD Application Production Group
+   */
+  SystemModel vmd_model;
+
+  // Serial numbers and revisions. Only present if VMD represents an
+  // independent subsystem.
+  ProductionSpec production_specification;
+}; //@top-level true
+const string VMDTopic = "ice--VMD";
+
+};

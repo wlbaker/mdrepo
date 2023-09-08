@@ -1,0 +1,453 @@
+/*
+ * Created by JFormDesigner on Tue May 17 17:53:13 CDT 2011
+ */
+
+package idea.analysis;
+
+import icuInterface.ConnectionStatus;
+import icuInterface.RpUtil;
+import icuInterface.events.ConnectionItem;
+import idea.display.ChartRefresher;
+import idea.display.simple.TwoValuePanel;
+import idea.intf.StreamConsumer;
+import idea.intf.StreamProducer;
+import idea.message.StreamID;
+import idea.model.PersistentItem;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+import lombok.extern.slf4j.Slf4j;
+
+import org.rosuda.REngine.REXP;
+import org.rosuda.REngine.REXPMismatchException;
+import org.rosuda.REngine.REngine;
+import org.rosuda.REngine.REngineException;
+import org.rosuda.javaGD.JGDBufferedPanel;
+
+import idea.GuiUtil;
+import idea.analysis.event.SBCO2Block;
+import idea.analysis.ventilator.SBCO2;
+import idea.chart.SignalChart;
+import idea.chart.SignalPanel;
+import idea.r.RCue;
+import idea.r.RUtil;
+import idea.schema.rp.RpAnalysis;
+import idea.schema.rp.RpLinearUnit;
+import idea.schema.rp.RpMetric;
+import idea.schema.rp.RpStream;
+import idea.schema.rp.StringStringMap;
+
+import com.jgoodies.forms.factories.Borders;
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.FormLayout;
+
+/**
+ * @author User #2
+ */
+
+@Slf4j
+@SuppressWarnings("serial")
+public class SBCO2BreathSegmentationAnalysisPanel extends JPanel implements StreamConsumer {
+	private RpMetric flow_desc;
+	private RpMetric co2_desc;
+	private RpMetric awp_desc;
+	private RpMetric resistance_desc;
+	private RpMetric compliance_desc;
+
+	private JGDBufferedPanel plotter;
+	private SBCO2 segmenter;
+	private StreamProducer[] producers = new StreamProducer[1];
+
+	private final static NumberFormat df1 = new DecimalFormat("0.#");
+	private final static NumberFormat df3 = new DecimalFormat("0.000");
+
+	TwoValuePanel ibiMetricPanel;
+	SignalPanel brsegTrendPanel;
+	private TwoValuePanel slopeMetricPanel;
+	private SignalPanel slopeTrendPanel;
+	private TwoValuePanel intrMetricPanel;
+	private SignalPanel intrTrendPanel;
+	private RpAnalysis analysis;
+	private TwoValuePanel dsMetricPanel;
+	private SignalPanel dsTrendPanel;
+
+	PrintStream out;
+	private int verbose = 0;
+
+	public SBCO2BreathSegmentationAnalysisPanel(RpAnalysis anal) throws REngineException, REXPMismatchException {
+		initComponents();
+		initMoreComponents();
+
+		this.analysis = anal;
+
+		initRPlot("breathSegm");
+
+		segmenter = new SBCO2();
+		producers[0] = segmenter;
+		segmenter.addStreamListener(StreamID.MEASUREMENT, new StreamConsumer() {
+
+			@Override
+			public void streamEvent(int jobID, StreamProducer source, StreamID sid, PersistentItem item) {
+				SBCO2Block block = (SBCO2Block)item;
+				showSegmentedBreath(block);
+			}
+
+		});
+
+		segmenter.addStreamListener(StreamID.MEASUREMENT, brsegTrendPanel);
+		segmenter.addStreamListener(StreamID.MEASUREMENT, ibiMetricPanel);
+		segmenter.addStreamListener(StreamID.MEASUREMENT, slopeTrendPanel);
+		segmenter.addStreamListener(StreamID.MEASUREMENT, slopeMetricPanel);
+		segmenter.addStreamListener(StreamID.MEASUREMENT, intrTrendPanel);
+		segmenter.addStreamListener(StreamID.MEASUREMENT, intrMetricPanel);
+		segmenter.addStreamListener(StreamID.MEASUREMENT, dsMetricPanel);
+
+		brsegTrendPanel.getChart().addNumerics(SBCO2Block.IBI_LOC, Color.YELLOW, 1, SignalChart.POINT_STYLE);
+		brsegTrendPanel.getChart().addNumerics(SBCO2Block.EXH_LOC, Color.CYAN, 1, SignalChart.POINT_STYLE);
+		ibiMetricPanel.setUpperLoc(SBCO2Block.IBI_LOC);
+		ibiMetricPanel.setLowerLoc(SBCO2Block.EXH_LOC);
+
+		slopeTrendPanel.getChart().addNumerics(SBCO2Block.PH2SLOPE_LOC, Color.GREEN, 1, SignalChart.POINT_STYLE);
+		slopeTrendPanel.getChart().addNumerics(SBCO2Block.PH3SLOPE_LOC, Color.RED, 1, SignalChart.POINT_STYLE);
+		slopeMetricPanel.setUpperLoc(SBCO2Block.PH2SLOPE_LOC);
+		slopeMetricPanel.setLowerLoc(SBCO2Block.PH3SLOPE_LOC);
+
+		intrTrendPanel.getChart().addNumerics(SBCO2Block.PH2INTERCEPT_LOC, Color.GREEN, 1, SignalChart.POINT_STYLE);
+		intrTrendPanel.getChart().addNumerics(SBCO2Block.PH3INTERCEPT_LOC, Color.RED, 1, SignalChart.POINT_STYLE);
+		intrMetricPanel.setUpperLoc(SBCO2Block.PH2INTERCEPT_LOC);
+		intrMetricPanel.setLowerLoc(SBCO2Block.PH3INTERCEPT_LOC);
+
+		dsTrendPanel.getChart().addNumerics(SBCO2Block.DEADSPACE_LOC, Color.MAGENTA, 1, SignalChart.POINT_STYLE);
+		dsTrendPanel.getChart().addNumerics(SBCO2Block.ETCO2_LOC, Color.MAGENTA, 1, SignalChart.POINT_STYLE);
+		dsMetricPanel.setUpperLoc(SBCO2Block.DEADSPACE_LOC);
+		dsMetricPanel.setLowerLoc(SBCO2Block.ETCO2_LOC);
+
+		slopeTrendPanel.getChart().setName("mph2");
+		intrTrendPanel.getChart().setName("intr");
+	}
+
+	public StreamProducer[] getSignalProducers() {
+		return producers;
+	}
+
+	public void wire(StreamProducer[] drivers) {
+		 StringStringMap params = analysis.getParam();
+		String devName = params.get("DEV");
+		StreamProducer driver = findDev(devName, drivers);
+
+		driver.addStreamListener(StreamID.WAVEFORM, this);
+
+		RpStream s = RpUtil.getStreamFromName(driver.getConfiguration().getStreams(), StreamID.WAVEFORM.getName() );
+		flow_desc = RpUtil.getMetricFromStream(s, params.get( "FLOW") );
+
+		co2_desc = RpUtil.getMetricFromStream(s, params.get( "CO2") );
+		awp_desc = RpUtil.getMetricFromStream(s, params.get( "PAW") );
+		resistance_desc = RpUtil.getMetricFromStream(s, params.get( "R") );
+		compliance_desc = RpUtil.getMetricFromStream(s, params.get( "C") );
+
+		initSegmenter();
+
+		String rawFileName = params.get( "raw");
+		if (rawFileName == null || "NONE".equals(rawFileName)) {
+			// dont create raw output file
+		} else {
+			try {
+				File f = new File(rawFileName);
+				if (f.exists()) {
+					f.delete();
+				}
+				out = new PrintStream(new FileOutputStream(f));
+				segmenter.setOutputFile(out);
+			} catch (FileNotFoundException e) {
+				GuiUtil.showError("SBCO2 Initialization", e);
+			}
+		}
+
+	}
+
+	private StreamProducer findDev(String devName, StreamProducer[] drivers) {
+		StreamProducer ai = null;
+		for (StreamProducer driver : drivers) {
+			if (devName.equals(driver.getConfiguration().getName())) {
+				ai = driver;
+				break;
+			}
+		}
+		return ai;
+	}
+
+	private void initMoreComponents() {
+		CellConstraints cc = new CellConstraints();
+
+		ibiMetricPanel = new TwoValuePanel();
+		ibiMetricPanel.setFormat(df1);
+		ibiMetricPanel.setUpperTitle("IBI");
+		ibiMetricPanel.setLowerTitle("EXP");
+		trendsPanel.add(ibiMetricPanel, cc.xy(1, 1));
+
+		brsegTrendPanel = new SignalPanel();
+		brsegTrendPanel.setName("ibi");
+		brsegTrendPanel.setScaleMinRange(600.0);
+		brsegTrendPanel.setScaleMinY(0.0);
+		brsegTrendPanel.setYAxisLabel("ibi");
+		brsegTrendPanel.setYLabelRotation(true);
+		brsegTrendPanel.getChart().setAxisMode(SignalChart.XAxisMode.POINT);
+		trendsPanel.add(brsegTrendPanel, cc.xy(3, 1));
+
+		slopeMetricPanel = new TwoValuePanel();
+		slopeMetricPanel.setFormat(df3);
+		slopeMetricPanel.setUpperTitle("m-PH2");
+		slopeMetricPanel.setLowerTitle("m-PH3");
+		trendsPanel.add(slopeMetricPanel, cc.xy(1, 3));
+
+		slopeTrendPanel = new SignalPanel();
+		slopeTrendPanel.setName("slopeTrend");
+		slopeTrendPanel.setScaleMinRange(1.0);
+		slopeTrendPanel.setYAxisLabel("slope");
+		slopeTrendPanel.setYLabelRotation(true);
+		slopeTrendPanel.getChart().setAxisMode(SignalChart.XAxisMode.POINT);
+		trendsPanel.add(slopeTrendPanel, cc.xy(3, 3));
+
+		intrMetricPanel = new TwoValuePanel();
+		intrMetricPanel.setFormat(df1);
+		intrMetricPanel.setUpperTitle("int-PH2");
+		intrMetricPanel.setLowerTitle("int-PH3");
+		trendsPanel.add(intrMetricPanel, cc.xy(1, 5));
+
+		intrTrendPanel = new SignalPanel();
+		intrTrendPanel.setName("intrTrend");
+		intrTrendPanel.setScaleMinRange(100.0);
+		intrTrendPanel.setYAxisLabel("intr");
+		intrTrendPanel.setYLabelRotation(true);
+		intrTrendPanel.getChart().setAxisMode(SignalChart.XAxisMode.POINT);
+		trendsPanel.add(intrTrendPanel, cc.xy(3, 5));
+
+		dsMetricPanel = new TwoValuePanel();
+		dsMetricPanel.setFormat(df1);
+		dsMetricPanel.setUpperTitle("DS");
+		dsMetricPanel.setLowerTitle("EtCO2");
+		trendsPanel.add(dsMetricPanel, cc.xy(1, 7));
+
+		dsTrendPanel = new SignalPanel();
+		dsTrendPanel.setName("dsTrend");
+		dsTrendPanel.setScaleMinRange(100.0);
+		dsTrendPanel.setYAxisLabel("ds");
+		dsTrendPanel.setYLabelRotation(true);
+		dsTrendPanel.getChart().setAxisMode(SignalChart.XAxisMode.POINT);
+		trendsPanel.add(dsTrendPanel, cc.xy(3, 7));
+	}
+
+	protected void showSegmentedBreath(SBCO2Block block) {
+		try {
+			_showSegmentedBreath(block);
+
+			SwingUtilities.invokeAndWait(new Runnable() {
+
+				@Override
+				public void run() {
+					// do nothing...just sync with the GUI thread
+				}
+			});
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	protected void _showSegmentedBreath(SBCO2Block block) throws REngineException, REXPMismatchException {
+		REngine engine = RUtil.getREngine();
+
+		double[] d = block.getFlowData();
+		engine.assign("flow_wave", d);
+		d = block.getVco2Data();
+		engine.assign("vco2_wave", d);
+		d = block.getVolData();
+		engine.assign("vol_wave", d);
+
+		double[] ph2intercept = new double[] { block.getPh2int() };
+		double[] ph2slope = new double[] { block.getMph2() };
+		double[] ph3intercept = new double[] { block.getPh3int() };
+		double[] ph3slope = new double[] { block.getMph3() };
+		double[] ds = new double[] { block.getDs() };
+
+		engine.assign("ph2_intercept", ph2intercept);
+		engine.assign("ph2_slope", ph2slope);
+		engine.assign("ph3_intercept", ph3intercept);
+		engine.assign("ph3_slope", ph3slope);
+		engine.assign("ds", ds);
+
+		if (verbose  > 1) {
+			System.out.println("*********** * * * * ********** * * * * ***********");
+			// System.out.print( "ph2_intercept=" + ph2intercept[0] );
+			// System.out.print( " ph2_slope=" + ph2slope[0] );
+			System.out.print(" ph3_intercept=" + ph3intercept[0]);
+			System.out.print(" ph3_slope=" + ph3slope[0]);
+			System.out.println();
+		}
+
+		ChartRefresher.setGlobalPause(true);
+		// REXP v = engine.parseAndEval("plot(-flow_wave/10, ylim=c(0,100) )");
+		// // exhale is negative flow
+		REXP v = engine.parseAndEval("plot(vco2_wave ~ vol_wave, xlab='Breath Volume', ylab='CO2 Volume' )"); // exhale
+		// is
+		// negative
+		// flow
+		// v = engine.parseAndEval("lines(vco2_wave, col='red')");
+		v = engine.parseAndEval("abline(ph2_intercept, ph2_slope, col='blue', lwd=3)");
+		v = engine.parseAndEval("abline(ph3_intercept, ph3_slope, col='green', lwd=3)");
+		v = engine.parseAndEval("abline(v=ds, col='black', lwd=3)");
+		ChartRefresher.setGlobalPause(false);
+	}
+
+	private RCue initRPlot(String plotName) throws REngineException, REXPMismatchException {
+		RCue.parent = plotHolder;
+
+		REngine engine = RUtil.getREngine();
+		if (engine == null) {
+			GuiUtil.showMessage("R-Engine not ready.");
+			return null;
+		}
+
+		engine.parseAndEval(".setenv <- if (exists(\"Sys.setenv\")) Sys.setenv else Sys.putenv");
+		// engine.eval(".setenv(\"JAVAGD_CLASS_NAME\"=\"idea/r/RCue\")");
+		engine.parseAndEval(".setenv(\"JAVAGD_CLASS_NAME\"=\"idea/r/RCue\")");
+		REXP v = engine.parseAndEval("library(JavaGD)");
+		System.out.println("v=" + v);
+		v = engine.parseAndEval("JavaGD(name=\"" + plotName + "\")");
+		System.out.println("v=" + v);
+		v = engine.parseAndEval("plot(rnorm(100))");
+		System.out.println("v=" + v);
+
+		RCue cue = new RCue();
+		plotter = cue.getPlotter();
+		
+		return cue;
+	}
+
+	@Override
+	public void streamEvent(int jobID, StreamProducer source, StreamID sid, PersistentItem item) {
+		if (flow_desc == null) {
+			return;
+		}
+		if ((sid == StreamID.CONNECTION)) {
+			if (out != null) {
+				ConnectionItem ce = (ConnectionItem) item;
+				if (ce.getStatus() == ConnectionStatus.NOT_CONNECTED) {
+					out.close();
+				}
+			}
+			return;
+		}
+		if (!(sid == StreamID.WAVEFORM)) {
+			return;
+		}
+
+		// long tm = block.getTime();
+
+		segmenter.addWaveform(item);
+		// }
+	}
+
+	private void initSegmenter() {
+		RpLinearUnit tenths_mmHg = new RpLinearUnit(0.1, 0, "mmHg");
+		RpLinearUnit cmH2O_to_mmHg = new RpLinearUnit(0.7355924, 0, "mmHg");
+		RpLinearUnit mbar_to_mmHg = new RpLinearUnit(0.750061683, 0, "mmHg");
+		RpLinearUnit tenths_mbar_to_mmHg = new RpLinearUnit(0.0750061683, 0, "mmHg");
+		RpLinearUnit Lmin = new RpLinearUnit(1.0, 0, "L/min");
+		RpLinearUnit tenths_Lmin = new RpLinearUnit(0.1, 0, "L/min");
+		RpLinearUnit evitaFlow_Lmin = new RpLinearUnit(0.1, -180, "L/min");
+
+		RpLinearUnit co2Unit = null;
+		RpLinearUnit flowUnit = null;
+		RpLinearUnit awpUnit = null;
+
+		String devName = "Cosmo";
+		if (devName.startsWith("Cosmo")) {
+			co2Unit = tenths_mmHg;
+			flowUnit = tenths_Lmin;
+			awpUnit = cmH2O_to_mmHg;
+		} else if (devName.startsWith("NM3") || devName.startsWith("Philips")) {
+			co2Unit = tenths_mmHg;
+			flowUnit = tenths_Lmin;
+			awpUnit = cmH2O_to_mmHg;
+		} else if (devName.startsWith("Evita")) {
+			co2Unit = tenths_mbar_to_mmHg;
+			flowUnit = evitaFlow_Lmin;
+			awpUnit = mbar_to_mmHg;
+		} else {
+			log.warn("Conversion factor unknown for device: {}", devName);
+			GuiUtil.showMessage("Error preparing SBCO2 Breath Segmentation Analysis.  See log.");
+			return;
+		}
+		segmenter.setSourceFlow(flow_desc.getLocation(), flowUnit);
+		segmenter.setSourceCO2(co2_desc.getLocation(), co2Unit);
+		segmenter.setSourceAWP(awp_desc.getLocation(), awpUnit);
+		if (compliance_desc != null) {
+			segmenter.setSourceCompliance(compliance_desc.getLocation(), null);
+		}
+		if (resistance_desc != null) {
+			segmenter.setSourceResistance(resistance_desc.getLocation(), null);
+		}
+	}
+
+	private void initComponents() {
+		// JFormDesigner - Component initialization - DO NOT MODIFY
+		// //GEN-BEGIN:initComponents
+		// Generated using JFormDesigner non-commercial license
+		panel4 = new JPanel();
+		plotHolder = new JPanel();
+		trendsPanel = new JPanel();
+		numericsPanel = new JPanel();
+		CellConstraints cc = new CellConstraints();
+
+		//======== this ========
+		setBorder(Borders.DLU4);
+		setLayout(new FormLayout("default:grow", "fill:default:grow, $lgap, default"));
+
+		//======== panel4 ========
+		{
+			panel4.setLayout(new FormLayout("default:grow, $lcgap, default", "fill:default:grow"));
+
+			//======== plotHolder ========
+			{
+				plotHolder.setLayout(new BorderLayout());
+			}
+			panel4.add(plotHolder, cc.xy(1, 1));
+
+			//======== trendsPanel ========
+			{
+				trendsPanel.setLayout(new FormLayout("[50dlu,default], $rgap, [150dlu,default]",
+						"3*(fill:default:grow, $lgap), fill:default:grow"));
+			}
+			panel4.add(trendsPanel, cc.xy(3, 1));
+		}
+		add(panel4, cc.xy(1, 1));
+
+		//======== numericsPanel ========
+		{
+			numericsPanel.setLayout(new FormLayout("7*(default, $lcgap), default", "60dlu"));
+		}
+		add(numericsPanel, cc.xy(1, 3));
+		// //GEN-END:initComponents
+	}
+
+	// JFormDesigner - Variables declaration - DO NOT MODIFY
+	// //GEN-BEGIN:variables
+	// Generated using JFormDesigner non-commercial license
+	private JPanel panel4;
+	private JPanel plotHolder;
+	private JPanel trendsPanel;
+	private JPanel numericsPanel;
+	// JFormDesigner - End of variables declaration //GEN-END:variables
+
+}

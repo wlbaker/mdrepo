@@ -1,0 +1,22 @@
+	in processResponse
+	
+		case ICC:
+			isCalibrationConfigured = false;  // used for fabius
+			isMetricConfigured = false;
+			isWaveConfigured = false;
+			isTraceConfigured = false;
+			tick = 0;
+	
+	
+	public void sendInitialize() throws IOException {
+		sendByte(ICC);
+	}
+
+
+			if( tick % 10 == 0 ) {
+				try {
+					sendInitialize();
+				} catch (IOException e) {
+					log.error("initialize", e);
+				}
+			}

@@ -1,0 +1,180 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/C:/Users/idea/workspace/chaktaw/ICUInterface/lib/slf4j-log4j12-1.6.6.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/C:/Users/idea/workspace/chaktaw/uim_shiro/lib/shiro/slf4j-log4j12-1.6.6.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+setting log level: icuInterface.adapters to INFO
+2014-06-17 08:23:37,174 WARN [idea.repository.io.sax.DeviceSaxHandler] - unknown qname: rp-repository 
+2014-06-17 08:23:37,186 WARN [idea.repository.io.sax.DeviceSaxHandler] - unknown qname: rp-repository 
+2014-06-17 08:23:37,191 WARN [idea.repository.io.sax.DeviceSaxHandler] - unknown qname: rp-repository 
+2014-06-17 08:23:37,210 WARN [idea.repository.io.sax.DeviceSaxHandler] - unknown qname: rp-repository 
+rebuilt library path: C:\Users\idea\workspace\chaktaw\datamanager/lib\win32;C:\Users\idea\workspace\chaktaw\ICUInterface/lib\win32;
+2014-06-17 08:23:37,926 ERROR [idea.mg_daq.MgDAQLauncher] - Could not load NI support: NI-DAQmx not found. 
+Stable Library
+=========================================
+Native lib Version = RXTX-2.1-7
+Java lib Version   = RXTX-2.1-7
+serial: COM1
+serial: COM2
+serial: COM7
+parallel: LPT1
+2014-06-17 08:23:39,935 WARN [idea.mg_daq.MgDaqFrame] - Skipping port: gnu.io.CommPortIdentifier@d20aca 
+get icon
+set icon: SUBSTANCE HAS A LISTENER ERROR PROBLEM
+2014-06-17 08:23:58,652 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - init_blocks for conf=null 
+2014-06-17 08:24:02,595 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - init_blocks for conf=IntellivueDev 
+2014-06-17 08:24:02,595 ERROR [icuInterface.discovery.SerialDiscoveryService] - At this point, the port is not set for the right baud rate. 
+2014-06-17 08:24:02,595 ERROR [icuInterface.discovery.SerialDiscoveryService] - There may be a better way to do this...???  Just let the device be discovered??? 
+2014-06-17 08:24:02,595 ERROR [icuInterface.discovery.SerialDiscoveryService] - Restrict probing on this port to the indicated device??? 
+2014-06-17 08:24:02,595 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - requesting association 
+2014-06-17 08:24:02,823 WARN [icuInterface.adapters.intellivue.AttributeList] - could be case C.NOM_ATTR_PT_ID_INT -- duplicate attribute number 
+2014-06-17 08:24:02,823 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - association response pkt....FIXME: ASSUME not error 
+Association Response
+header...blob
+MDSEUserInfoStd
+     mddl_version : 0x80000000
+    nomen_version : 0x40000000
+  functional_unit : 0x0
+             syst : 0x800000
+       cold_start : 0x80000000
+*OPTIONS: 
+Attribute List
+         count : 0
+*SUPPORTED_PROFILES: 
+Attribute List
+         count : 1
+  ava [0x1] Poll Profile Support
+  poll_profile_revision : 0x80000000
+        min_poll_period : 50000
+             max_mtu_rx : 996
+             max_mtu_tx : 1000
+              max_bw_tx : 0xffffffff
+                options : 0x60000000 P_OPT_DYN_CREATE_OBJECTS | P_OPT_DYN_DELETE_OBJECTS
+  poll_profile_revision : -2147483648
+*Optional Packages
+Attribute List
+         count : 1
+  ava [0xfffff001] PollProfileExt
+  options : 0x88000000 POLL_EXT_PERIOD_NU_1SEC | POLL_EXT_PERIOD_RTSA
+*attr
+Attribute List
+         count : 0
+2014-06-17 08:24:02,828 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - requestingCaps 
+2014-06-17 08:24:02,844 ERROR [icuInterface.adapters.intellivue.IntellivueDriver] - FIXME: cannot request single poll of RT to get CAPS 
+2014-06-17 08:24:02,889 ERROR [idea.adapters.gui.AdapterGui] - BETA2: build a display configuration from /conf/ and use DisplayConfigForm() 
+2014-06-17 08:24:02,897 WARN [idea.adapters.gui.AdapterGui] - MAY NEED TO RELOAD METRIC SETTINGS 
+2014-06-17 08:24:03,908 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 153604 / CPP 
+Attribute List
+         count : 7
+  ava [0x924] [label] 153604
+  ava [0x92f] [type attribute] 65542
+  ava [0x921] [handle] -31135
+  ava [0x917] [display-res] 768
+  ava [0x911] [color] 5
+  ava [0x927] [label-string] CPP
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c1/a16936/s0/r0
+2014-06-17 08:24:03,910 ERROR [icuInterface.adapters.intellivue.IntellivueDriver] - cannot determine metric type: [AttributeList]  0x924=153604  0x92f=65542  0x921=-31135  0x917=768  0x911=5  0x927=CPP  0x93f=specn(p=8192/c=1/a=16936/s=0/r=0 
+2014-06-17 08:24:03,910 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 150312 / SVR 
+Attribute List
+         count : 7
+  ava [0x927] [label-string] SVR
+  ava [0x921] [handle] -31110
+  ava [0x917] [display-res] 1024
+  ava [0x924] [label] 150312
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c1/a16936/s0/r0
+  ava [0x911] [color] 2
+  ava [0x92f] [type attribute] 65542
+2014-06-17 08:24:03,910 ERROR [icuInterface.adapters.intellivue.IntellivueDriver] - cannot determine metric type: [AttributeList]  0x927=SVR  0x921=-31110  0x917=1024  0x924=150312  0x93f=specn(p=8192/c=1/a=16936/s=0/r=0  0x911=2  0x92f=65542 
+2014-06-17 08:24:03,911 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 150468 / ?SpO? 
+Attribute List
+         count : 7
+  ava [0x92f] [type attribute] 65542
+  ava [0x927] [label-string] ?SpO?
+  ava [0x917] [display-res] 1024
+  ava [0x911] [color] 2
+  ava [0x921] [handle] -31085
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c1/a16936/s0/r0
+  ava [0x924] [label] 150468
+2014-06-17 08:24:03,911 ERROR [icuInterface.adapters.intellivue.IntellivueDriver] - cannot determine metric type: [AttributeList]  0x92f=65542  0x927=?SpO?  0x917=1024  0x911=2  0x921=-31085  0x93f=specn(p=8192/c=1/a=16936/s=0/r=0  0x924=150468 
+2014-06-17 08:24:03,911 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 188440 / ?Temp 
+Attribute List
+         count : 7
+  ava [0x927] [label-string] ?Temp
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c1/a16936/s0/r0
+  ava [0x921] [handle] -31060
+  ava [0x92f] [type attribute] 65542
+  ava [0x917] [display-res] 769
+  ava [0x911] [color] 2
+  ava [0x924] [label] 188440
+2014-06-17 08:24:03,912 ERROR [icuInterface.adapters.intellivue.IntellivueDriver] - cannot determine metric type: [AttributeList]  0x927=?Temp  0x93f=specn(p=8192/c=1/a=16936/s=0/r=0  0x921=-31060  0x92f=65542  0x917=769  0x911=2  0x924=188440 
+2014-06-17 08:24:03,912 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 192620 / Sp-vO? 
+Attribute List
+         count : 7
+  ava [0x917] [display-res] 1024
+  ava [0x921] [handle] -31010
+  ava [0x92f] [type attribute] 65542
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c1/a16936/s0/r0
+  ava [0x927] [label-string] Sp-vO?
+  ava [0x924] [label] 192620
+  ava [0x911] [color] 2
+2014-06-17 08:24:03,913 ERROR [icuInterface.adapters.intellivue.IntellivueDriver] - cannot determine metric type: [AttributeList]  0x917=1024  0x921=-31010  0x92f=65542  0x93f=specn(p=8192/c=1/a=16936/s=0/r=0  0x927=Sp-vO?  0x924=192620  0x911=2 
+2014-06-17 08:24:03,913 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 150052 / PAWP 
+Attribute List
+         count : 6
+  ava [0x911] [color] 2
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c5/a21032/s0/r0
+  ava [0x927] [label-string] PAWP
+  ava [0x924] [label] 150052
+  ava [0x92f] [type attribute] 65542
+  ava [0x921] [handle] -30946
+2014-06-17 08:24:03,914 ERROR [icuInterface.adapters.intellivue.IntellivueDriver] - cannot determine metric type: [AttributeList]  0x911=2  0x93f=specn(p=8192/c=5/a=21032/s=0/r=0  0x927=PAWP  0x924=150052  0x92f=65542  0x921=-30946 
+2014-06-17 08:24:03,914 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 151570 / awRR 
+Attribute List
+         count : 8
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c1/a16936/s0/r0
+  ava [0x927] [label-string] awRR
+  ava [0x924] [label] 151570
+  ava [0x911] [color] 7
+  ava [0x917] [display-res] 768
+  ava [0x92f] [type attribute] 65542
+  ava [0x921] [handle] -30763
+  ava [0x950] [observ] 15.0
+2014-06-17 08:24:03,914 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - refreshPolls 
+2014-06-17 08:24:03,915 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 151724 / CO? 
+Attribute List
+         count : 8
+  ava [0x911] [color] 7
+  ava [0x927] [label-string] CO?
+  ava [0x94b] 38.0,0.0,
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c1/a16936/s258/r0
+  ava [0x92f] [type attribute] 65542
+  ava [0x924] [label] 151724
+  ava [0x917] [display-res] 768
+  ava [0x921] [handle] -30755
+2014-06-17 08:24:03,917 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 151908 / O? 
+Attribute List
+         count : 8
+  ava [0x927] [label-string] O?
+  ava [0x924] [label] 151908
+  ava [0x917] [display-res] 768
+  ava [0x92f] [type attribute] 65542
+  ava [0x921] [handle] -30747
+  ava [0x94b] 29.0,33.0,
+  ava [0x911] [color] 2
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c1/a16936/s258/r0
+2014-06-17 08:24:03,918 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - Updating cap for MEASUREMENT: 152048 / N?O 
+Attribute List
+         count : 8
+  ava [0x93f] Metric Specn     spn  rel time/ctg/access/struc/relev: 8192/c1/a16936/s258/r0
+  ava [0x94b] 64.0,65.0,
+  ava [0x924] [label] 152048
+  ava [0x911] [color] 4
+  ava [0x927] [label-string] N?O
+  ava [0x92f] [type attribute] 65542
+  ava [0x917] [display-res] 768
+  ava [0x921] [handle] -30739
+2014-06-17 08:24:03,923 INFO [icuInterface.adapters.intellivue.IntellivueDriver] - refreshPolls 
+2014-06-17 08:24:03,935 WARN [icuInterface.events.AbstractSignalProducer] - NEED CONNECTION INFO: icuInterface.adapters.IntellivueSerialProxy 
+DEBUG: refresh ending
+2014-06-17 08:33:13,605 WARN [idea.mg_daq.ExportManager] - ExportManager is DISCONNECTING 
+ clearing: Messages
+ clearing: IntellivueDev

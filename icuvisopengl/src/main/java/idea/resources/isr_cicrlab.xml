@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-repository xmlns="http://idea.mil/rp">
+    <name>ISR Animal ICU</name>
+    <hardware>
+        <device>
+            <name>CICR localhost</name>
+            <protocol>IDEA</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>localhost</connectionValue>
+        </device>
+        <device>
+            <name>CICR WLB</name>
+            <protocol>IDEA</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>143.83.157.92</connectionValue>
+        </device>
+        <device>
+            <name>CICR Lab -- Linux PC</name>
+            <protocol>IDEA</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>143.83.221.175</connectionValue>
+        </device>
+    </hardware>
+</rp-repository>

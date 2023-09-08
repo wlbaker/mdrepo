@@ -1,0 +1,86 @@
+syntax = "proto3";
+package imp731;
+
+option java_package = "pista.model";
+
+message ident {
+     string model = 1;  //[9];
+  	 string serial_no = 2; // [10];
+     bytes cpu_id = 3; // [18];
+     bytes adapter_id = 4; // [18];
+     string pim_id = 5; // [18];
+     string spm_model = 6; // [9];
+     string spm_serial = 7; // [10];
+     string silent_mode = 8; // [18];
+     int32 contrast = 9; // ;
+     string emv_version = 10; // [9];
+ }
+
+message status { // settings
+        int32 tv = 1;
+        int32 i_ie = 2;
+        int32 e_ie = 3;
+        int32 peep = 4;
+        int32 Phi = 5;
+        int32 Plow = 6;
+        int32 br = 7;
+        int32 fio2 = 8;
+        int32 trigger = 9;
+        int32 nonop_alarm = 10;
+        int32 op_alarm = 11;
+        int32 advisory_alarm = 12;
+        int32 s_source = 13;
+        int32 s_type = 14;
+        int32 pga_temp = 15;
+        int32 p_o2_tank = 16;
+        int32 p_ambient = 17;
+        int32 p_mode = 18;
+        int32 mode = 19;
+        int32 ie_ratio = 20;
+        int32 bpm_high = 21;
+        int32 bpm_low = 22;
+        int32 tv_high = 23;
+        int32 tv_low = 24;
+        int32 p_support= 25;
+        int32 p_target = 26;
+        int32 rise_tm = 27;
+        int32 max_insp_tm = 28;
+        int32 pct_peak_flow = 29;
+}
+
+message breath { // measurement
+    int32 tv = 1;
+    int32 i_ie = 2;
+    int32 e_ie = 3;
+    int32 peep = 4;
+    int32 pip = 5;
+    int32 bpm = 6;
+    int32 mv = 7;
+    int32 rpm = 8;
+    int32 Pend = 9;
+    int32 Pmean = 10;
+    int32 Ppeak = 11;
+    int32 mgmPO2 = 12;
+    int32 mgmPO2Min = 13;
+    int32 mgmPO2Flow = 14;
+    int32 mgmCompFlow = 15;
+    int32 leak = 16;
+    int32 airway_baseline = 17;
+    int32 failed_autocal = 18;
+    int32 failed_cycles = 19;
+    int32 baseline_noise = 20;
+    int32 pga_paw_offset = 21;
+    int32 pga_o2_offset = 22;
+    int32 pga_flow_offset = 23;
+    int32 o2_mv = 24;
+    int32 plat = 25;
+}
+
+
+message sensors {
+	repeated int32 w0 = 1;
+	repeated int32 w1 = 2;
+	repeated int32 w2 = 3;
+	repeated int32 w3 = 4;
+}
+

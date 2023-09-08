@@ -1,0 +1,32 @@
+/**
+ * @file    location.idl
+ * @author  WMS
+ * @date    MAR 2014
+ * @brief   DICES DIM Location object.
+ * @see     Location Identity 3_3_2014.docx, from Tracy
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Location object
+ *
+ * The Location object represents the physical location of the DICES equipment.
+ */
+
+struct Location : Top
+{
+  string<LONG_STRING_LEN> responsible_organization;
+  string<LONG_STRING_LEN> facility;
+  string<MEDIUM_STRING_LEN> facility_id;
+  string<MEDIUM_STRING_LEN> facility_type;
+  string<MEDIUM_STRING_LEN> unit;
+  string<MEDIUM_STRING_LEN> room;
+  string<MEDIUM_STRING_LEN> bed_id;
+}; //@top-level true
+const string LocationTopic = "ice--Location";
+const string LocationReqTopic = "ice--LocationReq";
+
+};

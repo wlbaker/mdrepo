@@ -1,0 +1,435 @@
+{
+    "ZOLL": {
+        "@SchemaVersion": 9,
+        "NumericsReport": [
+            {
+                "Numerics": {
+                    "@TdrRecVer": 2,
+                    "AudioAlarmActive": 0,
+                    "AudioAlarmTrigger": 0,
+                    "CntId": 10587368,
+                    "Co2ScaleFactor": 43690,
+                    "Co2xid": "0000013F",
+                    "DeltatScaleFactor": 10,
+                    "DeltatXid": "0000013F",
+                    "DevEvtCode": 518,
+                    "HrScaleFactor": 1,
+                    "HrXid": "0000013F",
+                    "Ibp1ScaleFactor": 1,
+                    "Ibp1Xid": "0000005E",
+                    "Ibp2ScaleFactor": 1,
+                    "Ibp2Xid": "00000061",
+                    "Ibp3ScaleFactor": 1,
+                    "Ibp3Xid": "00000064",
+                    "NibpScaleFactor": 43938,
+                    "NibpXid": "0000013F",
+                    "PIScaleFactor": 43706,
+                    "PVIScaleFactor": 43690,
+                    "RespScaleFactor": 1,
+                    "RespXid": "0000013F",
+                    "SpHbScaleFactor": 43946,
+                    "SpOCScaleFactor": 44714,
+                    "SpcoScaleFactor": 43691,
+                    "SpmetScaleFactor": 43690,
+                    "Spo2ScaleFactor": 43690,
+                    "Spo2Xid": "0000013F",
+                    "StdHdr": {
+                        "DevDateTime": "2018-05-01T10:22:13",
+                        "ElapsedTime": 3105,
+                        "GUID": "5AE83FD575A2102F90F6810A17006481",
+                        "MsecTime": 3110306,
+                        "RecId": 33
+                    },
+                    "Temp1ScaleFactor": 10,
+                    "Temp1Xid": "0000013F",
+                    "Temp2ScaleFactor": 10,
+                    "Temp2Xid": "0000013F",
+                    "Trend": {
+                        "Etco2": {
+                            "ChanState": 1,
+                            "TrendData": {
+                                "Alarm": 0,
+                                "DataState": "unmonitored",
+                                "DataStatus": 1,
+                                "Val": {
+                                    "#text": -21846,
+                                    "@Units": 2,
+                                    "@UnitsVal": "mmHG"
+                                }
+                            }
+                        },
+                        "Fico2": {
+                            "ChanState": 1,
+                            "DispFlag": 0,
+                            "TrendData": {
+                                "Alarm": 0,
+                                "DataState": "unmonitored",
+                                "DataStatus": 1,
+                                "Val": {
+                                    "#text": -21846,
+                                    "@Units": 2,
+                                    "@UnitsVal": "mmHG"
+                                }
+                            }
+                        },
+                        "Hr": {
+                            "ChanState": 0,
+                            "SrcLabel": 1,
+                            "SrcLabelVal": "ECG",
+                            "TrendData": {
+                                "Alarm": 0,
+                                "DataState": "invalid",
+                                "DataStatus": 1,
+                                "Val": {
+                                    "#text": -21718,
+                                    "@Units": 10,
+                                    "@UnitsVal": "Beats per minute"
+                                }
+                            }
+                        },
+                        "Ibp": [
+                            {
+                                "@ChanNum": 1,
+                                "ChanState": 1,
+                                "Dia": {
+                                    "TrendData": {
+                                        "Alarm": 0,
+                                        "DataState": "unmonitored",
+                                        "DataStatus": 1,
+                                        "Val": {
+                                            "#text": -21846,
+                                            "@Units": 2,
+                                            "@UnitsVal": "mmHG"
+                                        }
+                                    }
+                                },
+                                "DispForm": 1,
+                                "Map": {
+                                    "TrendData": {
+                                        "Alarm": 0,
+                                        "DataState": "unmonitored",
+                                        "DataStatus": 1,
+                                        "Val": {
+                                            "#text": -21846,
+                                            "@Units": 2,
+                                            "@UnitsVal": "mmHG"
+                                        }
+                                    }
+                                },
+                                "SrcLabel": 7,
+                                "SrcLabelVal": "P1",
+                                "Sys": {
+                                    "TrendData": {
+                                        "Alarm": 0,
+                                        "DataState": "unmonitored",
+                                        "DataStatus": 1,
+                                        "Val": {
+                                            "#text": -30038,
+                                            "@Units": 2,
+                                            "@UnitsVal": "mmHG"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "@ChanNum": 2,
+                                "ChanState": 1,
+                                "Dia": {
+                                    "TrendData": {
+                                        "Alarm": 0,
+                                        "DataState": "unmonitored",
+                                        "DataStatus": 1,
+                                        "Val": {
+                                            "#text": 11946,
+                                            "@Units": 2,
+                                            "@UnitsVal": "mmHG"
+                                        }
+                                    }
+                                },
+                                "DispForm": 1,
+                                "Map": {
+                                    "TrendData": {
+                                        "Alarm": 0,
+                                        "DataState": "unmonitored",
+                                        "DataStatus": 1,
+                                        "Val": {
+                                            "#text": -5454,
+                                            "@Units": 2,
+                                            "@UnitsVal": "mmHG"
+                                        }
+                                    }
+                                },
+                                "SrcLabel": 7,
+                                "SrcLabelVal": "P2",
+                                "Sys": {
+                                    "TrendData": {
+                                        "Alarm": 0,
+                                        "DataState": "unmonitored",
+                                        "DataStatus": 1,
+                                        "Val": {
+                                            "#text": -16726,
+                                            "@Units": 2,
+                                            "@UnitsVal": "mmHG"
+                                        }
+                                    }
+                                }
+                            },
+                            {
+                                "@ChanNum": 3,
+                                "ChanState": 1,
+                                "Dia": {
+                                    "TrendData": {
+                                        "Alarm": 0,
+                                        "DataState": "unmonitored",
+                                        "DataStatus": 1,
+                                        "Val": {
+                                            "#text": -21846,
+                                            "@Units": 2,
+                                            "@UnitsVal": "mmHG"
+                                        }
+                                    }
+                                },
+                                "DispForm": 1,
+                                "Map": {
+                                    "TrendData": {
+                                        "Alarm": 0,
+                                        "DataState": "unmonitored",
+                                        "DataStatus": 1,
+                                        "Val": {
+                                            "#text": -21846,
+                                            "@Units": 2,
+                                            "@UnitsVal": "mmHG"
+                                        }
+                                    }
+                                },
+                                "SrcLabel": 7,
+                                "SrcLabelVal": "P3",
+                                "Sys": {
+                                    "TrendData": {
+                                        "Alarm": 0,
+                                        "DataState": "unmonitored",
+                                        "DataStatus": 1,
+                                        "Val": {
+                                            "#text": -23894,
+                                            "@Units": 2,
+                                            "@UnitsVal": "mmHG"
+                                        }
+                                    }
+                                }
+                            }
+                        ],
+                        "LtaState": 0,
+                        "LtaStateVal": "None",
+                        "Nibp": {
+                            "ChanState": 1,
+                            "Dia": {
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "unmonitored",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": -21782,
+                                        "@Units": 2,
+                                        "@UnitsVal": "mmHG"
+                                    }
+                                }
+                            },
+                            "DispForm": 1,
+                            "Map": {
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "unmonitored",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": -21846,
+                                        "@Units": 2,
+                                        "@UnitsVal": "mmHG"
+                                    }
+                                }
+                            },
+                            "Sys": {
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "unmonitored",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": 10922,
+                                        "@Units": 2,
+                                        "@UnitsVal": "mmHG"
+                                    }
+                                }
+                            },
+                            "Time": 0
+                        },
+                        "PatMode": 0,
+                        "Resp": {
+                            "ChanState": 0,
+                            "NoBreathAlarmActive": 0,
+                            "SrcLabel": 1,
+                            "SrcLabelVal": "Impedence Respiration",
+                            "TrendData": {
+                                "Alarm": 0,
+                                "DataState": "invalid",
+                                "DataStatus": 1,
+                                "Val": {
+                                    "#text": -17750,
+                                    "@Units": 11,
+                                    "@UnitsVal": "Breaths per minute"
+                                }
+                            }
+                        },
+                        "Spo2": {
+                            "ChanState": 0,
+                            "PI": {
+                                "Monitoring": 1,
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "invalid",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": 43690,
+                                        "@Units": 5,
+                                        "@UnitsVal": "Percent (%)"
+                                    }
+                                }
+                            },
+                            "PVI": {
+                                "Monitoring": 1,
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "invalid",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": 35466,
+                                        "@Units": 5,
+                                        "@UnitsVal": "Percent (%)"
+                                    }
+                                }
+                            },
+                            "SpCo": {
+                                "Monitoring": 1,
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "invalid",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": 43690,
+                                        "@Units": 5,
+                                        "@UnitsVal": "Percent (%)"
+                                    }
+                                }
+                            },
+                            "SpHb": {
+                                "Monitoring": 1,
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "invalid",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": 43694,
+                                        "@Mode": 0,
+                                        "@ModeVal": "Arterial",
+                                        "@Units": 36,
+                                        "@UnitsVal": "g/dL"
+                                    }
+                                }
+                            },
+                            "SpMet": {
+                                "Monitoring": 1,
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "invalid",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": 43754,
+                                        "@Units": 5,
+                                        "@UnitsVal": "Percent (%)"
+                                    }
+                                }
+                            },
+                            "SpOC": {
+                                "Monitoring": 1,
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "invalid",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": 43690,
+                                        "@Units": 38,
+                                        "@UnitsVal": "ml/dL"
+                                    }
+                                }
+                            },
+                            "TrendData": {
+                                "Alarm": 0,
+                                "DataState": "invalid",
+                                "DataStatus": 1,
+                                "Val": {
+                                    "#text": -17750,
+                                    "@Units": 5,
+                                    "@UnitsVal": "Percent (%)"
+                                }
+                            }
+                        },
+                        "Temp": [
+                            {
+                                "@Type": 1,
+                                "ChanState": 1,
+                                "SrcLabel": 1,
+                                "SrcLabelVal": "Temp 1",
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "unmonitored",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": -17734,
+                                        "@Units": 4,
+                                        "@UnitsVal": "Degrees F"
+                                    }
+                                }
+                            },
+                            {
+                                "@Type": 2,
+                                "ChanState": 1,
+                                "SrcLabel": 1,
+                                "SrcLabelVal": "Temp 2",
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "unmonitored",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": -17750,
+                                        "@Units": 4,
+                                        "@UnitsVal": "Degrees F"
+                                    }
+                                }
+                            },
+                            {
+                                "@Type": 3,
+                                "ChanState": 1,
+                                "SrcLabel": -2,
+                                "SrcLabelVal": "Delta Temp",
+                                "TrendData": {
+                                    "Alarm": 0,
+                                    "DataState": "unmonitored",
+                                    "DataStatus": 1,
+                                    "Val": {
+                                        "#text": -21830,
+                                        "@Units": 4,
+                                        "@UnitsVal": "Degrees F"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "TrendStatus": {
+                        "Trend30Min": 1,
+                        "Trend30Sec": 1,
+                        "TrendAlarm": 1
+                    },
+                    "XidCode": "0000013F"
+                }
+            }
+        ]
+    }
+}

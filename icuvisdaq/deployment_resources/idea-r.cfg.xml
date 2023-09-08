@@ -1,0 +1,30 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\opt\pub\idea-r\bin\idea-r.jar</jar>
+  <outfile>C:\opt\pub\idea-r\bin\idea-r.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>C:\opt\workspace\comanche\cardioStrip\deployment_resources\biosig.ico</icon>
+  <jre>
+    <path></path>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion>9.0.0</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <initialHeapSize>256</initialHeapSize>
+    <maxHeapSize>512</maxHeapSize>
+  </jre>
+  <splash>
+    <file>C:\opt\workspace\comanche\cardioStrip\deployment_resources\iris-closeup.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>180</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+</launch4jConfig>

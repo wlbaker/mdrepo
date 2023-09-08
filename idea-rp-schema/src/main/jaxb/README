@@ -1,0 +1,4 @@
+TODO:
+
+?? add @XmlRootElement(name="RpUnit" ) to RpLinearUnit and RpPrecisionUnit
+?? Mark RpUnit as @XmlTransient in RpMetric ?? 

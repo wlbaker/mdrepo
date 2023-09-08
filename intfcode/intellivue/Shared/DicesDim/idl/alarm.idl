@@ -1,0 +1,289 @@
+/**
+ * @file    alarm.idl
+ * @author  WMS
+ * @date    FEB 2014
+ * @brief   DICES DIM Alarm object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201 (x73)
+ * @see     IEC 60601-1-8:2006+A1:2012 Medical electrical equipment - Part 1-8:
+ *          General requirements for basic safety and essential performance �
+ *          Collateral standard: General requirements, tests and guidance for
+ *          alarm systems in medical electrical equipment and medical
+ *          electrical systems (x601)
+ *
+ * @note    Some structures have member variable tbd -> to be determined.
+ */
+#include <common.idl>
+
+module ice
+{
+//===============================================================================
+/**
+ * Alarm object
+ */
+
+enum AlarmInitialPriority
+{
+  no_priority_provided = 0,         // No alarm condition or information signal
+  low_priority = 1,     // Indicates operator awareness required
+  medium_priority = 2,  // Indicates prompt operator response required
+  high_priority = 3     // Indicates immediate operator response required
+};
+
+enum AlarmSignalInactivationState
+{
+  /**
+   * x601, Table 5 - ALARM SIGNAL inactivation states
+   */
+
+  si_none = 0,
+
+  // All or part of the alarm system does not generate auditory alarm signal
+  // (limited/timed duration)
+  si_audio_paused = 1,
+
+  // All or part of the alarm system does not generate (neither visual nor
+  // audio) alarm signals
+  // (limited/timed duration)
+  si_alarm_paused = 2,
+
+  // All or part of the alarm system does not generate auditory alarm signal
+  // (indefinite duration)
+  si_audio_off = 3,
+
+  // All or part of the alarm system does not generate (neither visual nor
+  // audio) alarm signals
+  // (indefinite duration)
+  si_alarm_off = 4,
+
+  // An indefinite ACKNOWLEDGED does not terminate after a defined duration
+  // (indeterminate duration)
+  si_indefinite_acknowledged = 5,
+
+  // A timed ACKNOWLEDGED terminates after a defined duration
+  // (limited/timed duration)
+  si_timed_acknowledged = 6
+
+  /*
+   * [x601, 3.27] defines the term
+   *    ACKNOWLEDGED
+   *    state of an ALARM SYSTEM initiated by OPERATOR action, where the
+   *    auditory ALARM SIGNAL associated with a currently active ALARM
+   *    CONDITION is inactivated until the ALARM CONDITION no longer exists.
+   *
+   *    NOTE 1 ACKNOWLEDGED only affects ALARM SIGNALS that are active at the
+   *    time of the OPERATOR action.
+   *
+   *    NOTE 2 ACKNOWLEDGED can terminate after a predetermined time interval
+   *    has elapsed.
+   */
+};
+
+struct AlarmSignalInactivationEntry
+{
+  AlarmSignalInactivationState state;
+  Timespec timestamp;
+
+}; //@top-level false
+typedef sequence<AlarmSignalInactivationEntry> AlarmSignalInactivationList;
+
+enum LatchingType
+{
+  // A non-latching alarm signal automatically terminates its triggering event
+  // no longer exists.
+  non_latching = 0,
+
+  // A latching alarm signal continues to be generated after its triggering
+  // event no longer exists.
+  latching = 1
+};
+
+enum AlarmEscalationType
+{
+  ae_low_to_medium = 0,
+  ae_medium_to_high = 1,
+  ae_low_to_high = 2,
+  ae_medium_to_low = 3,
+  ae_high_to_medium = 4,
+  ae_high_to_low = 5
+};
+
+enum AlarmEscalationPath
+{
+  limit_path = 0,
+  algorithmic_path = 1
+};
+
+struct AlarmEscalationStateEntry
+{
+  AlarmEscalationType type;
+  AlarmEscalationPath path;
+}; //@top-level false
+typedef sequence<AlarmEscalationStateEntry> AlarmEscalationStateList;
+
+enum SignalConditionType
+{
+  physiological_alarm_signal = 0,
+  technical_alarm_signal = 1,
+  reminder_signal = 2,
+  information_signal = 3  // Any signal not an alarm signal or reminder signal
+};
+/**
+ * NOTE (from x601):
+ * ALARM SIGNALS are only generated because of the presence of ALARM
+ * CONDITIONS. In contrast, INFORMATION SIGNALS are those generated
+ * regardless of whether or not an ALARM CONDITION is present, e.g. the tone of
+ * the pulse oximeter, the tone of the electrocardiograph, the waveform of the
+ * electrocardiograph, the heart rate numeric. INFORMATION SIGNALS are
+ * independent of ALARM CONDITIONS, although INFORMATION SIGNALS can frequently
+ * convey information that is �alarming� to the OPERATOR.
+ */
+
+enum LimitType
+{
+  not_a_limit = 0,
+  high_limit = 1,
+  low_limit = 2
+};
+
+enum AlarmConditionType
+{
+  not_an_alarm = 0,
+  al_limit = 1,
+  al_algorithm = 2
+};
+
+struct AlarmLimit
+{
+  LimitType type;
+  float value;
+}; //@top-level false
+
+struct SignalCondition
+{
+  SignalConditionType type;
+  AlarmLimit limit;
+  OIDType alarm_code; // From x73 events nomenclature partition ????
+  OIDType unit_code;  // From DIMension partition
+}; //@top-level false
+
+enum VisualAlarmSignalType
+{
+  operator_position = 0,  // Signal perceived correctly at 1 meter
+  distant_position = 1    // Signal perceived correctly at 4 meter
+};
+
+struct VisualAlarmCharacteristics
+{
+  VisualAlarmSignalType type;
+
+  // TBD:  color, brightness, flashing???
+}; //@top-level false
+
+struct AuditoryAlarmCharacteristics
+{
+  INT32 tbd;
+}; //@top-level false
+
+typedef sequence<OIDType> AlarmParameterList;
+
+struct AlarmPresetList
+{
+  INT32 tbd;
+}; //@top-level false
+
+/**
+ * Physiological Alarm condition arising from a monitored patient-related
+ * variable [x601, 3.31], or Technical Alarm condition arising from a monitored
+ * equipment-related variable [x601, 3.36].
+ */
+struct AlarmSignal : VMO
+{
+  // From X73 metric or object-oriented nomenclature partition.
+  OIDType alarm_source;  //@key
+  long context_seq_number;
+
+  AlarmInitialPriority initial_priority;
+  AlarmSignalInactivationList inactivation_list;
+  LatchingType latch;
+
+  Timespec device_timestamp; //@Optional
+  Duration device_relative_timestamp; //@Optional
+}; //@top-level true
+
+/**
+ * Information signals convey information that is independent of an alarm
+ * condition. An information signal is any signal that is not an alarm signal
+ * or a reminder signal. [x601, 3.23]
+ */
+struct InformationSignal : VMO
+{
+  // From X73 metric or object-oriented nomenclature partition.
+  OIDType alarm_source;  //@key
+  long context_seq_number;
+  string<LONG_STRING_LEN> info_text;
+
+  Timespec device_timestamp; //@Optional
+  Duration device_relative_timestamp; //@Optional
+}; //@top-level true
+
+/**
+ * A periodic signal that reminds the operator that the alarm system is in an
+ * alarm signal inactivation state. [x601, 3.34]
+ */
+struct ReminderSignal : VMO
+{
+  // From X73 metric or object-oriented nomenclature partition.
+  OIDType alarm_source;  //@key
+  long context_seq_number;
+  INT32 signal_update_seconds;
+
+  Timespec device_timestamp; //@Optional
+  Duration device_relative_timestamp; //@Optional
+}; //@top-level true
+
+/**
+ * Alarm system configuration, including but not limited to: alarm limits; the
+ * characteristics of any alarm signal inactivation states; and the values of
+ * variables or parameters that determine the function of the alarm system.
+ *
+ * NOTE   Some algorithmically-determined alarm contexts can require time to
+ * be determined or re-determined. [x601, 3.8]
+ */
+struct AlarmContext : VMO
+{
+  OIDType alarm_source;  //@key
+  long context_seq_number;
+  string<LONG_STRING_LEN> event_message;
+  AlarmInitialPriority initial_priority;
+  LatchingType latch;
+  INT32 alarm_condition_seconds;
+  INT32 alarm_signal_generation_delay;
+  AlarmSignalInactivationState alarm_signal_inactivation_state;
+  AuditoryAlarmCharacteristics auditory_alarm_signal_set;
+  INT32 alarm_paused_seconds;
+  INT32 audio_paused_seconds;
+  INT32 alarm_acknowledge_seconds;
+  SignalCondition alarm_condition;
+  AlarmParameterList alarm_parameters;
+  AlarmPresetList alarm_preset_list;
+  AlarmEscalationStateList escalation_list;
+  VisualAlarmCharacteristics visual_alarm_characteristics;
+  INT32 auditory_reminder_signal_seconds;
+  INT32 auditory_alarm_signal_db;
+
+}; //@top-level true
+
+const string PhysiologicalAlarmSignalTopic = "ice--PhysiologicalAlarmSignal";
+const string TechnicalAlarmSignalTopic = "ice--TechnicalAlarmSignal";
+
+const string InformationSignalTopic = "ice--InformationSignal";
+
+const string ReminderSignalTopic = "ice--ReminderSignal";
+
+const string PhysiologicalAlarmContextTopic = "ice--PhysiologicalAlarmContext";
+const string PhysiologicalAlarmContextReqTopic = "ice--PhysiologicalAlarmContextReq";
+const string TechnicalAlarmContextTopic = "ice--TechnicalAlarmContext";
+const string TechnicalAlarmContextReqTopic = "ice--TechnicalAlarmContextReq";
+
+};

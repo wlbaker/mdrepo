@@ -1,0 +1,74 @@
+/**
+ * @file    numeric.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Numeric object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <metric.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Numeric object
+ */
+
+struct AbsoluteRange
+{
+  FLOATType lower_value;
+  FLOATType upper_value;
+}; //@top-level false
+
+struct DispResolution
+{
+  INTU8 pre_point;  // digits before decimal point
+  INTU8 post_point; // digits after decimal point
+}; //@top-level false
+
+struct NuObsValue
+{
+  OIDType   metric_id;  //@key
+  MeasurementStatus state;
+  OIDType   unit_code;
+  FLOATType value;
+}; //@top-level false
+
+struct NumericContext : MetricContext
+{
+  AbsoluteRange nu_measure_range; //@Optional
+  AbsoluteRange nu_physiological_range; //@Optional
+  DispResolution display_resolution; //@Optional
+  FLOATType accuracy; //@Optional
+}; //@top-level true
+
+struct NumericObservedValue : MetricObservedValue
+{
+  NuObsValue nu_observed_value;
+}; //@top-level true
+
+/**
+ * Numeric Measurement
+ */
+const string NumericMeasContextTopic = "ice--NumericMeasContext";
+const string NumericMeasContextReqTopic = "ice--NumericMeasContextReq";
+const string NumericMeasObservedValueTopic = "ice--NumericMeasObservedValue";
+
+/**
+ * Numeric Calculation
+ */
+const string NumericCalcContextTopic = "ice--NumericCalcContext";
+const string NumericCalcContextReqTopic = "ice--NumericCalcContextReq";
+const string NumericCalcObservedValueTopic = "ice--NumericCalcObservedValue";
+
+/**
+ * Numeric Setting
+ */
+const string NumericSettContextTopic = "ice--NumericSettContext";
+const string NumericSettContextReqTopic = "ice--NumericSettContextReq";
+const string NumericSettObservedValueTopic = "ice--NumericSettObservedValue";
+const string NumericSettObservedValueReqTopic =
+  "ice--NumericSettObservedValueReq";
+
+};

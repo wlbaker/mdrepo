@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+   		implementation project(":appsupportswing")
+   		implementation project(":dm-core")
+   		implementation project(":idea-core")
+   		implementation project(":idea-rp-schema")
+
+    implementation 'org.jogamp.gluegen:gluegen-rt-main:2.3.2'
+    implementation 'org.jogamp.jogl:jogl-all:2.3.2'
+    
+    implementation 'org.jogamp.jogl:jogl-all:2.3.2:natives-windows-i586'
+    implementation 'org.jogamp.jogl:jogl-all:2.3.2:natives-windows-amd64'
+    implementation 'org.jogamp.jogl:jogl-all:2.3.2:natives-linux-amd64'
+
+
+    implementation "org.mini2Dx:universal-tween-engine:6.3.3"
+    implementation 'com.jgoodies:jgoodies-forms:1.7.2'
+
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+    implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+    implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+
+    // implementation 'org.eclipse.swt:org.eclipse.swt.gtk.linux.x86_64:4.3'
+    implementation 'org.eclipse.swt:org.eclipse.swt.win32.win32.x86_64:4.3'
+
+    // implementation 'org.jogamp.jogl:newt:2.2.4'
+    // implementation 'org.jogamp.jogl:jogl:2.2.4'
+    testImplementation 'junit:junit:4.12'
+}
+
+configurations {
+    implementation {
+        description = "implementation classpath"
+        transitive = true
+    }
+    runtime {
+        extendsFrom implementation
+    }
+}
+
+
+

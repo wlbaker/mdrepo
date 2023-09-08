@@ -1,0 +1,12 @@
+
+FIRST
+------
+
+See platform specific notes in directory above this.
+
+Use the build script in the directory ABOVE this one...root of pista repository...and execute the 
+script in that directory as well.
+
+Build process currently uses cmake and ninja.  Short scripts to configure the build with the
+default cmake options are given in the directory above.
+

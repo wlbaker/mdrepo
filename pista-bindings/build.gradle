@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+group = "idea"
+version = '0.90'
+
+repositories {
+        // mavenLocal()
+        mavenCentral()
+}
+
+sourceSets {
+    main.java.srcDirs = ['java/gen']
+}
+
+dependencies {
+    println "PISTA COMPILING SUB: " + project.name
+    println "               ROOT: " + project.rootDir
+
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    
+    implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+    implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+    implementation 'org.apache.logging.log4j:log4j-core:2.1'
+
+    testImplementation 'junit:junit:4.12'
+}
+

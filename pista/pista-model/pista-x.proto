@@ -1,0 +1,29 @@
+import "google/protobuf/descriptor.proto";
+
+message MetricOptions {
+  required string loc = 1;
+  optional string code = 2;
+  optional string desc = 3;
+
+  required string unit = 4 [default = ""];
+  optional precision = 5 [default 0];
+  optional double m = 6 [default 1];
+  optional double b = 7;
+
+  required int subtyp = 8; [ default 1 ];  
+}
+
+message TextOptions {
+  optional double text_len = 10;
+}
+  
+message WaveOptions {
+  optional double freq = 20;
+  optional double spp = 31;
+}
+
+extend google.protobuf.FieldOptions {
+  optional MetricOptions m = 1000;
+  optional TextOptions t = 1001;
+  optional WaveOptions w = 1002;
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\idea\EXPORT\idea\bin\idea_gui.jar</jar>
+  <outfile>C:\Users\idea\EXPORT\idea\bin\idea_gui.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>C:\Users\idea\workspace\nih\cardioStrip\deployment_resources\biosig.ico</icon>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion>9.0.0</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+    <initialHeapSize>256</initialHeapSize>
+    <maxHeapSize>512</maxHeapSize>
+    <opt>-Djava.library.path=&quot;%EXEDIR%&quot;</opt>
+  </jre>
+  <splash>
+    <file>C:\Users\idea\workspace\nih\cardioStrip\deployment_resources\iris-closeup.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+</launch4jConfig>

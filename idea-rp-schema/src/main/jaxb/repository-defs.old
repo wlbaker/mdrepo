@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://idea.mil/rp"
+	elementFormDefault="qualified" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:version="1.0"
+	jaxb:extensionBindingPrefixes="xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:in="http://idea.mil/rp">
+
+	<!--
+			<xs:element name="startDate" type="xs:time" />
+			<xs:element name="completeDate" type="xs:time"></xs:element>
+			<xs:element name="surgeryDate" type="xs:dateTime"></xs:element>
+			<xs:element name="createDate" type="xs:dateTime"></xs:element>
+			<xs:element name="modifyDate" type="xs:dateTime"></xs:element>
+	-->
+
+	<xs:element name="rp-study-impl" type="in:rp-study"></xs:element>
+
+	<xs:complexType name="rp-unit">
+		<xs:sequence>
+			<xs:element name="unitName" type="xs:string" />
+			<xs:element name="cached-typ" type="xs:int" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-linear-unit">
+		<xs:complexContent>
+			<xs:extension base="in:rp-unit">
+				<xs:sequence>
+					<xs:element name="m" type="xs:double" />
+					<xs:element name="b" type="xs:double" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="rp-precision-unit">
+		<xs:complexContent>
+			<xs:extension base="in:rp-unit">
+				<xs:sequence>
+					<xs:element name="precision" type="xs:int" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="rp-study">
+		<xs:sequence>
+			<xs:element name="identifier" type="xs:string"></xs:element>
+			<xs:element name="title" type="xs:string" />
+			<xs:element name="pi" type="xs:string"></xs:element>
+			<xs:element name="startDate" type="xs:dateTime" />
+			<xs:element name="completeDate" type="xs:dateTime"></xs:element>
+			<xs:element name="status" type="xs:string"></xs:element>
+			<xs:element name="hardware" type="in:rp-hardware"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="analysis" type="in:rp-analysis"
+				minOccurs="0" maxOccurs="unbounded" />
+
+			<xs:element name="repository-link" type="xs:string"></xs:element>
+			<xs:element name="repository-id" type="xs:string"></xs:element>
+			<xs:element name="resources" type="in:rp-resource"
+				minOccurs="0" maxOccurs="unbounded">
+			</xs:element>
+			<xs:element name="keyValuePair" type="in:StringStringMapModeller"
+				maxOccurs="unbounded" minOccurs="0">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="rp-hardware">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"></xs:element>
+			<xs:element name="devices" type="in:rp-device" minOccurs="0"
+				maxOccurs="unbounded">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="rp-connType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RS_232" />
+			<xs:enumeration value="Ethernet" />
+			<xs:enumeration value="Proxy" />
+			<xs:enumeration value="Phidget" />
+			<xs:enumeration value="DAQmx" />
+			<xs:enumeration value="DAQmxBase" />
+			<xs:enumeration value="SEALINK" />
+			<xs:enumeration value="None" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="rp-device">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"></xs:element>
+			<xs:element name="driverName" type="xs:string"></xs:element>
+			<xs:element name="modelName" type="xs:string"></xs:element>
+			<xs:element name="deviceClass" type="xs:string"></xs:element>
+			<xs:element name="connectionType" type="in:rp-connType"></xs:element>
+			<xs:element name="connectionValue" type="xs:string"></xs:element>
+			<xs:element name="param" type="in:StringStringMapModeller"></xs:element>
+			<xs:element name="streams" type="in:rp-stream" minOccurs="0"
+				maxOccurs="unbounded">
+			</xs:element>
+			<xs:element name="devices" type="in:rp-device" maxOccurs="unbounded"
+				minOccurs="0">
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-stream">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"></xs:element>
+			<xs:element name="model" type="xs:string"></xs:element>
+			<xs:element name="metric" type="in:rp-metric" maxOccurs="unbounded"
+				minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-analysis">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"></xs:element>
+			<xs:element name="analysisClass" type="xs:string"></xs:element>
+			<xs:element name="param" type="in:StringStringMapModeller"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="StringStringMapModeller">
+		<xs:sequence>
+			<xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="key" type="xs:string" />
+						<xs:element name="value" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-metric">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="code" type="xs:string" />
+			<xs:element name="location" type="xs:string" />
+
+			<xs:element name="subtyp" type="xs:int" maxOccurs="1"
+				minOccurs="0">
+			</xs:element>
+			<xs:element name="unit" type="in:rp-unit"></xs:element>
+			<xs:element name="sample-rate" type="xs:int" maxOccurs="1"
+				minOccurs="0" />
+			<xs:element name="samples-per-packet" type="xs:int"
+				maxOccurs="1" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-subject">
+		<xs:sequence>
+			<xs:element name="identifier" type="xs:string"></xs:element>
+			<xs:element name="branch" type="xs:string"></xs:element>
+
+			<xs:element name="company" type="xs:string"></xs:element>
+			<xs:element name="organization" type="xs:string"></xs:element>
+			<xs:element name="location" type="xs:string"></xs:element>
+			<xs:element name="dataType" type="xs:int"></xs:element>
+			<xs:element name="studyTitle" type="xs:string"></xs:element>
+			<xs:element name="surgeryDate" type="xs:dateTime"></xs:element>
+			<xs:element name="subject" type="xs:string"></xs:element>
+			<xs:element name="medicalId" type="xs:string"></xs:element>
+			<xs:element name="baseFileName" type="xs:string"></xs:element>
+			<xs:element name="operator" type="xs:string"></xs:element>
+			<xs:element name="seqNo" type="xs:string"></xs:element>
+			<xs:element name="notes" type="xs:string"></xs:element>
+
+			<xs:element name="sampleRate" type="xs:int"></xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-display">
+		<xs:sequence>
+			<xs:element name="numBands" type="xs:int"></xs:element>
+			<xs:element name="numPBoxes" type="xs:int"></xs:element>
+			<xs:element name="horizPBoxes" type="xs:int"></xs:element>
+			<xs:element name="vertPBoxes" type="xs:int"></xs:element>
+			<xs:element name="opmode" type="xs:int"></xs:element>
+			<xs:element name="bandData" type="in:rp-bandData"
+				maxOccurs="unbounded" minOccurs="0"></xs:element>
+			<xs:element name="pboxData" type="in:rp-pboxData"
+				maxOccurs="unbounded" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-bandData">
+		<xs:sequence>
+			<xs:element name="bandNum" type="xs:int"></xs:element>
+			<xs:element name="bandAttr" type="xs:int"></xs:element>
+			<xs:element name="waveformSetup" type="in:rp-waveformSetup"
+				maxOccurs="unbounded" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-waveformSetup">
+		<xs:sequence>
+			<xs:element name="sweepSpeed" type="xs:int"></xs:element>
+			<xs:element name="sampleRate" type="xs:int"></xs:element>
+			<xs:element name="scaleValue1" type="xs:int"></xs:element>
+			<xs:element name="scaleValue2" type="xs:int"></xs:element>
+			<xs:element name="signalGroup" type="xs:string"></xs:element>
+			<xs:element name="signalId" type="xs:string"></xs:element>
+			<xs:element name="waveColor" type="xs:string"></xs:element>
+			<xs:element name="loc" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-pboxData">
+		<xs:sequence>
+			<xs:element name="pboxId" type="xs:int"></xs:element>
+			<xs:element name="pboxFormat" type="xs:int"></xs:element>
+			<xs:element name="foreground" type="xs:int"></xs:element>
+			<xs:element name="paramSetup" type="in:rp-metric"
+				maxOccurs="unbounded" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="rp-display-impl" type="in:rp-display"></xs:element>
+
+	<xs:complexType name="rp-file">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"></xs:element>
+			<xs:element name="parent" type="xs:string"></xs:element>
+			<xs:element name="size" type="xs:int"></xs:element>
+			<xs:element name="createDate" type="xs:dateTime"></xs:element>
+			<xs:element name="modifyDate" type="xs:dateTime"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="rp-resource">
+		<xs:sequence>
+			<xs:element name="typ" type="in:rp-resourceType"></xs:element>
+			<xs:element name="location" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="typType">
+		<xs:restriction base="xs:string"></xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="rp-resourceType" final="restriction">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="H5_DATAFILE"></xs:enumeration>
+			<xs:enumeration value="RDB_DATASET"></xs:enumeration>
+			<xs:enumeration value="X_DOCUMENT"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>

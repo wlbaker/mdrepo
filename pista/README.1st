@@ -1,0 +1,6 @@
+Currently must build projects in a specific order.
+
+* pista-core
+* contrib/jDAQmx
+* pista-bindings (java)
+* pista-idea

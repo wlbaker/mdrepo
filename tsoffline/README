@@ -1,0 +1,43 @@
+1237-86  -- 263-97
+
+Strategy:
+
+Each PCamera is effectively a "band" of the display graph.  Each waveform display may consist 
+of multiple bands, one above another.
+
+Each signal is a layer in the "band".  The x coordinate of the signal is time (in seconds) relative 
+to start of data collection.  The x-scale of every layer is 1.  The x-offset of every layer can be 
+adjusted with calibration.
+
+The y-offset and y-scale of the layer are determined exclusively by calibration.
+
+The y-scale of the band camera can be adjusted by the user. 
+
+---------------
+Note: new plotting library with Swing/SWT/AWT/JavaFX/OpenGL: http://www.jzy3d.org/
+Note: For Python: matplotlib, pyplot
+---------------
+Note: for COM/OLE automation, consider com4j
+---------------
+19 Oct 16
+* reset scale in replay bar as size is changed
+* fix center RANGE!
+* filter type name not appearing
+* save filter info for session
+* export all!
+* filter box graph has meaningless domain
+
+
+19 Sept 16
+	Fix the R-wave peak detector
+	Export all signals to spreadsheet with Features/Annotations/Events/ etc.
+	Ability to LEAD/LAG and identify the beat-id in an exported column
+	Oscilloscope Pick oscilloscope view in the app¦maybe trend the color
+	-- call it the beat-by-beat analysis screen¦precursor to ensemble average overlap graph
+	[SORT BY CYCLE LENGTH]
+	Fix +/-
+	Fix file open error
+	Second Band for ECG
+
+* Fix export: timestamp misaligned between layers
+* Fix import: recursive layers?

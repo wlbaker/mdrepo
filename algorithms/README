@@ -1,0 +1,18 @@
+-----------------------------------
+
+R Integration
+-------------
+
+The following R packages should be installed through the R interface:
+* rJava
+* JavaGD
+
+-----------------------------------
+
+Gradle tasks depend on a junction to R in c:\opt\tools\r.
+Create the junction using the commands:
+
+cd \opt\tools\r
+mklink /J latest R-3.5.0
+
+

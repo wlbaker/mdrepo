@@ -1,0 +1,42 @@
+option java_outer_classname = "T";
+
+import "google/protobuf/descriptor.proto";
+
+
+message FooOptions {
+  optional int32 opt1 = 1;
+  optional string opt2 = 2;
+}
+
+extend google.protobuf.FieldOptions {
+  optional FooOptions foo_options = 1234;
+}
+
+// usage:
+message Bar {
+  optional int32 a = 1 [(foo_options).opt1 = 123, (foo_options).opt2 = "baz"];
+  // alternative aggregate syntax (uses TextFormat):
+  optional int32 b = 2 [(foo_options) = { opt1: 123 opt2: "mmHg" }];
+}
+
+message TestMessOneof {
+  oneof test_oneof {
+    int32 test_int32 = 1;
+    sint32 test_sint32 = 2;
+    sfixed32 test_sfixed32 = 3;
+    int64 test_int64 = 4;
+    sint64 test_sint64 = 5;
+    sfixed64 test_sfixed64 = 6;
+    uint32 test_uint32 = 7;
+    fixed32 test_fixed32 = 8;
+    uint64 test_uint64 = 9;
+    fixed64 test_fixed64 = 10;
+    float test_float = 11;
+    double test_double = 12;
+    bool test_boolean = 13;
+    string test_string = 16;
+    bytes test_bytes = 17;
+  }
+  optional int32 opt_int = 19;
+}
+

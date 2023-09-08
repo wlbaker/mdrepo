@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-study-impl xmlns="http://idea.mil/rp">
+    <title>animal-icu-bay2</title>
+    <pi>bbaker</pi>
+    <startDate>14:17:24.406-05:00</startDate>
+    <hardware>
+        <name>untitled-hw-config</name>
+        <devices>
+            <name>IDEA</name>
+            <deviceClass>icuInterface.adapters.IDEADriver</deviceClass>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>143.83.157.92</connectionValue>
+            <devices>
+                <name>Drager</name>
+                <connectionType>RS_232</connectionType>
+                <param>
+                    <key>port</key>
+                </param>
+                <waveforms>
+                    <name>?name</name>
+                    <code>EKG0</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_I</location>
+                    <unit>mV</unit>
+                    <sample-rate>200</sample-rate>
+                    <samples-per-packet>40</samples-per-packet>
+                    <visible>true</visible>
+                    <global>false</global>
+                </waveforms>
+                <waveforms>
+                    <name>?name</name>
+                    <code>EKG1</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</location>
+                    <unit>mV</unit>
+                    <sample-rate>200</sample-rate>
+                    <samples-per-packet>40</samples-per-packet>
+                    <visible>true</visible>
+                    <global>true</global>
+                </waveforms>
+                <waveforms>
+                    <name>?name</name>
+                    <code>EKG2</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_III</location>
+                    <unit>mV</unit>
+                    <sample-rate>200</sample-rate>
+                    <samples-per-packet>40</samples-per-packet>
+                    <visible>true</visible>
+                    <global>false</global>
+                </waveforms>
+                <waveforms>
+                    <name>?name</name>
+                    <code>ABP</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art</location>
+                    <unit>mV</unit>
+                    <sample-rate>100</sample-rate>
+                    <samples-per-packet>20</samples-per-packet>
+                    <visible>true</visible>
+                    <global>true</global>
+                </waveforms>
+                <waveforms>
+                    <name>?name</name>
+                    <code>SPO2</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">spo2 pulse</location>
+                    <unit>mV</unit>
+                    <sample-rate>100</sample-rate>
+                    <samples-per-packet>20</samples-per-packet>
+                    <visible>true</visible>
+                    <global>false</global>
+                </waveforms>
+                <metrics>
+                    <name>?name</name>
+                    <code>SpO2.HR</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">spo2.hr</location>
+                    <unit>bpm</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+                <metrics>
+                    <name>?name</name>
+                    <code>CVP.MEAN</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">cvp.mean</location>
+                    <unit>bpm</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+                <metrics>
+                    <name>?name</name>
+                    <code>PA.PWP</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">pa.pwp</location>
+                    <unit>mmHg</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+                <metrics>
+                    <name>?name</name>
+                    <code>PA.MEAN</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">pa.mean</location>
+                    <unit>mmHg</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+                <metrics>
+                    <name>?name</name>
+                    <code>ART.PWP</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art.pwp</location>
+                    <unit>mmHg</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+                <metrics>
+                    <name>?name</name>
+                    <code>ART.MEAN</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art.mean</location>
+                    <unit>mmHg</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+                <metrics>
+                    <name>?name</name>
+                    <code>ART.SYS</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art.sys</location>
+                    <unit>mmHg</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+                <metrics>
+                    <name>?name</name>
+                    <code>ART.DIA</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art.dia</location>
+                    <unit>mmHg</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+                <metrics>
+                    <name>?name</name>
+                    <code>ART.HR</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art.hr</location>
+                    <unit>bpm</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+                <metrics>
+                    <name>ECG HR</name>
+                    <code>ECG.HR</code>
+                    <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg.hr</location>
+                    <unit>bpm</unit>
+                    <visible>true</visible>
+                    <global>false</global>
+                </metrics>
+            </devices>
+        </devices>
+    </hardware>
+    <analysis>
+        <analysis>
+            <name>Autocorrelation</name>
+            <analysisClass>idea.analysis.AutocorrelationAnalysisPanel</analysisClass>
+            <param>
+                <key>ECG_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ECG</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>ABP_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ABP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art</value>
+            </param>
+            <param>
+                <key>detector</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">AESOP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>COSMOS Stability</name>
+            <analysisClass>idea.analysis.CosmosAnalysisPanel</analysisClass>
+            <param>
+                <key>DEV1</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>DEV2</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Evita</value>
+            </param>
+            <param>
+                <key>PERIOD</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:int">5</value>
+            </param>
+            <param>
+                <key>COUNT</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:int">500</value>
+            </param>
+            <param>
+                <key>DELAY</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:int">1</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Detector Comparison</name>
+            <analysisClass>idea.analysis.DetectorAnalysisPanel</analysisClass>
+            <param>
+                <key>ECG_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ECG</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Detrended Fluctuation</name>
+            <analysisClass>idea.analysis.DetrendedFluctuationAnalysisPanel</analysisClass>
+            <param>
+                <key>ECG_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ECG</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>ABP_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ABP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art</value>
+            </param>
+            <param>
+                <key>detector</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">AESOP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Entropy</name>
+            <analysisClass>idea.analysis.EntropyAnalysisPanel</analysisClass>
+            <param>
+                <key>ECG_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ECG</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>ABP_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ABP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art</value>
+            </param>
+            <param>
+                <key>detector</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">AESOP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>MultiSignal Entropy</name>
+            <analysisClass>idea.analysis.MultiSignalEntropyAnalysisPanel</analysisClass>
+            <param>
+                <key>SIG_DEV1</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>SIG1</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>SIG_DEV2</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>SIG2</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>SIG_DEV3</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>SIG3</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>SIG_DEV4</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>SIG4</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>** Excel Variable Entry</name>
+            <analysisClass>idea.study.VariableDisplayPanel</analysisClass>
+        </analysis>
+        <analysis>
+            <name>** Hemolung Recirculation</name>
+            <analysisClass>idea.study.RecirculationPanel</analysisClass>
+        </analysis>
+        <analysis>
+            <name>Poincare</name>
+            <analysisClass>idea.analysis.PoincareAnalysisPanel</analysisClass>
+            <param>
+                <key>ECG_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ECG</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>ABP_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ABP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art</value>
+            </param>
+            <param>
+                <key>detector</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">AESOP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>StatAv</name>
+            <analysisClass>idea.analysis.StatAvAnalysisPanel</analysisClass>
+            <param>
+                <key>ECG_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ECG</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>ABP_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ABP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art</value>
+            </param>
+            <param>
+                <key>detector</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">AESOP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Breath Segmentation / IBI</name>
+            <analysisClass>idea.analysis.IBIBreathSegmentationAnalysisPanel</analysisClass>
+            <param>
+                <key>DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Cosmo_8100</value>
+            </param>
+            <param>
+                <key>FLOW</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x00</value>
+            </param>
+            <param>
+                <key>CO2</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x02</value>
+            </param>
+            <param>
+                <key>PAW</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x01</value>
+            </param>
+        </analysis>
+        
+        <analysis>
+            <name>Breath Segmentation / SBCO2</name>
+            <analysisClass>idea.analysis.SBCO2BreathSegmentationAnalysisPanel</analysisClass>
+            <param>
+                <key>DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Cosmo_8100</value>
+            </param>
+            <param>
+                <key>FLOW</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x00</value>
+            </param>
+            <param>
+                <key>CO2</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x02</value>
+            </param>
+            <param>
+                <key>PAW</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x01</value>
+            </param>
+        </analysis>
+        
+        <analysis>
+            <name>LSI</name>
+            <analysisClass>idea.lsiprediction.LSIAnalysisPanel</analysisClass>
+            <param>
+                <key>MONITOR</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>VENT</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Evita_4</value>
+            </param>
+            <param>
+                <key>SBP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ART.SYS</value>
+            </param>
+            <param>
+                <key>DBP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ART.DIA</value>
+            </param>
+            <param>
+                <key>MAP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ART.MEAN</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Multiwaveform Detection</name>
+            <analysisClass>idea.multiwaveforms.MultiwaveformDetectionAnalysisPanel</analysisClass>
+            <param>
+                <key>ECG_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ECG</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>ABP_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ABP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art</value>
+            </param>
+            <param>
+                <key>_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key></key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">spo2 pulse</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Lyapunov</name>
+            <analysisClass>idea.analysis.LyapunovAnalysisPanel</analysisClass>
+            <param>
+                <key>ECG_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ECG</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg lead_II</value>
+            </param>
+            <param>
+                <key>ABP_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Drager</value>
+            </param>
+            <param>
+                <key>ABP</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">art</value>
+            </param>
+            <param>
+                <key>detector</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">AESOP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>PNN-n</name>
+            <analysisClass>idea.analysis.PNNAnalysisPanel</analysisClass>
+            <param>
+                <key>detector</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">AESOP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Pulmonary Analysis</name>
+            <analysisClass>idea.analysis.PulmonaryAnalysisPanel</analysisClass>
+            <param>
+                <key>BLOODGAS_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">jdbc:Oracle</value>
+            </param>
+            <param>
+                <key>VENT_DEV</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">COSMOS</value>
+            </param>
+            <param>
+                <key>ET_METRIC</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ET0</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Alarms.Rule</name>
+            <analysisClass>idea.analysis.AlarmsAnalysisPanel</analysisClass>
+            <param>
+                <key>depends</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Alpha</value>
+            </param>
+            <param>
+                <key>detector</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">AESOP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Function.Print</name>
+            <analysisClass>idea.process.PrintProcess</analysisClass>
+            <param>
+                <key>detector</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">AESOP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Script</name>
+            <analysisClass>idea.process.BannerProcess</analysisClass>
+            <param>
+                <key>device</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Alpha</value>
+            </param>
+            <param>
+                <key>port</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">COM1</value>
+            </param>
+            <param>
+                <key>function</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ABP</value>
+            </param>
+        </analysis>
+        <analysis>
+            <name>Protocol Data</name>
+            <analysisClass>idea.analysis.ProtocolDataPanel</analysisClass>
+        </analysis>
+       <analysis>
+            <name>VIT-Hemolung Pressure Summary</name>
+            <analysisClass>idea.analysis.VITPressureSummaryPanel</analysisClass>
+        </analysis>
+
+    </analysis>
+</rp-study-impl>

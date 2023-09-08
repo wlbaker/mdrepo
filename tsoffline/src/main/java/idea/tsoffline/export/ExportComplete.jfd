@@ -1,0 +1,186 @@
+JFDML JFormDesigner: "5.2.5.0.333" Java: "1.8.0_72" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "default:grow"
+			"$rowSpecs": "default, linegap, default, linegap, default, linegap, default:grow"
+		} ) {
+			name: "this"
+			add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsSeparator" ) {
+				name: "separator1"
+				"text": "Output"
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 3
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "20dlu, labelcompgap, right:default, labelcompgap, default:grow, labelcompgap, default"
+				"$rowSpecs": "default, linegap, default, linegap, default, linegap, max(default;20dlu), linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Data:"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "dataFile"
+					"text": "datafile"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 5
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "view"
+					"text": "View"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "viewActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 7
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "audioLabel"
+					"text": "Audio:"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 5
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "audioFile"
+					"text": "audiofile"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 5
+					"gridY": 5
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "listen"
+					"text": "Listen"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "listenActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 7
+					"gridY": 5
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "exportDAT"
+					"text": "Export DAT"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "exportDATActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 7
+					"gridY": 7
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelDatWF"
+					"text": "Data/waveform:"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 9
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "datWFFile"
+					"text": "datWFFile"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 9
+					"gridX": 5
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "viewDatWF"
+					"text": "View"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "viewDatActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 9
+					"gridX": 7
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelDatVitals"
+					"text": "Data/vitals:"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 11
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "datVitalsFile"
+					"text": "datVitalsFile"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 11
+					"gridX": 5
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "viewDatVitals"
+					"text": "View"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "viewVitalsActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 11
+					"gridX": 7
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelDatNotes"
+					"text": "Data/notes:"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 13
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "datNotesFile"
+					"text": "datNotesFile"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 13
+					"gridX": 5
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "viewDatNotes"
+					"text": "View"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "viewNotesActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 13
+					"gridX": 7
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelDatAudio"
+					"text": "Audio:"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 15
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "datAudioFile"
+					"text": "datAudioFile"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 15
+					"gridX": 5
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelDatZip"
+					"text": "Zip:"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 17
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "datZipFile"
+					"text": "datZipFile"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 17
+					"gridX": 5
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "zipDatFiles"
+					"text": "Zip-DAT"
+					"enabled": false
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 7
+					"gridY": 17
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 5
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 495, 315 )
+		} )
+	}
+}

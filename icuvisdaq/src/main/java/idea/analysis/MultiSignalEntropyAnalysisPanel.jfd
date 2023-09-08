@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.6.0" class="java.beans.XMLDecoder"> 
+ <object class="com.jformdesigner.model.FormModel"> 
+  <void property="contentType"> 
+   <string>form/swing</string> 
+  </void> 
+  <void property="root"> 
+   <object class="com.jformdesigner.model.FormRoot"> 
+    <void method="add"> 
+     <object class="com.jformdesigner.model.FormContainer"> 
+      <string>javax.swing.JPanel</string> 
+      <object class="com.jformdesigner.model.FormLayoutManager"> 
+       <class>com.jgoodies.forms.layout.FormLayout</class> 
+       <void method="setProperty"> 
+        <string>$columnSpecs</string> 
+        <string>max(default;80dlu), labelcompgap, default:grow, labelcompgap, default:grow, labelcompgap, default</string> 
+       </void> 
+       <void method="setProperty"> 
+        <string>$rowSpecs</string> 
+        <string>fill:max(default;50dlu), linegap, default, linegap, fill:max(default;50dlu), linegap, fill:max(default;50dlu), linegap, fill:default, linegap, fill:default</string> 
+       </void> 
+      </object> 
+      <void property="name"> 
+       <string>this</string> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.display.simple.TwoValuePanel</string> 
+        <void property="name"> 
+         <string>rriMetricPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>1</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>1</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.chart.SignalPanel</string> 
+        <void method="setProperty"> 
+         <string>name</string> 
+         <string>rri</string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMinRange</string> 
+         <double>100.0</double> 
+        </void> 
+        <void property="name"> 
+         <string>rriSignalPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>3</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridWidth</string> 
+         <int>3</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>javax.swing.JTextField</string> 
+        <void method="setProperty"> 
+         <string>text</string> 
+         <string>Signal:  </string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>background</string> 
+         <object class="java.awt.Color" field="black"/> 
+        </void> 
+        <void method="setProperty"> 
+         <string>foreground</string> 
+         <object class="java.awt.Color" field="white"/> 
+        </void> 
+        <void property="name"> 
+         <string>textPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>1</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>3</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.display.simple.TwoValuePanel</string> 
+        <void property="name"> 
+         <string>entMetricPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>1</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>5</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.chart.SignalPanel</string> 
+        <void method="setProperty"> 
+         <string>name</string> 
+         <string>saent</string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMaxY</string> 
+         <double>3.0</double> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMinY</string> 
+         <double>0.0</double> 
+        </void> 
+        <void property="name"> 
+         <string>saentSignalPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>3</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>5</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.chart.SignalPanel</string> 
+        <void method="setProperty"> 
+         <string>name</string> 
+         <string>mse</string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMinY</string> 
+         <double>0.0</double> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMaxY</string> 
+         <double>10.0</double> 
+        </void> 
+        <void property="name"> 
+         <string>mseSignalPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>5</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>5</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.display.simple.TwoValuePanel</string> 
+        <void property="name"> 
+         <string>qMetricPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>1</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>7</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.chart.SignalPanel</string> 
+        <void method="setProperty"> 
+         <string>name</string> 
+         <string>q</string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMinY</string> 
+         <double>0.0</double> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMaxY</string> 
+         <double>6.0</double> 
+        </void> 
+        <void property="name"> 
+         <string>qSignalPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>3</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>7</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.chart.SignalPanel</string> 
+        <void method="setProperty"> 
+         <string>name</string> 
+         <string>sd</string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMinY</string> 
+         <double>0.0</double> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMaxY</string> 
+         <double>30.0</double> 
+        </void> 
+        <void property="name"> 
+         <string>sdSignalPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>5</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>7</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.display.simple.TwoValuePanel</string> 
+        <void property="name"> 
+         <string>hrvMetricPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>1</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>9</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.chart.SignalPanel</string> 
+        <void method="setProperty"> 
+         <string>name</string> 
+         <string>saent</string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMaxY</string> 
+         <double>50000.0</double> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMinY</string> 
+         <double>0.0</double> 
+        </void> 
+        <void property="name"> 
+         <string>hfSignalPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>9</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>3</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.chart.SignalPanel</string> 
+        <void method="setProperty"> 
+         <string>name</string> 
+         <string>saent</string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMaxY</string> 
+         <double>50000.0</double> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMinY</string> 
+         <double>0.0</double> 
+        </void> 
+        <void property="name"> 
+         <string>lfSignalPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>9</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>5</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.display.simple.TwoValuePanel</string> 
+        <void property="name"> 
+         <string>hrv2MetricPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>1</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>11</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.chart.SignalPanel</string> 
+        <void method="setProperty"> 
+         <string>name</string> 
+         <string>saent</string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMaxY</string> 
+         <double>3.0</double> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMinY</string> 
+         <double>0.0</double> 
+        </void> 
+        <void property="name"> 
+         <string>hflfSignalPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>11</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>3</int> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="add"> 
+       <object class="com.jformdesigner.model.FormComponent"> 
+        <string>idea.chart.SignalPanel</string> 
+        <void method="setProperty"> 
+         <string>name</string> 
+         <string>saent</string> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMaxY</string> 
+         <double>3.0</double> 
+        </void> 
+        <void method="setProperty"> 
+         <string>scaleMinY</string> 
+         <double>0.0</double> 
+        </void> 
+        <void property="name"> 
+         <string>lfhfSignalPanel</string> 
+        </void> 
+       </object> 
+       <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+        <class>com.jgoodies.forms.layout.CellConstraints</class> 
+        <void method="setProperty"> 
+         <string>gridY</string> 
+         <int>11</int> 
+        </void> 
+        <void method="setProperty"> 
+         <string>gridX</string> 
+         <int>5</int> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+     <object class="com.jformdesigner.model.FormLayoutConstraints"> 
+      <null/> 
+      <void method="setProperty"> 
+       <string>location</string> 
+       <object class="java.awt.Point"> 
+        <int>0</int> 
+        <int>0</int> 
+       </object> 
+      </void> 
+      <void method="setProperty"> 
+       <string>size</string> 
+       <object class="java.awt.Dimension"> 
+        <int>775</int> 
+        <int>565</int> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+   </object> 
+  </void> 
+ </object> 
+</java> 

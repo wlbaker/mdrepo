@@ -1,0 +1,269 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slSignalProducer_unclassdiag.relo> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "1" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node16uaoug43x1 .
+
+_:node16uaoug43x1 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters> ;
+	atxa-core:posX "350" ;
+	atxa-core:posY "268" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface> .
+
+_:node16uaoug43x1 atxa-core:contains _:node16uaoug43x2 .
+
+_:node16uaoug43x2 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface> ;
+	atxa-core:posX "356" ;
+	atxa-core:posY "293" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.connect()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.disconnect()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.getState()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.setSettings(AbstractItem[],)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.tick()> .
+
+_:node16uaoug43x3 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node16uaoug43x2 ;
+	rdf:object _:node16uaoug43x4 ;
+	atxa-core:bendpoint _:node16u2fb5g4x42348 .
+
+_:node16u2fb5g4x42348 atxa-core:bpLocation "461,235" ;
+	atxa-core:bpIndex "0" .
+
+_:node16uaoug43x3 atxa-core:bendpoint _:node16u2fb5g4x42349 .
+
+_:node16u2fb5g4x42349 atxa-core:bpLocation "180,235" ;
+	atxa-core:bpIndex "1" .
+
+_:node16uaoug43x2 atxa-core:contains _:node16uaoug43x7 .
+
+_:node16uaoug43x7 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.connect()> ;
+	atxa-core:posX "357" ;
+	atxa-core:posY "315" .
+
+_:node16uaoug43x2 atxa-core:contains _:node16uaoug43x8 .
+
+_:node16uaoug43x8 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.disconnect()> ;
+	atxa-core:posX "357" ;
+	atxa-core:posY "331" .
+
+_:node16uaoug43x2 atxa-core:contains _:node16uaoug43x9 .
+
+_:node16uaoug43x9 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.getState()> ;
+	atxa-core:posX "357" ;
+	atxa-core:posY "347" .
+
+_:node16uaoug43x2 atxa-core:contains _:node16uaoug43x10 .
+
+_:node16uaoug43x10 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.setSettings(AbstractItem[],)> ;
+	atxa-core:posX "357" ;
+	atxa-core:posY "363" .
+
+_:node16uaoug43x2 atxa-core:contains _:node16uaoug43x11 .
+
+_:node16uaoug43x11 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.adapters$AdapterInterface.tick()> ;
+	atxa-core:posX "357" ;
+	atxa-core:posY "379" .
+
+atxa-core:docRoot atxa-core:contains _:node16uaoug43x12 .
+
+_:node16uaoug43x12 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events> ;
+	atxa-core:posX "22" ;
+	atxa-core:posY "55" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer> .
+
+_:node16uaoug43x12 atxa-core:contains _:node16uaoug43x4 .
+
+_:node16uaoug43x4 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer> ;
+	atxa-core:posX "43" ;
+	atxa-core:posY "80" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.addEventListener(Class,SignalConsumer,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.removeEventListener(SignalConsumer,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.getEvent(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.getCurrentCapabilities()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.getStaticCapabilities()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.getConfiguration()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.fireEvent(EventObject,)> .
+
+_:node16uaoug43x4 atxa-core:contains _:node16uaoug43x31 .
+
+_:node16uaoug43x31 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.addEventListener(Class,SignalConsumer,)> ;
+	atxa-core:posX "44" ;
+	atxa-core:posY "102" .
+
+_:node16uaoug43x4 atxa-core:contains _:node16uaoug43x32 .
+
+_:node16uaoug43x32 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.fireEvent(EventObject,)> ;
+	atxa-core:posX "44" ;
+	atxa-core:posY "118" .
+
+_:node16uaoug43x4 atxa-core:contains _:node16uaoug43x33 .
+
+_:node16uaoug43x33 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.getConfiguration()> ;
+	atxa-core:posX "44" ;
+	atxa-core:posY "134" .
+
+_:node16uaoug43x4 atxa-core:contains _:node16uaoug43x34 .
+
+_:node16uaoug43x34 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.getCurrentCapabilities()> ;
+	atxa-core:posX "44" ;
+	atxa-core:posY "150" .
+
+_:node16uaoug43x4 atxa-core:contains _:node16uaoug43x35 .
+
+_:node16uaoug43x35 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.getEvent(Class,)> ;
+	atxa-core:posX "44" ;
+	atxa-core:posY "166" .
+
+_:node16uaoug43x4 atxa-core:contains _:node16uaoug43x36 .
+
+_:node16uaoug43x36 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.getStaticCapabilities()> ;
+	atxa-core:posX "44" ;
+	atxa-core:posY "182" .
+
+_:node16uaoug43x4 atxa-core:contains _:node16uaoug43x37 .
+
+_:node16uaoug43x37 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer.removeEventListener(SignalConsumer,)> ;
+	atxa-core:posX "44" ;
+	atxa-core:posY "198" .
+
+_:node16uaoug43x12 atxa-core:contains _:node16uaoug43x13 .
+
+_:node16uaoug43x13 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer> ;
+	atxa-core:posX "28" ;
+	atxa-core:posY "267" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.AbstractSignalProducer()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.addEventListener(Class,SignalConsumer,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.removeEventListener(SignalConsumer,Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.removeEventListener(SignalConsumer,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireEvent(EventObject,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireCapabilitiesEvent(Object,DeviceCapabilities,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireWaveformEvent(Object,WaveformBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireNumericsEvent(Object,NumericsBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireAlarmEvent(Object,AlarmBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireSecurityEvent(Object,boolean,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.getEvent(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.getEvent(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.getCurrentCapabilities()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.getConfiguration()> .
+
+_:node16uaoug43x14 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node16uaoug43x13 ;
+	rdf:object _:node16uaoug43x4 ;
+	atxa-core:bendpoint _:node16u2fb5g4x42350 .
+
+_:node16u2fb5g4x42350 atxa-core:bpLocation "180,235" ;
+	atxa-core:bpIndex "0" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x16 .
+
+_:node16uaoug43x16 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.AbstractSignalProducer()> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "289" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x17 .
+
+_:node16uaoug43x17 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.addEventListener(Class,SignalConsumer,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "305" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x18 .
+
+_:node16uaoug43x18 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireAlarmEvent(Object,AlarmBlock,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "321" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x19 .
+
+_:node16uaoug43x19 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireCapabilitiesEvent(Object,DeviceCapabilities,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "337" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x20 .
+
+_:node16uaoug43x20 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireConnectionEvent(Object,ConnectionStatus,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "353" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x21 .
+
+_:node16uaoug43x21 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireEvent(EventObject,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "369" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x22 .
+
+_:node16uaoug43x22 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireNumericsEvent(Object,NumericsBlock,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "385" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x23 .
+
+_:node16uaoug43x23 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireSecurityEvent(Object,boolean,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "401" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x24 .
+
+_:node16uaoug43x24 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.fireWaveformEvent(Object,WaveformBlock,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "417" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x25 .
+
+_:node16uaoug43x25 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.getConfiguration()> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "433" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x26 .
+
+_:node16uaoug43x26 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.getCurrentCapabilities()> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "449" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x27 .
+
+_:node16uaoug43x27 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.getEvent(Class,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "465" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x28 .
+
+_:node16uaoug43x28 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.getEvent(String,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "481" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x29 .
+
+_:node16uaoug43x29 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.removeEventListener(SignalConsumer,Class,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "497" .
+
+_:node16uaoug43x13 atxa-core:contains _:node16uaoug43x30 .
+
+_:node16uaoug43x30 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AbstractSignalProducer.removeEventListener(SignalConsumer,)> ;
+	atxa-core:posX "29" ;
+	atxa-core:posY "513" .
+

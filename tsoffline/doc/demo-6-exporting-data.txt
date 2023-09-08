@@ -1,0 +1,4 @@
+
+Hello, my name is Bill Baker.  Welcome to our continuation of tutorials on tsOffline,
+the analysis software developed at the US Army Institute of Surgical Research.
+

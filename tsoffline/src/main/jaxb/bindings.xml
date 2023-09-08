@@ -1,0 +1,105 @@
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ci="http://jaxb.dev.java.net/plugin/code-injector"
+    version="2.1">
+
+    <jaxb:globalBindings>
+	<jaxb:javaType name="java.util.Date" xmlType="xs:dateTime"
+	parseMethod="idea.schema.rp.DateTimeAdapter.parseDate" printMethod="idea.schema.rp.DateTimeAdapter.printDate" />
+    </jaxb:globalBindings>
+    
+   <jaxb:bindings schemaLocation="tsoffline-defs.xsd">
+    <jaxb:bindings node="//xs:complexType[@name='tso-prefs']">
+        <ci:code>
+        
+        <![CDATA[
+        
+        /**
+	 * Gets the value of a single named attribute.
+	 * 
+	 * @param key 
+	 * 
+	 * <p>
+	 * This accessor method returns a the string value of the named attribute.  The typ field of the attribute is ignored.
+	 * 
+	 */
+	public String getAttribute(String key) {
+		if (attributes != null) {
+
+			for (TsoAttributeType attrib : attributes) {
+				if (key.equals(attrib.getKey())) {
+					return attrib.value;
+				}
+			}
+		}
+		return null;
+	}
+
+        /**
+	 * Sets the value of a single named attribute.
+	 * 
+	 * <p>
+	 * This method sets the string value of the named attribute.  If the attribute is not found
+	 * it will be created.  The typ field of the attribute is ignored.
+	 * 
+	 */
+	public void putAttribute(String key, String value) {
+		List<TsoAttributeType> attribs = getAttributes();
+
+		for (TsoAttributeType attrib : attribs) {
+			if (key.equals(attrib.getKey())) {
+				attrib.setValue(value);
+				return;
+			}
+		}
+
+		TsoAttributeType attrib = new TsoAttributeType();
+		attrib.setKey(key);
+		attrib.setValue(value);
+		attribs.add( attrib );
+		return;
+	}
+        ]]></ci:code>
+    </jaxb:bindings>
+    <jaxb:bindings node="//xs:complexType[@name='ts-filter']">
+        <ci:code>
+        
+        <![CDATA[
+        
+    /**
+     * Filters can be either global to the user or local to the session.  Global filters
+     * are saved in the user preferences.  Local filters exist only in the session file.
+     * Filters in the session file may exist both locally and globally.
+     * 
+     * This is a transient flag to indicate if this value should be saved as part of the
+     * user preferences.
+     */
+    @javax.xml.bind.annotation.XmlTransient
+    protected boolean global;
+    
+    public boolean isGlobal() {
+    	return global;
+    }
+    public void setGlobal( boolean global) {
+    	this.global = global;
+    }
+    
+
+        /**
+	 * Convert TsFilter to a meaningful string
+	 * 
+	 * <p>
+	 * This accessor method returns a the string value of the filter that could be used to recreate the filter.  This is the same as the filter description except when the description is null.
+	 * 
+	 */
+	public String toString() {
+	
+		if( description == null ) {
+			return "{}";
+		}
+		return description;  // should never return null
+	}
+
+        ]]></ci:code>
+    </jaxb:bindings>
+   </jaxb:bindings>
+</jaxb:bindings>

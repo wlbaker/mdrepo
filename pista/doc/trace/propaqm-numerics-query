@@ -1,0 +1,1 @@
+curl --compress -k -H Accept:application/json -H Content-Type:application/json -H Client-Id:1234 -u 'zolldata:MDARK2018' 'https://192.168.50.100/Numerics/current?now'

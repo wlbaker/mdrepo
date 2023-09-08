@@ -1,0 +1,147 @@
+
+{
+	"buildFiles" : [ "/home/bbaker/git/pista/pista-cmake/app/CMakeLists.txt" ],
+	"cFileExtensions" : [ "c" ],
+	"cleanCommands" : 
+	[
+		"/home/bbaker/opt/tools/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/bbaker/git/pista/pista-cmake/app --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"native-lib-Debug-x86_64" : 
+		{
+			"abi" : "x86_64",
+			"artifactName" : "native-lib",
+			"buildCommand" : "/home/bbaker/opt/tools/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/bbaker/git/pista/pista-cmake/app --target native-lib",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dnative_lib_EXPORTS -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-cmake/app/src/main/cpp/native-lib.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				}
+			],
+			"output" : "/home/bbaker/git/pista/distribution/libs/x86_64/libnative-lib.so",
+			"toolchain" : "13658860683627290226"
+		},
+		"pista-core-Debug-x86_64" : 
+		{
+			"abi" : "x86_64",
+			"artifactName" : "pista-core",
+			"buildCommand" : "/home/bbaker/opt/tools/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/bbaker/git/pista/pista-cmake/app --target pista-core",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot -Dpista_core_EXPORTS -I../../pista-core/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/c/dump.c",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot -Dpista_core_EXPORTS -I../../pista-core/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/c/log.c",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot -Dpista_core_EXPORTS -I../../pista-core/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/c/null.c",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot -Dpista_core_EXPORTS -I../../pista-core/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/c/pista-internal.c",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot -Dpista_core_EXPORTS -I../../pista-core/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/c/pista.c",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot -Dpista_core_EXPORTS -I../../pista-core/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/c/pista_zeromq.c",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot -Dpista_core_EXPORTS -I../../pista-core/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC      -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/c/std.c",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dpista_core_EXPORTS -I../../pista-core/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/cxx/pista-cl.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dpista_core_EXPORTS -I../../pista-core/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/cxx/pista-cm.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dpista_core_EXPORTS -I../../pista-core/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/cxx/pista-dev.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dpista_core_EXPORTS -I../../pista-core/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/cxx/pista-disc.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dpista_core_EXPORTS -I../../pista-core/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/cxx/pista-driver.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dpista_core_EXPORTS -I../../pista-core/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/cxx/pista-evt.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dpista_core_EXPORTS -I../../pista-core/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/cxx/pista-pkt.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dpista_core_EXPORTS -I../../pista-core/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/cxx/pista-service.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				},
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android26 --gcc-toolchain=/opt/tools/Android/Sdk/ndk-bundle/toolchains/x86_64-4.9/prebuilt/linux-x86_64 --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot  -Dpista_core_EXPORTS -I../../pista-core/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++/include -isystem /opt/tools/Android/Sdk/ndk-bundle/sources/cxx-stl/llvm-libc++abi/include  -isystem /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/include/x86_64-linux-android -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -Wa,--noexecstack -Wformat -Werror=format-security -std=c++11  -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/home/bbaker/git/pista/pista-core/src/cxx/pista-str.cpp",
+					"workingDirectory" : "/home/bbaker/git/pista/pista-cmake/app"
+				}
+			],
+			"output" : "/home/bbaker/git/pista/distribution/libs/x86_64/libpista-core.so",
+			"toolchain" : "13658860683627290226"
+		}
+	},
+	"toolchains" : 
+	{
+		"13658860683627290226" : 
+		{
+			"cCompilerExecutable" : "/opt/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/opt/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+		}
+	}
+}

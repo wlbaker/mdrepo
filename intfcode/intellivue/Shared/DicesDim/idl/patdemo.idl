@@ -1,0 +1,162 @@
+/**
+ * @file    patdemo.idl
+ * @author  WMS
+ * @date    OCT 2013
+ * @brief   DICES DIM Patient Demographics object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201 (x73)
+ *
+ * MAR 2014, WMS : Update based on DocBox PatientIdentity3_3_2014.docx.
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Patient Demographics object
+ *
+ * The Patient Demographics object represents patient-related information
+ * relevant in the scope of DICES, but is not vital signs information.
+ */
+
+enum PatientType
+{
+  pt_unspecified = 0,
+  adult = 1,
+  pediatric = 2,
+  neonatal = 3
+};
+
+/**
+ * Patient sex refers to chromosomal, gonadal and anatomical characteristics
+ * associated with biological sex.
+ */
+enum PatientSex
+{
+  sex_unknown = 0,
+  sex_male = 1,
+  sex_female = 2,
+  sex_unspecified = 9  // inteterminate/intersex/unspecified
+};
+
+/**
+ * Patient gender refers to an aspect of a person's personal and social
+ * identity. It refers to the way a person feels, presents and is recognized
+ * with the community. Gender refers to outward social markers, including their
+ * name, outward appearance, mannerisms and dress.
+ */
+enum PatientGender
+{
+  gender_unknown = 0,
+  gender_male = 1,
+  gender_female = 2,
+  gender_unspecified = 9
+};
+
+/**
+ * Patient demographics measured value
+ */
+struct PatMeasure
+{
+  FLOATType value;
+  OIDType m_unit; // code for units of measure
+}; //@top-level false
+
+enum RaceType
+{
+  /*
+   * From Public Health Information Network Vocabulary Access and Distribution
+   * System (PHIN VADS), Value Set Code PHVS_Race_HL7_2x.
+   *
+   * This race value set is based on HL7 table 0005. The value set was
+   * created for backward compatibility. Recommend using Race Category value
+   * set based on CDC Race & Ethnicity code system.
+   *
+   * See http://www.cdc.gov/nchs/data/dvs/Race_Ethnicity_CodeSet.pdf
+   */
+  race_unspecified = 0,
+  race_am_indian_or_alaska_native = 1,
+  race_asian = 2,
+  race_black_or_african_am = 3,
+  race_native_hawaiian_or_other_pacific_islander = 4,
+  race_other = 5,
+  race_white = 6
+};
+
+struct PatientRace
+{
+  RaceType race_type;
+  string<SHORT_STRING_LEN> provenance;
+}; //@top-level false
+const string RaceProvenance_PHVS_Race_HL7_2x = "PHVS_Race_HL7_2x";
+const string RaceProvenance_Unspecified = "Unspecified";
+
+typedef INTU16 PatEpisode;
+
+enum PatAdmitState
+{
+  empty = 0,
+  pre_admitted = 1,
+  admitted = 2,
+  readmit = 6,
+  discharged = 8
+};
+
+struct PatientIdentification : Top
+{
+  string<SHORT_STRING_LEN> given_name;
+  string<SHORT_STRING_LEN> family_name;
+  string<SHORT_STRING_LEN> middle_name;
+  Date date_of_birth; //@Optional
+  string<MEDIUM_STRING_LEN> patient_id; 
+  string<MEDIUM_STRING_LEN> patient_id_provenance;  //@key
+  BOOL verified;
+  PatAdmitState pat_admit_state;
+  PatEpisode pat_episode_id;
+  Timespec episode_start;
+}; //@top-level true
+const string PatientIdentificationTopic = "ice--PatientIdentification";
+const string PatientIdentificationObjTopic = "ice--PatientIdentificationObj";
+const string PatientIdentificationReqTopic = "ice--PatientIdentificationReq";
+
+struct PatientIdentificationError
+{
+  string<MEDIUM_STRING_LEN> patient_id;  //@key
+  string<MEDIUM_STRING_LEN> provenance;  //@key
+  PatEpisode pat_episode_id;
+  string<ice::LONGLONG_STRING_LEN> error;
+}; //@top-level true
+const string PatientIdentificationErrorTopic = "ice--PatientIdentificationError";
+
+struct NeonatalPatientInfo
+{
+  // Time elapsed between the first day of the last menstrual period and the
+  // day of delivery. For neonatal, e.g., in hours or in weeks. Units include
+  // Days, weeks, months, years.
+  PatMeasure gestational_age; //@Optional
+
+  PatMeasure patient_birth_length; //@Optional
+  PatMeasure patient_birth_weight; //@Optional
+  PatMeasure patient_head_circumference; //@Optional
+  PatientIdentification mother_patient_id; //@Optional
+  string<LONG_STRING_LEN> mother_name; //@Optional
+}; //@top-level false
+
+struct PatientDemographics : Top
+{
+  PatientSex sex; //@Optional
+  PatientGender gender; //@Optional
+  PatientRace race; //@Optional
+  PatientType patient_type; //@Optional
+  // Time elapsed since birth. For neonatal, Weeks
+  PatMeasure chronological_age; //@Optional
+
+  PatMeasure patient_height; //@Optional
+  PatMeasure patient_weight; //@Optional
+  NeonatalPatientInfo neonatal;  //@Optional
+}; //@top-level true
+const string PatientDemographicsTopic = "ice--PatientDemographics";
+const string PatientDemographicsReqTopic = "ice--PatientDemographicsReq";
+
+};

@@ -1,0 +1,12 @@
+
+Routines needed by support include the following:
+
+pista_set_named_field_freq
+pista_set_named_field_spp
+pista_dev_register_stream
+pista_get_current_time_with_ms
+
+dev_register_stream must call a function references by the PISTA context.
+the "set_named_field" functions rely only on ProtobufC structures.
+"get_current_time_with_ms" is a small operating system dependent function.
+

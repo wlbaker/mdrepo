@@ -1,0 +1,53 @@
+JFDML JFormDesigner: "7.0.0.0.151" Java: "11.0.2" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPopupMenu", new FormLayoutManager( class javax.swing.JPopupMenu ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+				name: "filterMenu"
+				"text": "Filter..."
+				add( new FormComponent( "javax.swing.JMenuItem" ) {
+					name: "applyFilter3"
+					"text": "3pt"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "applyFilter3ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JMenuItem" ) {
+					name: "applyFilter5"
+					"text": "5pt"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "applyFilter5ActionPerformed", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
+					name: "separator2"
+				} )
+				add( new FormComponent( "javax.swing.JMenuItem" ) {
+					name: "resetFilter"
+					"text": "Reset"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "resetFilterActionPerformed", true ) )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "hideItem"
+				"text": "Hide"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "hideItemActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "deleteItem"
+				"text": "Delete"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteItemActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JPopupMenu$Separator" ) {
+				name: "separator1"
+			} )
+			add( new FormComponent( "javax.swing.JMenuItem" ) {
+				name: "propertiesItem"
+				"text": "Properties"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "propertiesItemActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 160, 115 )
+		} )
+	}
+}

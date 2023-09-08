@@ -1,0 +1,20 @@
+
+REGARDING jDAQmx
+----------------
+
+Appears the jDAQmx files overlap with Pista.  Not sure where this code should go.  
+Currently compiled from Pista, so this overlapping copy may be old and obsolete.
+
+PISTA is a prerequisite, but would be nice if it were optional....that would take
+a better understanding of gradle organization.  This is supported in gradle, I just
+haven't read/understood/incorporated/tested.
+
+https://docs.gradle.org/current/userguide/feature_variants.html
+
+REGARDING GUI
+-------------
+
+I believe all these files have been moved to the meddaq code.  Confirm and remove,
+or else figure out how to build features and variants.
+
+/bbaker

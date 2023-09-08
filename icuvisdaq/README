@@ -1,0 +1,53 @@
+Run arguments to set DLL paths for VM:
+
+-Djava.library.path=${workspace_loc:datamanager}\lib\win32;
+    ${workspace_loc:ICUInterface}\lib\win32;
+    ${workspace_loc:ICUmultimedia}\lib\win32;
+
+Code related to Version 2 of the IDEA client is commented out
+but can be found by searching for the keyword BETA2.
+
+ 
+Preparing Infinity Multicast Network
+------------------------------------
+
+[useful?] http://www.pearsonitcertification.com/articles/article.aspx?p=101618&seqNum=4
+
+https://clippingme.wordpress.com/2011/09/12/using-dhcp-to-assign-static-routes/
+
+
+You may need to add static routes for multicast, which can be
+done through the DHCP server as follows:
+
+subnet 10.21.25.0 netmask 255.255.255.0 {
+  option routers 10.21.25.1;
+
+# Push static routes with ISC DHCP server to leases tables.
+# Example below sets 10.21.25.0 255.255.255.0 10.21.25.1 10.21.25.x
+# and 0.0.0.0 0.0.0.0 10.21.25.1 10.21.25.x
+  option rfc3442-classless-static-routes 24, 10, 21, 25, 10, 21, 25, 1, 0, 10, 21, 25, 1;
+  option ms-classless-static-routes 24, 10, 21, 25, 10, 21, 25, 1, 0, 10, 21, 25, 1;
+
+Will produce:
+	10.21.25.0 255.255.255.0 10.21.25.1 10.21.25.11 125
+	10.21.25.11 255.255.255.255 On-link 10.21.25.11 380
+
+[wlb]...so my best guess is the first byte is the netmask, followed by network or gateway...the question is how is the -net option handled?
+
+  option ms-classless-static-routes 4, 224, 192, 168, 50, 1, 0, 10, 21, 25, 1;
+  option classless-routes 4,224,192,168,50,0
+[wlb]...trying to achive same routing as:
+  sudo route add -net 224.0.0.0 netmask 240.0.0.0 dev eth0
+
+
+https://jcape.name/2009/07/17/distributing-static-routes-with-dhcp/comment-page-1/
+
+option classless-routes code 121 = array of unsigned integer 8;
+
+subnet 10.23.1.0 netmask 255.255.255.0 {
+        [...]
+        # Routes for 10.23.0.0/16 via 10.23.1.1, and 224.0.0.0/4 (all IP multicast) via same
+        option classless-routes 16,10,23,10,23,1,1,4,224,10,23,1,1
+        [...]
+}
+

@@ -1,0 +1,6 @@
+When creating files from the XSD...
+
+RpStream needs to have some generics added.  <T extends RpMetric>.  This is needed for 
+tsoffline to reuse the Rp??? structures with extended types
+
+Same for RpDevice

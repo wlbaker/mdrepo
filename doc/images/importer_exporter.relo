@@ -1,0 +1,213 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slimporter_unexporter.relo> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "0" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node1713pq3ocx156 .
+
+_:node1713pq3ocx156 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence> ;
+	atxa-core:posX "31" ;
+	atxa-core:posY "133" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface> .
+
+_:node1713pq3ocx156 atxa-core:contains _:node1713pq3ocx157 .
+
+_:node1713pq3ocx157 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface> ;
+	atxa-core:posX "37" ;
+	atxa-core:posY "158" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.connect()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.disconnect()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getTimeInMillis()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.next()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getStudyHeader()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getDevices()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getMetaData()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.rewind()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.seek(long,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getImporterDevice(String,)> .
+
+_:node1713pq3ocx43 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1713pq3ocx157 ;
+	rdf:object _:node1713pq3ocx158 ;
+	atxa-core:bendpoint _:node1713pq3ocx159 .
+
+_:node1713pq3ocx159 atxa-core:bpLocation "240,111" ;
+	atxa-core:bpIndex "0" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx160 .
+
+_:node1713pq3ocx160 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.connect()> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "180" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx161 .
+
+_:node1713pq3ocx161 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.disconnect()> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "196" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx162 .
+
+_:node1713pq3ocx162 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getDevices()> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "212" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx163 .
+
+_:node1713pq3ocx163 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getImporterDevice(String,)> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "228" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx164 .
+
+_:node1713pq3ocx164 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getMetaData()> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "244" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx165 .
+
+_:node1713pq3ocx165 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getStudyHeader()> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "260" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx166 .
+
+_:node1713pq3ocx166 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.getTimeInMillis()> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "276" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx167 .
+
+_:node1713pq3ocx167 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.next()> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "292" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx168 .
+
+_:node1713pq3ocx168 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.rewind()> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "308" .
+
+_:node1713pq3ocx157 atxa-core:contains _:node1713pq3ocx169 .
+
+_:node1713pq3ocx169 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ImporterInterface.seek(long,)> ;
+	atxa-core:posX "38" ;
+	atxa-core:posY "324" .
+
+_:node1713pq3ocx156 atxa-core:contains _:node1713pq3ocx170 .
+
+_:node1713pq3ocx170 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface> ;
+	atxa-core:posX "457" ;
+	atxa-core:posY "158" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.setHeader(SessionDefinition,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.setDestination(File,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.connect()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.put(SignalProducer,NumericsBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.put(SignalProducer,WaveformBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.put(AnnotationBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.put(SignalProducer,AlarmBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.disconnect()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.addDevice(DeviceConfiguration,)> .
+
+_:node1713pq3ocx59 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1713pq3ocx170 ;
+	rdf:object _:node1713pq3ocx171 ;
+	atxa-core:bendpoint _:node1713pq3ocx172 .
+
+_:node1713pq3ocx172 atxa-core:bpLocation "579,115" ;
+	atxa-core:bpIndex "0" .
+
+_:node1713pq3ocx170 atxa-core:contains _:node1713pq3ocx173 .
+
+_:node1713pq3ocx173 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.addDevice(DeviceConfiguration,)> ;
+	atxa-core:posX "458" ;
+	atxa-core:posY "180" .
+
+_:node1713pq3ocx170 atxa-core:contains _:node1713pq3ocx174 .
+
+_:node1713pq3ocx174 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.connect()> ;
+	atxa-core:posX "458" ;
+	atxa-core:posY "196" .
+
+_:node1713pq3ocx170 atxa-core:contains _:node1713pq3ocx175 .
+
+_:node1713pq3ocx175 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.disconnect()> ;
+	atxa-core:posX "458" ;
+	atxa-core:posY "212" .
+
+_:node1713pq3ocx170 atxa-core:contains _:node1713pq3ocx176 .
+
+_:node1713pq3ocx176 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.put(AnnotationBlock,)> ;
+	atxa-core:posX "458" ;
+	atxa-core:posY "228" .
+
+_:node1713pq3ocx170 atxa-core:contains _:node1713pq3ocx177 .
+
+_:node1713pq3ocx177 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.put(SignalProducer,AlarmBlock,)> ;
+	atxa-core:posX "458" ;
+	atxa-core:posY "244" .
+
+_:node1713pq3ocx170 atxa-core:contains _:node1713pq3ocx178 .
+
+_:node1713pq3ocx178 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.put(SignalProducer,NumericsBlock,)> ;
+	atxa-core:posX "458" ;
+	atxa-core:posY "260" .
+
+_:node1713pq3ocx170 atxa-core:contains _:node1713pq3ocx179 .
+
+_:node1713pq3ocx179 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.put(SignalProducer,WaveformBlock,)> ;
+	atxa-core:posX "458" ;
+	atxa-core:posY "276" .
+
+_:node1713pq3ocx170 atxa-core:contains _:node1713pq3ocx180 .
+
+_:node1713pq3ocx180 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.setDestination(File,)> ;
+	atxa-core:posX "458" ;
+	atxa-core:posY "292" .
+
+_:node1713pq3ocx170 atxa-core:contains _:node1713pq3ocx181 .
+
+_:node1713pq3ocx181 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.persistence$ExporterInterface.setHeader(SessionDefinition,)> ;
+	atxa-core:posX "458" ;
+	atxa-core:posY "308" .
+
+atxa-core:docRoot atxa-core:contains _:node1713pq3ocx182 .
+
+_:node1713pq3ocx182 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events> ;
+	atxa-core:posX "171" ;
+	atxa-core:posY "30" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalConsumer> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer> .
+
+_:node1713pq3ocx182 atxa-core:contains _:node1713pq3ocx171 .
+
+_:node1713pq3ocx171 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalConsumer> ;
+	atxa-core:posX "513" ;
+	atxa-core:posY "59" .
+
+_:node1713pq3ocx182 atxa-core:contains _:node1713pq3ocx158 .
+
+_:node1713pq3ocx158 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SignalProducer> ;
+	atxa-core:posX "177" ;
+	atxa-core:posY "55" .
+

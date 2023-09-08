@@ -1,0 +1,174 @@
+#include <expr.idl>
+
+module docbox
+{
+const long MAX_MODULEID_LENGTH = 2;
+
+enum InactivitySignalType
+{
+  warning = 0,
+  logout = 1
+};
+
+struct InactivitySignal
+{
+  InactivitySignalType signal_type;
+}; //@top-level true
+
+const string InactivitySignalTopic = "docbox--InactivitySignal";
+
+struct ModuleServiceIdentification
+{
+  ice::ICE_ID module_id; //@key
+  ice::ICE_ID rack_id; //@key
+  sequence<ice::INTU8> location; //@key
+  string<ice::SHORTSHORT_STRING_LEN> module_label;
+}; //@top-level true
+
+const string ModuleServiceIdentificationReqTopic = "docbox--ModuleServiceIdentificationReq";
+const string ModuleServiceIdentificationTopic = "docbox--ModuleServiceIdentification";
+
+enum ModuleServiceStatus
+{	
+  module_service_connecting = 0,
+  module_service_operating = 1
+};
+
+struct ModuleServiceState
+{
+  ice::ICE_ID module_id; //@key
+  ice::ICE_ID rack_id; //@key
+  sequence<ice::INTU8> location; //@key
+  ModuleServiceStatus module_service_status;
+}; //@top-level true
+
+const string ModuleServiceStateReqTopic = "docbox--ModuleServiceStateReq";
+const string ModuleServiceStateObjTopic = "docbox--ModuleServiceStateObj";
+const string ModuleServiceStateTopic = "docbox--ModuleServiceState";
+
+enum ModuleServiceDeviceDriverStatus
+{
+  request = 0,
+  success = 1,
+  failure = 2,
+  unknown_location_failure = 3,
+  fork_process_failure = 4,
+  parse_driver_arguments_failure = 5,
+  parse_executable_path_failure = 6,
+  parse_executable_path_missing_forward_slash_failure = 7,
+  change_directory_failure = 8,
+  executable_file_does_not_exist_failure = 9
+};
+
+struct DeviceDriverLauncherState
+{
+  string<ice::SHORTSHORT_STRING_LEN> module_label; //@key
+  ice::INTU8 location; //@key
+  ModuleServiceDeviceDriverStatus driver_status;
+  string<ice::LONGLONG_STRING_LEN> driver_arguments;
+  ice::ICE_ID device_id;
+  string<ice::LONG_STRING_LEN> manufacturer;
+  string<ice::LONG_STRING_LEN> model;
+  string<ice::LONG_STRING_LEN> device_type;
+}; //@top-level true
+
+const string DeviceDriverLauncherStateReqTopic = "docbox--DeviceDriverLauncherStateReq";
+const string DeviceDriverLauncherStateObjTopic = "docbox--DeviceDriverLauncherStateObj";
+const string DeviceDriverLauncherStateTopic = "docbox--DeviceDriverLauncherState";
+
+struct DriverManagerState
+{
+  expr::GuidPrefix_t guid; //@key
+  ice::INTU8 location; //@key
+  ice::ICE_ID device_id;
+}; //@top-level true
+
+const string DriverManagerStateReqTopic = "docbox--DriverManagerStateReq";
+const string DriverManagerStateTopic = "docbox--DriverManagerState";
+
+struct ModuleDisplayState
+{
+  expr::GuidPrefix_t guid; //@key
+  ice::INTU8 location; //@key
+  boolean has_focus;
+  string<ice::SHORTSHORT_STRING_LEN> module_label;
+}; //@top-level true
+
+const string ModuleDisplayStateReqTopic = "docbox--ModuleDisplayStateReq";
+const string ModuleDisplayStateTopic = "docbox--ModuleDisplayState";
+
+enum DriverStatus
+{	
+  connecting = 0,
+  operating = 1,
+  shutdown = 2,
+  canceled = 3,
+  error = 4
+};
+
+struct DeviceDriverState
+{
+  ice::ICE_ID device_id; //@key
+  DriverStatus driver_status;
+}; //@top-level true
+
+const string DeviceDriverStateReqTopic = "docbox--DeviceDriverStateReq";
+const string DeviceDriverStateObjTopic = "docbox--DeviceDriverStateObj";
+const string DeviceDriverStateTopic = "docbox--DeviceDriverState";
+
+struct AppFocusState
+{
+  string<ice::MEDIUM_STRING_LEN> provenance;  //@key
+  string<ice::LONG_STRING_LEN> app_name;
+  boolean has_focus;
+}; //@top-level true
+
+const string AppFocusStateReqTopic = "docbox--AppFocusStateReq";
+const string AppFocusStateObjTopic = "docbox--AppFocusStateObj";
+const string AppFocusStateTopic = "docbox--AppFocusState";
+
+struct AppFocusStateError
+{
+  string<ice::LONG_STRING_LEN> app_name; //@key
+  string<ice::LONGLONG_STRING_LEN> error;
+}; //@top-level true
+
+const string AppFocusStateErrorTopic = "docbox--AppFocusStateError";
+
+enum LCDModuleStatus
+{
+  inactive = 0,
+  active = 1,
+  displaying_string = 2
+};
+
+struct LCDModuleState
+{
+  string<MAX_MODULEID_LENGTH> module_id; //@key
+  LCDModuleStatus lcd_module_status;
+}; //@top-level true
+
+const string LCDModuleStateTopic = "docbox--LCDModuleState";
+
+
+struct ModuleServiceFocus
+{
+  string<ice::SHORTSHORT_STRING_LEN> module_label; //@key
+  ice::INTU8 location; //@key
+  boolean has_focus;
+}; //@top-level true
+
+const string ModuleServiceFocusReqTopic = "docbox--ModuleServiceFocusReq";
+const string ModuleServiceFocusObjTopic = "docbox--ModuleServiceFocusObj";
+const string ModuleServiceFocusTopic = "docbox--ModuleServiceFocus";
+
+struct ModuleServiceFocusError
+{
+  string<ice::SHORTSHORT_STRING_LEN> module_label; //@key
+  ice::INTU8 location; //@key
+  string<ice::LONGLONG_STRING_LEN> error;
+}; //@top-level true
+
+const string ModuleServiceFocusErrorTopic = "docbox--ModuleServiceFocusError";
+
+};

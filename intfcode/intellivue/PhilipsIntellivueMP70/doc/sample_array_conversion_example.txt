@@ -1,0 +1,157 @@
+Example RTSA context attributes
+-------------------------------------------------------------------------------
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle= 712
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition: 1	code: 9
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	update_period: 0 (s), 255999999 (ns)
+	category: 1
+	access: 17024
+	ms_struct: 1
+	ms_comp_no: 3
+	relevance: 0
+NOM_ATTR_SA_SPECN, Sample Array Specification, 
+	array_size: 64
+	sample_size: 16
+	significant_bits: 14
+	flags: 12288
+NOM_ATTR_SA_FIXED_VAL_SPECN, Sample Array Fixed Values Specification, 
+	sa_fixed_val_id: 4
+	sa_fixed_val: 32776
+	sa_fixed_val_id: 3
+	sa_fixed_val: 16385
+	sa_fixed_val_id: 2
+	sa_fixed_val: 32772
+NOM_ATTR_TIME_PD_SAMP, Sample Period, 
+  sample_period: 0 (s) 3999999 (ns)
+NOM_ATTR_ID_LABEL, Label, 
+  text_id: 131328
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	label: ECG   
+NOM_ATTR_UNIT_CODE, Unit Code, 
+  unit_code: 4274
+NOM_ATTR_MODE_MSMT, Measure Mode, 
+  measurement_mode: 544
+NOM_ATTR_COLOR, Color, 
+  simple_color: 2
+NOM_ATTR_METRIC_STAT, Metric State, 
+  metric_state: 0
+NOM_ATTR_SCALE_SPECN_I16, Scale and Range Specification, 
+	lower_absolute_value: -40
+	upper_absolute_value: 40
+	lower_scaled_value: 0
+	upper_scaled_value: 16383
+NOM_ATTR_SA_CALIB_I16, Sample Array Calibration Specification, 
+	lower_absolute_value: 0
+	upper_absolute_value: 1
+	lower_scaled_value: 8092
+	upper_scaled_value: 8292
+	increment 0
+	cal_type: BAR
+
+
+NOM_ATTR_SA_SPECN, Sample Array Specification, 
+
+flags = 12288 = 0x3000
+	
+	0011 0000 0000 0000 (0x3000)
+& 0010 0000 0000 0000 (STATIC_SCALE = 0x2000)
+------------------------------
+  0010 0000 0000 0000 (0x2000)
+
+  0011 0000 0000 0000 (0x3000)
+& 0001 0000 0000 0000 (SA_EXT_VAL_RANGE = 0x1000)
+------------------------------
+  0001 0000 0000 0000 (0x1000)
+  
+Both STATIC_SCALE and SA_EXT_VAL_RANGE are set.
+
+From the intellivue manual:
+STATIC_SCALE: Scale and range specification does not change.
+SA_EXT_VAL_RANGE: The non-significant bits in the sample value must be masked.
+
+Now we know from 'flags' that non-significant bits must be masked.
+
+	sample_size: 16
+	significant_bits: 14
+
+Generated mask = 0x3FFF or 0011 1111 1111 1111
+
+
+The following is an example sample array from an NOM_ECG_ELEC_POTL_II waveform.
+
+RTSAMeasObservedValue:
+	context_id:123, handle:712, parent_handle:100
+	metric_id: 258, state: 1024
+	array:
+8174 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 41364 8184 8184 8184 8184 8184 8184 8184 8184 8184 8184 8189 8197 8210 8226 8244 8263 8282 8300 8318 8334 8345 8347 8340 
+
+
+NOM_ATTR_SA_FIXED_VAL_SPECN, Sample Array Fixed Values Specification
+	
+	sa_fixed_val_id: 4 = SA_FIX_SATURATION
+	sa_fixed_val: 32776 = 0x8008
+	
+	sa_fixed_val_id: 3 = SA_FIX_DEFIB_MARKER_MASK
+	sa_fixed_val: 16385 = 0x4001
+	
+	sa_fixed_val_id: 2 = SA_FIX_PACER_MASK
+	sa_fixed_val: 32772 = 0x8004
+
+SA_FIX_PACER_MASK: Pace pulse detected.
+SA_FIX_DEFIB_MARKER_MASK: Defib marker in this sample.
+SA_FIX_SATURATION: Indicates saturation condition in this sample.
+(Note: despite the name, this is a mask as well.)
+
+Determine if any masks are set in the first sample (8174).
+
+8174 = 0x1FEE
+
+  0001 1111 1110 1110 (0x1FEE)
+& 1000 0000 0000 1000 (SA_FIX_SATURATION 0x8008)
+-----------------------------------
+  0000 0000 0000 1000 (0x0008 != SA_FIX_SATURATION) No saturation condition
+
+  0001 1111 1110 1110 (0x1FEE)
+& 0100 0000 0000 0001 (SA_FIX_DEFIB_MARKER_MASK 0x4001)
+-----------------------------------
+  0000 0000 0000 0000 (0x0000 != SA_FIX_DEFIB_MARKER_MASK) No Defib marker
+  
+  0001 1111 1110 1110 (0x1FEE)
+& 1000 0000 0000 0100 (SA_FIX_PACER_MASK 0x8004)
+-----------------------------------
+  0000 0000 0000 0100 (0x0004 != SA_FIX_PACER_MASK) No pace pulse detected
+
+
+
+Using the first sample, apply the generated mask to mask the non-significant bits
+
+8174 = 0x1FEE
+
+  0001 1111 1110 1110 (0x1FEE)
+& 0011 1111 1111 1111 (Mask 0x3FFF)
+-----------------------------------
+  0001 1111 1110 1110 (0x1FEE)
+
+
+NOM_ATTR_SCALE_SPECN_I16, Scale and Range Specification, 
+	lower_absolute_value: -40
+	upper_absolute_value: 40
+	lower_scaled_value: 0
+	upper_scaled_value: 16383
+
+8174 / 16383 = 0.49893182
+40 - -40 = 80
+80 * 0.4989 = 39.9145
+-40 + 39.9145 = -0.0855
+absolute value = -0.0855 mV ( milli-volt )
+  
+
+
+
+
+
+
+
+

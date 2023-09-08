@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-display-impl xmlns="http://idea.mil/rp">
+    <numBands>6</numBands>
+    <numPBoxes>12</numPBoxes>
+    <horizPBoxes>6</horizPBoxes>
+    <vertPBoxes>6</vertPBoxes>
+    <opmode>0</opmode>
+    <bandData>
+        <bandNum>0</bandNum>
+        <bandAttr>2</bandAttr>
+        <bandWeight>2</bandWeight>
+        <waveformSetup>
+            <sweepSpeed>0</sweepSpeed>
+            <sampleRate>200</sampleRate>
+            <scaleValue1>0</scaleValue1>
+            <scaleValue2>300</scaleValue2>
+            <waveColor>10</waveColor>
+            <loc>0x00</loc>
+        </waveformSetup>
+    </bandData>
+    <bandData>
+        <bandNum>2</bandNum>
+        <bandAttr>2</bandAttr>
+        <bandWeight>2</bandWeight>
+        <waveformSetup>
+            <sweepSpeed>0</sweepSpeed>
+            <sampleRate>100</sampleRate>
+            <scaleValue1>0</scaleValue1>
+            <scaleValue2>3000</scaleValue2>
+            <waveColor>3</waveColor>
+            <loc>0x01</loc>
+        </waveformSetup>
+    </bandData>
+    <bandData>
+        <bandNum>4</bandNum>
+        <bandAttr>2</bandAttr>
+        <bandWeight>2</bandWeight>
+        <waveformSetup>
+            <sweepSpeed>0</sweepSpeed>
+            <sampleRate>100</sampleRate>
+            <scaleValue1>0</scaleValue1>
+            <scaleValue2>100</scaleValue2>
+            <waveColor>5</waveColor>
+            <loc>0x06</loc>
+        </waveformSetup>
+    </bandData>
+    <pboxData>
+        <pboxId>0</pboxId>
+        <pboxFormat>91</pboxFormat>
+        <foreground>14</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xF0</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+        <pboxId>1</pboxId>
+        <pboxFormat>92</pboxFormat>
+        <foreground>10</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x7D</location>
+        </paramSetup>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x73</location>
+        </paramSetup>
+     </pboxData>
+    <pboxData>
+        <pboxId>2</pboxId>
+        <pboxFormat>91</pboxFormat>
+        <foreground>5</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x88</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+        <pboxId>3</pboxId>
+        <pboxFormat>92</pboxFormat>
+        <foreground>3</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xD6</location>
+        </paramSetup>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x06</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+        <pboxId>4</pboxId>
+        <pboxFormat>92</pboxFormat>
+        <foreground>14</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xB9</location>
+        </paramSetup>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x0B</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+        <pboxId>5</pboxId>
+        <pboxFormat>92</pboxFormat>
+        <foreground>12</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x74</location>
+        </paramSetup>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x78</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+       <pboxId>11</pboxId>
+        <pboxFormat>95</pboxFormat>
+        <foreground>14</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">1x0B</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+       <pboxId>10</pboxId>
+        <pboxFormat>95</pboxFormat>
+        <foreground>14</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">1x09</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+       <pboxId>9</pboxId>
+        <pboxFormat>95</pboxFormat>
+        <foreground>14</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">1x05</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+       <pboxId>8</pboxId>
+        <pboxFormat>95</pboxFormat>
+        <foreground>14</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">1x04</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+       <pboxId>7</pboxId>
+        <pboxFormat>95</pboxFormat>
+        <foreground>14</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">1x01</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+       <pboxId>6</pboxId>
+        <pboxFormat>96</pboxFormat>
+        <foreground>14</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">1x07</location>
+        </paramSetup>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">1x08</location>
+        </paramSetup>
+    </pboxData>
+</rp-display-impl>

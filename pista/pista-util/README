@@ -1,0 +1,18 @@
+Sample pista-prompt session:
+
+[bbaker@linlab src]$ ./pista-prompt 
+       pista_init build=experimental
+       pista> load
+       request: load
+       Usage: load <name> [<so>]
+LINUX  pista> load SIMU /usr/local/lib/libpista-simu.so
+LINUX  request: load SIMU /usr/local/lib/libpista-simu.so
+MINGW  pista> load SIMU c:/msys64/mingw64/bin/libpista-simu.dll
+MINGW  load SIMU c:/msys64/mingw64/bin/libpista-simu.dll
+       pista> list
+       request: list
+       Listing known devices.
+            simu          z/Sine Wave Simulator      1
+       pista> quit
+       request: quit
+

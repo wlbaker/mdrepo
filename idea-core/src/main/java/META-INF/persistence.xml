@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+
+	<!-- <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> -->
+
+	<persistence-unit name="exporterSQLite"	transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<!-- 
+		<class>idea.persistmanager.sql.MetaTally</class>
+		<class>idea.persistmanager.sql.MetaKV</class>
+		<class>idea.persistmanager.sql.MetaStream</class>
+		<class>idea.persistmanager.sql.MetaColumn</class>
+		<class>idea.persistmanager.sql.TranLog</class>
+		
+		<class>idea.model.Annotation</class>
+		<class>idea.model.dev.SimuSine_Measurement</class>
+		<class>idea.model.dev.SimuSine_Waveform</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes> 
+		 -->
+		<class>idea.model.auto</class>
+		
+		<properties>
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.dialect" value="idea.sqlite.SQLiteDialect" />
+			<property name="hibernate.connection.driver_class" value="org.sqlite.JDBC" />
+			<property name="hibernate.connection.username" value="sa" />
+			<property name="hibernate.connection.password" value="" />
+			<property name="hibernate.connection.url" value="jdbc:sqlite:c:/tmp/testfile0.db" />
+			<property name="hibernate.max_fetch_depth" value="3" />
+			<!-- 
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.default_schema" value="public" />
+			 -->
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+			 
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="managerSQLite"
+		transaction-type="RESOURCE_LOCAL">
+
+		<!-- Toplink and others, but not hibernate <exclude-unlisted-classes>false</exclude-unlisted-classes> -->
+
+		<!-- <class>demo.Account</class> -->
+
+		<properties>
+
+			<!-- VENDOR SPECIFIC TAGS: sqlite <property name="hibernate.dialect" value="org.hibernate.dialect.SQLiteDialect" 
+				/> <property name="dialect">com.applerao.hibernatesqlite.dialect.SQLiteDialect</property> -->
+			<property name="hibernate.dialect" value="idea.sqlite.SQLiteDialect" />
+			<property name="hibernate.connection.driver_class" value="org.sqlite.JDBC" />
+			<property name="hibernate.connection.username" value="sa" />
+			<property name="hibernate.connection.password" value="" />
+			<property name="hibernate.connection.url" value="jdbc:sqlite:c:/tmp/testfile0.db" />
+			<property name="hibernate.max_fetch_depth" value="3" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<!-- <property name="hibernate.hbm2ddl.auto" value="update or create"/> 
+				<property name="packagesToScan" value="idea.model.dev"/> <property name="packagesToScan" 
+				value="demo"/> -->
+
+
+			<!-- <property name="hibernate.ejb.cfgfile" value="/hibernate.cfg.xml"/> 
+				<jar-file>file:/opt/workspace/chaktaw/icuInterface/bin</jar-file> <class>courses.hibernate.vo.Account</class> -->
+
+			<!-- - cache configuration - <property name="hibernate.ejb.classcache.org.hibernate.ejb.test.Item" 
+				value="read-write"/> <property name="hibernate.ejb.collectioncache.org.hibernate.ejb.test.Item.distributors" 
+				value="read-write, RegionName"/> -->
+
+			<!-- VENDOR SPECIFIC TAGS: oracle <property name="hibernate.connection.driver_class" 
+				value="oracle.jdbc.driver.OracleDriver" /> <property name="hibernate.connection.url" 
+				value="jdbc:oracle:thin:@localhost:1521:XE" /> <property name="hibernate.connection.username" 
+				value="lecture10" /> <property name="hibernate.connection.password" value="lecture10" 
+				/> <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" 
+				/> <property name="hibernate.show_sql" value="true" /> -->
+			<!-- VENDOR SPECIFIC TAGS: hsqldb <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" 
+				/> <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" 
+				/> <property name="hibernate.connection.username" value="sa" /> <property 
+				name="hibernate.connection.password" value="" /> <property name="hibernate.connection.url" 
+				value="jdbc:hsqldb:." /> <property name="hibernate.max_fetch_depth" value="3" 
+				/> -->
+
+			<!-- We use annotations, don't need this <mapping-file>orm.xml</mapping-file> -->
+
+			<!-- but we do need this: enabled by default...? <property name="hibernate.archive.autodetection" 
+				value="class, hbm*" /> -->
+
+		</properties>
+	</persistence-unit>
+</persistence>

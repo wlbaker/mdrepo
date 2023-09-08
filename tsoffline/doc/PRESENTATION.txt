@@ -1,0 +1,14 @@
+
+1- Datasets
+   - what we analyze
+
+2- Analysis - usually Excel
+   - pulling together multiple animals
+   -
+
+3- Cardiology
+   - hemodynamic waveform library
+
+
+4- 
+

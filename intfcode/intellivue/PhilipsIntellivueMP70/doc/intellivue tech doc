@@ -1,0 +1,10 @@
+OS: ubuntu 11.10
+OS Type: 32 bit
+
+RTI DDS must be installed to compile and run software.
+DDS needs an up-to-date license and an internet connection.
+
+Computer must have an ethernet port or a serial port to communicate with the intellivue monitor.
+
+For LAN protocol bootp will need to be running.
+Bootp will give intellivue monitor a valid ip address.

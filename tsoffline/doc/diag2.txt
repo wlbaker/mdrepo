@@ -1,0 +1,65 @@
+
+[select]
+
+selector tool pos: Point2D.Double[158.0285345052083, 316.0] canvas_pos: Point2D.Double[436.0, 156.0] camera: band_0
+15:12:46,947 ERROR [AWT-EventQueue-0] TsPSwingCanvas:2688 - FIXME: SELECTIONCHANGE FLIP removed
+00: ZTR gpt0, gpt1: Point2D.Double[158.02853393554688, 462.0],Point2D.Double[179.04296684265137, -0.0]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[35.68975681215944, 0.0, -5579.999945541753], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]vt=AffineTransform[[35.68975681215944, 0.0, -5579.999945541753], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.995862000625299, 148.08787394632816]]
+Remove all children on layer: null child count=1
+
+
+[center]
+
+selector tool pos: Point2D.Double[171.33767477671304, 66.0] canvas_pos: Point2D.Double[535.0, 406.0] camera: band_0
+selector tool pos: Point2D.Double[166.54638407389322, 107.0] canvas_pos: Point2D.Double[364.0, 365.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=false
+** independent_y_scales=true
+15:13:01,915  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+15:13:01,917  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 11.947665841135978, -3304.1013104374783]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-4034.838463112474,width=315.21649169921875,height=2782.647215939637]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=-4034.838463112474,width=315.21649169921875,height=2782.647215939637]
+*** zoom camera to scale: Point2D.Double[0.0, -834.7941647818914] --> Point2D.Double[315.21649169921875, -4452.235545503419]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, -834.7941647818914],Point2D.Double[315.21649169921875, -4452.235545503419]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 11.947665841135978, -3304.1013104374783]]
+Remove all children on layer: null child count=1
+
+
+------------------------------------ another one
+
+[select]
+selector tool pos: Point2D.Double[125.65720547993976, 575.8555104732513] canvas_pos: Point2D.Double[389.0, 124.0] camera: band_0
+15:14:20,682 ERROR [AWT-EventQueue-0] TsPSwingCanvas:2688 - FIXME: SELECTIONCHANGE FLIP removed
+00: ZTR gpt0, gpt1: Point2D.Double[125.6572036743164, 689.8555104732513],Point2D.Double[130.22434043884277, 227.85551047325134]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[164.21667199138022, 0.0, -20575.007799139275], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]vt=AffineTransform[[164.21667199138022, 0.0, -20575.007799139275], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.294754190975519, 369.0886180070555]]
+Remove all children on layer: null child count=1
+
+[center]
+selector tool pos: Point2D.Double[127.41707370758057, 189.0] canvas_pos: Point2D.Double[349.0, 283.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=false
+** independent_y_scales=true
+15:14:52,506  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+15:14:52,507  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 11.947665841135978, -3304.1013104374783]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-4034.838463112474,width=315.21649169921875,height=2782.647215939637]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=-4034.838463112474,width=315.21649169921875,height=2782.647215939637]
+*** zoom camera to scale: Point2D.Double[0.0, -834.7941647818914] --> Point2D.Double[315.21649169921875, -4452.235545503419]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, -834.7941647818914],Point2D.Double[315.21649169921875, -4452.235545503419]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]vt=AffineTransform[[2.379317135207686, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 11.947665841135978, -3304.1013104374783]]
+Remove all children on layer: null child count=1

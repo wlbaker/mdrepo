@@ -1,0 +1,34 @@
+[root@linlab system.d]# sdptool records 04:A3:16:56:33:00
+Service Name: Group Network Service
+Service Description: BlueZ PAN Service
+Service Provider: BlueZ PAN
+Service RecHandle: 0x10000
+Service Class ID List:
+  "PAN Group Network" (0x1117)
+Protocol Descriptor List:
+  "L2CAP" (0x0100)
+    PSM: 15
+  "BNEP" (0x000f)
+    Version: 0x0100
+    SEQ16: 800 806
+Language Base Attr List:
+  code_ISO639: 0x656e
+  encoding:    0x6a
+  base_offset: 0x100
+Profile Descriptor List:
+  "PAN Group Network" (0x1117)
+    Version: 0x0100
+
+Service Name: ZOLL Serial Protocol
+Service Description: HTTP over serial
+Service Provider: ZOLL Device
+Service RecHandle: 0x10001
+Protocol Descriptor List:
+  "L2CAP" (0x0100)
+  "RFCOMM" (0x0003)
+    Channel: 11
+Profile Descriptor List:
+  "Serial Port" (0x1101)
+    Version: 0x0100
+
+

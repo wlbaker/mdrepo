@@ -1,0 +1,51 @@
+/**
+ * @file    trendevt.idl
+ * @author  WMS and Mike Szwaja
+ * @date    MAY 21 2014
+ * @brief   DICES Internal API
+ * @see     
+ */
+
+module docbox
+{
+const long MED_STRING_LEN = 100;
+
+typedef long INT32;
+typedef long TIME_T;
+
+/**
+ * Time represented by the number of seconds and fractional seconds (nanosecs).
+ */
+struct Timespec
+{
+  TIME_T seconds;
+  INT32 nanoseconds;
+}; //@top-level false
+
+/**
+ * AbsoluteTime specifies the number of seconds and nanoseconds since
+ * 1970-01-01 00:00:00 UTC.
+ */
+typedef Timespec AbsoluteTime;
+
+const string EventClassOperator = "Operator";
+const string EventClassProcess = "Process";
+const string EventClassAlarm = "Alarm";
+
+const string EventTypeLogin = "Login";
+const string EventTypeLogout = "Logout";
+const string EventTypeApp = "App";
+const string EventTypeDevice = "Device";
+
+struct TrendEvent
+{
+  string<MED_STRING_LEN> event_class; //@key
+  string<MED_STRING_LEN> event_type;
+  AbsoluteTime date_time;
+  string<MED_STRING_LEN> name; //@key
+}; // @top-level true
+
+const string TrendEventTopic = "docbox--TrendEvent";
+
+};
+

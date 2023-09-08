@@ -1,0 +1,1 @@
+"c:\opt\jdk\latest\bin\java" -cp c:\opt\tools\jaxb-ri\bin\\..\lib\javax.activation-api-1.2.0.jar;c:\opt\tools\jaxb-ri\bin\\..\lib\jaxb-ri-2.3.0\lib\jaxb-xjc.jar com.sun.tools.xjc.XJCFacade -Xinject-code -extension -b bindings.xml -p idea.ts -d ..\java tsoffline-defs.xsd 

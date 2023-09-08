@@ -1,0 +1,508 @@
+
+2 centers...four alls...center...all
+
+15:10:16,011  WARN [main] PlatformUtil:72 - java.library.path segment doesnt exist: /usr/java/packages/lib/amd64
+1.8.13.
+0- ARCH=   BIN=/bin
+1- java.library.path: /usr/lib64:/lib64:/lib:/usr/lib:/usr/lib64:/usr/lib64/rxtx:/usr/lib64/jhdf5
+2- java.library.path: /usr/lib64:/lib64:/lib:/usr/lib:/usr/lib64:/usr/lib64/rxtx:/usr/lib64/jhdf5:/usr/lib64/R/bin:/usr/lib64/R/library/rJava/jri:/usr/lib64/R/library/rJava/libs
+15:10:17,890 ERROR [AWT-EventQueue-0] RUtil:30 - getREngine() failure: Can't load library: /usr/lib64/R/library/rj/jri/libjri.so
+* constructor
+thisComponentResized: 0,0==java.awt.Dimension[width=0,height=0]
+REDRAW AXIS LAYER
+[Rnull]Remove all children on layer: null child count=0
+TR2 SIGCAM: AffineTransform[[1.0, 0.0, 60.0], [0.0, -1.0, 200.0]]
+[Rnull]Remove all children on layer: null child count=1
+* constructor
+thisComponentResized: 0,0==java.awt.Dimension[width=0,height=0]
+REDRAW AXIS LAYER
+[Rnull]Remove all children on layer: null child count=0
+TR2 SIGCAM: AffineTransform[[1.0, 0.0, 60.0], [0.0, -1.0, 200.0]]
+[Rnull]Remove all children on layer: null child count=1
+* showGraphTimeline
+thisComponentResized: 0,0==java.awt.Dimension[width=0,height=0]
+REDRAW AXIS LAYER
+[Rnull]* showGraphScale
+thisComponentResized: 0,0==java.awt.Dimension[width=0,height=0]
+REDRAW AXIS LAYER
+[Rnull]* showGraphLegend
+thisComponentResized: 0,0==java.awt.Dimension[width=0,height=0]
+REDRAW AXIS LAYER
+[Rnull][Rnull]15:10:18,727  WARN [AWT-EventQueue-0] TsPSwingCanvas:3404 - CONFIRM view bounds: PBounds[EMPTY] + cam=signal_camera
+15:10:18,728 ERROR [AWT-EventQueue-0] TsPSwingCanvas:3417 - FIXME: setDomainInMillis is incomplete
+15:10:18,728  WARN [AWT-EventQueue-0] TsPSwingCanvas:3429 - VIEWPOS millis=1000
+15:10:18,728  WARN [AWT-EventQueue-0] TsPSwingCanvas:3433 - INITIAL view bounds: PBounds[EMPTY] + cam=signal_camera
+15:10:18,728  WARN [AWT-EventQueue-0] TsPSwingCanvas:3435 - * VIEWPOS view to bounds: PBounds[EMPTY] + cam=signal_camera
+addDemoToCanvas layer 0 cam=0 vis=false
+15:10:19,234 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 1 cam=0 vis=false
+15:10:19,234 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 2 cam=0 vis=false
+15:10:19,235 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 3 cam=0 vis=false
+15:10:19,235 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 4 cam=0 vis=false
+15:10:19,235 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 5 cam=0 vis=false
+15:10:19,235 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 6 cam=0 vis=false
+15:10:19,236 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 7 cam=0 vis=false
+15:10:19,236 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 8 cam=0 vis=false
+15:10:19,236 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 9 cam=0 vis=false
+15:10:19,237 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 10 cam=0 vis=false
+15:10:19,238 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 11 cam=0 vis=false
+15:10:19,238 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 12 cam=0 vis=false
+15:10:19,238 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 13 cam=0 vis=false
+15:10:19,239 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 14 cam=0 vis=false
+15:10:19,239 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 15 cam=0 vis=false
+15:10:19,249  WARN [AWT-EventQueue-0] TsPSwingCanvas:3404 - CONFIRM view bounds: PBounds[EMPTY] + cam=signal_camera
+15:10:19,250 ERROR [AWT-EventQueue-0] TsPSwingCanvas:3417 - FIXME: setDomainInMillis is incomplete
+15:10:19,250  WARN [AWT-EventQueue-0] TsPSwingCanvas:3429 - VIEWPOS millis=1000
+15:10:19,250  WARN [AWT-EventQueue-0] TsPSwingCanvas:3433 - INITIAL view bounds: PBounds[EMPTY] + cam=signal_camera
+15:10:19,250  WARN [AWT-EventQueue-0] TsPSwingCanvas:3435 - * VIEWPOS view to bounds: PBounds[EMPTY] + cam=signal_camera
+set view range: demo/**0 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**1 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**2 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**3 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**4 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**5 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**6 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**7 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**8 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**9 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**10 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**11 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**12 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**13 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**14 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**15 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+15:10:19,826  WARN [AWT-EventQueue-0] TsoSetupXMLUtil:46 - cannot read setup file: /home/bbaker/.tsoffline/setup.xml
+* tscontrolpanel resize: java.awt.Dimension[width=0,height=-23]
+DisplayManager: LAYOUT RESIZE: java.awt.Dimension[width=998,height=619]
+* component listener delayed: java.awt.Dimension[width=508,height=435]
+* TsPSwingCanvas thisComponentResizedDelayed: java.awt.Dimension[width=508,height=435]
+* tscontrolpanel resize: java.awt.Dimension[width=0,height=-23]
+* component listener delayed: java.awt.Dimension[width=-8,height=-31]
+* TsPSwingCanvas thisComponentResizedDelayed: java.awt.Dimension[width=-8,height=-31]
+DisplayManager: LAYOUT RESIZE: java.awt.Dimension[width=998,height=619]
+DisplayManager: LAYOUT RESIZE: java.awt.Dimension[width=998,height=619]
+DisplayManager: LAYOUT RESIZE NEW SIZE: java.awt.Dimension[width=998,height=619] for primary: primary
+DisplayManager: LAYOUT RESIZE NEW SIZE: java.awt.Dimension[width=998,height=619] for primary: primary
+DisplayManager: LAYOUT RESIZE NEW SIZE: java.awt.Dimension[width=998,height=619] for primary: primary
+* [thisComponentResized timer from delayed]
+thisComponentResized: 508,435==java.awt.Dimension[width=508,height=435]
+0 null sz=java.awt.Dimension[width=508,height=458] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+1 null sz=java.awt.Dimension[width=828,height=458] clz=class javax.swing.JPanel layout=com.jgoodies.forms.layout.FormLayout@1883344e
+2 null sz=java.awt.Dimension[width=640,height=-223] clz=class idea.tsoffline.prefs.ClassicLayoutPanel layout=com.jgoodies.forms.layout.FormLayout@5baa0b4e
+3 layers sz=java.awt.Dimension[width=998,height=619] clz=class javax.swing.JLayeredPane layout=null
+4 null sz=java.awt.Dimension[width=998,height=619] clz=class idea.tsoffline.disp_manager.DisplayManager layout=java.awt.BorderLayout[hgap=0,vgap=0]
+REDRAW AXIS LAYER
+[Rnull]* [thisComponentResized timer from delayed]
+thisComponentResized: -8,-31==java.awt.Dimension[width=-8,height=-31]
+0 tsControlPanel sz=java.awt.Dimension[width=998,height=596] clz=class idea.tsoffline.canvas.TsControlPanel layout=java.awt.BorderLayout[hgap=4,vgap=0]
+1 primary sz=java.awt.Dimension[width=998,height=619] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+2 layers sz=java.awt.Dimension[width=998,height=619] clz=class javax.swing.JLayeredPane layout=null
+3 null sz=java.awt.Dimension[width=998,height=619] clz=class idea.tsoffline.disp_manager.DisplayManager layout=java.awt.BorderLayout[hgap=0,vgap=0]
+4 null.contentPane sz=java.awt.Dimension[width=998,height=666] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+REDRAW AXIS LAYER
+[Rnull]Remove all children on layer: null child count=1
+* tscontrolpanel resize: java.awt.Dimension[width=998,height=596]
+* component listener delayed: java.awt.Dimension[width=990,height=588]
+* TsPSwingCanvas thisComponentResizedDelayed: java.awt.Dimension[width=990,height=588]
+* [thisComponentResized timer from delayed]
+thisComponentResized: 990,588==java.awt.Dimension[width=990,height=588]
+0 tsControlPanel sz=java.awt.Dimension[width=998,height=596] clz=class idea.tsoffline.canvas.TsControlPanel layout=java.awt.BorderLayout[hgap=4,vgap=0]
+1 primary sz=java.awt.Dimension[width=998,height=619] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+2 layers sz=java.awt.Dimension[width=998,height=619] clz=class javax.swing.JLayeredPane layout=null
+3 null sz=java.awt.Dimension[width=998,height=619] clz=class idea.tsoffline.disp_manager.DisplayManager layout=java.awt.BorderLayout[hgap=0,vgap=0]
+4 null.contentPane sz=java.awt.Dimension[width=998,height=666] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+REDRAW AXIS LAYER
+[Rnull]Remove all children on layer: null child count=1
+15:10:25,371 ERROR [AWT-EventQueue-0] DaqUtil:273 - Unrecognized key/value: "Study Title/filter:250Hz, gain:4"
+15:10:25,372 ERROR [AWT-EventQueue-0] DaqUtil:273 - Unrecognized key/value: "Sugery Date/Wednesday, November 04, 2015"
+* constructor
+thisComponentResized: 0,0==java.awt.Dimension[width=0,height=0]
+REDRAW AXIS LAYER
+[Rnull]Remove all children on layer: null child count=0
+TR2 SIGCAM: AffineTransform[[1.0, 0.0, 60.0], [0.0, -1.0, 200.0]]
+[Rnull]Remove all children on layer: null child count=1
+* showGraphTimeline
+thisComponentResized: 0,0==java.awt.Dimension[width=0,height=0]
+REDRAW AXIS LAYER
+[Rnull]* showGraphScale
+thisComponentResized: 0,0==java.awt.Dimension[width=0,height=0]
+REDRAW AXIS LAYER
+[Rnull]* showGraphLegend
+thisComponentResized: 0,0==java.awt.Dimension[width=0,height=0]
+REDRAW AXIS LAYER
+[Rnull][Rnull]15:10:26,175  WARN [AWT-EventQueue-0] TsPSwingCanvas:3404 - CONFIRM view bounds: PBounds[EMPTY] + cam=signal_camera
+15:10:26,176 ERROR [AWT-EventQueue-0] TsPSwingCanvas:3417 - FIXME: setDomainInMillis is incomplete
+15:10:26,176  WARN [AWT-EventQueue-0] TsPSwingCanvas:3429 - VIEWPOS millis=1000
+15:10:26,176  WARN [AWT-EventQueue-0] TsPSwingCanvas:3433 - INITIAL view bounds: PBounds[EMPTY] + cam=signal_camera
+15:10:26,176  WARN [AWT-EventQueue-0] TsPSwingCanvas:3435 - * VIEWPOS view to bounds: PBounds[EMPTY] + cam=signal_camera
+addDemoToCanvas layer 0 cam=0 vis=false
+15:10:26,482 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 1 cam=0 vis=false
+15:10:26,483 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 2 cam=0 vis=false
+15:10:26,486 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 3 cam=0 vis=false
+15:10:26,486 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 4 cam=0 vis=false
+15:10:26,487 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 5 cam=0 vis=false
+15:10:26,487 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 6 cam=0 vis=false
+15:10:26,487 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 7 cam=0 vis=false
+15:10:26,487 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 8 cam=0 vis=false
+15:10:26,487 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 9 cam=0 vis=false
+15:10:26,488 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 10 cam=0 vis=false
+15:10:26,488 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 11 cam=0 vis=false
+15:10:26,488 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 12 cam=0 vis=false
+15:10:26,488 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 13 cam=0 vis=false
+15:10:26,489 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 14 cam=0 vis=false
+15:10:26,489 ERROR [AWT-EventQueue-0] TsPSwingCanvas:857 - DEBUG: setting uniform transform [classic] --> AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+addDemoToCanvas layer 15 cam=0 vis=false
+15:10:26,494  WARN [AWT-EventQueue-0] TsPSwingCanvas:3404 - CONFIRM view bounds: PBounds[EMPTY] + cam=signal_camera
+15:10:26,494 ERROR [AWT-EventQueue-0] TsPSwingCanvas:3417 - FIXME: setDomainInMillis is incomplete
+15:10:26,495  WARN [AWT-EventQueue-0] TsPSwingCanvas:3429 - VIEWPOS millis=1000
+15:10:26,495  WARN [AWT-EventQueue-0] TsPSwingCanvas:3433 - INITIAL view bounds: PBounds[EMPTY] + cam=signal_camera
+15:10:26,495  WARN [AWT-EventQueue-0] TsPSwingCanvas:3435 - * VIEWPOS view to bounds: PBounds[EMPTY] + cam=signal_camera
+set view range: demo/**0 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**1 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**2 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**3 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**4 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**5 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**6 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**7 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**8 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**9 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**10 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**11 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**12 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**13 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**14 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+set view range: demo/**15 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.049090909090909, 49.090909090909086]]
+15:10:26,503 ERROR [AWT-EventQueue-0] TsDataPanel:99 - signalTree.addTreeExpansionListener(new DirExpansionListener());
+15:10:26,563 ERROR [AWT-EventQueue-0] AppFrame:923 - FIXME: need inspirograph and HSE layouts to be handled correctly
+* component listener delayed: java.awt.Dimension[width=508,height=435]
+* TsPSwingCanvas thisComponentResizedDelayed: java.awt.Dimension[width=508,height=435]
+* component listener delayed: java.awt.Dimension[width=508,height=435]
+* TsPSwingCanvas thisComponentResizedDelayed: java.awt.Dimension[width=508,height=435]
+* [thisComponentResized timer from delayed]
+thisComponentResized: 508,435==java.awt.Dimension[width=508,height=435]
+0 null sz=java.awt.Dimension[width=508,height=458] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+1 null sz=java.awt.Dimension[width=828,height=458] clz=class javax.swing.JPanel layout=com.jgoodies.forms.layout.FormLayout@36015dc2
+2 Layout sz=java.awt.Dimension[width=828,height=464] clz=class idea.tsoffline.prefs.ClassicLayoutPanel layout=com.jgoodies.forms.layout.FormLayout@621f0cb1
+3 null sz=java.awt.Dimension[width=838,height=474] clz=class javax.swing.JPanel layout=java.awt.CardLayout[hgap=0,vgap=0]
+4 null sz=java.awt.Dimension[width=991,height=474] clz=class javax.swing.JPanel layout=com.jgoodies.forms.layout.FormLayout@513f2aeb
+REDRAW AXIS LAYER
+[Rnull]* [thisComponentResized timer from delayed]
+thisComponentResized: 508,435==java.awt.Dimension[width=508,height=435]
+0 null sz=java.awt.Dimension[width=508,height=458] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+1 null sz=java.awt.Dimension[width=828,height=458] clz=class javax.swing.JPanel layout=com.jgoodies.forms.layout.FormLayout@36015dc2
+2 Layout sz=java.awt.Dimension[width=828,height=464] clz=class idea.tsoffline.prefs.ClassicLayoutPanel layout=com.jgoodies.forms.layout.FormLayout@621f0cb1
+3 null sz=java.awt.Dimension[width=838,height=474] clz=class javax.swing.JPanel layout=java.awt.CardLayout[hgap=0,vgap=0]
+4 null sz=java.awt.Dimension[width=991,height=474] clz=class javax.swing.JPanel layout=com.jgoodies.forms.layout.FormLayout@513f2aeb
+REDRAW AXIS LAYER
+[Rnull]reset color to white
+15:10:28,253 ERROR [AWT-EventQueue-0] TsDataPanel:99 - signalTree.addTreeExpansionListener(new DirExpansionListener());
+15:10:30,917  WARN [AWT-EventQueue-0] PiDreImporter:128 - DRE: annotation importer is _not_ implemented for DreWorkstation and ignores STREAMID.
+15:10:30,970 ERROR [SwingWorker-pool-1-thread-1] PiDreImportDevice:499 - FIXME: this is a relative time seek, not abs time, and its wrong anyway
+prepareProgressIndicator
+DisplayManager: LAYOUT RESIZE: java.awt.Dimension[width=998,height=614]
+DisplayManager: LAYOUT RESIZE NEW SIZE: java.awt.Dimension[width=998,height=614] for primary: primary
+* tscontrolpanel resize: java.awt.Dimension[width=998,height=591]
+* component listener delayed: java.awt.Dimension[width=990,height=583]
+* TsPSwingCanvas thisComponentResizedDelayed: java.awt.Dimension[width=990,height=583]
+* [thisComponentResized timer from delayed]
+thisComponentResized: 990,583==java.awt.Dimension[width=990,height=583]
+0 tsControlPanel sz=java.awt.Dimension[width=998,height=591] clz=class idea.tsoffline.canvas.TsControlPanel layout=java.awt.BorderLayout[hgap=4,vgap=0]
+1 primary sz=java.awt.Dimension[width=998,height=614] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+2 layers sz=java.awt.Dimension[width=998,height=614] clz=class javax.swing.JLayeredPane layout=null
+3 null sz=java.awt.Dimension[width=998,height=614] clz=class idea.tsoffline.disp_manager.DisplayManager layout=java.awt.BorderLayout[hgap=0,vgap=0]
+4 null.contentPane sz=java.awt.Dimension[width=998,height=666] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+REDRAW AXIS LAYER
+[Rnull]Remove all children on layer: null child count=1
+15:10:33,208 ERROR [AWT-EventQueue-0] JobManager:155 - ADDSIGNALLAYER: for layers loaded from file
+scale to fit camera=signal_camera
+** update_overview=true
+** independent_y_scales=false
+15:10:33,208  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** zoomLayerYScaleToRectangle: PBounds[x=60.0,y=10.0,width=750.0,height=457.0] datarect=PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+15:10:33,212  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+*** zoom camera to scale: Point2D.Double[0.0, 206.67695083618165] --> Point2D.Double[315.21649169921875, -96.09694900512696]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, 206.67695083618165],Point2D.Double[315.21649169921875, -96.09694900512696]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 467.0]]
+00: redraw axis
+[Rnull]*** update overview bounds: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, 1.0, 495.0]]
+15:10:33,216 ERROR [AWT-EventQueue-0] TsDataPanel:99 - signalTree.addTreeExpansionListener(new DirExpansionListener());
+DisplayManager: LAYOUT RESIZE: java.awt.Dimension[width=998,height=619]
+DisplayManager: LAYOUT RESIZE NEW SIZE: java.awt.Dimension[width=998,height=619] for primary: primary
+* tscontrolpanel resize: java.awt.Dimension[width=998,height=596]
+* component listener delayed: java.awt.Dimension[width=990,height=588]
+* TsPSwingCanvas thisComponentResizedDelayed: java.awt.Dimension[width=990,height=588]
+* [thisComponentResized timer from delayed]
+thisComponentResized: 990,588==java.awt.Dimension[width=990,height=588]
+0 tsControlPanel sz=java.awt.Dimension[width=998,height=596] clz=class idea.tsoffline.canvas.TsControlPanel layout=java.awt.BorderLayout[hgap=4,vgap=0]
+1 primary sz=java.awt.Dimension[width=998,height=619] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+2 layers sz=java.awt.Dimension[width=998,height=619] clz=class javax.swing.JLayeredPane layout=null
+3 null sz=java.awt.Dimension[width=998,height=619] clz=class idea.tsoffline.disp_manager.DisplayManager layout=java.awt.BorderLayout[hgap=0,vgap=0]
+4 null.contentPane sz=java.awt.Dimension[width=998,height=666] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+REDRAW AXIS LAYER
+[Rnull]vt=AffineTransform[[1.430415932364784, 0.0, 60.0], [0.0, -1.0, 283.3173539340496]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 3.185224109856056, -814.035169184593]]
+Remove all children on layer: null child count=1
+vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 467.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 3.185224109856056, -814.035169184593]]
+Remove all children on layer: null child count=1
+15:10:35,265  WARN [AWT-EventQueue-0] TsPSwingCanvas:3404 - CONFIRM view bounds: PBounds[x=0.14018691588785046,y=-391.0,width=0.9999999999999999,height=381.0] + cam=signal_camera
+15:10:35,265 ERROR [AWT-EventQueue-0] TsPSwingCanvas:3417 - FIXME: setDomainInMillis is incomplete
+15:10:35,265  WARN [AWT-EventQueue-0] TsPSwingCanvas:3429 - VIEWPOS millis=1000
+15:10:35,266  WARN [AWT-EventQueue-0] TsPSwingCanvas:3433 - INITIAL view bounds: PBounds[x=0.14018691588785046,y=-391.0,width=0.9999999999999999,height=381.0] + cam=signal_camera
+15:10:35,266  WARN [AWT-EventQueue-0] TsPSwingCanvas:3435 - * VIEWPOS view to bounds: PBounds[x=1.1102230246251565E-16,y=-391.0,width=0.9999999999999999,height=381.0] + cam=signal_camera
+set view range: demo/**0 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**1 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**2 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**3 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**4 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**5 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**6 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**7 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**8 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**9 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**10 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**11 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**12 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**13 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**14 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+set view range: demo/**15 layer tr=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.346363636363636, -346.3636363636364]]
+* set display layout
+thisComponentResized: 990,588==java.awt.Dimension[width=990,height=588]
+0 tsControlPanel sz=java.awt.Dimension[width=998,height=596] clz=class idea.tsoffline.canvas.TsControlPanel layout=java.awt.BorderLayout[hgap=4,vgap=0]
+1 primary sz=java.awt.Dimension[width=998,height=619] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+2 layers sz=java.awt.Dimension[width=998,height=619] clz=class javax.swing.JLayeredPane layout=null
+3 null sz=java.awt.Dimension[width=998,height=619] clz=class idea.tsoffline.disp_manager.DisplayManager layout=java.awt.BorderLayout[hgap=0,vgap=0]
+4 null.contentPane sz=java.awt.Dimension[width=998,height=666] clz=class javax.swing.JPanel layout=java.awt.BorderLayout[hgap=0,vgap=0]
+REDRAW AXIS LAYER
+[Rnull]Remove all children on layer: null child count=1
+15:10:39,368  WARN [AWT-EventQueue-0] PiDreImporter:128 - DRE: annotation importer is _not_ implemented for DreWorkstation and ignores STREAMID.
+selector tool pos: Point2D.Double[511.0, 363.0] canvas_pos: Point2D.Double[511.0, 363.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=true
+** independent_y_scales=false
+15:10:42,672  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** zoomLayerYScaleToRectangle: PBounds[x=60.0,y=10.0,width=750.0,height=462.0] datarect=PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+15:10:42,674  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+*** zoom camera to scale: Point2D.Double[0.0, 206.67695083618165] --> Point2D.Double[315.21649169921875, -96.09694900512696]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, 206.67695083618165],Point2D.Double[315.21649169921875, -96.09694900512696]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]*** update overview bounds: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, 1.0, 500.0]]
+vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, -3.220073388957326, 1025.0202366811423]]
+Remove all children on layer: null child count=1
+
+
+
+
+
+
+
+
+
+
+selector tool pos: Point2D.Double[131.55034920247394, 231.0] canvas_pos: Point2D.Double[373.0, 241.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=false
+** independent_y_scales=true
+15:10:49,885  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+15:10:49,887  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 4.25651330682322, -879.7231914478555]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-1140.0579259063725,width=315.21649169921875,height=991.3547181794543]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=-1140.0579259063725,width=315.21649169921875,height=991.3547181794543]
+*** zoom camera to scale: Point2D.Double[0.0, -8.526512829121202E-14] --> Point2D.Double[315.21649169921875, -1288.7611336332907]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, -8.526512829121202E-14],Point2D.Double[315.21649169921875, -1288.7611336332907]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 4.25651330682322, -879.7231914478555]]
+Remove all children on layer: null child count=1
+
+
+
+
+selector tool pos: Point2D.Double[241.66597696940102, 133.0] canvas_pos: Point2D.Double[635.0, 339.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=false
+** independent_y_scales=true
+15:10:57,389  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+15:10:57,390  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 11.947665841135978, -3304.1013104374783]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-4034.838463112474,width=315.21649169921875,height=2782.647215939637]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=-4034.838463112474,width=315.21649169921875,height=2782.647215939637]
+*** zoom camera to scale: Point2D.Double[0.0, -834.7941647818914] --> Point2D.Double[315.21649169921875, -4452.235545503419]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, -834.7941647818914],Point2D.Double[315.21649169921875, -4452.235545503419]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 11.947665841135978, -3304.1013104374783]]
+Remove all children on layer: null child count=1
+
+
+
+selector tool pos: Point2D.Double[179.88354459635414, 138.0] canvas_pos: Point2D.Double[488.0, 334.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=true
+** independent_y_scales=false
+15:11:06,557  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 11.947665841135978, -3304.1013104374783]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-4034.838463112474,width=315.21649169921875,height=2782.647215939637]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=-4034.838463112474,width=315.21649169921875,height=2782.647215939637]
+** zoomLayerYScaleToRectangle: PBounds[x=60.0,y=10.0,width=750.0,height=462.0] datarect=PBounds[x=0.0,y=-4034.838463112474,width=315.21649169921875,height=2782.647215939637]
+15:11:06,558  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+*** zoom camera to scale: Point2D.Double[0.0, -834.7941647818914] --> Point2D.Double[315.21649169921875, -4452.235545503419]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, -834.7941647818914],Point2D.Double[315.21649169921875, -4452.235545503419]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]*** update overview bounds: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, 1.0, 500.0]]
+vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.294754190975519, 369.0886180070555]]
+Remove all children on layer: null child count=1
+
+
+
+selector tool pos: Point2D.Double[242.9268429361979, 167.0] canvas_pos: Point2D.Double[638.0, 305.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=true
+** independent_y_scales=false
+15:11:14,637  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.294754190975519, 369.0886180070555]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=351.06100984355214,width=315.21649169921875,height=68.64913530479055]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=351.06100984355214,width=315.21649169921875,height=68.64913530479055]
+** zoomLayerYScaleToRectangle: PBounds[x=60.0,y=10.0,width=750.0,height=462.0] datarect=PBounds[x=0.0,y=351.06100984355214,width=315.21649169921875,height=68.64913530479055]
+15:11:14,638  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+*** zoom camera to scale: Point2D.Double[0.0, 430.00751544406126] --> Point2D.Double[315.21649169921875, 340.7636395478336]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, 430.00751544406126],Point2D.Double[315.21649169921875, 340.7636395478336]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]*** update overview bounds: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, 1.0, 500.0]]
+vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, -4.421321149661394, 1855.6733414718212]]
+Remove all children on layer: null child count=1
+
+
+
+selector tool pos: Point2D.Double[204.26028662109374, 154.0] canvas_pos: Point2D.Double[546.0, 318.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=true
+** independent_y_scales=false
+15:11:21,933  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, -4.421321149661394, 1855.6733414718212]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=1096.3490114692645,width=315.21649169921875,height=1029.7389591798756]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=1096.3490114692645,width=315.21649169921875,height=1029.7389591798756]
+** zoomLayerYScaleToRectangle: PBounds[x=60.0,y=10.0,width=750.0,height=462.0] datarect=PBounds[x=0.0,y=1096.3490114692645,width=315.21649169921875,height=1029.7389591798756]
+15:11:21,934  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+*** zoom camera to scale: Point2D.Double[0.0, 2280.5488145261215] --> Point2D.Double[315.21649169921875, 941.8881675922831]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, 2280.5488145261215],Point2D.Double[315.21649169921875, 941.8881675922831]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]*** update overview bounds: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, 1.0, 500.0]]
+vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.255125780802458, 542.4198535665746]]
+Remove all children on layer: null child count=1
+
+
+selector tool pos: Point2D.Double[149.62276139322915, 271.0] canvas_pos: Point2D.Double[416.0, 201.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=true
+** independent_y_scales=false
+15:11:30,844  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, -0.255125780802458, 542.4198535665746]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=498.6041690648863,width=315.21649169921875,height=59.41955969509155]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=498.6041690648863,width=315.21649169921875,height=59.41955969509155]
+** zoomLayerYScaleToRectangle: PBounds[x=60.0,y=10.0,width=750.0,height=462.0] datarect=PBounds[x=0.0,y=498.6041690648863,width=315.21649169921875,height=59.41955969509155]
+15:11:30,846  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+*** zoom camera to scale: Point2D.Double[0.0, 566.9366627142416] --> Point2D.Double[315.21649169921875, 489.6912351106226]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, 566.9366627142416],Point2D.Double[315.21649169921875, 489.6912351106226]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]*** update overview bounds: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, 1.0, 500.0]]
+vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, -1.902743944507679, 1061.7762707896436]]
+Remove all children on layer: null child count=1
+
+
+
+selector tool pos: Point2D.Double[154.66622526041667, 163.0] canvas_pos: Point2D.Double[428.0, 309.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=false
+** independent_y_scales=true
+15:11:37,277  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+15:11:37,278  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 4.25651330682322, -879.7231914478555]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-1140.0579259063725,width=315.21649169921875,height=991.3547181794543]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=-1140.0579259063725,width=315.21649169921875,height=991.3547181794543]
+*** zoom camera to scale: Point2D.Double[0.0, -8.526512829121202E-14] --> Point2D.Double[315.21649169921875, -1288.7611336332907]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, -8.526512829121202E-14],Point2D.Double[315.21649169921875, -1288.7611336332907]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 4.25651330682322, -879.7231914478555]]
+Remove all children on layer: null child count=1
+
+
+selector tool pos: Point2D.Double[131.130060546875, 178.0] canvas_pos: Point2D.Double[372.0, 294.0] camera: band_0
+scale to fit camera=band_0
+** update_overview=true
+** independent_y_scales=false
+15:11:44,172  WARN [AWT-EventQueue-0] TsPSwingCanvas:1480 - FIXME: binary search to determine nodes I need
+** layer_transform [BAMC 2719.002/Lt Distal] AffineTransform[[1.0, 0.0, 0.0], [0.0, 4.25651330682322, -879.7231914478555]]
+**     layer_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-1140.0579259063725,width=315.21649169921875,height=991.3547181794543]
+**      data_rect [BAMC 2719.002/Lt Distal] PBounds[x=0.0,y=-61.1614990234375,width=315.21649169921875,height=232.9029998779297]
+** CUMUL CAM-VIEW-RECT: PBounds[x=0.0,y=-1140.0579259063725,width=315.21649169921875,height=991.3547181794543]
+** zoomLayerYScaleToRectangle: PBounds[x=60.0,y=10.0,width=750.0,height=462.0] datarect=PBounds[x=0.0,y=-1140.0579259063725,width=315.21649169921875,height=991.3547181794543]
+15:11:44,174  WARN [AWT-EventQueue-0] TsPSwingCanvas:2860 - redrawAxisLayer(0); -- but this loop can be called a lot!
+*** zoom camera to scale: Point2D.Double[0.0, -8.526512829121202E-14] --> Point2D.Double[315.21649169921875, -1288.7611336332907]
+00: ZTR gpt0, gpt1: Point2D.Double[0.0, -8.526512829121202E-14],Point2D.Double[315.21649169921875, -1288.7611336332907]
+00: FIXME OTHER CAMERAS animate to: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+00: redraw axis
+[Rnull]*** update overview bounds: AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, 1.0, 500.0]]
+vt=AffineTransform[[2.379317135207678, 0.0, 60.0], [0.0, -1.0, 472.0]]
+vt=AffineTransform[[1.0, 0.0, 0.0], [0.0, 0.995862000625299, 148.08787394632816]]
+Remove all children on layer: null child count=1
+
+

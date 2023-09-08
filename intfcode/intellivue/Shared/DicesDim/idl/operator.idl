@@ -1,0 +1,79 @@
+/**
+ * @file    operator.idl
+ * @author  WMS
+ * @date    MAR 2014
+ * @brief   DICES DIM Operator object.
+ * @see     Operator Identity 3_3_2014.docx, from Tracy
+ */
+#include <common.idl>
+
+module ice
+{
+
+enum OperatorStatus
+{
+  logged_out = 0,
+  logged_in = 1
+};
+
+struct OperatorAuthentication : Top
+{
+  string<MEDIUM_STRING_LEN> username; //@key
+  OperatorStatus operator_status;
+}; //@top-level true
+
+const string OperatorAuthenticationTopic = "ice--OperatorAuthentication";
+const string OperatorAuthenticationObjTopic = "ice--OperatorAuthenticationObj";
+const string OperatorAuthenticationReqTopic = "ice--OperatorAuthenticationReq";
+
+struct OperatorAuthenticationError : Top
+{
+  string<MEDIUM_STRING_LEN> username; //@key
+  string<ice::LONGLONG_STRING_LEN> error;
+}; //@top-level true
+
+const string OperatorAuthenticationErrorTopic = "ice--OperatorAuthenticationError";
+
+typedef BITS64 ClinicalRole;
+enum ClinicalRoleBits
+{
+  physician_md = 0x1,
+  physician_do = 0x2,
+  resident_md = 0x4,
+  resident_do = 0x10,
+  clinical_administrator = 0x20,
+  service_engineer = 0x40,
+  nursing_np = 0x100,
+  nursing_rn = 0x200,
+  nursing_lpn = 0x400,
+  nursing_cna = 0x1000,
+  respiratory_therapist = 0x2000,
+  physician_assistant = 0x4000,
+  researcher = 0x10000,
+  perfusionist = 0x20000,
+  support_staff = 0x40000
+};
+
+typedef BITS64 SystemRole;
+enum SystemRoleBits
+{
+  system_administrator = 0x1,
+  user = 0x2
+};
+
+struct Operator : Top
+{
+  string<MEDIUM_STRING_LEN> username; //@key
+  string<LONG_STRING_LEN> name;
+  string<SHORT_STRING_LEN> last_name;
+  string<SHORT_STRING_LEN> middle_name;
+  string<SHORT_STRING_LEN> first_name;
+  string<SHORT_STRING_LEN> suffix_name;
+  string<SHORT_STRING_LEN> title_name;
+  ClinicalRole clinical_role;
+  SystemRole system_role;
+}; //@top-level true
+
+const string OperatorTopic = "ice--Operator";
+
+};

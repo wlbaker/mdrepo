@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-study-impl xmlns="http://idea.mil/rp">
+    <identifier>test-bodyguard</identifier>
+    <title>test-bodyguard</title>
+    <pi>baker</pi>
+    <startDate>15:32:27.343-06:00</startDate>
+    <hardware>
+        <name>untitled-hw-config</name>
+        <devices>
+            <name>BodyGuard</name>
+            <modelName>BodyGuard</modelName>
+            <deviceClass>icuInterface.adapters.BodyGuardDriver</deviceClass>
+            <connectionType>RS_232</connectionType>
+            <connectionValue>/dev/ttyUSB3</connectionValue>
+            <param>
+                <key>port</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">/dev/ttyUSB3</value>
+            </param>
+            <metrics>
+                <name>Channel 1 Rate</name>
+                <code>RATE1</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">RATE1</location>
+                <unit>
+                    <unitName>ml/hr</unitName>
+                    <m>0.1</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Channel 2 Rate</name>
+                <code>RATE2</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">RATE2</location>
+                <unit>
+                    <unitName>ml/hr</unitName>
+                    <m>0.1</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Channel 1 VTBI</name>
+                <code>VTBI1</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">VTBI1</location>
+                <unit>
+                    <unitName>ml</unitName>
+                    <m>0.1</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Channel 2 VTBI</name>
+                <code>VTBI2</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">VTBI2</location>
+                <unit>
+                    <unitName>ml</unitName>
+                    <m>0.1</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Channel 1 Infused</name>
+                <code>INF1</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">INF1</location>
+                <unit>
+                    <unitName>ml</unitName>
+                    <m>0.1</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Channel 2 Infused</name>
+                <code>INV2</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">INF2</location>
+                <unit>
+                    <unitName>ml</unitName>
+                    <m>0.1</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Channel 1 State</name>
+                <code>STATE1</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">STATE1</location>
+                <unit>
+                    <unitName>state</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Channel 2 State</name>
+                <code>STATE2</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">STATE2</location>
+                <unit>
+                    <unitName>state</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+        </devices>
+        <devices>
+            <name>Criticore</name>
+            <modelName>Criticore</modelName>
+            <deviceClass>icuInterface.adapters.BardUrimeter</deviceClass>
+            <connectionType>RS_232</connectionType>
+            <connectionValue>/dev/ttyUSB2</connectionValue>
+            <param>
+                <key>port</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">/dev/ttyUSB2</value>
+            </param>
+            <metrics>
+                <name>Current Time</name>
+                <code>time</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">00</location>
+                <unit>
+                    <unitName>hhmm</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Urine Output</name>
+                <code>UO</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">01</location>
+                <unit>
+                    <unitName>oz</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Urine Rate</name>
+                <code>rate</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">02</location>
+                <unit>
+                    <unitName>oz/hr</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Total Volume</name>
+                <code>vol</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">03</location>
+                <unit>
+                    <unitName>oz</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Prior Output</name>
+                <code>pvol</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">04</location>
+                <unit>
+                    <unitName>oz</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Prior Time</name>
+                <code>ptm</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">05</location>
+                <unit>
+                    <unitName>ms</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+        </devices>
+    </hardware>
+    <analysis>
+        <analysis>
+            <name>VB Script</name>
+            <analysisClass>idea.process.BannerProcess</analysisClass>
+            <param>
+                <key>listen1</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Criticore</value>
+            </param>
+            <param>
+                <key>dest</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">BodyGuard</value>
+            </param>
+            <param>
+                <key>startup_script</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">var initial_tm = new Date().getTime();
+
+stdout.println(&quot;initial time: &quot; + initial_tm );
+
+function get_uo() {
+
+    var criticore = app.getAdapter( String(&quot;Criticore&quot;) );
+    if( criticore === null ) {
+      stdout.println(&quot;NO BARD CRITICORE&quot;);
+      return null
+    }
+
+  var v_event = criticore.getEvent( &quot;NumericsEvent&quot; );
+  if( v_event === null ) {
+      stdout.println(&quot;NO NUMERICS EVENT&quot;);
+     return null
+  }
+  var v_block = v_event.getNumericsBlock();
+
+  var uo_item = null;
+  if( v_block !== null ) {
+
+     var time_item = v_block.getItem( String(&quot;time&quot; ) );
+     uo_item = v_block.getItem( String(&quot;UO&quot; ) );
+     var rate_item = v_block.getItem( String(&quot;rate&quot; ) );
+     var vol_item = v_block.getItem( String(&quot;vol&quot; ) );
+     var pvol_item = v_block.getItem( String(&quot;pvol&quot; ) );
+     var ptm_item = v_block.getItem( String(&quot;ptm&quot; ) );
+  }
+
+   return uo_item.getValue()
+}</value>
+            </param>
+            <param>
+                <key>trigger_script</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">
+var curr_tm = new Date().getTime()
+var delta_tm = curr_tm - initial_tm
+
+if( delta_tm &gt; 10000 ) {   // update the bodyguard every 10 secs
+     uo = get_uo()
+     
+     if( uo !== null ) {
+         var command =  uo + &quot;RR&quot;
+         dest.sendKey( command )
+         initial_tm = curr_tm
+         stdout.println(&quot;pump_keystrokes: &quot; + command )
+     }
+}
+
+</value>
+            </param>
+            <param>
+                <key>timeout_script</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string"></value>
+            </param>
+            <param>
+                <key>alarm_script</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">dest.sendKey( &quot;R&quot; );</value>
+            </param>
+        </analysis>
+    </analysis>
+</rp-study-impl>

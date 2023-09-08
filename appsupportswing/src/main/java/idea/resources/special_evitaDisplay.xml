@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-display-impl xmlns="http://idea.mil/rp">
+    <numBands>1</numBands>
+    <numPBoxes>1</numPBoxes>
+    <horizPBoxes>0</horizPBoxes>
+    <vertPBoxes>1</vertPBoxes>
+    <opmode>0</opmode>
+    <bandData>
+        <bandNum>0</bandNum>
+        <bandAttr>2</bandAttr>
+        <waveformSetup>
+            <sweepSpeed>0</sweepSpeed>
+            <sampleRate>200</sampleRate>
+            <scaleValue1>0</scaleValue1>
+            <scaleValue2>0</scaleValue2>
+            <waveColor>10</waveColor>
+            <loc>0x00</loc>
+        </waveformSetup>
+    </bandData>
+    <pboxData>
+        <pboxId>1</pboxId>
+        <pboxFormat>92</pboxFormat>
+        <foreground>10</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x7D</location>
+        </paramSetup>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x73</location>
+        </paramSetup>
+     </pboxData>
+</rp-display-impl>

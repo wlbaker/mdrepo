@@ -1,0 +1,263 @@
+package idea.model;
+
+import icuInterface.message.AbstractBlock;
+import icuInterface.message.AbstractItem;
+import icuInterface.message.NumericBlock;
+import icuInterface.message.NumericItem;
+import icuInterface.message.TextItem;
+import idea.conf.LinearUnit;
+import idea.conf.MeasureUnit;
+import idea.conf.MetricDescription;
+import idea.persistence.Metric;
+
+import java.io.PrintStream;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Date;
+import java.util.LinkedList;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class IntfUtilObs {
+
+	public static MetricDescription[] getMetrics(Class<?> c) {
+		LinkedList<MetricDescription> ll = new LinkedList<MetricDescription>();
+
+		Field[] fields = c.getDeclaredFields();
+		for (Field field : fields) {
+			Metric m = field.getAnnotation(Metric.class);
+			if (m != null) {
+				MeasureUnit output_unit = new LinearUnit(m.outputM(), 0, m.unit());
+				MetricDescription desc = new MetricDescription(m.loc(), m.code(), m.desc(), output_unit, m.subtyp());
+				try {
+					desc.setField(field, _getGetter(c, field) );
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				ll.add(desc);
+			}
+		}
+
+		if (ll.size() == 0) {
+			return null;
+		}
+
+		MetricDescription[] metrics = new MetricDescription[ll.size()];
+		ll.toArray(metrics);
+		return metrics;
+	}
+
+	public static Method[] getGetters(Class<?> c) {
+		LinkedList<Method> ll = new LinkedList<Method>();
+
+		Field[] fields = c.getDeclaredFields();
+		for (Field field : fields) {
+			try {
+				ll.add(_getGetter(c, field));
+			} catch (NoSuchMethodException e) {
+			} catch (Exception ee) {
+				ee.printStackTrace();
+			}
+		}
+
+		if (ll.size() == 0) {
+			return null;
+		}
+
+		Method[] metrics = new Method[ll.size()];
+		ll.toArray(metrics);
+		return metrics;
+	}
+
+	private static Method _getGetter(Class<?> c, Field field) throws SecurityException, NoSuchMethodException {
+		String fieldName = field.getName();
+		String getterName = "get" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+		Method getter = c.getMethod(getterName);
+
+		return getter;
+	}
+
+	public static void dump(Object o) {
+		dump(System.out, o);
+	}
+
+	public static void dump(PrintStream out, Object o) {
+
+		if (o == null) {
+			out.println("NULLBLOCK");
+			return;
+		}
+
+		Class<?> c = o.getClass();
+
+		Field[] fields = c.getDeclaredFields();
+		for (Field field : fields) {
+			Object value = null;
+			String fieldName = field.getName();
+			out.print("name=" + fieldName + "  ");
+			try {
+				value = field.get(o);
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				String getterName = "get" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+				Method getter;
+				try {
+					getter = c.getMethod(getterName);
+					value = getter.invoke(o);
+				} catch (NoSuchMethodException e1) {
+				} catch (Exception ee) {
+					ee.printStackTrace();
+				}
+			}
+			out.print("" + value);
+			Metric m = field.getAnnotation(Metric.class);
+			if (m != null) {
+				MeasureUnit output_unit = new LinearUnit(m.outputM(), 0, m.unit());
+				MetricDescription desc = new MetricDescription(m.loc(), m.code(), m.desc(), output_unit, m.subtyp());
+				out.print(" desc=" + desc);
+			}
+			out.println();
+		}
+
+	}
+
+	private static void dump2(PrintStream out, Object block) {
+		Class<?> cl = block.getClass();
+		Field[] fields = cl.getDeclaredFields();
+		for (Field field : fields) {
+			if ("caps".equals(field.getName())) {
+				continue;
+			}
+			try {
+				Object val = field.get(block);
+				out.println("[+] " + field.getName() + " = " + val);
+			} catch (IllegalAccessException e) {
+				// e.printStackTrace();
+				String name = field.getName();
+				byte[] b = name.getBytes();
+				b[0] = (byte) Character.toUpperCase((char) b[0]);
+				String s_getter = "get" + new String(b);
+				try {
+					Method m = cl.getMethod(s_getter, (Class[]) null);
+					Object o = m.invoke(block, new Object[0]);
+					out.println("[+] " + field.getName() + " = " + o);
+				} catch (NoSuchMethodException e1) {
+					out.println("# no getter: " + field.getName());
+				} catch (Exception e2) {
+					out.println("# exception: " + e2.getMessage());
+				}
+			}
+		}
+	}
+
+//	public static void associateExistingMetrics(Object ref, NumericBlock block) {
+//		Class<? extends Object> c = ref.getClass();
+//		Field[] fields = c.getDeclaredFields();
+//		for (Field field : fields) {
+//			Metric m = field.getAnnotation(Metric.class);
+//			if (m != null) {
+//				AbstractItem item = block.getItem(m.loc());
+//
+//				Class<?> argClass = (item instanceof TextItem) ? TextItem.class : NumericItem.class;
+//				try {
+//					// field.set( ref, item );  -- access violation...call the setter
+//					String fieldName = field.getName();
+//					String setterName = "set" + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+//					Method setter = c.getMethod(setterName, argClass);
+//					setter.invoke(ref, item);
+//				} catch (Exception e) {
+//					log.error("Error associating metric: ", e);
+//				}
+//			}
+//		}
+//
+//	}
+//
+	private static Field _getFieldByLoc(Object o, String loc) {
+		Field field = null;
+		Class<?> c = o.getClass();
+
+		Field[] fields = c.getDeclaredFields();
+		for (Field f : fields) {
+			Object value = null;
+			Metric m = f.getAnnotation(Metric.class);
+			if (m != null) {
+				if (loc.equals(m.loc())) {
+					field = f;
+					break;
+				}
+
+			}
+		}
+
+		return field;
+	}
+
+	@Deprecated
+	public static Number getScaledValueByLoc(NumericBlock src, String loc) {
+
+		Number val = null;
+		
+		AbstractItem item = src.getItem( loc );
+		if( item != null ) {
+			val = (Number) item.getScaledValue();
+		}
+		return val;
+	}
+	
+	public static Number getScaledValueByLoc(Object src, String loc) {
+
+		Class<?> c = src.getClass();
+
+		Object o = null;
+		try {
+			Field field = _getFieldByLoc(src, loc);
+			Method getter = _getGetter(c, field);
+
+			o = getter.invoke(src);
+			//		if (o != null && md != null) {
+			//			MeasureUnit unit = md.getUnit();
+			//			if (unit != null && o instanceof Number) {
+			//				Object d = unit.getValue((Number) o);
+			//				if (d != null) {
+			//					o = d;
+			//				}
+			//			}
+			//		}
+			log.error("FIXME: not scaled!");
+		} catch (Exception e) {
+			// IGNORE
+		}
+		return (Number) o;
+	}
+
+	public static Number getRawValueByLoc(PersistentItem block, String loc) {
+		Class<?> c = block.getClass();
+
+		Object o = null;
+		try {
+			Field field = _getFieldByLoc(block, loc);
+			Method getter = _getGetter(c, field);
+
+			o = getter.invoke(block);
+			//		if (o != null && md != null) {
+			//			MeasureUnit unit = md.getUnit();
+			//			if (unit != null && o instanceof Number) {
+			//				Object d = unit.getValue((Number) o);
+			//				if (d != null) {
+			//					o = d;
+			//				}
+			//			}
+			//		}
+		} catch (Exception e) {
+			// IGNORE
+		}
+		return (Number) o;
+	}
+
+}

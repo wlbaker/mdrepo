@@ -1,0 +1,12 @@
+{
+  "Location": "/tmp/",
+  "IPAddr": "Any",
+  "Name": "EPCR1",
+  "Password": "12345678",
+  "Port": "4244",
+  "Encryption": "NONE",
+  "Cipher": "NONE",
+  "IV": "!QAZ2WSX!QAZ2WSX",
+  "Key": "5TGB8YHN7UJM(IKL5TGB8YHN7UJM(IKT",
+  "MaxConcurrentConnections": "50"
+}

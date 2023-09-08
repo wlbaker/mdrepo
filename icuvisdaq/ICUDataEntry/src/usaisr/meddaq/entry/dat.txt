@@ -1,0 +1,24 @@
+        GuiUtil.initPrinters( printerList, TASK);
+    }
+
+    private void commitActionPerformed(ActionEvent e) {
+        PrintService printer = (PrintService) printerList.getSelectedItem();
+        if( printer == null ) {
+            GuiUtil.showMessage("Printer not found!");
+            return;
+        }
+        String printerName = printer.getName();
+        try {
+            ConfigurationInfo.setSelectedPrinter(TASK, printerName);
+        } catch (Exception e1) {
+            // we can ignore this error
+        }
+        
+        try {
+            PrintUtil.print( printer, "idea/labels/studyreport");
+        } catch (JRException e1) {
+            GuiUtil.showError("study report", e1);
+            return;
+        }
+        
+    }

@@ -1,0 +1,22 @@
+<jxb:bindings version="1.0" 
+  xmlns:jxb="http://java.sun.com/xml/ns/jaxb" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" 
+  xmlns:in="http://idea.mil/rp"
+  jxb:extensionBindingPrefixes="xjc">
+    <jxb:bindings schemaLocation="repository-defs.xsd" node="/xs:schema">
+        <!-- 
+        <jxb:globalBindings>
+            <xjc:superClass name="com.syh.Shape"/>
+            <xjc:serializable uid="12343"/>
+        </jxb:globalBindings>
+        <jxb:bindings node="//xs:element[@name='rp-stream']//xs:complexType//xs:choice">
+            <jxb:property name="Shapes"/>
+        </jxb:bindings>
+	-->
+        <jxb:bindings node="//xs:complexType[@name='in:RpStream']">
+            <xjc:superClass name="com.syh.Shape"/>
+        </jxb:bindings>
+    </jxb:bindings>
+</jxb:bindings>
+

@@ -1,0 +1,6 @@
+Sine simulation driver.
+
+This device is used for testing basic functionality.  It creates four continuous sine wave signals of various frequencies and four vitals type signals.
+
+Copied from the Java version and modified.
+

@@ -1,0 +1,6 @@
+Propaq announces services over mDNS.  You must use the mDNS name to query the device.
+
+avahi-resolve-address 192.168.50.55
+ping AI17A005890.X-Series.device.ZOLL.local
+
+dig -x 10.0.0.200 @224.0.0.251 -p 5353

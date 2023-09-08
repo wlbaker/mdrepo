@@ -1,0 +1,31 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\opt\export\c3e-daq\bin\c3e-daq.jar</jar>
+  <outfile>C:\opt\export\c3e-daq\bin\c3e-daq.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>C:\opt\workspace\chaktaw\cardioStrip\deployment_resources\biosig.ico</icon>
+  <jre>
+    <path></path>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion>9.0.0</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <initialHeapSize>256</initialHeapSize>
+    <maxHeapSize>512</maxHeapSize>
+    <opt>-Djava.library.path=&quot;%EXEDIR%&quot;</opt>
+  </jre>
+  <splash>
+    <file>C:\opt\workspace\chaktaw\cardioStrip\deployment_resources\iris-closeup.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+</launch4jConfig>

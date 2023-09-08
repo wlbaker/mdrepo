@@ -1,0 +1,35 @@
+MATPLOTLIB -- used by SciPy, active
+DISLIN -- active, cross platform, curious http://www.mps.mpg.de/dislin
+PyPlot -- Jython support, [sudo] pip install JyPlotter
+
+http://www.jzy3d.org/
+r - plot3D    https://cran.r-project.org/web/packages/plot3D/vignettes/plot3D.pdf
+r - scatterplot3D
+
+JyNI -- to understand Jython and Matplotlib status
+renjin.org -- native R implementation on JVM
+
+rjava -- see pdf
+
+REngine -- a superclass/interface for all Rengines (with a small e, including JRI and JServe)
+
+http://www.programcreek.com/java-api-examples/index.php?api=org.rosuda.JRI.Rengine
+
+----------------------------------- ANIMATION
+
+(r) https://www.r-bloggers.com/animated-plots-with-r/
+(r) http://stackoverflow.com/questions/14777000/animating-googlevis-plots
+
+
+
+app$createPlot( paste("Single Batch:", app$getSubject() ) )
+app$showPlots()
+app$runR( "/idea/tsoffline/r/rri-basic.r" ) 
+app$runR( "/idea/tsoffline/r/overlapped-beats-ecg.r" )
+app$runR( "/idea/tsoffline/r/overlapped-beats-pap.r" )
+app$runR( "/idea/tsoffline/r/overlapped-beats.r" )
+app$runR( "/idea/tsoffline/r/waterfall-v2.r" )
+
+workspace <- gsub( ".xml", ".R", sess_file )
+
+save.image( workspace )

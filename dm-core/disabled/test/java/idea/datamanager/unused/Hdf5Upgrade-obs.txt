@@ -1,0 +1,525 @@
+package idea.datamanager.unused;
+
+/*
+ * 
+ * Copy all data to a new file.  This will automatically create annotations and indexes as needed.
+ * 
+ */
+
+import icuInterface.adapters.EvitaDriver;
+import icuInterface.adapters.InfinityDriver;
+import icuInterface.adapters.PlumADataportDriver;
+import icuInterface.conf.DeviceCapabilities;
+import icuInterface.conf.DeviceConfiguration;
+import icuInterface.conf.LinearUnit;
+import icuInterface.conf.MetricDescription;
+import icuInterface.conf.dev.SerialDeviceConfiguration;
+import icuInterface.events.SignalProducer;
+import icuInterface.message.AbstractBlock;
+import icuInterface.message.AbstractItem;
+import icuInterface.message.AlarmBlock;
+import icuInterface.message.AnnotationBlock;
+import icuInterface.message.NumericBlock;
+import icuInterface.message.NumericItem;
+import icuInterface.message.PlumA3DataBlock;
+import icuInterface.message.WaveformBlock;
+import icuInterface.persistence.ImportDeviceInterface;
+import icuInterface.persistence.ImporterInterface;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import ncsa.hdf.hdf5lib.H5;
+import ncsa.hdf.hdf5lib.HDF5Constants;
+import ncsa.hdf.hdf5lib.exceptions.HDF5Exception;
+import idea.datamanager.hdf5_v2.DatasetImporter;
+import idea.datamanager.hdf5_v2.H5GroupImporter;
+
+public class Hdf5Upgrade {
+
+	//	private static DecimalFormat df3 = new DecimalFormat("0.000");
+	//	private static DecimalFormat df2 = new DecimalFormat("0.00");
+
+	// private static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+	// private static SimpleDateFormat sdf = new
+	// SimpleDateFormat("HH:mm:ss:SSSZ");
+
+	private static NumericBlock evita_settings_block;
+	private static MetricDescription ra_desc;
+	private static MetricDescription spo2_hr_desc;
+	private static MetricDescription spo2_satu_desc;
+	private static MetricDescription fio2_desc;
+	
+	static {
+		LinearUnit unit = new LinearUnit( 1, 0, "" );
+		ra_desc = new MetricDescription("ra.mean", "ra.mean", null, unit);
+		spo2_hr_desc = new MetricDescription("spo2_pr", "spo2.pr", null, unit);
+		spo2_satu_desc = new MetricDescription("spo2_satu", "spo2.satu", null, unit);
+		
+		
+		EvitaDriver driver = new EvitaDriver( null );
+		DeviceCapabilities caps = driver.getStaticCapabilities();
+		MetricDescription[] settings = caps.getSettings();
+		evita_settings_block = new NumericBlock(driver, settings);
+		evita_settings_block.setSettings( true );
+		
+		fio2_desc = caps.getMetricDescription("0xF0");
+		
+		if( fio2_desc == null ) {
+			System.err.println("could not find fio2 desc");
+			System.exit(0);
+		}
+		
+		NumericItem fio2 = (NumericItem) evita_settings_block.getItem("1x01");
+		NumericItem f = (NumericItem) evita_settings_block.getItem("1x09");
+		
+		NumericItem vt = (NumericItem) evita_settings_block.getItem("1x04");
+		NumericItem Tinsp = (NumericItem) evita_settings_block.getItem("1x05");
+		NumericItem peep = (NumericItem) evita_settings_block.getItem("1x0B");
+		NumericItem ie_i = (NumericItem) evita_settings_block.getItem("1x07");
+		NumericItem ie_e = (NumericItem) evita_settings_block.getItem("1x08");
+
+		f.setValue( 18 );
+		fio2.setValue( 100 );
+		vt.setValue( 400 );
+		Tinsp.setValue( 1700 );
+		peep.setValue( 5 );
+		ie_i.setValue( 10 );
+		ie_e.setValue( 19 );
+ 	}
+
+	private ImporterInterface connect(File inputFile, boolean writable) throws IOException {
+		if (!inputFile.exists()) {
+			System.out.println("File not found.");
+			return null;
+		}
+		ImporterInterface importer;
+		if (writable) {
+			importer = ImporterUtil.getWritableImporterFromFile(inputFile);
+		} else {
+			importer = ImporterUtil.getImporterFromFile(inputFile);
+		}
+
+		if (importer == null) {
+			System.out.println("File format not recognized.");
+			return null;
+		}
+
+		importer.connect();
+
+		return importer;
+	}
+
+	public void rebuildFile(File inputFile, File outputDir, String[] groups, Date startDate, Date endDate)
+			throws IOException, ParseException {
+
+		Hdf5Manager_v3.MAX_DATA_AGE_DAYS = 10000;
+		Hdf5Manager_v3 exporter = new Hdf5Manager_v3(outputDir);
+		exporter.addTrendLoc( PlumADataportDriver.class.getCanonicalName(), PlumA3DataBlock.ID_NO );
+
+		AbstractBlock msg;
+
+		List<String> group_llist = null;
+		if (groups != null) {
+			group_llist = Arrays.asList(groups);
+		}
+		long delta = 0;
+
+		int pos = 0;
+
+		long curr_tm = startDate.getTime();
+		boolean first = true;
+
+		Set<String> skipped = new HashSet<String>();
+
+		exporter.setCurrentTime(curr_tm);
+		exporter.connect();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date alterStart = sdf.parse("2012-01-03 12:00:00");
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(alterStart);
+		long alterStart_ms = cal.getTimeInMillis();
+		cal.add(Calendar.HOUR, 3);
+		long alterEnd_ms = cal.getTimeInMillis();
+
+		while (curr_tm < endDate.getTime()) {
+			ImporterInterface importer = connect(inputFile, false);
+
+			if( importer == null ) {
+				// debug here
+				importer = connect(inputFile, false);
+				continue;
+			}
+			msg = importer.next();
+
+			if (first) {
+				first = false;
+			} else {
+				startDate = new Date(curr_tm);
+			}
+			curr_tm = startDate.getTime();
+			delta = curr_tm - msg.getTime();
+
+			// report_delta(delta);
+
+			while ((msg = importer.next()) != null) {
+
+				SignalProducer driver = msg.getDriver();
+				if (driver == null) {
+					//System.err.println("msg of " + msg.getClass() + " has null source");
+					continue;
+				}
+				
+				DeviceConfiguration src_conf = driver.getConfiguration();
+				String name = null;
+				if (src_conf != null) {
+					name = src_conf.getName();
+					name = name.replace("_0", "" );
+					
+					if( name.startsWith("Vigilance") ) {
+						name = "EV1000";
+					}
+					src_conf.setName( name );
+				}
+
+				// determine if this group can be skipped
+				if (group_llist == null) {
+					// dont check the grouplist
+				} else if (!group_llist.contains(name)) {
+					if (skipped.contains(name)) {
+						// ok 
+					} else {
+						System.out.println("skipping: " + name);
+						skipped.add(name);
+					}
+					continue; // skip
+				}
+
+				// verbose output for the user
+				if (pos % 5000 == 0) {
+					System.out.print(".");
+					if (pos % (5 * 100000) == 0) {
+						System.out.println();
+					}
+				}
+				pos++;
+
+				// calculate new time and check rotation
+				curr_tm = msg.getTime() + delta;
+				msg.setTime(curr_tm);
+
+				if (curr_tm > endDate.getTime()) {
+					break;
+				}
+				
+				// MANUALLY check rotate, so we know if we need to add this device
+				exporter.rotate( curr_tm );
+				
+				// check to see if the current exporter has the named device
+				// ...may be created with altered settings
+				if( !exporter.contains_exporter( name ) ) {
+					System.out.println("adding device: " + name );
+					DeviceConfiguration dest_conf = new DeviceConfiguration( src_conf );
+					if( dest_conf.getName().startsWith("Evita")) {
+						// add settings for EVITA
+						for( AbstractItem item : evita_settings_block.getItems() ) {
+							dest_conf.addSetting(item.getDescription());
+						}
+						// add metrics for EVITA
+						dest_conf.addMetric( fio2_desc );
+						System.out.println("* ADDED settings to evita");
+					}
+					if( dest_conf.getName().startsWith("Drager")) {
+						dest_conf.addMetric(ra_desc);
+						dest_conf.addMetric(spo2_hr_desc);
+						dest_conf.addMetric(spo2_satu_desc);
+						System.out.println("* ADDED params to drager");
+					}
+					exporter.addDevice( dest_conf );
+				}
+				
+
+				if (msg instanceof AlarmBlock) {
+					AlarmBlock block = (AlarmBlock) msg;
+					// exporter.signalEvent(new AlarmEvent(block.getDriver(),
+					// block));
+					exporter.put(block.getDriver(), block);
+				} else if (msg instanceof AnnotationBlock) {
+					AnnotationBlock block = (AnnotationBlock) msg;
+					// exporter.signalEvent(new AnnotationEvent(block.getDriver(),
+					// block));
+					// exporter.put(block.getDriver(), block);
+					exporter.put(block);
+				} else if (msg instanceof NumericBlock) {
+
+					NumericBlock block = (NumericBlock) msg;
+
+					SignalProducer new_driver = driver;
+					
+					block.setDriver(new_driver);
+					String dname = new_driver.getConfiguration().getName();
+					if (curr_tm > alterStart_ms && curr_tm < alterEnd_ms) {
+						if (dname.startsWith("Evita")) {
+							updateEvita(block);
+						} else if (dname.startsWith("Drager")) {
+							updateDrager(block);
+						}
+					} else {
+						if (dname.startsWith("Evita")) {
+							updateEvitaFIO2( block );
+						}
+					}
+					
+					
+					exporter.put(new_driver, block);
+					evita_settings_block.setTime( block.getTime() );
+					exporter.put(new_driver, evita_settings_block);
+				} else if (msg instanceof WaveformBlock) {
+					WaveformBlock block = (WaveformBlock) msg;
+					// exporter.signalEvent(new WaveformEvent(block.getDriver(),
+					// block));
+					exporter.put(block.getDriver(), block);
+				}
+
+			}
+			importer.disconnect();
+		}
+
+		exporter.disconnect();
+	}
+
+	private void updateEvitaFIO2(NumericBlock block) {
+		NumericItem fio2 = (NumericItem) block.getItem("0xF0"); // pct
+
+		if (fio2 == null) {
+			fio2 = new NumericItem( fio2_desc );
+			block.add( fio2 );
+		}
+		fio2.setValue(100);
+		
+	}
+
+	private void updateDrager(NumericBlock block) {
+		NumericItem pa_mean = (NumericItem) block.getItem("pa.mean"); //, "PA.MEAN", null, mmHg),
+		NumericItem pa_sys = (NumericItem) block.getItem("pa.sys"); //, "PA.SYS", null, mmHg),
+		NumericItem pa_dia = (NumericItem) block.getItem("pa.dia"); //, "PA.DIA", null, mmHg),
+
+		NumericItem art_mean = (NumericItem) block.getItem("art.mean"); //, "ART.MEAN", "Mean Arterial Pressure", mmHg),
+		NumericItem art_sys = (NumericItem) block.getItem("art.sys"); // , "ART.SYS", "ArterialSystolic Pressure", mmHg),
+		NumericItem art_dia = (NumericItem) block.getItem("art.dia"); // , "ART.DIA", "Arterial Diastolic Pressure", mmHg),
+		NumericItem art_hr = (NumericItem) block.getItem("art.hr"); //, "ART.HR", "Arterial HR", "bpm"),
+		NumericItem ecg_hr = (NumericItem) block.getItem("ecg.hr"); // , "ECG.HR", "ECG HR", "bpm"),
+		NumericItem cvp = (NumericItem) block.getItem("cvp.mean"); // , "CVP.MEAN", "Mean Central Veneous Pressure", "bpm"),
+		
+		NumericItem ra = (NumericItem) block.getItem(ra_desc.getLocation()); 
+		NumericItem spo2_hr = (NumericItem) block.getItem(spo2_hr_desc.getLocation());
+		NumericItem spo2_satu = (NumericItem) block.getItem(spo2_satu_desc.getLocation());
+		
+		if( ra == null ) {
+			ra = new NumericItem(ra_desc);
+			spo2_hr = new NumericItem(spo2_hr_desc);
+			spo2_satu = new NumericItem(spo2_satu_desc);
+			
+			block.add( ra );
+			block.add( spo2_hr );
+			block.add( spo2_satu );
+			
+			ra.setValue(15);
+			spo2_hr.setValue(83);
+			spo2_satu.setValue(97);
+		}
+
+		if (pa_mean != null) {
+			pa_mean.setValue(16);
+		}
+		if (pa_sys != null) {
+			pa_sys.setValue(28);
+		}
+		if (pa_dia != null) {
+			pa_dia.setValue(9);
+		}
+		if (art_mean != null) {
+			art_mean.setValue(86);
+		}
+		if (art_sys != null) {
+			art_sys.setValue(147);
+		}
+		if (art_dia != null) {
+			art_dia.setValue(49);
+		}
+		if (art_hr != null) {
+			art_hr.setValue(63);
+		}
+		if (ecg_hr != null) {
+			ecg_hr.setValue(63);
+		}
+		if (cvp != null) {
+			cvp.setValue(10);
+		}
+	}
+
+	private void updateEvita(NumericBlock block) {
+		NumericItem o2 = (NumericItem) block.getItem("1x01"); // pct
+		NumericItem Vt = (NumericItem) block.getItem("1x04"); //thousandthsL
+		NumericItem f = (NumericItem) block.getItem("1x09"); //tenthsPerMin
+		NumericItem tInsp = (NumericItem) block.getItem("1x05"); // hundredthsSec
+
+		if (o2 != null) {
+			o2.setValue(100);
+		}
+		if (Vt != null) {
+			Vt.setValue(400);
+		}
+		if (f != null) {
+			f.setValue(180);
+		}
+		if (tInsp != null) {
+			tInsp.setValue(170);
+		}
+
+		//		new MetricDescription("0x7D", "Ppeak", "Peak Airway Pressure", cmH2O),
+		//		new MetricDescription("0x73", "Pmean", "Mean Airway Pressure", mbar),
+		//
+		//		new MetricDescription("0x88", "TVexp", "Expiratory Tidal Volume", ml),
+		//		new MetricDescription("0xB9", "MV", "Minute Volume", thousandthsL),
+		//		new MetricDescription("0xD6", "ftotal", "Breathing Frequency", perMin),
+		//		new MetricDescription("0x74", "Pplat", "Plateau Airway Pressure", mbar),
+
+		NumericItem fio2 = (NumericItem) block.getItem("0xF0"); // pct
+		NumericItem peak = (NumericItem) block.getItem("0x7D"); // pct
+		NumericItem mean = (NumericItem) block.getItem("0x73"); // pct
+		NumericItem tve = (NumericItem) block.getItem("0x88"); // pct
+		NumericItem mv = (NumericItem) block.getItem("0xB9"); // pct
+		NumericItem ftot = (NumericItem) block.getItem("0xD6"); // pct
+		NumericItem plat = (NumericItem) block.getItem("0x74"); // pct
+
+		if (fio2 == null) {
+			fio2 = new NumericItem( fio2_desc );
+			block.add( fio2 );
+		}
+		fio2.setValue(100);
+		if (peak != null) {
+			peak.setValue(20);
+		}
+		if (mean != null) {
+			mean.setValue(10);
+		}
+		if (tve != null) {
+			tve.setValue(400);
+		}
+		if (mv != null) {
+			mv.setValue(7200);
+		}
+		if (ftot != null) {
+			ftot.setValue(18);
+		}
+		if (plat != null) {
+			plat.setValue(15);
+		}
+	}
+
+	private void dump(NumericBlock block) {
+		System.out.println("driver=" + block.getDriver().getConfiguration().getName());
+		for (AbstractItem item : block.getItems()) {
+			System.out.println(item);
+		}
+		System.out.println();
+	}
+
+	private void report_delta(long delta) {
+		long delta_s = delta / 1000;
+		long delta_m = delta_s / 60;
+		long delta_hr = delta_m / 60;
+		long delta_d = delta_hr / 24;
+		long delta_y = delta_d / 365;
+
+		System.out.println("delta_y=" + delta_y);
+		System.out.println("delta_d=" + (delta_d % 365));
+		System.out.println("delta_hr=" + (delta_hr % 24));
+	}
+
+	public void rebaseTimestamp(File inputFile, String devName, Date startDate) throws IOException,
+			NullPointerException, HDF5Exception {
+
+		ImporterInterface importer = connect(inputFile, true);
+
+		ImportDeviceInterface[] devs = importer.getDevices();
+		for (ImportDeviceInterface dev : devs) {
+			if (devName.equals(dev.getName())) {
+				AbstractBlock first = dev.next();
+				long tm0 = first.getTime();
+				long tm1 = startDate.getTime();
+				long delta = tm1 - tm0;
+
+				H5GroupImporter h5 = (H5GroupImporter) dev;
+				DatasetImporter mds = h5.getMetricImporter();
+
+				delta = 1;
+				addTimeToTS(mds.getDatasetId(), delta);
+			}
+		}
+
+		importer.disconnect();
+
+	}
+
+	private void addTimeToTS(int dataset_id, long delta) throws NullPointerException, HDF5Exception {
+
+		long[] selectedDims = { 1 };
+
+		int fspace = H5.H5Dget_space(dataset_id);
+		int mspace = H5.H5Screate_simple(1, selectedDims, null);
+		int tid = H5.H5Dget_type(dataset_id);
+
+		long[] max_dims = new long[1];
+		long[] curr_dims = new long[1];
+		H5.H5Sget_simple_extent_dims(fspace, curr_dims, max_dims);
+
+		int size = H5.H5Tget_size(tid);
+		byte[] read_data = new byte[size];
+
+		long[] start = { 0 };
+		long[] count = { 1 };
+
+		for (int i = 3; i < 5; i++) {
+
+			H5.H5Sselect_hyperslab( //
+					fspace, // file space
+					HDF5Constants.H5S_SELECT_SET, // command
+					start, // start
+					null, // stride
+					count, // count
+					null); // set block to 1
+			H5.H5Dread(dataset_id, tid, mspace, fspace, HDF5Constants.H5P_DEFAULT, read_data);
+			ByteBuffer bb = ByteBuffer.wrap(read_data);
+			long ts = bb.getLong();
+			bb.rewind();
+			bb.putLong(ts + delta);
+
+			H5.H5Dwrite(dataset_id, tid, mspace, fspace, HDF5Constants.H5P_DEFAULT, read_data);
+		}
+
+		try {
+			H5.H5Sclose(fspace);
+		} catch (Exception ex2) {
+		}
+		try {
+			H5.H5Sclose(mspace);
+		} catch (Exception ex2) {
+		}
+		try {
+			H5.H5Tclose(tid);
+		} catch (HDF5Exception ex2) {
+		}
+	}
+}

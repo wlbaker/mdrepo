@@ -1,0 +1,84 @@
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+sourceCompatibility = 1.8
+version = '0.80'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+
+    compile files( 'lib/phidget.jar', 'lib/jDAQmx.jar', 'lib/ljud-2015-04.jar', 'lib/TempusListener.jar' )
+    
+    compile 'net.java.dev.jna:jna:4.1.0'
+    
+    compile( 'idea.idea:dm-core:0.80') { changing = true }
+    compile( 'idea.idea:idea-core:0.80') { changing = true }
+    compile( 'idea.idea:idea-core-jpa:0.80') { changing = true }
+    compile( 'idea.idea:idea-rp-schema:0.80') { changing = true }
+    // compile( 'idea.idea:pista-bindings:0.80') { changing = true }
+
+    // HL7 support for Mindray
+    compile 'ca.uhn.hapi:hapi-base:2.2'
+    compile 'ca.uhn.hapi:hapi-structures-v26:2.2'
+    compile 'ca.uhn.hapi:hapi-hl7overhttp:2.2'
+    
+    // HL7 for Aesculon
+    compile 'ca.uhn.hapi:hapi-structures-v23:2.2'
+    
+    // HL7 for test messages
+    compile 'ca.uhn.hapi:hapi-structures-v25:2.2'
+    
+    // websocket -- needed for zoll, also pulls in bountycastle needed by Tempus
+	compile 'org.glassfish.tyrus.ext:tyrus-client-java8:1.12'	
+	compile 'org.glassfish.tyrus:tyrus-container-grizzly-server:1.12'
+	
+    // JSON -- needed for zoll 
+    compile 'com.google.code.gson:gson:2.6.2'
+    
+    // one driver uses and FTP client
+    compile 'commons-net:commons-net:3.3'
+
+implementation 'net.sf.jasperreports:jasperreports:6.8.0'
+implementation 'com.lowagie:itext:2.1.7'  // for jasper reports
+
+	testCompile 'com.jgoodies:jgoodies-forms:1.7.2'
+	testCompile 'com.jgoodies:jgoodies-binding:2.6.1'
+    testCompile 'junit:junit:4.12'
+}
+
+/**
+task sourceJar(type: Jar) {
+   	from sourceSets.main.allJava
+}
+
+publishing {
+   	publications {
+       	maven(MavenPublication) {
+           	from components.java
+
+           	artifact sourceJar {
+               	classifier "sources"
+           	}
+           	
+       	}
+       	jDAQmx(MavenPublication) {
+       		artifactId 'jDAQmx'
+       		version '1.0'
+  			artifact file("lib/jDAQmx.jar")
+			// artifact fileTree(dir: 'lib', include: ['*.jar'])  -- nope
+  		}
+       	phidget(MavenPublication) {
+       		artifactId 'phidget'
+       		version '1.0'
+  			artifact file("lib/phidget.jar")
+  		}
+   	}
+}
+**/

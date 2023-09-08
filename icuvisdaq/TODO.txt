@@ -1,0 +1,28 @@
+  [high] entry editing....zeroing out the Entropy value!?!  Has to do with int's and doubles.
+  [high] make the metric description work...scale = 100...when saving in xls and display on screen.
+  
+* [high] TIMEPOINT columns
+  [low] Start Time Point needs to be bound to "Start Capture"
+  [high] Figure out how to handle TIMEPT name and selection.
+
+  [medium] Set the autoprobe ports in the study configuration...or at least the machine config.
+  [high] autoprobe status window
+* [high] jasper reports datasource from H5 file
+
+  [high] Restart on the same data set..., ie, CONTINUE
+  [medium] Serial device recognition.
+
+  [low] uploading
+
+  [EASY] broken classpath? daq_reports
+
+  [medium] Why is RS232 giving access denied?
+  
+# ------- done
+*?[medium] save to XLS
+
+# ------- deferred
+  [medium] Serial port renderer.
+  # determine what security credentials affect Serial port signal reading
+  
+  

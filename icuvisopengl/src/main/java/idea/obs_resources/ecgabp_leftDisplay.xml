@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-display-impl xmlns="http://idea.mil/rp">
+    <numBands>1</numBands>
+    <numPBoxes>1</numPBoxes>
+    <horizPBoxes>0</horizPBoxes>
+    <vertPBoxes>1</vertPBoxes>
+    <opmode>0</opmode>
+    <bandData>
+        <bandNum>0</bandNum>
+        <bandAttr>0</bandAttr>
+        <waveformSetup>
+            <sweepSpeed>0</sweepSpeed>
+            <sampleRate>200</sampleRate>
+            <scaleValue1>-1000</scaleValue1>
+            <scaleValue2>1000</scaleValue2>
+            <waveColor>10</waveColor>
+            <loc>ecg lead_II</loc>
+        </waveformSetup>
+    </bandData>
+    <pboxData>
+        <pboxId>0</pboxId>
+        <pboxFormat>1</pboxFormat>
+        <foreground>10</foreground>
+        <paramSetup>
+            <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg.hr</location>
+            <visible>false</visible>
+            <global>false</global>
+        </paramSetup>
+        <paramSetup>
+            <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg.arr</location>
+            <visible>false</visible>
+            <global>false</global>
+        </paramSetup>
+        <paramSetup>
+            <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ecg.pvc</location>
+            <visible>false</visible>
+            <global>false</global>
+        </paramSetup>
+    </pboxData>
+</rp-display-impl>

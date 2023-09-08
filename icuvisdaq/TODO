@@ -1,0 +1,115 @@
+
+
+OPEN
+15APR16: Parameters editor is non-functional.
+18APR16: Scaling of numeric values in Drager display...some off by mult 10.
+
+13APR16: Add overlap tab for display selection in opengl display
+15APR16: Add the edit tabs for Display changes to Elegant...match existing opengl
+15APR16: Piccolo2D display in line with Elegant and OpenGL
+15APR16: MgDAQ Messages (first tab): make the filters work
+15APR16: Simu...yanks in z/Sine Wave Simulator
+
+19APR16: Add opengl formats...evita circles? others?  need tool to generate static vector 
+         paths from shapes...Qt does this for some of their demos.
+21APR16: Disable next in last panel of begin study
+21APR16: Handle multiple interfaces w multicast...async.
+11MAY16: Setup did not create CONNECTION info for PROPAQM
+
+CLOSED
+* DONE - 13APR16: Device tab did not start off orange...started off normal!
+* DONE - 13APR16: Sleep and double confirm in not capturing warning
+* MOSTLY - 13APR16: Highligh problem when combo is in edit mode in begin study
+* DONE - 14APR16: Previous button handling in begin study.
+* DONE - 15APR16: Didn't see the pista devices in setup, even though the DLL loaded.
+* DONE - 15APR16: Improve size of error message
+* DONE - 18APR16: Analysis saved as EntropyFilter not EntropyAnalysis2Panel
+* DONE - 15APR16: Display of simulator data is broken?
+* DONE - 18APR16: Pista tick is trying to send data out PistaAdapter comm port?
+* DONE - 14APR16: FIX DATA RECORDING, HDF5
+* DONE - 13APR16: Fix opengl for vent param boxes/band.
+* DONE - 19APR16: Improve band layouts in opengl...band weights 
+* DONE - 13APR16: Last page...setup of com ports for polling...change to selected port!
+* DONE - 19APR16: Sampen not generated for Wendorff!
+
+WILL NOT FIX anytime soon
+* 13APR16: TBD - Handle USB serial unplug...at least latest rxtx does not crash app on linux 
+* 14APR16: TBD - Investigate PureJavaComm or other possibility...usb plug/unplug
+
+
+1- Gut PH
+   * choose a signal source...could be drager, could be NI, could be phidget
+   * choose a temperature source ... could be manual
+   * CALIBRATE low PH
+   * CALIBRATE high PH
+   * Display panel with trends and calibration time
+   * JFreeChart style
+   
+2- Harvard
+   * ANALOG IN via LABVIEW
+   * Display 2 trends
+   *
+
+3- OPENGL and NI/LabJack signals
+
+4- IDEA Server and NI/LabJack/Phidgits signals
+
+5- IDEA Server...and client
+
+
+
+
+------------------------------------------
+
+[0] Simulation
+[1] HRC Aesculon/Entropy
+[1] flow probe screen
+[2] add listener...by stream
+[2] drager...subdevices...caps and storage
+[3] resume data collection session...need more metadata in h5...port, IP
+[4] transfer/upload
+[5] revised Entropy page with JFreechart trends
+[6] timepoint printing?
+[7] waveformBlock must go away!!!
+
+[high - pending JITC] Trends and animation in FX8
+[high - pending JITC] FX8 on android
+
+[medium] polstar
+[medium] 2-way esculon
+[medium] serial - second pump
+
+[medium] Infinity sending unrequested many waveforms!
+[!Q -- is alarm audible???]
+[!Q -- what are alarm limit settings???]
+[high] Editor blanks out TP values on "click"
+[high] No warning if COM ports not available for pre-assigned devices.
+[medium] pumps
+[high] color code manual parameters
+[low] upload of ISTAT data.
+[low] upload of study data.
+
+[done] Popup for user timepoints.
+[done] Why did TP show up twice in the list?
+[done] timepoints not saved in H5...and null dev name in H5
+[done] Date got saved in XLS as 1234563 instead of a date field
+[done] capture vitals in a session for sample data for plotting
+
+Can't grab all the COM ports -- configure discovery.
+Device discovery / project
+icons!
+persistent message!  not the same as app message!
+
+IFMoutDriver setPort hard codes 19200 as baud rate!
+- get INI parser for idea.conf ... put in IDEAServer
+- class rewriting mixed w lombok to add JGoodies style binding
+
+This should give us a pretty good idea of what the printing process can do.  If
+you can send me 6 labels, I can subject them to a battery of adhesive tests.  
+
+The size in the diagram is appx 1.5" x 3".  That is really a maximum size.  If you
+need to go smaller for some reason, it will work for us.
+
+Thank you.
+
+Bbaker

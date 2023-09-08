@@ -1,0 +1,58 @@
+
+sourceSets {
+    main {
+        java {
+            //srcDir 'src/main/java'
+            // srcDir 'src/main/kaitai/src'
+            exclude '**/GettableResource.java'
+            exclude '**/RemoteJSONRepository.java'
+            exclude '**/SimulationDriver.java'
+        }
+    }
+}
+
+String osName = System.getProperty("os.name").toLowerCase();
+System.out.println("OSNAME===========" + osName );
+
+dependencies {
+    println "DM-CORE COMPILING SUB: " + project.name
+    println "                 ROOT: " + project.rootDir
+
+   		implementation project(":idea-rp-schema")
+   		implementation project(":idea-core-jpa")
+   		implementation project(":idea-core")
+
+    implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+    implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+
+    testImplementation 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    
+    //implementation 'org.apache.xmlbeans:xmlbeans:3.1.0'
+    implementation 'org.apache.poi:poi-ooxml:4.1.0'
+    implementation 'org.apache.poi:poi-ooxml-schemas:4.1.0'
+    implementation 'org.apache.poi:poi:4.1.0'
+    implementation 'org.apache.logging.log4j:log4j-core:2.1'
+    
+    implementation 'org.javassist:javassist:3.26.0-GA'
+    
+    implementation 'com.github.vatbub:mslinks:1.0.5'
+    implementation 'io.kaitai:kaitai-struct-runtime:0.8'
+    // implementation files('lib/mslinks.jar')
+    
+    //if( osName.contains("windows") ) {
+    implementation files('lib/jarhdf5-1.10.5.jar');
+    // implementation 'org.bytedeco:hdf5:1.10.5-1.5'
+    // } else {
+    //    implementation files('/usr/lib/java/jhdf5.jar')
+    // }
+    implementation 'org.hibernate:hibernate-entitymanager:5.4.6.Final'
+    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+
+    testImplementation 'junit:junit:4.11'
+    testImplementation 'com.jgoodies:jgoodies-binding:2.9.1'
+    testImplementation 'cglib:cglib-full:2.0.2'
+    testImplementation group: 'org.apache.commons', name: 'commons-proxy', version: '1.0'
+    testImplementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
+}
+

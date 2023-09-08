@@ -1,0 +1,362 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slmetric_undesc.relo> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "0" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node1713pq3ocx9317 .
+
+_:node1713pq3ocx9317 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf> ;
+	atxa-core:posX "248" ;
+	atxa-core:posY "112" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$TextDescription> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MeasureUnit> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$CompositeDescription> .
+
+_:node1713pq3ocx9317 atxa-core:contains _:node1713pq3ocx9318 .
+
+_:node1713pq3ocx9318 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MeasureUnit> ;
+	atxa-core:posX "865" ;
+	atxa-core:posY "137" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MeasureUnit> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MeasureUnit.getName()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MeasureUnit.getInverse(double,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MeasureUnit.getValue(Number,)> .
+
+_:node1713pq3ocx9318 atxa-core:contains _:node1713pq3ocx9319 .
+
+_:node1713pq3ocx9319 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MeasureUnit.getInverse(double,)> ;
+	atxa-core:posX "866" ;
+	atxa-core:posY "159" .
+
+_:node1713pq3ocx9318 atxa-core:contains _:node1713pq3ocx9320 .
+
+_:node1713pq3ocx9320 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MeasureUnit.getName()> ;
+	atxa-core:posX "866" ;
+	atxa-core:posY "175" .
+
+_:node1713pq3ocx9318 atxa-core:contains _:node1713pq3ocx9321 .
+
+_:node1713pq3ocx9321 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MeasureUnit.getValue(Number,)> ;
+	atxa-core:posX "866" ;
+	atxa-core:posY "191" .
+
+_:node1713pq3ocx9317 atxa-core:contains _:node1713pq3ocx9322 .
+
+_:node1713pq3ocx9322 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit> ;
+	atxa-core:posX "864" ;
+	atxa-core:posY "225" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.LinearUnit(double,double,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getM()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getB()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getName()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getValue(Number,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getInverse(double,)> .
+
+_:node1713pq3ocx8427 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1713pq3ocx9322 ;
+	rdf:object _:node1713pq3ocx9318 ;
+	atxa-core:bendpoint _:node1713pq3ocx9508 .
+
+_:node1713pq3ocx9508 atxa-core:bpLocation "977,228" ;
+	atxa-core:bpIndex "0" .
+
+_:node1713pq3ocx9322 atxa-core:contains _:node1713pq3ocx9324 .
+
+_:node1713pq3ocx9324 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.LinearUnit(double,double,String,)> ;
+	atxa-core:posX "865" ;
+	atxa-core:posY "247" .
+
+_:node1713pq3ocx9322 atxa-core:contains _:node1713pq3ocx9325 .
+
+_:node1713pq3ocx9325 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getB()> ;
+	atxa-core:posX "865" ;
+	atxa-core:posY "263" .
+
+_:node1713pq3ocx9322 atxa-core:contains _:node1713pq3ocx9326 .
+
+_:node1713pq3ocx9326 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getInverse(double,)> ;
+	atxa-core:posX "865" ;
+	atxa-core:posY "279" .
+
+_:node1713pq3ocx9322 atxa-core:contains _:node1713pq3ocx9327 .
+
+_:node1713pq3ocx9327 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getM()> ;
+	atxa-core:posX "865" ;
+	atxa-core:posY "295" .
+
+_:node1713pq3ocx9322 atxa-core:contains _:node1713pq3ocx9328 .
+
+_:node1713pq3ocx9328 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getName()> ;
+	atxa-core:posX "865" ;
+	atxa-core:posY "311" .
+
+_:node1713pq3ocx9322 atxa-core:contains _:node1713pq3ocx9329 .
+
+_:node1713pq3ocx9329 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$LinearUnit.getValue(Number,)> ;
+	atxa-core:posX "865" ;
+	atxa-core:posY "327" .
+
+_:node1713pq3ocx9317 atxa-core:contains _:node1713pq3ocx9330 .
+
+_:node1713pq3ocx9330 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription> ;
+	atxa-core:posX "399" ;
+	atxa-core:posY "139" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getLocation()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getName()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getCode()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getUnit()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.setUnit(MeasureUnit,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.setCode(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.setName(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.toString()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getUnitName()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.MetricDescription(Object,String,String,MeasureUnit,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.MetricDescription(Object,String,String,MeasureUnit,int,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.unit> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.setLocation(Object,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getSubtyp()> .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9331 .
+
+_:node1713pq3ocx9331 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getCode()> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "177" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9332 .
+
+_:node1713pq3ocx9332 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getLocation()> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "193" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9333 .
+
+_:node1713pq3ocx9333 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getName()> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "209" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9334 .
+
+_:node1713pq3ocx9334 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getSubtyp()> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "225" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9335 .
+
+_:node1713pq3ocx9335 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getUnitName()> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "241" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9336 .
+
+_:node1713pq3ocx9336 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.MetricDescription(Object,String,String,MeasureUnit,int,)> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "257" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9337 .
+
+_:node1713pq3ocx9337 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.setCode(String,)> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "273" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9338 .
+
+_:node1713pq3ocx9338 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.setLocation(Object,)> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "289" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9339 .
+
+_:node1713pq3ocx9339 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.setName(String,)> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "305" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9340 .
+
+_:node1713pq3ocx9340 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.setUnit(MeasureUnit,)> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "321" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9341 .
+
+_:node1713pq3ocx9341 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.toString()> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "337" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9342 .
+
+_:node1713pq3ocx9342 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.MetricDescription(Object,String,String,MeasureUnit,)> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "353" .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9343 .
+
+_:node1713pq3ocx9343 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.unit> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "161" .
+
+_:node1713pq3ocx8327 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node1713pq3ocx9343 ;
+	rdf:object _:node1713pq3ocx9318 .
+
+_:node1713pq3ocx9330 atxa-core:contains _:node1713pq3ocx9344 .
+
+_:node1713pq3ocx9344 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$MetricDescription.getUnit()> ;
+	atxa-core:posX "400" ;
+	atxa-core:posY "369" .
+
+_:node1713pq3ocx9317 atxa-core:contains _:node1713pq3ocx9345 .
+
+_:node1713pq3ocx9345 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$TextDescription> ;
+	atxa-core:posX "488" ;
+	atxa-core:posY "464" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$TextDescription> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$TextDescription.TextDescription(Object,String,String,int,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$TextDescription.getLen()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$TextDescription.setLen(int,)> .
+
+_:node1713pq3ocx7646 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1713pq3ocx9345 ;
+	rdf:object _:node1713pq3ocx9330 ;
+	atxa-core:bendpoint _:node1713pq3ocx9509 .
+
+_:node1713pq3ocx9509 atxa-core:bpLocation "621,406" ;
+	atxa-core:bpIndex "0" .
+
+_:node1713pq3ocx7646 atxa-core:bendpoint _:node1713pq3ocx9510 .
+
+_:node1713pq3ocx9510 atxa-core:bpLocation "567,406" ;
+	atxa-core:bpIndex "1" .
+
+_:node1713pq3ocx9345 atxa-core:contains _:node1713pq3ocx9348 .
+
+_:node1713pq3ocx9348 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$TextDescription.getLen()> ;
+	atxa-core:posX "489" ;
+	atxa-core:posY "486" .
+
+_:node1713pq3ocx9345 atxa-core:contains _:node1713pq3ocx9349 .
+
+_:node1713pq3ocx9349 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$TextDescription.setLen(int,)> ;
+	atxa-core:posX "489" ;
+	atxa-core:posY "502" .
+
+_:node1713pq3ocx9345 atxa-core:contains _:node1713pq3ocx9350 .
+
+_:node1713pq3ocx9350 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$TextDescription.TextDescription(Object,String,String,int,)> ;
+	atxa-core:posX "489" ;
+	atxa-core:posY "518" .
+
+_:node1713pq3ocx9317 atxa-core:contains _:node1713pq3ocx9355 .
+
+_:node1713pq3ocx9355 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription> ;
+	atxa-core:posX "760" ;
+	atxa-core:posY "465" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.getSampleRate()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.getSamplesPerPacket()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.WaveformDescription(Object,String,String,int,int,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.WaveformDescription(Object,String,String,int,int,MeasureUnit,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.setSampleRate(int,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.setSamplesPerPacket(int,)> .
+
+_:node1713pq3ocx7650 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1713pq3ocx9355 ;
+	rdf:object _:node1713pq3ocx9330 ;
+	atxa-core:bendpoint _:node1713pq3ocx9511 .
+
+_:node1713pq3ocx9511 atxa-core:bpLocation "947,406" ;
+	atxa-core:bpIndex "0" .
+
+_:node1713pq3ocx7650 atxa-core:bendpoint _:node1713pq3ocx9512 .
+
+_:node1713pq3ocx9512 atxa-core:bpLocation "567,406" ;
+	atxa-core:bpIndex "1" .
+
+_:node1713pq3ocx9355 atxa-core:contains _:node1713pq3ocx9358 .
+
+_:node1713pq3ocx9358 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.getSampleRate()> ;
+	atxa-core:posX "761" ;
+	atxa-core:posY "487" .
+
+_:node1713pq3ocx9355 atxa-core:contains _:node1713pq3ocx9359 .
+
+_:node1713pq3ocx9359 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.getSamplesPerPacket()> ;
+	atxa-core:posX "761" ;
+	atxa-core:posY "503" .
+
+_:node1713pq3ocx9355 atxa-core:contains _:node1713pq3ocx9360 .
+
+_:node1713pq3ocx9360 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.setSampleRate(int,)> ;
+	atxa-core:posX "761" ;
+	atxa-core:posY "519" .
+
+_:node1713pq3ocx9355 atxa-core:contains _:node1713pq3ocx9361 .
+
+_:node1713pq3ocx9361 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.setSamplesPerPacket(int,)> ;
+	atxa-core:posX "761" ;
+	atxa-core:posY "535" .
+
+_:node1713pq3ocx9355 atxa-core:contains _:node1713pq3ocx9362 .
+
+_:node1713pq3ocx9362 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.WaveformDescription(Object,String,String,int,int,MeasureUnit,)> ;
+	atxa-core:posX "761" ;
+	atxa-core:posY "551" .
+
+_:node1713pq3ocx9355 atxa-core:contains _:node1713pq3ocx9363 .
+
+_:node1713pq3ocx9363 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$WaveformDescription.WaveformDescription(Object,String,String,int,int,String,)> ;
+	atxa-core:posX "761" ;
+	atxa-core:posY "567" .
+
+_:node1713pq3ocx9317 atxa-core:contains _:node1713pq3ocx9351 .
+
+_:node1713pq3ocx9351 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$CompositeDescription> ;
+	atxa-core:posX "254" ;
+	atxa-core:posY "552" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$CompositeDescription> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$CompositeDescription.CompositeDescription(Object,String,String,MetricDescription[],)> .
+
+_:node1713pq3ocx7642 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node1713pq3ocx9351 ;
+	rdf:object _:node1713pq3ocx9330 ;
+	atxa-core:bendpoint _:node1713pq3ocx9513 .
+
+_:node1713pq3ocx9513 atxa-core:bpLocation "440,406" ;
+	atxa-core:bpIndex "0" .
+
+_:node1713pq3ocx7642 atxa-core:bendpoint _:node1713pq3ocx9514 .
+
+_:node1713pq3ocx9514 atxa-core:bpLocation "567,406" ;
+	atxa-core:bpIndex "1" .
+
+_:node1713pq3ocx9351 atxa-core:contains _:node1713pq3ocx9354 .
+
+_:node1713pq3ocx9354 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$CompositeDescription.CompositeDescription(Object,String,String,MetricDescription[],)> ;
+	atxa-core:posX "255" ;
+	atxa-core:posY "574" .
+

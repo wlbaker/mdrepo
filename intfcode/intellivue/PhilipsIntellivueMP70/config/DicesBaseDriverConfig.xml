@@ -1,0 +1,2082 @@
+<?xml version="1.0"?>
+
+<!--
+For more information about XML QoS Profiles see Chapter 15 in the 
+RTI Connext user manual.
+-->
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/5.2.0/rti_dds_qos_profiles.xsd"
+     version="5.2.0">
+    
+  <qos_library name="DICES">
+    <!-- Set logging here -->
+    <qos_profile name="ParticipantFactoryProfile" is_default_participant_factory_profile="true">
+      <participant_factory_qos>
+        <logging>
+          <category>ALL</category>
+          <verbosity>ERROR</verbosity>
+        </logging>
+      </participant_factory_qos>
+    </qos_profile>
+    <qos_profile name="RSRemoteAdmin" base_name="BuiltinQosLibExp::Generic.StrictReliable">
+      <participant_qos>
+        <transport_builtin>
+          <mask>UDPv4</mask>
+        </transport_builtin>
+        <discovery>
+          <accept_unknown_peers>true</accept_unknown_peers>
+          <initial_peers>
+            <element>100@builtin.udpv4://127.0.0.1</element>
+          </initial_peers>
+          <multicast_receive_addresses />
+        </discovery>
+        <discovery_config>
+          <ignore_default_domain_announcements>true</ignore_default_domain_announcements>
+          <default_domain_announcement_period>
+            <sec>DURATION_INFINITE_SEC</sec>
+            <nanosec>DURATION_INFINITE_NSEC</nanosec>
+          </default_domain_announcement_period>
+        </discovery_config>
+        <database>
+          <shutdown_cleanup_period>
+            <sec>0</sec>
+            <nanosec>100000000</nanosec>
+          </shutdown_cleanup_period>
+        </database>
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.multicast_enabled</name>
+              <value>0</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.ignore_loopback_interface</name>
+              <value>0</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.disable_interface_tracking</name>
+              <value>0</value>
+            </element>
+          </value>
+        </property>
+        <resource_limits>
+          <type_object_max_serialized_length>65000</type_object_max_serialized_length>
+        </resource_limits>
+      </participant_qos>
+
+    </qos_profile>
+
+    <qos_profile name="Base" base_name="BuiltinQosLibExp::Pattern.LastValueCache" is_default_qos="true">
+      <participant_qos>
+        <transport_builtin>
+          <mask>UDPv4</mask>
+        </transport_builtin>
+
+        <discovery_config>
+          <participant_liveliness_lease_duration>
+            <sec>5</sec>
+            <nanosec>500000000</nanosec>
+          </participant_liveliness_lease_duration>
+          <participant_liveliness_assert_period>
+            <sec>1</sec>
+            <nanosec>0</nanosec>
+          </participant_liveliness_assert_period>
+          <max_liveliness_loss_detection_period>
+            <sec>1</sec>
+            <nanosec>0</nanosec>
+          </max_liveliness_loss_detection_period>
+        </discovery_config>
+
+        <database>
+          <shutdown_cleanup_period>
+            <sec>0</sec>
+            <nanosec>100000000</nanosec>
+          </shutdown_cleanup_period>
+        </database>
+
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.ignore_loopback_interface</name>
+              <value>0</value>
+            </element>
+          </value>
+        </property>
+
+        <resource_limits>
+          <contentfilter_property_max_length>350</contentfilter_property_max_length>
+          <type_code_max_serialized_length>65530</type_code_max_serialized_length>
+          <type_object_max_serialized_length>65000</type_object_max_serialized_length>
+        </resource_limits>
+
+      </participant_qos>
+
+      <!-- NOTE: datawriter and datareader qos should already be set to
+           TRANSIENT_LOCAL_DURABILITY_QOS in
+           BuiltinQosLibExp::Pattern.LastValueCache -->
+
+      <datareader_qos>
+        <reader_resource_limits>
+          <max_samples_per_read>65536</max_samples_per_read>
+        </reader_resource_limits>
+        <!-- Added for heartbeat -->
+        <property>
+          <value>
+            <element>
+              <name>dds.data_reader.state.filter_redundant_samples</name>
+              <value>0</value>
+            </element>
+          </value>
+        </property>
+      </datareader_qos>
+
+      <datawriter_qos>
+        <writer_data_lifecycle>
+          <autodispose_unregistered_instances>false</autodispose_unregistered_instances>
+        </writer_data_lifecycle>
+      </datawriter_qos>
+
+      <publisher_qos>
+        <presentation>
+          <access_scope>TOPIC_PRESENTATION_QOS</access_scope>
+          <ordered_access>true</ordered_access>
+        </presentation>
+      </publisher_qos>
+      <subscriber_qos>
+        <presentation>
+          <access_scope>TOPIC_PRESENTATION_QOS</access_scope>
+          <ordered_access>true</ordered_access>
+        </presentation>
+      </subscriber_qos>
+
+    </qos_profile>
+
+    <qos_profile name="Manager" base_name="Base">
+      <participant_qos>
+        <discovery>
+          <!-- Manager participants send multicast discovery -->
+          <initial_peers>
+            <element>239.255.0.2</element>
+          </initial_peers>
+          <!-- Manager participants do not receive multicast discovery -->
+          <multicast_receive_addresses />
+          <accept_unknown_peers>true</accept_unknown_peers>
+        </discovery>
+        <!-- Increase multicast time-to-live so that the manager discovery
+             will propagate to subnet where the coordinator is running. The
+             default value is 1. When the router receives a multicast message
+             the ttl is decremented and will not be propagated if it is <= 0. -->
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.multicast_ttl</name>
+                <value>5</value>
+              </element>
+            </value>
+        </property>
+      </participant_qos>
+    </qos_profile>
+
+    <qos_profile name="DeviceModule" base_name="Base">
+      <participant_qos>
+        <discovery>
+          <multicast_receive_addresses>
+            <element>239.255.0.2</element>
+          </multicast_receive_addresses>
+        </discovery>
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.parent.deny_interfaces</name>
+              <value>10.1.127.*,10.1.128.*,10.1.129.*,10.1.130.*</value>
+            </element>
+          </value>
+        </property>          
+      </participant_qos>
+    </qos_profile>
+
+    <qos_profile name="Coordinator" base_name="Base">
+      <participant_qos>
+        <discovery>
+          <multicast_receive_addresses>
+            <element>239.255.0.2</element>
+          </multicast_receive_addresses>
+        </discovery>
+      </participant_qos>
+    </qos_profile>
+
+    <qos_profile name="LocalApp" base_name="Base">
+      <participant_qos>
+        <discovery>
+          <accept_unknown_peers>true</accept_unknown_peers>
+          <initial_peers>
+            <element>100@builtin.udpv4://127.0.0.1</element>
+          </initial_peers>
+          <multicast_receive_addresses />
+        </discovery>
+        <discovery_config>
+          <ignore_default_domain_announcements>true</ignore_default_domain_announcements>
+          <default_domain_announcement_period>
+            <sec>DURATION_INFINITE_SEC</sec>
+            <nanosec>DURATION_INFINITE_NSEC</nanosec>
+          </default_domain_announcement_period>
+        </discovery_config>
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.multicast_enabled</name>
+              <value>0</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.ignore_loopback_interface</name>
+              <value>0</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.parent.deny_interfaces</name>
+              <value>10.1.127.*,10.1.128.*,10.1.129.*,10.1.130.*</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.parent.allow_interfaces</name>
+              <value>127.0.0.1</value>
+            </element>
+          </value>
+        </property>
+      </participant_qos>
+    </qos_profile>
+
+    <qos_profile name="RS" base_name="LocalApp" />
+
+  </qos_library>
+
+  <!-- Another level of indirection solves all problems except too many levels of indirection. -->
+  <qos_library name="dices_dim_library">
+    <qos_profile name="dices_dim_durable_profile" base_name="DICES::LocalApp" />
+  </qos_library>
+
+    <domain_library name="DICESDomainLibrary">
+
+        <!-- DICESManagerDomain -->
+        <domain name="DICESManagerDomain" domain_id="2"/>
+
+        <!-- DICESCoordinatorDomain -->
+        <domain name="DICESCoordinatorDomain" domain_id="3"/>
+
+    </domain_library>
+
+
+    
+    <!-- Participant library -->
+    <participant_library name="DICESBaseDriverParticipantLibrary">
+
+        <domain_participant name="DICESBaseDriverParticipant"
+                            domain_ref="DICESDomainLibrary::DICESManagerDomain">
+
+        <participant_qos 
+           base_name="dices_dim_library::dices_dim_durable_profile"/>
+
+            <!-- Alarms -->
+            <register_type name="ice::AlarmSignal" kind="userGenerated"/>
+            <register_type name="ice::InformationSignal" kind="userGenerated"/>
+            <register_type name="ice::ReminderSignal" kind="userGenerated"/>
+            <register_type name="ice::AlarmContext" kind="userGenerated"/>
+
+            <topic name="ice--PhysiologicalAlarmSignal" 
+                register_type_ref="ice::AlarmSignal"/>
+            <topic name="ice--TechnicalAlarmSignal" 
+                register_type_ref="ice::AlarmSignal"/>
+            <topic name="ice--InformationSignal" 
+                register_type_ref="ice::InformationSignal"/>
+            <topic name="ice--ReminderSignal" 
+                register_type_ref="ice::ReminderSignal"/>
+            <topic name="ice--PhysiologicalAlarmContext" 
+                register_type_ref="ice::AlarmContext"/>
+            <topic name="ice--PhysiologicalAlarmContextReq" 
+                register_type_ref="ice::AlarmContext"/>
+            <topic name="ice--TechnicalAlarmContext" 
+                register_type_ref="ice::AlarmContext"/>
+            <topic name="ice--TechnicalAlarmContextReq" 
+                register_type_ref="ice::AlarmContext"/>
+
+            <!-- Allergy -->
+            <register_type name="ice::Allergy" kind="userGenerated"/>
+            <topic name="ice--Allergy" register_type_ref="ice::Allergy"/>
+            <topic name="ice--AllergyReq" register_type_ref="ice::Allergy"/> 
+
+            <!-- Battery -->
+            <register_type name="ice::Battery" kind="userGenerated"/>
+            <topic name="ice--Battery" register_type_ref="ice::Battery"/>
+
+            <!-- Channel -->
+            <register_type name="ice::Channel" kind="userGenerated"/>
+            <topic name="ice--Channel" register_type_ref="ice::Channel"/>
+
+            <!-- Clock -->
+            <register_type name="ice::Clock" kind="userGenerated"/>
+            <topic name="ice--Clock" register_type_ref="ice::Clock"/>
+            <topic name="ice--ClockReq" register_type_ref="ice::Clock"/>
+
+            <!-- Docbox -->
+            <register_type name="docbox::DeviceDriverState" kind="userGenerated"/>
+            <topic name="docbox--DeviceDriverState" 
+                register_type_ref="docbox::DeviceDriverState"/>
+            <topic name="docbox--DeviceDriverStateReq" 
+                register_type_ref="docbox::DeviceDriverState"/>
+
+            <!-- DSA -->
+            <register_type name="ice::DSAContext" kind="userGenerated"/>
+            <register_type name="ice::DSAObservedValue" kind="userGenerated"/>
+
+            <topic name="ice--DSAMeasContext" register_type_ref="ice::DSAContext"/>
+            <topic name="ice--DSAMeasContextReq" register_type_ref="ice::DSAContext"/>
+            <topic name="ice--DSAMeasObservedValue" register_type_ref="ice::DSAObservedValue"/>
+
+            <topic name="ice--DSACalcContext" register_type_ref="ice::DSAContext"/>
+            <topic name="ice--DSACalcContextReq" register_type_ref="ice::DSAContext"/>
+            <topic name="ice--DSACalcObservedValue" register_type_ref="ice::DSAObservedValue"/>
+
+            <topic name="ice--DSASettContext" register_type_ref="ice::DSAContext"/>
+            <topic name="ice--DSASettContextReq" register_type_ref="ice::DSAContext"/>
+            <topic name="ice--DSASettObservedValue" register_type_ref="ice::DSAObservedValue"/>
+
+            <!-- Enum -->
+            <register_type name="ice::EnumerationContext" kind="userGenerated"/>
+            <register_type name="ice::EnumerationObservedValue" kind="userGenerated"/>
+
+            <topic name="ice--EnumerationMeasContext" 
+                register_type_ref="ice::EnumerationContext"/>
+            <topic name="ice--EnumerationMeasContextReq" 
+                register_type_ref="ice::EnumerationContext"/>
+            <topic name="ice--EnumerationMeasObservedValue" 
+                register_type_ref="ice::EnumerationObservedValue"/>
+
+            <topic name="ice--EnumerationCalcContext" 
+                register_type_ref="ice::EnumerationContext"/>
+            <topic name="ice--EnumerationCalcContextReq" 
+                register_type_ref="ice::EnumerationContext"/>
+            <topic name="ice--EnumerationCalcObservedValue" 
+                register_type_ref="ice::EnumerationObservedValue"/>
+
+            <topic name="ice--EnumerationSettContext" 
+                register_type_ref="ice::EnumerationContext"/>
+            <topic name="ice--EnumerationSettContextReq" 
+                register_type_ref="ice::EnumerationContext"/>
+            <topic name="ice--EnumerationSettObservedValue" 
+                register_type_ref="ice::EnumerationObservedValue"/>
+            <topic name="ice--EnumerationSettObservedValueReq" 
+                register_type_ref="ice::EnumerationObservedValue"/>
+
+            <!-- Expr -->
+            <register_type name="expr::Diagnosis" kind="userGenerated"/>
+            <register_type name="expr::DxHistory" kind="userGenerated"/>
+            <register_type name="expr::PatientMedication" kind="userGenerated"/>
+
+            <topic name="expr--Diagnosis" register_type_ref="expr::Diagnosis"/>
+            <topic name="expr--DiagnosisReq" register_type_ref="expr::Diagnosis"/>
+            <topic name="expr--DxHistory" register_type_ref="expr::DxHistory"/>
+            <topic name="expr--DxHistoryReq" register_type_ref="expr::DxHistory"/>
+            <topic name="expr--PatientMedication" register_type_ref="expr::PatientMedication"/>
+            <topic name="expr--PatientMedicationReq" register_type_ref="expr::PatientMedication"/>
+
+            <!-- MDS -->
+            <register_type name="ice::MDS" kind="userGenerated"/>
+
+            <topic name="ice--MDS" register_type_ref="ice::MDS"/>
+
+            <!-- Numeric -->
+            <register_type name="ice::NumericContext" kind="userGenerated"/>
+            <register_type name="ice::NumericObservedValue" kind="userGenerated"/>
+
+            <topic name="ice--NumericMeasContext" 
+                register_type_ref="ice::NumericContext"/>
+            <topic name="ice--NumericMeasContextReq" 
+                register_type_ref="ice::NumericContext"/>
+            <topic name="ice--NumericMeasObservedValue" 
+                register_type_ref="ice::NumericObservedValue"/>
+
+            <topic name="ice--NumericCalcContext" 
+                register_type_ref="ice::NumericContext"/>
+            <topic name="ice--NumericCalcContextReq" 
+                register_type_ref="ice::NumericContext"/>
+            <topic name="ice--NumericCalcObservedValue" 
+                register_type_ref="ice::NumericObservedValue"/>
+
+            <topic name="ice--NumericSettContext" 
+                register_type_ref="ice::NumericContext"/>
+            <topic name="ice--NumericSettContextReq" 
+                register_type_ref="ice::NumericContext"/>
+            <topic name="ice--NumericSettObservedValue" 
+                register_type_ref="ice::NumericObservedValue"/>
+            <topic name="ice--NumericSettObservedValueReq" 
+                register_type_ref="ice::NumericObservedValue"/>
+
+            <!-- PatientIdentification -->
+            <register_type name="ice::PatientIdentification" kind="userGenerated"/>
+            <topic name="ice--PatientIdentification" register_type_ref="ice::PatientIdentification"/>
+            <topic name="ice--PatientIdentificationReq" register_type_ref="ice::PatientIdentification"/>
+
+            <!-- PatientDemographics -->
+            <register_type name="ice::PatientDemographics" kind="userGenerated"/>
+            <topic name="ice--PatientDemographics" register_type_ref="ice::PatientDemographics"/>
+            <topic name="ice--PatientDemographicsReq" register_type_ref="ice::PatientDemographics"/>
+            
+            <!-- RTSA -->
+            <register_type name="ice::RTSAContext" kind="userGenerated"/>
+            <register_type name="ice::RTSAObservedValue" kind="userGenerated"/>
+
+            <topic name="ice--RTSAMeasContext" 
+                register_type_ref="ice::RTSAContext"/>
+            <topic name="ice--RTSAMeasContextReq" 
+                register_type_ref="ice::RTSAContext"/>
+            <topic name="ice--RTSAMeasObservedValue" 
+                register_type_ref="ice::RTSAObservedValue"/>
+
+            <topic name="ice--RTSACalcContext" 
+                register_type_ref="ice::RTSAContext"/>
+            <topic name="ice--RTSACalcContextReq" 
+                register_type_ref="ice::RTSAContext"/>
+            <topic name="ice--RTSACalcObservedValue" 
+                register_type_ref="ice::RTSAObservedValue"/>
+
+            <topic name="ice--RTSASettContext" 
+                register_type_ref="ice::RTSAContext"/>
+            <topic name="ice--RTSASettContextReq" 
+                register_type_ref="ice::RTSAContext"/>
+            <topic name="ice--RTSASettObservedValue" 
+                register_type_ref="ice::RTSAObservedValue"/>
+
+            <!-- TSA -->
+            <register_type name="ice::TSAContext" kind="userGenerated"/>
+            <register_type name="ice::TSAObservedValue" kind="userGenerated"/>
+
+            <topic name="ice--TSAMeasContext" 
+                register_type_ref="ice::TSAContext"/>
+            <topic name="ice--TSAMeasContextReq" 
+                register_type_ref="ice::TSAContext"/>
+            <topic name="ice--TSAMeasObservedValue" 
+                register_type_ref="ice::TSAObservedValue"/>
+
+            <topic name="ice--TSACalcContext" 
+                register_type_ref="ice::TSAContext"/>
+            <topic name="ice--TSACalcContextReq" 
+                register_type_ref="ice::TSAContext"/>
+            <topic name="ice--TSACalcObservedValue" 
+                register_type_ref="ice::TSAObservedValue"/>
+
+            <topic name="ice--TSASettContext" 
+                register_type_ref="ice::TSAContext"/>
+            <topic name="ice--TSASettContextReq" 
+                register_type_ref="ice::TSAContext"/>
+            <topic name="ice--TSASettObservedValue" 
+                register_type_ref="ice::TSAObservedValue"/>
+
+            <!-- VMD -->
+            <register_type name="ice::VMD" kind="userGenerated"/>
+            <topic name="ice--VMD" register_type_ref="ice::VMD"/>
+
+          <!-- Publisher -->
+          <publisher name="DICESBaseDriverPublisher">
+
+            <!-- Data Writers -->
+
+            <!-- Alarms -->
+            <data_writer name="PhysiologicalAlarmSignalWriter"
+                        topic_ref="ice--PhysiologicalAlarmSignal">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TechnicalAlarmSignalWriter"
+                        topic_ref="ice--TechnicalAlarmSignal">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="InformationSignalWriter"
+                        topic_ref="ice--InformationSignal">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="ReminderSignalWriter"
+                        topic_ref="ice--ReminderSignal">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="PhysiologicalAlarmContextWriter"
+                        topic_ref="ice--PhysiologicalAlarmContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="PhysiologicalAlarmContextReqWriter"
+                        topic_ref="ice--PhysiologicalAlarmContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TechnicalAlarmContextWriter"
+                        topic_ref="ice--TechnicalAlarmContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TechnicalAlarmContextReqWriter"
+                        topic_ref="ice--TechnicalAlarmContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- Allergy -->
+            <data_writer name="AllergyWriter" topic_ref="ice--Allergy">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="AllergyReqWriter" topic_ref="ice--AllergyReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- Battery -->
+            <data_writer name="BatteryWriter" topic_ref="ice--Battery">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- Channel -->
+            <data_writer name="ChannelWriter" topic_ref="ice--Channel">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- Clock -->
+            <data_writer name="ClockWriter" topic_ref="ice--Clock">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="ClockReqWriter" topic_ref="ice--ClockReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- Docbox --> 
+            <data_writer name="DeviceDriverStateReqWriter"
+                        topic_ref="docbox--DeviceDriverStateReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DeviceDriverStateWriter"
+                        topic_ref="docbox--DeviceDriverState">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- DSA -->
+            <data_writer name="DSAMeasContextWriter"
+                        topic_ref="ice--DSAMeasContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DSAMeasContextReqWriter"
+                        topic_ref="ice--DSAMeasContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DSAMeasObservedValueWriter"
+                        topic_ref="ice--DSAMeasObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DSACalcContextWriter"
+                        topic_ref="ice--DSACalcContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DSACalcContextReqWriter"
+                        topic_ref="ice--DSACalcContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DSACalcObservedValueWriter"
+                        topic_ref="ice--DSACalcObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DSASettContextWriter"
+                        topic_ref="ice--DSASettContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DSASettContextReqWriter"
+                        topic_ref="ice--DSASettContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DSASettObservedValueWriter"
+                        topic_ref="ice--DSASettObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- Enum -->
+            <data_writer name="EnumerationMeasContextWriter"
+                        topic_ref="ice--EnumerationMeasContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="EnumerationMeasContextReqWriter"
+                        topic_ref="ice--EnumerationMeasContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="EnumerationMeasObservedValueWriter"
+                        topic_ref="ice--EnumerationMeasObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="EnumerationCalcContextWriter"
+                        topic_ref="ice--EnumerationCalcContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="EnumerationCalcContextReqWriter"
+                        topic_ref="ice--EnumerationCalcContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="EnumerationCalcObservedValueWriter"
+                        topic_ref="ice--EnumerationCalcObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="EnumerationSettContextWriter"
+                        topic_ref="ice--EnumerationSettContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="EnumerationSettContextReqWriter"
+                        topic_ref="ice--EnumerationSettContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="EnumerationSettObservedValueReqWriter"
+                        topic_ref="ice--EnumerationSettObservedValueReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="EnumerationSettObservedValueWriter"
+                        topic_ref="ice--EnumerationSettObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- Expr -->
+            <data_writer name="DiagnosisWriter" topic_ref="expr--Diagnosis">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DiagnosisReqWriter" topic_ref="expr--DiagnosisReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DxHistoryWriter" topic_ref="expr--DxHistory">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="DxHistoryReqriter" topic_ref="expr--DxHistoryReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="PatientMedicationWriter" topic_ref="expr--PatientMedication">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="PatientMedicationReqWriter" topic_ref="expr--PatientMedicationReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- MDS -->
+            <data_writer name="MDSWriter"
+                        topic_ref="ice--MDS">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- Numeric -->
+            <data_writer name="NumericMeasContextWriter"
+                        topic_ref="ice--NumericMeasContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="NumericMeasContextReqWriter"
+                        topic_ref="ice--NumericMeasContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="NumericMeasObservedValueWriter"
+                        topic_ref="ice--NumericMeasObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="NumericCalcContextWriter"
+                        topic_ref="ice--NumericCalcContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="NumericCalcContextReqWriter"
+                        topic_ref="ice--NumericCalcContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="NumericCalcObservedValueWriter"
+                        topic_ref="ice--NumericCalcObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="NumericSettContextWriter"
+                        topic_ref="ice--NumericSettContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="NumericSettContextReqWriter"
+                        topic_ref="ice--NumericSettContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="NumericSettObservedValueReqWriter"
+                        topic_ref="ice--NumericSettObservedValueReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="NumericSettObservedValueWriter"
+                        topic_ref="ice--NumericSettObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- PatientIdentification -->
+            <data_writer name="PatientIdentificationWriter"
+                        topic_ref="ice--PatientIdentification">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="PatientIdentificationReqWriter"
+                        topic_ref="ice--PatientIdentificationReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- PatientDemographics -->
+            <data_writer name="PatientDemographicsWriter"
+                        topic_ref="ice--PatientDemographics">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="PatientDemographicsReqWriter"
+                        topic_ref="ice--PatientDemographicsReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- RTSA -->
+            <data_writer name="RTSAMeasContextWriter"
+                        topic_ref="ice--RTSAMeasContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="RTSAMeasContextReqWriter"
+                        topic_ref="ice--RTSAMeasContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="RTSAMeasObservedValueWriter"
+                        topic_ref="ice--RTSAMeasObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="RTSACalcContextWriter"
+                        topic_ref="ice--RTSACalcContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="RTSACalcContextReqWriter"
+                        topic_ref="ice--RTSACalcContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="RTSACalcObservedValueWriter"
+                        topic_ref="ice--RTSACalcObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="RTSASettContextWriter"
+                        topic_ref="ice--RTSASettContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="RTSASettContextReqWriter"
+                        topic_ref="ice--RTSASettContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="RTSASettObservedValueWriter"
+                        topic_ref="ice--RTSASettObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <!-- TSA -->
+            <data_writer name="TSAMeasContextWriter"
+                        topic_ref="ice--TSAMeasContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TSAMeasContextReqWriter"
+                        topic_ref="ice--TSAMeasContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TSAMeasObservedValueWriter"
+                        topic_ref="ice--TSAMeasObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TSACalcContextWriter"
+                        topic_ref="ice--TSACalcContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TSACalcContextReqWriter"
+                        topic_ref="ice--TSACalcContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TSACalcObservedValueWriter"
+                        topic_ref="ice--TSACalcObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TSASettContextWriter"
+                        topic_ref="ice--TSASettContext">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TSASettContextReqWriter"
+                        topic_ref="ice--TSASettContextReq">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            <data_writer name="TSASettObservedValueWriter"
+                        topic_ref="ice--TSASettObservedValue">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+            
+            <!-- VMD -->
+            <data_writer name="VMDWriter" topic_ref="ice--VMD">
+                <datawriter_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_writer>
+
+            <publisher_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+
+          </publisher>
+
+          <!-- Subscriber -->
+          <subscriber name="DICESBaseDriverSubscriber">
+
+            <!-- Data Readers -->
+
+            <!-- Alarms -->
+             <data_reader name="PhysiologicalAlarmSignalReader"
+                        topic_ref="ice--PhysiologicalAlarmSignal">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="PhysiologicalAlarmSignalReaderCft"
+                        topic_ref="ice--PhysiologicalAlarmSignal">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="PhysiologicalAlarmSignalReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, alarm_source = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            <data_reader name="TechnicalAlarmSignalReader"
+                        topic_ref="ice--TechnicalAlarmSignal">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TechnicalAlarmSignalReaderCft"
+                        topic_ref="ice--TechnicalAlarmSignal">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TechnicalAlarmSignalReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, alarm_source = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="InformationSignalReader"
+                        topic_ref="ice--InformationSignal">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="InformationSignalReaderCft"
+                        topic_ref="ice--InformationSignal">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="InformationSignalReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, alarm_source = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="ReminderSignalReader"
+                        topic_ref="ice--ReminderSignal">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="ReminderSignalReaderCft"
+                        topic_ref="ice--ReminderSignal">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="ReminderSignalReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, alarm_source = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="PhysiologicalAlarmContextReader"
+                        topic_ref="ice--PhysiologicalAlarmContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="PhysiologicalAlarmContextReaderCft"
+                        topic_ref="ice--PhysiologicalAlarmContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="PhysiologicalAlarmContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, alarm_source = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="PhysiologicalAlarmContextReqReader"
+                        topic_ref="ice--PhysiologicalAlarmContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="PhysiologicalAlarmContextReqReaderCft"
+                        topic_ref="ice--PhysiologicalAlarmContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="PhysiologicalAlarmContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, alarm_source = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TechnicalAlarmContextReader"
+                        topic_ref="ice--TechnicalAlarmContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TechnicalAlarmContextReaderCft"
+                        topic_ref="ice--TechnicalAlarmContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TechnicalAlarmContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, alarm_source = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TechnicalAlarmContextReqReader"
+                        topic_ref="ice--TechnicalAlarmContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TechnicalAlarmContextReqReaderCft"
+                        topic_ref="ice--TechnicalAlarmContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TechnicalAlarmContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, alarm_source = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- Allergy -->
+            <data_reader name="AllergyReader" topic_ref="ice--Allergy">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+
+            <!-- Battery -->
+            <data_reader name="BatteryReader" topic_ref="ice--Battery">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="BatteryReaderCft" topic_ref="ice--Battery">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="BatteryReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- Channel -->
+            <data_reader name="ChannelReader" topic_ref="ice--Channel">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="ChannelReaderCft" topic_ref="ice--Channel">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="ChannelReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, channel_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- Clock -->
+            <data_reader name="ClockReader" topic_ref="ice--Clock">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="ClockReaderCft" topic_ref="ice--Clock">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="ClockReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="ClockReqReader" topic_ref="ice--ClockReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="ClockReqReaderCft" topic_ref="ice--ClockReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="ClockReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- Docbox -->
+            <data_reader name="DeviceDriverStateReader"
+                        topic_ref="docbox--DeviceDriverState">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DeviceDriverStateReaderCft"
+                        topic_ref="docbox--DeviceDriverState">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DeviceDriverStateReaderCft" kind="builtin.sql">
+                    <expression> device_id = %0 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <data_reader name="DeviceDriverStateReqReader"
+                        topic_ref="docbox--DeviceDriverStateReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DeviceDriverStateReqReaderCft"
+                        topic_ref="docbox--DeviceDriverStateReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DeviceDriverStateReqReaderCft" kind="builtin.sql">
+                    <expression> device_id = %0 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- DSA -->
+            <data_reader name="DSAMeasContextReader"
+                        topic_ref="ice--DSAMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DSAMeasContextReaderCft"
+                        topic_ref="ice--DSAMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DSAMeasContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="DSAMeasContextReqReader"
+                        topic_ref="ice--DSAMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DSAMeasContextReqReaderCft"
+                        topic_ref="ice--DSAMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DSAMeasContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="DSAMeasObservedValueReader"
+                        topic_ref="ice--DSAMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DSAMeasObservedValueReaderCft"
+                        topic_ref="ice--DSAMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DSAMeasObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="DSACalcContextReader"
+                        topic_ref="ice--DSACalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DSACalcContextReaderCft"
+                        topic_ref="ice--DSACalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DSACalcContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="DSACalcContextReqReader"
+                        topic_ref="ice--DSACalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DSACalcContextReqReaderCft"
+                        topic_ref="ice--DSACalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DSACalcContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="DSACalcObservedValueReader"
+                        topic_ref="ice--DSACalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DSACalcObservedValueReaderCft"
+                        topic_ref="ice--DSACalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DSACalcObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="DSASettContextReader"
+                        topic_ref="ice--DSASettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DSASettContextReaderCft"
+                        topic_ref="ice--DSASettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DSASettContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="DSASettContextReqReader"
+                        topic_ref="ice--DSASettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DSASettContextReqReaderCft"
+                        topic_ref="ice--DSASettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DSASettContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="DSASettObservedValueReader"
+                        topic_ref="ice--DSASettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DSASettObservedValueReaderCft"
+                        topic_ref="ice--DSASettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="DSASettObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- Enum -->
+            <data_reader name="EnumerationMeasContextReader"
+                        topic_ref="ice--EnumerationMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationMeasContextReaderCft"
+                        topic_ref="ice--EnumerationMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationMeasContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="EnumerationMeasContextReqReader"
+                        topic_ref="ice--EnumerationMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationMeasContextReqReaderCft"
+                        topic_ref="ice--EnumerationMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationMeasContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="EnumerationMeasObservedValueReader"
+                        topic_ref="ice--EnumerationMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationMeasObservedValueReaderCft"
+                        topic_ref="ice--EnumerationMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationMeasObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="EnumerationCalcContextReader"
+                        topic_ref="ice--EnumerationCalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationCalcContextReaderCft"
+                        topic_ref="ice--EnumerationCalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationCalcContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="EnumerationCalcContextReqReader"
+                        topic_ref="ice--EnumerationCalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationCalcContextReqReaderCft"
+                        topic_ref="ice--EnumerationCalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationCalcContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="EnumerationCalcObservedValueReader"
+                        topic_ref="ice--EnumerationCalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationCalcObservedValueReaderCft"
+                        topic_ref="ice--EnumerationCalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationCalcObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="EnumerationSettContextReader"
+                        topic_ref="ice--EnumerationSettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationSettContextReaderCft"
+                        topic_ref="ice--EnumerationSettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationSettContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="EnumerationSettContextReqReader"
+                        topic_ref="ice--EnumerationSettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationSettContextReqReaderCft"
+                        topic_ref="ice--EnumerationSettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationSettContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="EnumerationSettObservedValueReqReader"
+                        topic_ref="ice--EnumerationSettObservedValueReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationSettObservedValueReqReaderCft"
+                        topic_ref="ice--EnumerationSettObservedValueReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationSettObservedValueReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="EnumerationSettObservedValueReader"
+                        topic_ref="ice--EnumerationSettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="EnumerationSettObservedValueReaderCft"
+                        topic_ref="ice--EnumerationSettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="EnumerationSettObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- Expr -->
+            <data_reader name="DiagnosisReader" topic_ref="expr--Diagnosis">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="DxHistoryReader" topic_ref="expr--DxHistory">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="PatientMedicationReader" topic_ref="expr--PatientMedication">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+
+            <!-- MDS -->
+            <data_reader name="MDSReader"
+                        topic_ref="ice--MDS">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="MDSReaderCft"
+                        topic_ref="ice--MDS">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="MDSReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- Numeric -->
+            <data_reader name="NumericMeasContextReader"
+                        topic_ref="ice--NumericMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericMeasContextReaderCft"
+                        topic_ref="ice--NumericMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericMeasContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="NumericMeasContextReqReader"
+                        topic_ref="ice--NumericMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericMeasContextReqReaderCft"
+                        topic_ref="ice--NumericMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericMeasContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="NumericMeasObservedValueReader"
+                        topic_ref="ice--NumericMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericMeasObservedValueReaderCft"
+                        topic_ref="ice--NumericMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericMeasObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="NumericCalcContextReader"
+                        topic_ref="ice--NumericCalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericCalcContextReaderCft"
+                        topic_ref="ice--NumericCalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericCalcContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="NumericCalcContextReqReader"
+                        topic_ref="ice--NumericCalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericCalcContextReqReaderCft"
+                        topic_ref="ice--NumericCalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericCalcContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="NumericCalcObservedValueReader"
+                        topic_ref="ice--NumericCalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericCalcObservedValueReaderCft"
+                        topic_ref="ice--NumericCalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericCalcObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="NumericSettContextReader"
+                        topic_ref="ice--NumericSettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericSettContextReaderCft"
+                        topic_ref="ice--NumericSettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericSettContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="NumericSettContextReqReader"
+                        topic_ref="ice--NumericSettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericSettContextReqReaderCft"
+                        topic_ref="ice--NumericSettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericSettContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="NumericSettObservedValueReqReader"
+                        topic_ref="ice--NumericSettObservedValueReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericSettObservedValueReqReaderCft"
+                        topic_ref="ice--NumericSettObservedValueReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericSettObservedValueReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="NumericSettObservedValueReader"
+                        topic_ref="ice--NumericSettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="NumericSettObservedValueReaderCft"
+                        topic_ref="ice--NumericSettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="NumericSettObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- PatientIdentification -->
+            <data_reader name="PatientIdentificationReader"
+                        topic_ref="ice--PatientIdentification">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="PatientIdentificationReaderCft"
+                        topic_ref="ice--PatientIdentification">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="PatientIdentificationReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, patient_id = %3, provenance = %4 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>''</param>
+                        <param>''</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+
+            <data_reader name="PatientIdentificationReqReader"
+                        topic_ref="ice--PatientIdentificationReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="PatientIdentificationReqReaderCft"
+                        topic_ref="ice--PatientIdentificationReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="PatientIdentificationReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, patient_id = %3, provenance = %4 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>''</param>
+                        <param>''</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+
+            <!-- PatientDemographics -->
+            <data_reader name="PatientDemographicsReader"
+                        topic_ref="ice--PatientDemographics">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="PatientDemographicsReaderCft"
+                        topic_ref="ice--PatientDemographics">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="PatientDemographicsReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, patient_id = %3, provenance = %4 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>''</param>
+                        <param>''</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="PatientDemographicsReqReader"
+                        topic_ref="ice--PatientDemographicsReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="PatientDemographicsReqReaderCft"
+                        topic_ref="ice--PatientDemographicsReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="PatientDemographicsReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2,patient_id = %3, provenance = %4 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>''</param>
+                        <param>''</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- RTSA -->
+            <data_reader name="RTSAMeasContextReader"
+                        topic_ref="ice--RTSAMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="RTSAMeasContextReaderCft"
+                        topic_ref="ice--RTSAMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="RTSAMeasContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="RTSAMeasContextReqReader"
+                        topic_ref="ice--RTSAMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="RTSAMeasContextReqReaderCft"
+                        topic_ref="ice--RTSAMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="RTSAMeasContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="RTSAMeasObservedValueReader"
+                        topic_ref="ice--RTSAMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="RTSAMeasObservedValueReaderCft"
+                        topic_ref="ice--RTSAMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="RTSAMeasObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="RTSACalcContextReader"
+                        topic_ref="ice--RTSACalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="RTSACalcContextReaderCft"
+                        topic_ref="ice--RTSACalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="RTSACalcContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="RTSACalcContextReqReader"
+                        topic_ref="ice--RTSACalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="RTSACalcContextReqReaderCft"
+                        topic_ref="ice--RTSACalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="RTSACalcContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="RTSACalcObservedValueReader"
+                        topic_ref="ice--RTSACalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="RTSACalcObservedValueReaderCft"
+                        topic_ref="ice--RTSACalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="RTSACalcObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="RTSASettContextReader"
+                        topic_ref="ice--RTSASettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="RTSASettContextReaderCft"
+                        topic_ref="ice--RTSASettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="RTSASettContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="RTSASettContextReqReader"
+                        topic_ref="ice--RTSASettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="RTSASettContextReqReaderCft"
+                        topic_ref="ice--RTSASettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="RTSASettContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="RTSASettObservedValueReader"
+                        topic_ref="ice--RTSASettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="RTSASettObservedValueReaderCft"
+                        topic_ref="ice--RTSASettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="RTSASettObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- TSA -->
+            <data_reader name="TSAMeasContextReader"
+                        topic_ref="ice--TSAMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TSAMeasContextReaderCft"
+                        topic_ref="ice--TSAMeasContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TSAMeasContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TSAMeasContextReqReader"
+                        topic_ref="ice--TSAMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TSAMeasContextReqReaderCft"
+                        topic_ref="ice--TSAMeasContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TSAMeasContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TSAMeasObservedValueReader"
+                        topic_ref="ice--TSAMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TSAMeasObservedValueReaderCft"
+                        topic_ref="ice--TSAMeasObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TSAMeasObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TSACalcContextReader"
+                        topic_ref="ice--TSACalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TSACalcContextReaderCft"
+                        topic_ref="ice--TSACalcContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TSACalcContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TSACalcContextReqReader"
+                        topic_ref="ice--TSACalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TSACalcContextReqReaderCft"
+                        topic_ref="ice--TSACalcContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TSACalcContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TSACalcObservedValueReader"
+                        topic_ref="ice--TSACalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TSACalcObservedValueReaderCft"
+                        topic_ref="ice--TSACalcObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TSACalcObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TSASettContextReader"
+                        topic_ref="ice--TSASettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TSASettContextReaderCft"
+                        topic_ref="ice--TSASettContext">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TSASettContextReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TSASettContextReqReader"
+                        topic_ref="ice--TSASettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TSASettContextReqReaderCft"
+                        topic_ref="ice--TSASettContextReq">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TSASettContextReqReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <data_reader name="TSASettObservedValueReader"
+                        topic_ref="ice--TSASettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="TSASettObservedValueReaderCft"
+                        topic_ref="ice--TSASettObservedValue">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="TSASettObservedValueReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2, metric_id = %3 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+
+            <!-- VMD -->
+            <data_reader name="VMDReader" topic_ref="ice--VMD">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+            </data_reader>
+            <data_reader name="VMDReaderCft" topic_ref="ice--VMD">
+                <datareader_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+                <filter name="VMDReaderCft" kind="builtin.sql">
+                    <expression> ice_id = %0, handle = %1,
+                        parent_handle = %2 </expression>
+                    <parameter_list>
+                        <param>''</param>
+                        <param>0</param>
+                        <param>0</param>
+                    </parameter_list>
+                </filter>
+            </data_reader>
+            
+            <subscriber_qos base_name="dices_dim_library::dices_dim_durable_profile"/>
+
+          </subscriber>
+
+        </domain_participant>
+
+    </participant_library>
+
+</dds>
+

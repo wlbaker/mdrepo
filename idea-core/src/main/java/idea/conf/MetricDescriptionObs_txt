@@ -1,0 +1,230 @@
+package idea.conf;
+
+import static idea.intf.DataTyp.*;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Collection;
+
+public class MetricDescriptionObs {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String location;
+	private String code;
+	private String name;
+
+	private MeasureUnit unit;
+	private int subtyp;
+	private Field field;
+	private Method getter;
+	private int iloc;
+	
+	public MetricDescriptionObs(int iloc, String code, String name, String unit ) {
+		
+		this.iloc = iloc;
+		this.setLocation("" + iloc);
+		this.code = code;
+		this.name = name;
+		this.unit = new LinearUnit( 1, 0, unit );
+		
+	}
+
+	public MetricDescriptionObs(int iloc, String code, String name, LinearUnit unit ) {
+		
+		this.iloc = iloc;
+		this.setLocation("" + iloc);
+		this.code = code;
+		this.name = name;
+		this.unit = unit;
+		
+	}
+	
+	public MetricDescriptionObs(String location, String code, String name, MeasureUnit output_unit, int subtyp ) {
+		
+		this.setLocation(location);
+		this.code = code;
+		this.name = name;
+		this.unit = output_unit;
+		this.subtyp = subtyp;
+		
+	}
+
+	public MetricDescriptionObs(MetricDescription src) {
+		this.location = src.location;
+		this.iloc = src.iloc;
+		this.code = src.code;
+		this.name = src.name;
+		this.unit = src.unit;
+		this.subtyp = src.subtyp;
+		this.getter = src.getter;
+	}
+
+	public void setField( Field field, Method getter ) {
+		this.field = field;
+		this.getter = getter;
+	}
+
+	public Object getScaledValue(Object obj ) {
+		Object val = null;
+		try {
+			val = getter.invoke(obj );
+			if( val instanceof Number ) {
+				val = unit.getValue((Number) val);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return val;
+	}
+	
+	@Deprecated
+	public MetricDescriptionObs(String location, String code, String name, String unit) {
+		this( location, code, name, new LinearUnit(1.0, 0, unit), INT_TYP);
+	}
+
+	public MetricDescriptionObs(String location, String code, String name, MeasureUnit output_unit) {
+		this( location, code, name, output_unit, INT_TYP);
+	}
+	
+	public String getName() {
+		if( name != null ) {
+			return name;
+		}
+		return code;
+	}
+	
+	public MeasureUnit getUnit() {
+		return unit;
+	}
+
+	public String getUnitName() {
+		if( unit == null ) {
+			return null;
+		}
+		return unit.getName();
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setUnit(MeasureUnit unit) {
+		this.unit = unit;
+	}
+	
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public void setName(String trimmed_name) {
+		name = trimmed_name;
+	}
+
+	@Override
+	public boolean equals(Object arg0) {
+		if( this == arg0 ) {
+			return true;
+		}
+		if( location == null ) {
+			return false;
+		}
+		if( arg0 == null ) {
+			return false;
+		}
+		
+		if( !(arg0 instanceof MetricDescription) ) {
+			System.out.println( arg0 + " is not a metric description");
+			return false;
+		}
+		
+		return location.equals(((MetricDescription)arg0).getLocation());
+	}
+
+	@Override
+	public String toString() {
+		return "[" + subtyp + "/"+ getLocation() + ": " + getName() + "]";
+	}
+
+	public int getSubtyp() {
+		return subtyp;
+	}
+
+	public void setSubtyp(int subtyp) {
+		this.subtyp = subtyp;
+	}
+
+	public static MetricDescription getMetricDescription(Collection<? extends MetricDescription> metrics, String sigName) {
+		for( MetricDescription m : metrics ) {
+			if( m.getLocation().equals(sigName)) {
+				return m;
+			}
+		}
+		
+		return null;
+	}
+
+
+	public int getLocationInt() {
+		return iloc;
+	}
+
+	/*
+	 * used in report generator....probably repeated in entity generation code!!!!
+	 * 
+	 * FIXME: reconcile with entity generation code.
+	 */
+	public Class<?> getRawType() {
+		Class<?> t = null;
+		
+		switch( subtyp ) {
+		case INT_TYP:
+			t = Integer.class;
+			break;
+		case DOUBLE_TYP:
+			t = Double.class;
+			break;
+		case LONG_TYP:
+			t = Long.class;
+			break;
+		case STRING_TYP:
+			t = String.class;
+			break;
+		case BYTE_TYP:
+			t = Byte.class;
+			break;
+		}
+		
+		return t;
+	}
+	
+	public Class<?> getScaledType() {
+		Class<?> t = null;
+		
+		switch( subtyp ) {
+		case INT_TYP:
+		case DOUBLE_TYP:
+		case LONG_TYP:
+		case BYTE_TYP:
+			t = Double.class;
+			break;
+		case STRING_TYP:
+			t = String.class;
+			break;
+		}
+		
+		return t;
+	}
+}

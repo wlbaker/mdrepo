@@ -1,0 +1,74 @@
+diff -Naur openssl-1.1.1/Configurations/15-android.conf openssl-1.1.1-wlb/Configurations/15-android.conf
+--- openssl-1.1.1/Configurations/15-android.conf	2018-09-11 07:48:19.000000000 -0500
++++ openssl-1.1.1-wlb/Configurations/15-android.conf	2018-10-04 15:44:09.037741646 -0500
+@@ -8,6 +8,7 @@
+ 
+     my $android_ndk = {};
+     my %triplet = (
++        "android-arm"    => "arm-linux-androideabi",
+         arm    => "arm-linux-androideabi",
+         arm64  => "aarch64-linux-android",
+         mips   => "mipsel-linux-android",
+@@ -71,6 +72,9 @@
+             my $cflags;
+             my $cppflags;
+ 
++            print("15-android arch=" . $arch . "\n" );
++            print("15-android triarch=" . $triarch . "\n" );
++
+             # see if there is NDK clang on $PATH
+             if (which("clang") =~ m|^$ndk/.*/prebuilt/([^/]+)/|) {
+                 my $host=$1;
+@@ -83,6 +87,9 @@
+                         .  "/$tritools-4.9/prebuilt/$host";
+                 $user{CC} = "clang" if ($user{CC} !~ m|clang|);
+                 $user{CROSS_COMPILE} = undef;
++                print("15-android ndkver=" . $ndkver . "\n" );
++                print("15-android tridefault=" . $tridefault . "\n" );
++                print("15-android tritools=" . $tritools . "\n" );
+             } elsif ($user{CC} eq "clang") {
+                 die "no NDK clang on \$PATH";
+             } else {
+diff -Naur openssl-1.1.1/fuzz/client.c openssl-1.1.1-wlb/fuzz/client.c
+--- openssl-1.1.1/fuzz/client.c	2018-09-11 07:48:23.000000000 -0500
++++ openssl-1.1.1-wlb/fuzz/client.c	2018-10-05 16:45:51.470934799 -0500
+@@ -34,9 +34,9 @@
+  * in things not being fully reproducible and have a slightly
+  * different coverage.
+  */
+-#if !defined(_WIN32)
+-time_t time(time_t *t) TIME_IMPL(t)
+-#endif
++// #if !defined(_WIN32)
++// time_t time(time_t *t) TIME_IMPL(t)
++// #endif
+ 
+ int FuzzerInitialize(int *argc, char ***argv)
+ {
+diff -Naur openssl-1.1.1/fuzz/server.c openssl-1.1.1-wlb/fuzz/server.c
+--- openssl-1.1.1/fuzz/server.c	2018-09-11 07:48:23.000000000 -0500
++++ openssl-1.1.1-wlb/fuzz/server.c	2018-10-05 16:46:31.694454983 -0500
+@@ -481,9 +481,9 @@
+  * in things not being fully reproducible and have a slightly
+  * different coverage.
+  */
+-#if !defined(_WIN32)
+-time_t time(time_t *t) TIME_IMPL(t)
+-#endif
++//#if !defined(_WIN32)
++//time_t time(time_t *t) TIME_IMPL(t)
++//#endif
+ 
+ int FuzzerInitialize(int *argc, char ***argv)
+ {
+diff -Naur openssl-1.1.1/t.sh openssl-1.1.1-wlb/t.sh
+--- openssl-1.1.1/t.sh	1969-12-31 18:00:00.000000000 -0600
++++ openssl-1.1.1-wlb/t.sh	2018-10-04 17:47:54.618163428 -0500
+@@ -0,0 +1,7 @@
++# /opt/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -pie 
++file /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/lib/arm-linux-androideabi
++file /opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/lib/arm-linux-androideabi/libdl.a
++/opt/tools/Android/Sdk/ndk-bundle/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-ld -s \
++    --sysroot=/opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/lib/arm-linux-androideabi -L. -L/opt/tools/Android/Sdk/ndk-bundle/sysroot/usr/lib/arm-linux-androideabi  \
++	-o apps/openssl apps/asn1pars.o apps/ca.o apps/ciphers.o apps/cms.o apps/crl.o apps/crl2p7.o apps/dgst.o apps/dhparam.o apps/dsa.o apps/dsaparam.o apps/ec.o apps/ecparam.o apps/enc.o apps/engine.o apps/errstr.o apps/gendsa.o apps/genpkey.o apps/genrsa.o apps/nseq.o apps/ocsp.o apps/openssl.o apps/passwd.o apps/pkcs12.o apps/pkcs7.o apps/pkcs8.o apps/pkey.o apps/pkeyparam.o apps/pkeyutl.o apps/prime.o apps/rand.o apps/rehash.o apps/req.o apps/rsa.o apps/rsautl.o apps/s_client.o apps/s_server.o apps/s_time.o apps/sess_id.o apps/smime.o apps/speed.o apps/spkac.o apps/srp.o apps/storeutl.o apps/ts.o apps/verify.o apps/version.o apps/x509.o \
++	 apps/libapps.a -lssl -ldl -lcrypto -lc -lz -lcompiler_rt-extras

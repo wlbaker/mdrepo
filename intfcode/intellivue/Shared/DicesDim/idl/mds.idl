@@ -1,0 +1,131 @@
+/**
+ * @file    mds.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Medical Device System (MDS) object types.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * system_capability attribute specifies top-level implemented functions
+ * (the following is an example only)
+ */
+typedef BITS32 SystemCapability;
+enum SystemCapabilityBits
+{
+  sc_multiple_context = 0x1,    // system uses multiple naming contexts
+  sc_dyn_configuration = 0x2,   // containment tree changes dynamically
+  sc_dyn_scanner_create = 0x4,  // host can create Scanner objs dynamically
+  sc_auto_init_scan_list = 0x8, // CfgScanner object supports automatic
+                                // scan list initialization
+  sc_auto_updt_scan_list = 0x10 // CfgScanner object supports automatic
+                                // scan list update
+};
+
+struct SystemSpecEntry
+{
+  PrivateOid component_capab_id;
+  string<LONG_STRING_LEN> component_spec;
+}; //@top-level false
+typedef sequence<SystemSpecEntry> SystemSpec;
+
+/**
+ * nomenclature_version attribute contains a part of the major version field
+ * (i.e., basic compatibility) and the minor version (used to identified
+ * the latest used update). The major version part is coded as a bit field
+ * so that systems supporting multiple versions can negotiate the version
+ * used within an association.
+ */
+typedef BITS16 NomMajorVersion;
+enum NomMajorVersionBits
+{
+  majorVersion1 = 0x1,
+  majorVersion2 = 0x2,
+  majorVersion3 = 0x4,
+  majorVersion4 = 0x8
+};
+
+struct NomenclatureVersion
+{
+  NomMajorVersion nom_major_version;
+  INTU16 nom_minor_version;
+}; //@top-level false
+
+enum MDSStatus
+{
+  /**
+   * MDS state of one association/connection according to FSM
+   */
+  disconnected = 0,
+  unassociated = 1,
+  associating = 2,
+  associated = 3,
+  configuring = 4,
+  configured = 5,
+  operating = 6,
+  re_initializing = 7,
+  terminating = 8,
+  disassociating = 9,
+  disassociated = 10,
+  re_configuring = 11
+};
+
+typedef BITS16 PowerStatus;
+enum PowerStatusBits
+{
+  onMains = 0x1,
+  onBattery = 0x2,
+  chargingFull = 0x100,
+  chargingTrickle = 0x200,
+  chargingOff = 0x400
+};
+
+enum LineFrequency
+{
+  line_f_unspec = 0,
+  line_f_50hz = 1,
+  line_f_60hz = 2
+};
+
+struct VMS : Top
+{
+  TYPE system_type; // Examples: ventilator, monitor as defined in nomenclature.
+  SystemModel system_model; // Manufacturer and model number.
+  NomenclatureVersion nomenclature_version;
+  SystemCapability system_capability; // Set of supported features. Sys specific.
+  SystemSpec system_specification;    // Defines functional components.
+
+  ProductionSpec production_specification;  // Component revisions, serial nos.
+}; //@top-level false
+
+//=============================================================================
+/**
+ *  MDS object
+ */
+
+struct MDS : VMS
+{
+  MDSStatus mds_status;
+  PrivateOid operating_mode; //@Optional
+  Timespec date_and_time; //@Optional
+  Duration relative_time; //@Optional
+  PowerStatus power_status; //@Optional
+
+  // % of capacity. Undefined if value > 100.
+  INTU16 battery_level; //@Optional
+
+  INTU16 remaining_battery_minutes; //@Optional
+
+  // Meters above or below sea level.
+  INT16 altitude_meters; //@Optional
+
+  LineFrequency line_frequency; //@Optional
+}; //@top-level true
+const string MDSTopic = "ice--MDS";
+
+};

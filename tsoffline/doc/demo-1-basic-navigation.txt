@@ -1,0 +1,154 @@
+
+# Notes
+- HIPPA Compliant, PHI removed and random numbers
+- No limit to number of waveforms...ECG...ad as many as desired
+- Calibration has already been performed on this data
+
+# Script
+
+Hello, my name is Bill Baker and I'd like to introduce you to some software for 
+offline data analysis that was developed at the US Army Institute of Surgical Research.
+
+The data which we will be viewing today is a subset of the data collected from
+the cardiology department of Brooke Army Medical Center in the 1970's. The data was
+originally recorded on 1-inch tape, and more recently, digitized and stored on disk.  
+The data was collected using invasive cardiac catheters from active duty service members
+who were being evaluated for possible cardiac conditions.  These individuals were
+determined to be Normal.
+
+This is a rather special set of data.  These were young healthy males and today this
+procedure would be considered beyond nominal and minimal risk for a healthy
+subject, and as such it would be difficult if not impossible to capture this data today. 
+Data is captured in a very similar manner today, as part of the normal 
+clinical procedure being conducted on patients with existing cardiac conditions.
+
+Let's jump into the data.
+
+--------------
+
+To begin with, let's open a data file as if this is the first time to do so.  We 
+will be opening a local data file, as opposed to remote file or a study.  Local 
+data files are located on a local workstation disk or a shared server drive.  A 
+remote file would not be available locally and requires download from a remote 
+repository.  Study files are similar to remote files.  This data is extracted 
+directly from a data collection device known as the IDEA server.  Only the local 
+file feature will be discussed in 
+this video.  Select "local file" and "Next" at the bottom of the screen.
+
+-------
+
+We see data files for several patients here.  Each folder represents a data 
+collection session for a single subject, and is further identified by the data 
+source, subject number, and minimal demographic information.  The method of 
+organization and names of the files in the local file system is entirely at
+ the discretion of the 
+researcher. In this data, we see that data files are available for a 34 year 
+old male, a 20 year old male, a 38 year old male, and several others.  Let's start 
+with the first data folder which is identified as BAMC subject 0049 Normal,
+a 34 year old male.
+
+There are several types of data files that we can open.  Our primary data files
+are DAT files, H5 files. We can also open session files of previously saved data.
+These session files contain additional information such as annotations, 
+calibration information and analysis results.
+
+Lets open a data file as if it is the first time to do it.  For that, we will open
+the DAT file.  Select the DAT file and press Finish.
+
+-------
+
+This is the basic header information in the DAT file.  The company is BAMC, 
+Cardiology Department, the data has been filtered at 250Hz with a gain of 4.  We see 
+that the Start Date is Sept 23, 2004 at 12:15:06 in the morning. Now we know that's 
+not the true study time because this data was originally captured on 1"tape.  This date
+reflects the date and time at which the data was re-digitized and formatted for 
+storage on disk.  Under other circumstances, the data would indeed reflect the study 
+time during which the data was captured.
+
+Press next. 
+
+--------
+
+These are the data fields available in the file.  We have Left Distal, Left Proxal,
+Left Flow, Right Distal, Right Mid, Right Proxal, Right Fluid, Right Flow and an ECG.  
+Today we are only going to be looking at Left Distal and Left Proxal values, and the ECG.
+
+De-select the waveforms that are not of interest to us, and select Finish.
+
+-------
+
+When the progress bar at the bottom of the screen disappears, all the selected data
+will have been loaded into the program.  We see a time line at the bottom, and an 
+indicator showing us the location of our current view in the dataset.  From this 
+timeline we can tell that we are viewing a 30 second window of data from a session  
+that lasted about an hour.
+ 
+We can drag this view indicator across the dataset until we locate an area
+of interest.  One useful keyboard shortcut is the letter "C".  Press "C" to center 
+the data on the current display.  Now we can see the pressure waveforms that we are
+interested in as well as the ECG.  However, the ECG signal is on a different scale
+and therefore should be displayed seperately. With the 
+mouse over the graph, click the right mouse button and select "Split Display Band".
+This creates a new graphics area at the top of the screen, and we can add the
+ ECG signal to this new graph.
+
+To do so, we can 
+drag and drop the ECG signal label into the new graphics area.  The ECG signal has
+now moved to the the top graph.  If we click the ECG label again it will be hilighted 
+in red.
+When a single signal is hilighted in red, this indicates that the signal is the 
+"active" signal.  At most one signal can be active.  Some special operations apply
+only to the active signal.  We can deactivate the signal with a single left click on the
+signal label, the same way we activated the signal.  When the signal is deactivated 
+all the signals return to their original colors.
+
+Since splitting the display into two graphs, the signals in the lower graph are 
+now off scale.  Move the mouse over this display area and press C again to center
+the remaining signals in the resized graph. 
+
+Now we see the expected data: ECG on the top, Left Heart pressures on the bottom.
+-------
+
+Navigation of the data can be done in several ways.
+- You have already seen the effect of dragging the timeline indicator at the bottom
+of the screen.
+We can also use the "Arrow keys" and the "Mouse Wheel" to scroll to the left and scroll
+to the right.  The "Arrow Keys" can also be used to move a graph either up or down.
+
+Zooming can also be done in several ways.  First, the +and- keys zoom
+in and out as expected.  A second method is to drag a rectangle with the mouse.
+The hilighted area will become the new display area.
+
+Calibration can be used for moving a single waveform relative to the other signals.
+Calibration only affects the active signal.  Let's move the left distal press relative
+to the other signals.  Click on the signal label to active the signal, and click on the
+calibration icon at the top of the screen to enter calibration mode.  The background is
+hilighted red to indicate that we are in calibration mode.
+
+We can move L dist in small increments relative to the other signals using the arrow 
+keys.  Click the calibration button again to exit calibration mode.
+
+---------
+Audio
+
+In the lower right-hand corner, you will find a scale indicator that shows the width
+of our viewing area in seconds, together with preset values for quick selection.
+Lets select a 30-second window. 
+
+This particular dataset also contains an audio
+track with all of the relevent experiment information including signal calibration
+and phases of the experiment.  Press the Play button to hear the audio 
+track and see the experiment progress in realtime.
+
+Press the Pause button to momentarily stop the replay.  At any time, the number 
+key "0" can be pressed to reset the display to its starting position with a 30-second
+window.
+
+---------
+
+Although we have not entered study events, or performed
+any analysis, we will save our session using "File/Save".  This will assist in our
+following tutorials for data analysis.
+
+This concludes the basic introduction to tsOffline.
+

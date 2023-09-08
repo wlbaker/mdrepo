@@ -1,0 +1,11 @@
+
+For Android, a number of prereqs have to be built and stored in the "distribution" folder.
+
+OPENSSL
+---------------
+1. In deps, 
+
+   cd deps
+   ./build-libwebsockets4android.sh
+
+2. Build the sample app

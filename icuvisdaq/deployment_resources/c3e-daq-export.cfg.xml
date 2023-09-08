@@ -1,0 +1,40 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\opt\export\c3e-daq\bin\c3e-daq.jar</jar>
+  <outfile>C:\opt\export\c3e-daq\bin\c3e-daq_w_jre.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <customProcName>true</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>C:\opt\workspace\chaktaw\cardioStrip\deployment_resources\biosig.ico</icon>
+  <jre>
+    <path>..\jre</path>
+    <minVersion>1.5.0</minVersion>
+    <maxVersion>7.1.9</maxVersion>
+    <jdkPreference>jdkOnly</jdkPreference>
+  </jre>
+  <splash>
+    <file>C:\opt\workspace\chaktaw\cardioStrip\deployment_resources\iris-closeup.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>false</timeoutErr>
+  </splash>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>C3E-DAQ</txtFileVersion>
+    <fileDescription>C3E-DAQ</fileDescription>
+    <copyright>US Army Institute of Surgical Research</copyright>
+    <productVersion>1.0.0.0</productVersion>
+    <txtProductVersion>C3EDaq</txtProductVersion>
+    <productName>C3E-DAQ</productName>
+    <companyName>idea</companyName>
+    <internalName>c3e-daq</internalName>
+    <originalFilename>C3E-DAQ.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>

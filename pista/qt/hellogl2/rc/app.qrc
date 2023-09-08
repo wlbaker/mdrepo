@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="impact.jpg">731-emv-220.jpg</file>
+        <file>headphones.png</file>
+        <file>phone.png</file>
+        <file>phone-2.png</file>
+        <file>meddev.png</file>
+        <file>bolt.png</file>
+        <file>bolt-white.png</file>
+        <file>upload-white.png</file>
+		<file>fonta/bars.png</file>
+		<file>fonta/play-circle.png</file>
+		<file>fonta/times-circle-o.png</file>
+        <file>images/settings-black.png</file>
+        <file>images/settings-w-border.png</file>
+        <file>images/settings-white.png</file>
+    </qresource>
+</RCC>

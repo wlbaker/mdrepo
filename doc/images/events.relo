@@ -1,0 +1,505 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slevents.relo> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "2" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node171cmnnc1x9907 .
+
+_:node171cmnnc1x9907 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events> ;
+	atxa-core:posX "129" ;
+	atxa-core:posY "121" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent> .
+
+_:node171cmnnc1x9907 atxa-core:contains _:node171cmnnc1x9908 .
+
+_:node171cmnnc1x9908 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent> ;
+	atxa-core:posX "135" ;
+	atxa-core:posY "146" ;
+	atxa-core:color "76;;f5;;78" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent.AlarmEvent(Object,AlarmBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent.setAlarmItem(AlarmBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent.getAlarmItem()> .
+
+_:node171cmnnc1x299 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171cmnnc1x9908 ;
+	rdf:object _:node171cmnnc1x9909 ;
+	atxa-core:bendpoint _:node171cmnnc1x13896 .
+
+_:node171cmnnc1x13896 atxa-core:bpLocation "199,100" ;
+	atxa-core:bpIndex "0" .
+
+_:node171cmnnc1x299 atxa-core:bendpoint _:node171cmnnc1x13897 .
+
+_:node171cmnnc1x13897 atxa-core:bpLocation "427,100" ;
+	atxa-core:bpIndex "1" .
+
+_:node171cmnnc1x9908 atxa-core:contains _:node171cmnnc1x9912 .
+
+_:node171cmnnc1x9912 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent.AlarmEvent(Object,AlarmBlock,)> ;
+	atxa-core:posX "136" ;
+	atxa-core:posY "168" .
+
+_:node171cmnnc1x9908 atxa-core:contains _:node171cmnnc1x9913 .
+
+_:node171cmnnc1x9913 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent.getAlarmItem()> ;
+	atxa-core:posX "136" ;
+	atxa-core:posY "184" .
+
+_:node171cmnnc1x9908 atxa-core:contains _:node171cmnnc1x9914 .
+
+_:node171cmnnc1x9914 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent.setAlarmItem(AlarmBlock,)> ;
+	atxa-core:posX "136" ;
+	atxa-core:posY "200" .
+
+_:node171cmnnc1x9907 atxa-core:contains _:node171cmnnc1x9949 .
+
+_:node171cmnnc1x9949 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent> ;
+	atxa-core:posX "438" ;
+	atxa-core:posY "265" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.ConnectionEvent(Object,ConnectionStatus,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.setStatus(ConnectionStatus,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.ConnectionEvent(Object,ConnectionStatus,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.getStatus()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.getConnectInfo()> .
+
+_:node171cmnnc1x298 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171cmnnc1x9949 ;
+	rdf:object _:node171cmnnc1x9909 ;
+	atxa-core:bendpoint _:node171cmnnc1x13898 .
+
+_:node171cmnnc1x13898 atxa-core:bpLocation "511,100" ;
+	atxa-core:bpIndex "0" .
+
+_:node171cmnnc1x298 atxa-core:bendpoint _:node171cmnnc1x13899 .
+
+_:node171cmnnc1x13899 atxa-core:bpLocation "427,100" ;
+	atxa-core:bpIndex "1" .
+
+_:node171cmnnc1x9949 atxa-core:contains _:node171cmnnc1x9952 .
+
+_:node171cmnnc1x9952 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.ConnectionEvent(Object,ConnectionStatus,String,)> ;
+	atxa-core:posX "439" ;
+	atxa-core:posY "287" .
+
+_:node171cmnnc1x9949 atxa-core:contains _:node171cmnnc1x9953 .
+
+_:node171cmnnc1x9953 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.ConnectionEvent(Object,ConnectionStatus,)> ;
+	atxa-core:posX "439" ;
+	atxa-core:posY "303" .
+
+_:node171cmnnc1x9949 atxa-core:contains _:node171cmnnc1x9954 .
+
+_:node171cmnnc1x9954 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.getConnectInfo()> ;
+	atxa-core:posX "439" ;
+	atxa-core:posY "319" .
+
+_:node171cmnnc1x9949 atxa-core:contains _:node171cmnnc1x9955 .
+
+_:node171cmnnc1x9955 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.getStatus()> ;
+	atxa-core:posX "439" ;
+	atxa-core:posY "335" .
+
+_:node171cmnnc1x9949 atxa-core:contains _:node171cmnnc1x9956 .
+
+_:node171cmnnc1x9956 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent.setStatus(ConnectionStatus,)> ;
+	atxa-core:posX "439" ;
+	atxa-core:posY "351" .
+
+_:node171cmnnc1x9907 atxa-core:contains _:node171cmnnc1x9915 .
+
+_:node171cmnnc1x9915 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent> ;
+	atxa-core:posX "424" ;
+	atxa-core:posY "157" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent.AnnotationEvent(Object,AnnotationBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent.setAnnotationItem(AnnotationBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent.getAnnotationItem()> .
+
+_:node171cmnnc1x303 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171cmnnc1x9915 ;
+	rdf:object _:node171cmnnc1x9909 ;
+	atxa-core:bendpoint _:node171cmnnc1x13900 .
+
+_:node171cmnnc1x13900 atxa-core:bpLocation "501,100" ;
+	atxa-core:bpIndex "0" .
+
+_:node171cmnnc1x303 atxa-core:bendpoint _:node171cmnnc1x13901 .
+
+_:node171cmnnc1x13901 atxa-core:bpLocation "427,100" ;
+	atxa-core:bpIndex "1" .
+
+_:node171cmnnc1x9915 atxa-core:contains _:node171cmnnc1x9918 .
+
+_:node171cmnnc1x9918 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent.AnnotationEvent(Object,AnnotationBlock,)> ;
+	atxa-core:posX "425" ;
+	atxa-core:posY "179" .
+
+_:node171cmnnc1x9915 atxa-core:contains _:node171cmnnc1x9919 .
+
+_:node171cmnnc1x9919 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent.getAnnotationItem()> ;
+	atxa-core:posX "425" ;
+	atxa-core:posY "195" .
+
+_:node171cmnnc1x9915 atxa-core:contains _:node171cmnnc1x9920 .
+
+_:node171cmnnc1x9920 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent.setAnnotationItem(AnnotationBlock,)> ;
+	atxa-core:posX "425" ;
+	atxa-core:posY "211" .
+
+_:node171cmnnc1x9907 atxa-core:contains _:node171cmnnc1x9964 .
+
+_:node171cmnnc1x9964 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent> ;
+	atxa-core:posX "272" ;
+	atxa-core:posY "146" ;
+	atxa-core:color "76;;f5;;78" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.getWaveformBlock()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.WaveformEvent(Object,WaveformBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.setWaveFormBlock(WaveformBlock,)> .
+
+_:node171cmnnc1x300 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171cmnnc1x9964 ;
+	rdf:object _:node171cmnnc1x9909 ;
+	atxa-core:bendpoint _:node171cmnnc1x13902 .
+
+_:node171cmnnc1x13902 atxa-core:bpLocation "349,100" ;
+	atxa-core:bpIndex "0" .
+
+_:node171cmnnc1x300 atxa-core:bendpoint _:node171cmnnc1x13903 .
+
+_:node171cmnnc1x13903 atxa-core:bpLocation "427,100" ;
+	atxa-core:bpIndex "1" .
+
+_:node171cmnnc1x9964 atxa-core:contains _:node171cmnnc1x9966 .
+
+_:node171cmnnc1x9966 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.getJobId()> ;
+	atxa-core:posX "273" ;
+	atxa-core:posY "168" .
+
+_:node171cmnnc1x9964 atxa-core:contains _:node171cmnnc1x9967 .
+
+_:node171cmnnc1x9967 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.getWaveformBlock()> ;
+	atxa-core:posX "273" ;
+	atxa-core:posY "184" .
+
+_:node171cmnnc1x9964 atxa-core:contains _:node171cmnnc1x9968 .
+
+_:node171cmnnc1x9968 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.setWaveFormBlock(WaveformBlock,)> ;
+	atxa-core:posX "273" ;
+	atxa-core:posY "200" .
+
+_:node171cmnnc1x9964 atxa-core:contains _:node171cmnnc1x9969 .
+
+_:node171cmnnc1x9969 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.WaveformEvent(Object,int,WaveformBlock,)> ;
+	atxa-core:posX "273" ;
+	atxa-core:posY "216" .
+
+_:node171cmnnc1x9964 atxa-core:contains _:node171cmnnc1x9970 .
+
+_:node171cmnnc1x9970 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent.WaveformEvent(Object,WaveformBlock,)> ;
+	atxa-core:posX "273" ;
+	atxa-core:posY "232" .
+
+_:node171cmnnc1x9907 atxa-core:contains _:node171cmnnc1x9927 .
+
+_:node171cmnnc1x9927 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent> ;
+	atxa-core:posX "184" ;
+	atxa-core:posY "269" ;
+	atxa-core:color "76;;f5;;78" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.getNumericsBlock()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.subclass> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.getSubclass()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.setSubclass(NumericsSubset,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.NumericsEvent(Object,NumericsSubset,NumericBlock,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.setNumericsBlock(NumericBlock,)> .
+
+_:node171cmnnc1x297 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171cmnnc1x9927 ;
+	rdf:object _:node171cmnnc1x9909 ;
+	atxa-core:bendpoint _:node171cmnnc1x13904 .
+
+_:node171cmnnc1x13904 atxa-core:bpLocation "269,100" ;
+	atxa-core:bpIndex "0" .
+
+_:node171cmnnc1x297 atxa-core:bendpoint _:node171cmnnc1x13905 .
+
+_:node171cmnnc1x13905 atxa-core:bpLocation "427,100" ;
+	atxa-core:bpIndex "1" .
+
+_:node171cmnnc1x9927 atxa-core:contains _:node171cmnnc1x9930 .
+
+_:node171cmnnc1x9930 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.getNumericsBlock()> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "307" .
+
+_:node171cmnnc1x9927 atxa-core:contains _:node171cmnnc1x9931 .
+
+_:node171cmnnc1x9931 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.getSubclass()> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "323" .
+
+_:node171cmnnc1x4776 a atxa-core:link ;
+	atxa-core:model atxa-jdt:refType ;
+	rdf:subject _:node171cmnnc1x9931 ;
+	rdf:object _:node171cmnnc1x9932 .
+
+_:node171cmnnc1x9927 atxa-core:contains _:node171cmnnc1x9933 .
+
+_:node171cmnnc1x9933 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.NumericsEvent(Object,NumericsSubset,NumericBlock,)> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "339" .
+
+_:node171cmnnc1x9927 atxa-core:contains _:node171cmnnc1x9934 .
+
+_:node171cmnnc1x9934 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.setNumericsBlock(NumericBlock,)> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "355" .
+
+_:node171cmnnc1x9927 atxa-core:contains _:node171cmnnc1x9935 .
+
+_:node171cmnnc1x9935 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.setSubclass(NumericsSubset,)> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "371" .
+
+_:node171cmnnc1x9927 atxa-core:contains _:node171cmnnc1x9932 .
+
+_:node171cmnnc1x9932 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent.subclass> ;
+	atxa-core:posX "185" ;
+	atxa-core:posY "291" .
+
+_:node171cmnnc1x9907 atxa-core:contains _:node171cmnnc1x9957 .
+
+_:node171cmnnc1x9957 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent> ;
+	atxa-core:posX "346" ;
+	atxa-core:posY "396" ;
+	atxa-core:color "f2;;77;;77" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent.SecurityEvent(Object,boolean,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent.setLogin(boolean,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent.isAccept()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent.toString()> .
+
+_:node171cmnnc1x302 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171cmnnc1x9957 ;
+	rdf:object _:node171cmnnc1x9909 ;
+	atxa-core:bendpoint _:node171cmnnc1x13906 .
+
+_:node171cmnnc1x13906 atxa-core:bpLocation "411,100" ;
+	atxa-core:bpIndex "0" .
+
+_:node171cmnnc1x302 atxa-core:bendpoint _:node171cmnnc1x13907 .
+
+_:node171cmnnc1x13907 atxa-core:bpLocation "427,100" ;
+	atxa-core:bpIndex "1" .
+
+_:node171cmnnc1x9957 atxa-core:contains _:node171cmnnc1x9960 .
+
+_:node171cmnnc1x9960 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent.isAccept()> ;
+	atxa-core:posX "347" ;
+	atxa-core:posY "418" .
+
+_:node171cmnnc1x9957 atxa-core:contains _:node171cmnnc1x9961 .
+
+_:node171cmnnc1x9961 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent.SecurityEvent(Object,boolean,)> ;
+	atxa-core:posX "347" ;
+	atxa-core:posY "434" .
+
+_:node171cmnnc1x9957 atxa-core:contains _:node171cmnnc1x9962 .
+
+_:node171cmnnc1x9962 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent.setLogin(boolean,)> ;
+	atxa-core:posX "347" ;
+	atxa-core:posY "450" .
+
+_:node171cmnnc1x9957 atxa-core:contains _:node171cmnnc1x9963 .
+
+_:node171cmnnc1x9963 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent.toString()> ;
+	atxa-core:posX "347" ;
+	atxa-core:posY "466" .
+
+_:node171cmnnc1x9907 atxa-core:contains _:node171cmnnc1x9936 .
+
+_:node171cmnnc1x9936 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent> ;
+	atxa-core:posX "509" ;
+	atxa-core:posY "397" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent.getConfiguration()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent.getAction()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent.getReqId()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent.ManagementEvent(Object,int,int,DeviceConfiguration,)> .
+
+_:node171cmnnc1x301 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171cmnnc1x9936 ;
+	rdf:object _:node171cmnnc1x9909 ;
+	atxa-core:bendpoint _:node171cmnnc1x13908 .
+
+_:node171cmnnc1x13908 atxa-core:bpLocation "586,100" ;
+	atxa-core:bpIndex "0" .
+
+_:node171cmnnc1x301 atxa-core:bendpoint _:node171cmnnc1x13909 .
+
+_:node171cmnnc1x13909 atxa-core:bpLocation "427,100" ;
+	atxa-core:bpIndex "1" .
+
+_:node171cmnnc1x9936 atxa-core:contains _:node171cmnnc1x9939 .
+
+_:node171cmnnc1x9939 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent.ManagementEvent(Object,int,int,DeviceConfiguration,)> ;
+	atxa-core:posX "510" ;
+	atxa-core:posY "419" .
+
+_:node171cmnnc1x9936 atxa-core:contains _:node171cmnnc1x9940 .
+
+_:node171cmnnc1x9940 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent.getAction()> ;
+	atxa-core:posX "510" ;
+	atxa-core:posY "435" .
+
+_:node171cmnnc1x9936 atxa-core:contains _:node171cmnnc1x9941 .
+
+_:node171cmnnc1x9941 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent.getConfiguration()> ;
+	atxa-core:posX "510" ;
+	atxa-core:posY "451" .
+
+_:node171cmnnc1x9936 atxa-core:contains _:node171cmnnc1x9942 .
+
+_:node171cmnnc1x9942 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent.getReqId()> ;
+	atxa-core:posX "510" ;
+	atxa-core:posY "467" .
+
+_:node171cmnnc1x9907 atxa-core:contains _:node171cmnnc1x9921 .
+
+_:node171cmnnc1x9921 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent> ;
+	atxa-core:posX "593" ;
+	atxa-core:posY "152" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent.getCapabilities()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent.CapabilitiesEvent(Object,DeviceConfiguration,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent.setCapabilities(DeviceConfiguration,)> .
+
+_:node171cmnnc1x296 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171cmnnc1x9921 ;
+	rdf:object _:node171cmnnc1x9909 ;
+	atxa-core:bendpoint _:node171cmnnc1x13910 .
+
+_:node171cmnnc1x13910 atxa-core:bpLocation "666,100" ;
+	atxa-core:bpIndex "0" .
+
+_:node171cmnnc1x296 atxa-core:bendpoint _:node171cmnnc1x13911 .
+
+_:node171cmnnc1x13911 atxa-core:bpLocation "427,100" ;
+	atxa-core:bpIndex "1" .
+
+_:node171cmnnc1x9921 atxa-core:contains _:node171cmnnc1x9924 .
+
+_:node171cmnnc1x9924 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent.CapabilitiesEvent(Object,DeviceConfiguration,)> ;
+	atxa-core:posX "594" ;
+	atxa-core:posY "174" .
+
+_:node171cmnnc1x9921 atxa-core:contains _:node171cmnnc1x9925 .
+
+_:node171cmnnc1x9925 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent.getCapabilities()> ;
+	atxa-core:posX "594" ;
+	atxa-core:posY "190" .
+
+_:node171cmnnc1x9921 atxa-core:contains _:node171cmnnc1x9926 .
+
+_:node171cmnnc1x9926 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent.setCapabilities(DeviceConfiguration,)> ;
+	atxa-core:posX "594" ;
+	atxa-core:posY "206" .
+
+_:node171cmnnc1x9907 atxa-core:contains _:node171cmnnc1x9943 .
+
+_:node171cmnnc1x9943 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent> ;
+	atxa-core:posX "616" ;
+	atxa-core:posY "265" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent.DisplayEvent(Object,DisplayConfig,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent.setConfig(DisplayConfig,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent.getConfig()> .
+
+_:node171cmnnc1x304 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node171cmnnc1x9943 ;
+	rdf:object _:node171cmnnc1x9909 ;
+	atxa-core:bendpoint _:node171cmnnc1x13912 .
+
+_:node171cmnnc1x13912 atxa-core:bpLocation "679,100" ;
+	atxa-core:bpIndex "0" .
+
+_:node171cmnnc1x304 atxa-core:bendpoint _:node171cmnnc1x13913 .
+
+_:node171cmnnc1x13913 atxa-core:bpLocation "427,100" ;
+	atxa-core:bpIndex "1" .
+
+_:node171cmnnc1x9943 atxa-core:contains _:node171cmnnc1x9946 .
+
+_:node171cmnnc1x9946 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent.DisplayEvent(Object,DisplayConfig,)> ;
+	atxa-core:posX "617" ;
+	atxa-core:posY "287" .
+
+_:node171cmnnc1x9943 atxa-core:contains _:node171cmnnc1x9947 .
+
+_:node171cmnnc1x9947 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent.getConfig()> ;
+	atxa-core:posX "617" ;
+	atxa-core:posY "303" .
+
+_:node171cmnnc1x9943 atxa-core:contains _:node171cmnnc1x9948 .
+
+_:node171cmnnc1x9948 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent.setConfig(DisplayConfig,)> ;
+	atxa-core:posX "617" ;
+	atxa-core:posY "319" .
+
+atxa-core:docRoot atxa-core:contains _:node171cmnnc1x9971 .
+
+_:node171cmnnc1x9971 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util> ;
+	atxa-core:posX "366" ;
+	atxa-core:posY "19" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#java.util> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#java.util$EventObject> .
+
+_:node171cmnnc1x9971 atxa-core:contains _:node171cmnnc1x9909 .
+
+_:node171cmnnc1x9909 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#java.util$EventObject> ;
+	atxa-core:posX "372" ;
+	atxa-core:posY "44" .
+

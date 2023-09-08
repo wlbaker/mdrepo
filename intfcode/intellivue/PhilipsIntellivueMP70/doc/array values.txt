@@ -1,0 +1,349 @@
+SPpdu:
+	session_id=0xe100
+	p_context_id=0x0002 (2)
+ROapdus:
+	ro_type= ROLRS_APDU
+	length= 764
+ROLRSapdu:
+	state: 1
+	count: 1
+	invoke_id: 1
+	command_type: CMD_CONFIRMED_ACTION
+	length= 756
+ActionResult:
+	managed_object= NOM_MOC_VMS_MDS
+	GlbHandle:
+		context_id=0
+		handle=0
+	action_type= NOM_ACT_POLL_MDIB_DATA_EXT
+	length= 746
+PollMdibDataReplyExt:
+	poll_number= 2
+	sequence_no= 24
+	rel_time_stamp= 204216320
+	abs_time_stamp:
+		century= 255
+		year= 255
+		month= 255
+		day= 255
+		hour= 255
+		minute= 255
+		second= 255
+		sec_fractions= 255
+	Type:
+		partition= NOM_PART_OBJ
+		code= NOM_MOC_VMO_METRIC_SA_RT
+	polled_attr_grp= 0
+
+
+PollInfoList:
+	count= 2
+	length= 720
+
+
+	SingleContextPoll:
+		context_id= 0
+		poll_info
+			count= 0
+			length= 0
+	SingleContextPoll:
+		context_id= 1
+		poll_info
+			count= 2
+			length= 708
+		handle= 712
+AttributeList:
+	count= 1
+	length= 266
+NOM_ATTR_SA_VAL_OBS, Sample Array Observed Value, 
+	physio_id: NOM_ECG_ELEC_POTL_I
+	state: VALID
+	length: 256
+	array values
+	
+	8193 8193 8193 8193 8193 8192 8192 8192 8192 8192 
+	8192 8192 8192 8192 8192 8192 8194 8194 8194 8193 
+	8193 8193 8193 8193 8193 8193 8193 8192 8194 8194 
+	8194 8194 8194 8194 8194 8193 8193 8193 8193 8193 
+	8195 8195 8197 8197 8197 8197 8197 8196 8196 8196 
+	8196 8196 8196 8196 8196 8196 8196 8195 8195 8195 
+	8195 8195 8197 8197 8197 8196 8196 8196 8196 8196 
+	8196 8196 8196 8196 8196 8196 8196 8196 8198 8198 
+	8198 8197 8197 8197 8197 8197 8197 8197 8197 8197 
+	8199 8199 8200 8200 8200 8201 8202 8204 8204 8206 
+	8208 8207 8210 8212 8212 8213 8214 8214 8215 8215 
+	8217 8217 8217 8217 8217 8217 8217 8216 8217 8214 
+	8213 8212 8212 8210 8210 8209 8207 8206 
+
+
+		handle= 712
+AttributeList:
+	count= 16
+	length= 430
+NOM_ATTR_ID_HANDLE, Object Handle, 
+	handle: 712
+
+
+NOM_ATTR_ID_TYPE, Object Type, 
+	partition= NOM_PART_OBJ (1), code= NOM_MOC_VMO_METRIC_SA_RT
+
+
+NOM_ATTR_METRIC_SPECN, Metric Specification, 
+	MetricSpec
+		update_period: 2048
+		category: AUTO_MEASUREMENT
+		access: UPD_PERIODIC, 
+		ms_struct: 0
+		ms_comp_no: 0
+		relevance: 0
+
+
+NOM_ATTR_SA_SPECN, Sample Array Specification, 
+	array size: 128
+	sample size: 16
+	significant bits: 14
+	flags: STATIC_SCALE, SA_EXT_VAL_RANGE, 
+
+
+NOM_ATTR_SA_FIXED_VAL_SPECN, Sample Array Fixed Values Specification, 
+	count: 3
+	length: 12
+		sa_fixed_val_id: SA_FIX_SATURATION
+		sa_fixed_val: 32776 = 0x8008 = 1000 0000 0000 1000
+		sa_fixed_val_id: SA_FIX_DEFIB_MARKER_MASK
+		sa_fixed_val: 16385 = 0x4001 = 0100 0000 0000 0001
+		sa_fixed_val_id: SA_FIX_PACER_MASK
+		sa_fixed_val: 32772 = 0x8004 = 1000 0000 0000 0100
+
+
+NOM_ATTR_TIME_PD_SAMP, Sample Period, 
+	relative time: 16
+
+
+NOM_ATTR_ID_LABEL, Label, 
+	TextId: NLS_NOM_ECG_ELEC_POTL_II
+
+
+NOM_ATTR_ID_LABEL_STRING, Label String, 
+	II    
+
+
+NOM_ATTR_UNIT_CODE, Unit Code, 
+	unit_code: mV ( milli-volt )
+
+
+NOM_ATTR_MODE_MSMT, Measure Mode, 
+	MeasureMode: ECG_PACED, ECG_FILTER, ECG_LEAD_PRIMARY, 
+
+
+NOM_ATTR_COLOR, Color, 
+	SimpleColour: COL_GREEN
+
+
+NOM_ATTR_METRIC_STAT, Metric State, 
+	METRIC_ON  (0)
+
+
+NOM_ATTR_SCALE_SPECN_I16, Scale and Range Specification, 
+	exponent: -2
+	mantissa: -4096
+	lower_absolute_value:  -40.00
+	exponent: -3
+	mantissa: 40955
+	upper_absolute_value: 40
+	lower_scaled_value: 0
+	upper_scaled_value: 16383
+
+
+NOM_ATTR_SA_CALIB_I16, Sample Array Calibration Specification, 
+	exponent: 0
+	mantissa: 0
+	lower_absolute_value: 0
+	exponent: 0
+	mantissa: 1
+	upper_absolute_value: 1
+	lower_scaled_value: 8140
+	upper_scaled_value: 8340
+	increment 0
+	cal_type: BAR
+
+
+NOM_ATTR_SA_RANGE_PHYS_I16, Sample Array Physiological Range, 
+	lower_scaled_value: 8040
+	upper_scaled_value: 8440
+
+
+NOM_ATTR_SA_VAL_OBS, Sample Array Observed Value, 
+	physio_id: NOM_ECG_ELEC_POTL_II
+	state: VALID
+	length: 256
+	array values
+	
+	8167 8167 8167 8167 8167 8168 8168 8168 8168 8168 
+	8168 8168 8168 8168 8168 8168 8168 8168 8168 8169 
+	8169 8169 8169 8169 8169 8169 8169 8170 8170 8170 
+	8170 8170 8170 8170 8170 8171 8171 8171 8171 8171 
+	8171 8171 8171 8171 8171 8171 8171 8172 8172 8172 
+	8172 8172 8172 8172 8172 8172 8172 8173 8173 8173 
+	8173 8173 8173 8173 8173 8174 8174 8174 8174 8174 
+	8174 8174 8174 8174 8174 8174 8174 8174 8174 8174 
+	8174 8175 8175 8175 8175 8175 8175 8175 8175 8175 
+	8175 8175 8176 8176 8178 8179 8180 8182 8184 8186 
+	8188 8191 8192 8194 8196 8197 8198 8200 8201 8203 
+	8203 8205 8205 8205 8205 8205 8205 8204 8203 8202 
+	8201 8200 8198 8196 8194 8193 8191 8188 
+
+
+________________________________________________________________________________________________________________
+SPpdu:
+	session_id=0xe100
+	p_context_id=0x0002 (2)
+ROapdus:
+	ro_type= ROLRS_APDU
+	length= 322
+ROLRSapdu:
+	state: 3
+	count: 2
+	invoke_id: 1
+	command_type: CMD_CONFIRMED_ACTION
+	length= 314
+ActionResult:
+	managed_object= NOM_MOC_VMS_MDS
+	GlbHandle:
+		context_id=0
+		handle=0
+	action_type= NOM_ACT_POLL_MDIB_DATA_EXT
+	length= 304
+PollMdibDataReplyExt:
+	poll_number= 2
+	sequence_no= 24
+	rel_time_stamp= 204216320
+	abs_time_stamp:
+		century= 255
+		year= 255
+		month= 255
+		day= 255
+		hour= 255
+		minute= 255
+		second= 255
+		sec_fractions= 255
+	Type:
+		partition= NOM_PART_OBJ
+		code= NOM_MOC_VMO_METRIC_SA_RT
+	polled_attr_grp= 0
+
+
+PollInfoList:
+	count= 1
+	length= 278
+
+
+	SingleContextPoll:
+		context_id= 1
+		poll_info
+			count= 1
+			length= 272
+		handle= 712
+AttributeList:
+	count= 1
+	length= 266
+NOM_ATTR_SA_VAL_OBS, Sample Array Observed Value, 
+	physio_id: NOM_ECG_ELEC_POTL_AVR
+	state: VALID
+	length: 256
+	array values
+	
+	8202 8202 8202 8202 8202 8202 8202 8202 8202 8202 
+	8202 8202 8202 8202 8202 8202 8201 8201 8201 8201 
+	8201 8201 8201 8201 8201 8201 8201 8201 8200 8200 
+	8200 8200 8200 8200 8200 8200 8200 8200 8200 8200 
+	8199 8199 8198 8198 8198 8198 8198 8198 8198 8198 
+	8198 8198 8198 8198 8198 8198 8198 8198 8198 8198 
+	8198 8198 8197 8197 8197 8197 8197 8197 8197 8197 
+	8197 8197 8197 8197 8197 8197 8197 8197 8196 8196 
+	8196 8196 8196 8196 8196 8196 8196 8196 8196 8196 
+	8195 8195 8194 8194 8193 8192 8191 8189 8188 8186 
+	8184 8183 8181 8179 8178 8177 8176 8175 8174 8173 
+	8172 8171 8171 8171 8171 8171 8171 8172 8172 8174 
+	8175 8176 8177 8179 8180 8181 8183 8185 
+
+
+________________________________________________________________________________________________________________
+SPpdu:
+	session_id=0xe100
+	p_context_id=0x0002 (2)
+ROapdus:
+	ro_type= RORS_APDU
+	length= 42
+RORSapdu:
+	invoke_id= 1
+	command_type= CMD_CONFIRMED_ACTION
+	length= 36
+ActionResult:
+	managed_object= NOM_MOC_VMS_MDS
+	GlbHandle:
+		context_id=0
+		handle=0
+	action_type= NOM_ACT_POLL_MDIB_DATA_EXT
+	length= 26
+
+	
+	
+	
+Calculate value:
+decimal: 8167
+hex: 1FE7
+0001 1111 1110 0111
+sa flags says mask 2 LSBs
+
+2 LSBs = 11 (0x03)
+SA_FIX_SATURATION: 32776 = 0x8008 = 1000 0000 0000 1000
+SA_FIX_DEFIB_MARKER_MASK: 16385 = 0x4001 = 0100 0000 0000 0001
+SA_FIX_PACER_MASK: 32772 = 0x8004 = 1000 0000 0000 0100
+11(0x03) & 0x8008 = 0 
+11(0x03) & 0x4001 = 1 SA_FIX_DEFIB_MARKER_MASK
+11(0x03) & 0x8004 = 0 
+
+SA_FIX_DEFIB_MARKER_MASK is set
+
+
+Scale and range spec doesn't change
+
+14 significant bits????
+0001 1111 1110 01
+0001 1111 1110 01 = 2041
+
+NOM_ATTR_SA_CALIB_I16, Sample Array Calibration Specification, 
+lower_absolute_value: 0
+upper_absolute_value: 1
+lower_scaled_value: 8140        14 sig bits?   2035
+upper_scaled_value: 8340 		14 sig bits?   2085
+
+obs val: 8167
+
+8340 - 8140 = 200
+8340 - 8167 = 173
+200 - 173 = 27
+27 / 200 = 0.135
+
+1 - 0 = 1
+1 * 0.135 = 0.135
+abs val = 0.135
+
+
+NOM_ATTR_SCALE_SPECN_I16, Scale and Range Specification, 
+	lower_absolute_value:  -40.00
+	upper_absolute_value: 40.00
+	lower_scaled_value: 0
+	upper_scaled_value: 16383    
+	
+8167 / 16383 = 0.4985
+40.00 - -40.00 = 80.00
+80.00 * 0.4985 = 39.8803
+-40.00 + 39.8803 = -0.1196
+absolute value = -0.1196 mV ( milli-volt )
+
+	
+	
+	
+	

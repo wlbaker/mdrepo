@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-repository xmlns="http://idea.mil/rp">
+    <name>ISR Animal ICU</name>
+    <hardware>
+        <device>
+            <name>3T_12</name>
+            <protocol>INFINITY</protocol>
+            <connectionType>Ethernet</connectionType>
+            <connectionValue>192.168.28.46</connectionValue>
+        </device>
+    </hardware>
+</rp-repository>

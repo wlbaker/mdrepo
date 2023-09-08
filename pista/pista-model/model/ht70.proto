@@ -1,0 +1,93 @@
+syntax = "proto3";
+package ht70;
+
+option java_package = "pista.model";
+
+message ident {
+     string model = 1;  //[9];
+  	 string serial_no = 2; // [10];
+     bytes cpu_id = 3; // [18];
+     bytes adapter_id = 4; // [18];
+     string pim_id = 5; // [18];
+     string spm_model = 6; // [9];
+     string spm_serial = 7; // [10];
+ }
+
+message status { // settings
+        int32 MODE = 1;
+        int32 MVOLprhi= 2;
+        int32 MVOLprlo = 3;
+        int32 PPAWprhi = 4;
+        int32 PPAWprlo = 5;
+        int32 RATEprhi = 6;
+        int32 APINTVL = 7;
+        int32 FIO2prhi = 8;
+        int32 FIO2prlo = 9;
+        int32 ALVOL = 10;
+        int32 TVOLprcn = 11;
+        int32 PPAWprcn = 12;
+        int32 TI = 13;
+        int32 RATEprcn = 14;
+        int32 TRIG = 15;
+        int32 PSprcn = 16;
+        int32 PEEPprcn = 17;
+        int32 PFLOW = 18;
+        int32 FLOWTrig = 19;
+        int32 SLOPE = 20;
+        int32 PSeThresh= 21;
+        int32 PSmaxTI = 22;
+        int32 WAVE = 23;
+        int32 BIASFLOW = 24;
+        int32 NIV = 25;
+        int32 NMpr = 26;
+        int32 PCVMODE = 27;
+}
+
+message breath { // measurement
+    int32 TVOL = 1;
+    int32 MVOL = 2;
+    int32 RATE = 3;
+    int32 PPAW = 4;
+    int32 MAP = 5;
+    int32 PEEP = 6;
+    int32 FIO2 = 7;
+    int32 PFLOW = 8;
+    int32 I2E = 9;
+    int32 O2CylTime = 10;
+    int32 BATTIME = 11;
+}
+
+message alarms { // alarms
+    int32 SYSFAULT = 1;
+    int32 BATTFail = 2;
+    int32 PWRFail = 3;
+    int32 OCCLUSIONsust = 4;
+    int32 PROX = 5;
+    int32 PPAWlo = 6;
+    int32 OCCLUSION = 7;
+    int32 APNEA = 8;
+    int32 MVOLlo = 9;
+    int32 MVOLhi = 10;
+    int32 PCVNR = 11;
+        int32 FIO2lo = 12;
+        int32 PEEPlo = 13;
+        int32 PPAWhi = 14;
+        int32 BATTlo = 15;
+        int32 ExtBATTlo = 16;
+        int32 VTEhi = 17;
+        int32 FIO2hi = 18;
+        int32 PEEPhi = 19;
+        int32 BATTon = 20;
+        int32 BATTERY = 21;
+        int32 RATEhi = 22;
+        int32 FIO2Sensor = 23;
+        int32 BACKUP = 24;
+        int32 NOPWR = 25;
+}
+
+message sensors {
+    // FIXME: this should be CHAR size
+	repeated int32 PAW = 1;  // [50]...50hz
+	repeated int32 FLOW = 2; // [50]...50hz
+}
+

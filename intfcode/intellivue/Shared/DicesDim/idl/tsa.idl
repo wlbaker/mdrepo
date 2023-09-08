@@ -1,0 +1,64 @@
+/**
+ * @file    tsa.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Time Sample Array (TSA) object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <sa.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Time Sample Array (TSA) object
+ *
+ * A Sample Array that represents noncontinuous waveforms (i.e., a wave
+ * snippet).
+ */
+
+/**
+ * Use the Tsa-Marker-List attribute to mark certain time points in the
+ * wave snippet. The first sample is at relative time 0.
+*/
+struct MarkerEntryRelTim
+{
+  OIDType marker_id;    // from VMO::Type or x73 Metric-Id-Partition partition
+  Duration marker_time;
+}; //@top-level false
+typedef sequence<MarkerEntryRelTim> MarkerListRelTim;
+
+struct TSAContext : SampleArrayContext
+{
+  Duration sample_period;
+  MetricMeasure sweep_speed;
+}; //@top-level true
+
+struct TSAObservedValue : SampleArrayObservedValue
+{
+  MarkerListRelTim tsa_marker_list;
+}; //@top-level true
+
+/**
+ * TSA Measurement
+ */
+const string TSAMeasContextTopic = "ice--TSAMeasContext";
+const string TSAMeasContextReqTopic = "ice--TSAMeasContextReq";
+const string TSAMeasObservedValueTopic = "ice--TSAMeasObservedValue";
+
+/**
+ * TSA Calculation
+ */
+const string TSACalcContextTopic = "ice--TSACalcContext";
+const string TSACalcContextReqTopic = "ice--TSACalcContextReq";
+const string TSACalcObservedValueTopic = "ice--TSACalcObservedValue";
+
+/**
+ * TSA Setting
+ */
+const string TSASettContextTopic = "ice--TSASettContext";
+const string TSASettContextReqTopic = "ice--TSASettContextReq";
+const string TSASettObservedValueTopic = "ice--TSASettObservedValue";
+
+};

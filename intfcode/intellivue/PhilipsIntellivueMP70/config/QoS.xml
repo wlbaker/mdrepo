@@ -1,0 +1,259 @@
+<?xml version="1.0"?>
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/5.2.0/rti_dds_qos_profiles.xsd">
+  <qos_library name="DICES">
+    <!-- Set logging here -->
+    <qos_profile name="ParticipantFactoryProfile" is_default_participant_factory_profile="true">
+      <participant_factory_qos>
+        <logging>
+          <category>ALL</category>
+          <verbosity>ERROR</verbosity>
+        </logging>
+      </participant_factory_qos>
+    </qos_profile>
+    <qos_profile name="RSRemoteAdmin" base_name="BuiltinQosLibExp::Generic.StrictReliable">
+      <participant_qos>
+        <transport_builtin>
+          <mask>UDPv4</mask>
+        </transport_builtin>
+        <discovery>
+          <accept_unknown_peers>true</accept_unknown_peers>
+          <initial_peers>
+            <element>100@builtin.udpv4://127.0.0.1</element>
+          </initial_peers>
+          <multicast_receive_addresses />
+        </discovery>
+        <discovery_config>
+          <ignore_default_domain_announcements>true</ignore_default_domain_announcements>
+          <default_domain_announcement_period>
+            <sec>DURATION_INFINITE_SEC</sec>
+            <nanosec>DURATION_INFINITE_NSEC</nanosec>
+          </default_domain_announcement_period>
+        </discovery_config>
+        <database>
+          <shutdown_cleanup_period>
+            <sec>0</sec>
+            <nanosec>100000000</nanosec>
+          </shutdown_cleanup_period>
+        </database>
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.multicast_enabled</name>
+              <value>0</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.ignore_loopback_interface</name>
+              <value>0</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.disable_interface_tracking</name>
+              <value>0</value>
+            </element>
+          </value>
+        </property>
+        <resource_limits>
+          <type_object_max_serialized_length>65000</type_object_max_serialized_length>
+        </resource_limits>
+      </participant_qos>
+
+    </qos_profile>
+
+    <qos_profile name="Base" base_name="BuiltinQosLibExp::Pattern.LastValueCache" is_default_qos="true">
+      <participant_qos>
+        <transport_builtin>
+          <mask>UDPv4</mask>
+        </transport_builtin>
+
+        <discovery_config>
+          <participant_liveliness_lease_duration>
+            <sec>5</sec>
+            <nanosec>500000000</nanosec>
+          </participant_liveliness_lease_duration>
+          <participant_liveliness_assert_period>
+            <sec>1</sec>
+            <nanosec>0</nanosec>
+          </participant_liveliness_assert_period>
+          <max_liveliness_loss_detection_period>
+            <sec>1</sec>
+            <nanosec>0</nanosec>
+          </max_liveliness_loss_detection_period>
+        </discovery_config>
+
+        <database>
+          <shutdown_cleanup_period>
+            <sec>0</sec>
+            <nanosec>100000000</nanosec>
+          </shutdown_cleanup_period>
+        </database>
+
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.ignore_loopback_interface</name>
+              <value>0</value>
+            </element>
+          </value>
+        </property>
+
+        <resource_limits>
+          <contentfilter_property_max_length>350</contentfilter_property_max_length>
+          <type_code_max_serialized_length>65530</type_code_max_serialized_length>
+          <type_object_max_serialized_length>65000</type_object_max_serialized_length>
+        </resource_limits>
+
+      </participant_qos>
+
+      <!-- NOTE: datawriter and datareader qos should already be set to
+           TRANSIENT_LOCAL_DURABILITY_QOS in
+           BuiltinQosLibExp::Pattern.LastValueCache -->
+
+      <datareader_qos>
+        <reader_resource_limits>
+          <max_samples_per_read>65536</max_samples_per_read>
+        </reader_resource_limits>
+        <!-- Added for heartbeat -->
+        <property>
+          <value>
+            <element>
+              <name>dds.data_reader.state.filter_redundant_samples</name>
+              <value>0</value>
+            </element>
+          </value>
+        </property>
+      </datareader_qos>
+
+      <datawriter_qos>
+        <writer_data_lifecycle>
+          <autodispose_unregistered_instances>false</autodispose_unregistered_instances>
+        </writer_data_lifecycle>
+      </datawriter_qos>
+
+      <publisher_qos>
+        <presentation>
+          <access_scope>TOPIC_PRESENTATION_QOS</access_scope>
+          <ordered_access>true</ordered_access>
+        </presentation>
+      </publisher_qos>
+      <subscriber_qos>
+        <presentation>
+          <access_scope>TOPIC_PRESENTATION_QOS</access_scope>
+          <ordered_access>true</ordered_access>
+        </presentation>
+      </subscriber_qos>
+
+    </qos_profile>
+
+    <qos_profile name="Manager" base_name="Base">
+      <participant_qos>
+        <discovery>
+          <!-- Manager participants send multicast discovery -->
+          <initial_peers>
+            <element>239.255.0.2</element>
+          </initial_peers>
+          <!-- Manager participants do not receive multicast discovery -->
+          <multicast_receive_addresses />
+          <accept_unknown_peers>true</accept_unknown_peers>
+        </discovery>
+        <!-- Increase multicast time-to-live so that the manager discovery
+             will propagate to subnet where the coordinator is running. The
+             default value is 1. When the router receives a multicast message
+             the ttl is decremented and will not be propagated if it is <= 0. -->
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.multicast_ttl</name>
+                <value>5</value>
+              </element>
+            </value>
+        </property>
+      </participant_qos>
+    </qos_profile>
+
+    <qos_profile name="DeviceModule" base_name="Base">
+      <participant_qos>
+        <discovery>
+          <multicast_receive_addresses>
+            <element>239.255.0.2</element>
+          </multicast_receive_addresses>
+        </discovery>
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.parent.deny_interfaces</name>
+              <value>10.1.127.*,10.1.128.*,10.1.129.*,10.1.130.*</value>
+            </element>
+          </value>
+        </property>          
+      </participant_qos>
+    </qos_profile>
+
+    <qos_profile name="Coordinator" base_name="Base">
+      <participant_qos>
+        <discovery>
+          <multicast_receive_addresses>
+            <element>239.255.0.2</element>
+          </multicast_receive_addresses>
+        </discovery>
+      </participant_qos>
+    </qos_profile>
+
+    <qos_profile name="LocalApp" base_name="Base">
+      <participant_qos>
+        <discovery>
+          <accept_unknown_peers>true</accept_unknown_peers>
+          <initial_peers>
+            <element>100@builtin.udpv4://127.0.0.1</element>
+          </initial_peers>
+          <multicast_receive_addresses />
+        </discovery>
+        <discovery_config>
+          <ignore_default_domain_announcements>true</ignore_default_domain_announcements>
+          <default_domain_announcement_period>
+            <sec>DURATION_INFINITE_SEC</sec>
+            <nanosec>DURATION_INFINITE_NSEC</nanosec>
+          </default_domain_announcement_period>
+        </discovery_config>
+        <property>
+          <value>
+            <element>
+              <name>dds.transport.UDPv4.builtin.multicast_enabled</name>
+              <value>0</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.ignore_loopback_interface</name>
+              <value>0</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.parent.deny_interfaces</name>
+              <value>10.1.127.*,10.1.128.*,10.1.129.*,10.1.130.*</value>
+            </element>
+            <element>
+              <name>dds.transport.UDPv4.builtin.parent.allow_interfaces</name>
+              <value>127.0.0.1</value>
+            </element>
+          </value>
+        </property>
+      </participant_qos>
+    </qos_profile>
+
+    <qos_profile name="RS" base_name="LocalApp" />
+
+  </qos_library>
+
+  <!-- Another level of indirection solves all problems except too many levels of indirection. -->
+  <qos_library name="dices_dim_library">
+    <qos_profile name="dices_dim_durable_profile" base_name="DICES::LocalApp" />
+  </qos_library>
+
+    <domain_library name="DICESDomainLibrary">
+
+        <!-- DICESManagerDomain -->
+        <domain name="DICESManagerDomain" domain_id="2"/>
+
+        <!-- DICESCoordinatorDomain -->
+        <domain name="DICESCoordinatorDomain" domain_id="3"/>
+
+    </domain_library>
+
+</dds>

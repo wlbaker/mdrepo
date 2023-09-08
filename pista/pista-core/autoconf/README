@@ -1,0 +1,89 @@
+#
+# ****************************************************************************
+#
+# UPDATE 070719 WLB
+#
+# autoconf builds are no longer maintained or tested.  we have moved to cmake
+#
+# ****************************************************************************
+
+FIXME: remove -fstack-protector-all
+
+HOW TO BUILD
+============
+
+
+#1: in-directory builds are not supported
+#2: if you really want to do an in-directory build, try
+
+./configure --disable-dependency-tracking
+
+For an explanation of why, see: http://stackoverflow.com/questions/21609580
+
+Run the full autoconfig process: autoreconf && ./configure --disable-dependency-tracking && make
+
+REQUIRED PACKAGES AND SUPPORT TOOLS
+===================================
+
+Required CYGWIN packages: autotools, libtool, autotools-archive, mingw, doxygen, swig, protobuf, curl, crypto, yajl
+-- protobuf probably has to be built, see below
+-- curl is used by protobuf to pull in dependencies
+-- crypto used by zoll
+-- yajl used by tempus
+
+
+PISTA PREREQS AND OPTIONS
+=========================
+
+protobuf
+protobuf-c
+libserialport: optional
+labjack: optional
+
+
+PISTA BUILD ON WINDOWS USING CYGWIN/MINGW32
+===========================================
+
+Quick notes: run mingw32-vars.sh before running configure.
+./configure --prefix=/usr/x86_64-w64-mingw32/sys-root/mingw/
+
+ALL PLATFORMS...BUT WINDOWS IN PARTICULAR
+=========================================
+
+ mkdir -p /opt/tools/protobuf
+ cd /opt/tools/protobuf
+
+ PKG_CONFIG_PATH=/usr/x86_64-w64-mingw32/sys-root/mingw/lib/pkgconfig 
+
+ git clone https://github.com/google/protobuf.git
+ cd protobuf
+ ./autogen.sh
+ ./configure --prefix=/usr/x86_64-w64-mingw32/sys-root/mingw/
+ make
+ make install
+
+ cd /opt/tools/protobuf
+ git clone https://github.com/protobuf-c/protobuf-c.git
+ cd protobuf-c
+ ./configure --prefix=/usr/x86_64-w64-mingw32/sys-root/mingw/
+ make
+ make install
+
+PISTA LabJack
+=============
+
+by William L Baker (http://www.softhorizons.com)
+
+The Exodriver from LabJack must be installed first.
+
+References:
+* Android NDK in Android Studio with SWIG by Suresh
+* https://bitbucket.org/vrabeux/gradle-cpp-swig-java-scala
+
+
+SEE ALSO
+========
+
+MDPnP
+OpenSDC -- BICEPS Drager communication libraries on Sourceforge
+Datalogger ASTM : Sourceforge

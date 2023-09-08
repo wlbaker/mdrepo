@@ -1,0 +1,39 @@
+
+HDF5 1.10.1 for Windows using MINGW
+-----------------------------------
+
+MINGW produces executables and DLL's that don't rely on an installed runtime library,
+such as the VS runtime library.  MINGW exists now as a couple of different projects.
+The original MINGW32 is all but depricated.  However, as obtained from Sourceforge and
+installed with the installer, it includes MSYS 1.0.  This is handy, since I had issues
+with the current release, MSYS 2.0.  
+
+MingW-64 is a fork of MINGW32.  MingW-64 builds both 32bit and 64bit Windows executables
+and uses more up-to-date header files and versions of GCC than the original.  It is
+therefore the prefered compiler environment, but you will still need sh.exe, make.exe, 
+and cmake.exe.
+
+Cygwin and the downloaded MingW-64 have compatibility issues due to the way drives are
+mapped.  C: for Windows is /C/ for MingW-64 and MSYS, but /cygdrive/c/ for cygwin.  This
+causes issues for makefile generation.  You have to know where a given executable comes
+from and ensure the recognized drive is used.
+
+When building JAVA, the native Windows drive name is used, C:, which must be correctly
+quoted to pass to javac from sh.exe...recall that : is the command seperator for the
+shell.  I had to make a small change to add quote escapes around the -classpath argument
+for javac.  These changes are in the hdf5 1.10.1 distribution under the file
+\config\cmake\UseJava.cmake
+
+To compile HDF5 1.10.1 for Windows using MINGW
+----------------------------------------------
+
+- Install CMake 3.10.2 to \opt\tools\cmake-3.10.2
+- Install MingW32 to \mingw32
+- Install 32bit and 64bit compilers from MingW-64 to \mingw-w64
+- Run mingw.bat
+- Find the desired compiler in mingw-w64 and run the mingw-64.bat file for that compiler.
+- cd \opt\src
+- get hdf5-1.10.1.tar.gz and extract
+- move build files from this directory to \opt\src
+- sh build-x86-64.sh
+- wait...

@@ -1,0 +1,124 @@
+2014-02-13 14:47:36,640 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:36,640 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:36,640 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+2014-02-13 14:47:36,640 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+[ba] [ab] = Y x [1] [1] [0] [ff] [0] [0] [0] 5 [0] [0] [0] [b7] n l [1] [a] [1] M [1] [2] [0] [0] [0] [8c] [9b] [fb] [2] [0] [ca] [9a] ; i [f6] [12] [fe] 
+[10] ' [0] [0] T [0] [0] [0] O [0] [0] [0] [2] [3] [3] [0] [2] [0] [0] [0] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [0] [0] l [a] [c] [4] D [3] [0] [80] [0] [80] 
+[14] [16] L [e] [ce] [3] [0] [0] [0] [0] [0] [0] [0] [0] [11] [0] [c] [4] D [3] [0] [80] [0] [80] [14] [16] L [e] [e8] [3] [0] [0] [0] [0] [0] [0] [0] [0] l [a] 
+[c] [4] D [3] [0] [80] [0] [80] [14] [16] L [e] [ce] [3] [0] [0] [0] [0] [0] [0] [2] [0] < [0] [0] [0] > [0] t [0] d [0] r [0] [9f] [0] [ac] [0] [80] [0] 
+i [0] { [0] i [0] u [0] | [0] _ [0] U [0] g [0] p [0] ^ [0] U [0] b [0] c [0] { [0] [8b] [0] f [0] G [0] J [0] B [0] D [0] 
+K [0] = [0] 9 [0] C [0] K [0] O [0] Q [0] F [0] C [0] B [0] D [0] J [0] I [0] O [0] F [0] F [0] M [0] K [0] = [0] 5 [0] 
+A [0] 8 [0] > [0] K [0] ; [0] * [0] % [0] % [0] , [0] + [0] ! [0] % [0] [0] [0] > [0] t [0] d [0] r [0] [9f] [0] [ac] [0] [80] [0] 
+i [0] { [0] i [0] u [0] | [0] _ [0] U [0] g [0] p [0] ^ [0] U [0] b [0] c [0] { [0] [8b] [0] f [0] G [0] J [0] B [0] D [0] 
+K [0] = [0] 9 [0] C [0] K [0] O [0] Q [0] F [0] C [0] B [0] D [0] J [0] I [0] O [0] F [0] F [0] M [0] K [0] = [0] 5 [0] 
+A [0] 8 [0] > [0] K [0] ; [0] * [0] % [0] % [0] , [0] + [0] ! [0] % [0] N B 
+2014-02-13 14:47:37,631 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:37,631 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:37,631 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+2014-02-13 14:47:37,631 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+[ba] [ab] > Y x [1] [1] [0] [ff] [0] [0] [0] 5 [0] [0] [0] [b8] n l [1] [a] [1] M [1] [2] [0] [0] [0] [8c] [9b] [fb] [2] [0] [ca] [9a] ; i [f6] [12] [fe] 
+[10] ' [0] [0] U [0] [0] [0] N [0] [0] [0] [2] [3] [3] [0] [2] [0] [0] [0] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [0] [0] i [a] [c] [4] S [3] [0] [80] [0] [80] 
+[1a] [16] E [e] [ce] [3] [0] [0] [0] [0] [0] [0] [0] [0] [e] [0] [c] [4] S [3] [0] [80] [0] [80] [1a] [16] E [e] [e8] [3] [0] [0] [0] [0] [0] [0] [0] [0] i [a] 
+[c] [4] S [3] [0] [80] [0] [80] [1a] [16] E [e] [ce] [3] [0] [0] [0] [0] [0] [0] [2] [0] < [0] [0] [0] @ [0] z [0] r [0] u [0] [95] [0] [a2] [0]  [0] 
+p [0] [83] [0] h [0] n [0] { [0] j [0] ] [0] o [0] [86] [0] n [0] X [0] e [0] a [0] { [0] [8d] [0] h [0] G [0] E [0] A [0] C [0] 
+H [0] = [0] ? [0] I [0] K [0] M [0] N [0] F [0] A [0] > [0] @ [0] G [0] G [0] N [0] E [0] G [0] J [0] G [0] 9 [0] 2 [0] 
+; [0] 2 [0] 7 [0] D [0] 6 [0] % [0] # [0] & [0] * [0] ' [0] [1e] [0] " [0] [0] [0] @ [0] z [0] r [0] u [0] [95] [0] [a2] [0]  [0] 
+p [0] [83] [0] h [0] n [0] { [0] j [0] ] [0] o [0] [86] [0] n [0] X [0] e [0] a [0] { [0] [8d] [0] h [0] G [0] E [0] A [0] C [0] 
+H [0] = [0] ? [0] I [0] K [0] M [0] N [0] F [0] A [0] > [0] @ [0] G [0] G [0] N [0] E [0] G [0] J [0] G [0] 9 [0] 2 [0] 
+; [0] 2 [0] 7 [0] D [0] 6 [0] % [0] # [0] & [0] * [0] ' [0] [1e] [0] " [0] s B 
+2014-02-13 14:47:38,632 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:38,632 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:38,632 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+2014-02-13 14:47:38,632 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+ --> start:   53 ab 00 00 00 00 ab 45 
+[ba] [ab] ? Y x [1] [1] [0] [ff] [0] [0] [0] 5 [0] [0] [0] [b9] n l [1] [a] [1] M [1] [2] [0] [0] [0] [8c] [9b] [fb] [2] [0] [ca] [9a] ; i [f6] [12] [fe] 
+[10] ' [0] [0] U [0] [0] [0] O [0] [0] [0] [2] [3] [3] [0] [2] [0] [0] [0] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [0] [0] e [a] [c] [4] \ [3] [0] [80] [0] [80] 
+[17] [16] N [e] [ce] [3] [0] [0] [80] [0] [0] [0] [0] [0] [10] [0] [c] [4] \ [3] [0] [80] [0] [80] [17] [16] N [e] [e8] [3] [0] [0] [0] [0] [0] [0] [0] [0] e [a] 
+[c] [4] \ [3] [0] [80] [0] [80] [17] [16] N [e] [ce] [3] [0] [0] [80] [0] [0] [0] [2] [0] < [0] [0] [0] B [0] [80] [0] } [0] x [0] [8c] [0] [96] [0] z [0] 
+r [0] [85] [0] f [0] h [0] w [0] o [0] b [0] t [0] [95] [0] y [0] [ [0] h [0] ` [0] { [0] [90] [0] i [0] E [0] ? [0] @ [0] @ [0] 
+C [0] ; [0] A [0] K [0] K [0] K [0] I [0] C [0] = [0] : [0] < [0] D [0] E [0] L [0] B [0] E [0] G [0] A [0] 5 [0] 0 [0] 
+6 [0] - [0] 3 [0] ? [0] 2 [0] % [0] ( [0] + [0] + [0] % [0] [1d] [0] " [0] [0] [0] B [0] [80] [0] } [0] x [0] [8c] [0] [96] [0] z [0] 
+r [0] [85] [0] f [0] h [0] w [0] o [0] b [0] t [0] [95] [0] y [0] [ [0] h [0] ` [0] { [0] [90] [0] i [0] E [0] ? [0] @ [0] @ [0] 
+C [0] ; [0] A [0] K [0] K [0] K [0] I [0] C [0] = [0] : [0] < [0] D [0] E [0] L [0] B [0] E [0] G [0] A [0] 5 [0] 0 [0] 
+6 [0] - [0] 3 [0] ? [0] 2 [0] % [0] ( [0] + [0] + [0] % [0] [1d] [0] " [0] K C 
+2014-02-13 14:47:39,633 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:39,633 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:48,592 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - requesting revision 
+2014-02-13 14:47:48,592 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - requesting revision 
+2014-02-13 14:47:48,592 ERROR [icuInterface.adapters.bis.BISBinaryDriver] - send pkt id: 1004 seq: 0 
+2014-02-13 14:47:48,592 ERROR [icuInterface.adapters.bis.BISBinaryDriver] - send pkt id: 1004 seq: 0 
+ --> start:   53 ab 00 00 00 00 ab 45 
+2014-02-13 14:47:53,486 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+2014-02-13 14:47:53,486 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+[ba] [ab] @ Y x [1] [1] [0] [ff] [0] [0] [0] 5 [0] [0] [0] [ba] n l [1] [a] [1] M [1] [2] [0] [0] [0] [8c] [9b] [fb] [2] [0] [ca] [9a] ; i [f6] [12] [fe] 
+[10] ' [0] [0] U [0] [0] [0] P [0] [0] [0] [2] [3] [3] [0] [2] [0] [0] [0] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [0] [0] _ [a] [c] [4] [85] [3] [0] [80] [0] [80] 
+[9] [16] T [e] [ce] [3] [0] [0] [0] [0] [0] [0] [0] [0] [12] [0] [c] [4] [85] [3] [0] [80] [0] [80] [9] [16] T [e] [e8] [3] [0] [0] [0] [0] [0] [0] [0] [0] _ [a] 
+[c] [4] [85] [3] [0] [80] [0] [80] [9] [16] T [e] [ce] [3] [0] [0] [0] [0] [0] [0] [2] [0] < [0] [0] [0] D [0] [80] [0] [81] [0] w [0] [84] [0] [8c] [0] u [0] 
+q [0] [83] [0] c [0] a [0] p [0] n [0] c [0] u [0] [9a] [0] | [0] [ [0] g [0] ^ [0] z [0] [90] [0] g [0] A [0] 9 [0] ? [0] B [0] 
+? [0] 8 [0] @ [0] J [0] J [0] G [0] C [0] > [0] 9 [0] 6 [0] 8 [0] @ [0] A [0] G [0] > [0] C [0] C [0] = [0] 6 [0] 4 [0] 
+4 [0] ) [0] 2 [0] > [0] 2 [0] ) [0] / [0] 5 [0] 1 [0] % [0] [1e] [0] $ [0] [0] [0] D [0] [80] [0] [81] [0] w [0] [84] [0] [8c] [0] u [0] 
+q [0] [83] [0] c [0] a [0] p [0] n [0] c [0] u [0] [9a] [0] | [0] [ [0] g [0] ^ [0] z [0] [90] [0] g [0] A [0] 9 [0] ? [0] B [0] 
+? [0] 8 [0] @ [0] J [0] J [0] G [0] C [0] > [0] 9 [0] 6 [0] 8 [0] @ [0] A [0] G [0] > [0] C [0] C [0] = [0] 6 [0] 4 [0] 
+4 [0] ) [0] 2 [0] > [0] 2 [0] ) [0] / [0] 5 [0] 1 [0] % [0] [1e] [0] $ [0] [5] B 
+2014-02-13 14:47:53,496 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:53,496 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:53,496 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+2014-02-13 14:47:53,496 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+[ba] [ab] A Y x [1] [1] [0] [ff] [0] [0] [0] 5 [0] [0] [0] [bb] n l [1] [a] [1] M [1] [2] [0] [0] [0] [8c] [9b] [fb] [2] [0] [ca] [9a] ; i [f6] [12] [fe] 
+[10] ' [0] [0] U [0] [0] [0] P [0] [0] [0] [2] [3] [3] [0] [2] [0] [0] [0] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [0] [0] Y [a] [c] [4] [9d] [3] [0] [80] [0] [80] 
+[ee] [15] . [e] [ce] [3] [0] [0] [0] [0] [0] [0] [0] [0] [f] [0] [c] [4] [9d] [3] [0] [80] [0] [80] [ee] [15] . [e] [e8] [3] [0] [0] [0] [0] [0] [0] [0] [0] Y [a] 
+[c] [4] [9d] [3] [0] [80] [0] [80] [ee] [15] . [e] [ce] [3] [0] [0] [0] [0] [0] [0] [2] [0] < [0] [0] [0] C [0]  [0] [80] [0] s [0] ~ [0] [83] [0] n [0] 
+m [0] } [0] ] [0] Y [0] i [0] j [0] ` [0] q [0] [96] [0] z [0] Y [0] c [0] Y [0] x [0] [90] [0] g [0] > [0] 4 [0] = [0] D [0] 
+= [0] 5 [0] ? [0] I [0] H [0] C [0] = [0] : [0] 5 [0] 4 [0] 5 [0] ; [0] = [0] C [0] : [0] @ [0] @ [0] ; [0] 8 [0] 6 [0] 
+1 [0] & [0] 1 [0] = [0] 3 [0] + [0] 4 [0] ; [0] 6 [0] & [0] [20] [0] ( [0] [0] [0] C [0]  [0] [80] [0] s [0] ~ [0] [83] [0] n [0] 
+m [0] } [0] ] [0] Y [0] i [0] j [0] ` [0] q [0] [96] [0] z [0] Y [0] c [0] Y [0] x [0] [90] [0] g [0] > [0] 4 [0] = [0] D [0] 
+= [0] 5 [0] ? [0] I [0] H [0] C [0] = [0] : [0] 5 [0] 4 [0] 5 [0] ; [0] = [0] C [0] : [0] @ [0] @ [0] ; [0] 8 [0] 6 [0] 
+1 [0] & [0] 1 [0] = [0] 3 [0] + [0] 4 [0] ; [0] 6 [0] & [0] [20] [0] ( [0] p C 
+2014-02-13 14:47:53,511 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:53,511 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:53,511 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+2014-02-13 14:47:53,511 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+[ba] [ab] B Y x [1] [1] [0] [ff] [0] [0] [0] 5 [0] [0] [0] [bc] n l [1] [a] [1] M [1] [2] [0] [0] [0] [8c] [9b] [fb] [2] [0] [ca] [9a] ; i [f6] [12] [fe] 
+[10] ' [0] [0] T [0] [0] [0] P [0] [0] [0] [2] [3] [3] [0] [2] [0] [0] [0] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [0] [0] R [a] [c] [4] [9a] [3] [0] [80] [0] [80] 
+[d1] [15] [20] [e] [ce] [3] [0] [0] [0] [0] [0] [0] [0] [0] [12] [0] [c] [4] [9a] [3] [0] [80] [0] [80] [d1] [15] [20] [e] [e8] [3] [0] [0] [0] [0] [0] [0] [0] [0] R [a] 
+[c] [4] [9a] [3] [0] [80] [0] [80] [d1] [15] [20] [e] [ce] [3] [0] [0] [0] [0] [0] [0] [2] [0] < [0] [0] [0] B [0] } [0] } [0] o [0] | [0] [81] [0] h [0] 
+g [0] u [0] X [0] S [0] b [0] f [0] ^ [0] l [0] [8e] [0] t [0] U [0] ^ [0] R [0] r [0] [8f] [0] h [0] ; [0] 0 [0] ; [0] E [0] 
+; [0] 3 [0] > [0] G [0] E [0] B [0] : [0] 6 [0] 2 [0] 1 [0] 2 [0] 8 [0] ; [0] A [0] ; [0] @ [0] = [0] 9 [0] : [0] 8 [0] 
+/ [0] $ [0] 0 [0] ; [0] 3 [0] - [0] 7 [0] > [0] 8 [0] ( [0] " [0] * [0] [0] [0] B [0] } [0] } [0] o [0] | [0] [81] [0] h [0] 
+g [0] u [0] X [0] S [0] b [0] f [0] ^ [0] l [0] [8e] [0] t [0] U [0] ^ [0] R [0] r [0] [8f] [0] h [0] ; [0] 0 [0] ; [0] E [0] 
+; [0] 3 [0] > [0] G [0] E [0] B [0] : [0] 6 [0] 2 [0] 1 [0] 2 [0] 8 [0] ; [0] A [0] ; [0] @ [0] = [0] 9 [0] : [0] 8 [0] 
+/ [0] $ [0] 0 [0] ; [0] 3 [0] - [0] 7 [0] > [0] 8 [0] ( [0] " [0] * [0] [d4] A 
+2014-02-13 14:47:53,525 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:53,525 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:53,525 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+2014-02-13 14:47:53,525 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+[ba] [ab] C Y x [1] [1] [0] [ff] [0] [0] [0] 5 [0] [0] [0] [bd] n l [1] [a] [1] M [1] [2] [0] [0] [0] [8c] [9b] [fb] [2] [0] [ca] [9a] ; i [f6] [12] [fe] 
+[10] ' [0] [0] V [0] [0] [0] O [0] [0] [0] [2] [3] [3] [0] [2] [0] [0] [0] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [ff] [0] [0] M [a] [c] [4] s [3] [0] [80] [0] [80] 
+[b7] [15] [16] [e] [ce] [3] [0] [0] [0] [0] [0] [0] [0] [0] [10] [0] [c] [4] s [3] [0] [80] [0] [80] [b7] [15] [16] [e] [e8] [3] [0] [0] [0] [0] [0] [0] [0] [0] M [a] 
+[c] [4] s [3] [0] [80] [0] [80] [b7] [15] [16] [e] [ce] [3] [0] [0] [0] [0] [0] [0] [2] [0] < [0] [0] [0] @ [0] x [0] x [0] j [0] { [0] [83] [0] e [0] 
+` [0] l [0] Q [0] N [0] [ [0] a [0] [ [0] e [0] [84] [0] n [0] R [0] W [0] K [0] l [0] [8e] [0] i [0] : [0] , [0] 7 [0] C [0] 
+8 [0] 1 [0] < [0] D [0] E [0] D [0] 9 [0] 2 [0] 0 [0] . [0] / [0] 6 [0] < [0] A [0] ; [0] > [0] : [0] 6 [0] ; [0] ? [0] 
+6 [0] ) [0] 0 [0] 9 [0] 5 [0] . [0] 7 [0] @ [0] : [0] + [0] & [0] - [0] [0] [0] @ [0] x [0] x [0] j [0] { [0] [83] [0] e [0] 
+` [0] l [0] Q [0] N [0] [ [0] a [0] [ [0] e [0] [84] [0] n [0] R [0] W [0] K [0] l [0] [8e] [0] i [0] : [0] , [0] 7 [0] C [0] 
+8 [0] 1 [0] < [0] D [0] E [0] D [0] 9 [0] 2 [0] 0 [0] . [0] / [0] 6 [0] < [0] A [0] ; [0] > [0] : [0] 6 [0] ; [0] ? [0] 
+6 [0] ) [0] 0 [0] 9 [0] 5 [0] . [0] 7 [0] @ [0] : [0] + [0] & [0] - [0] [6] @ 
+2014-02-13 14:47:53,535 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:53,535 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - vars w spectra: 53 
+2014-02-13 14:47:53,535 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+2014-02-13 14:47:53,535 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - processed vars 
+ --> start:   53 ab 00 00 00 00 ab 45 
+2014-02-13 14:48:01,825 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - requesting revision 
+2014-02-13 14:48:01,825 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - requesting revision 
+2014-02-13 14:48:01,825 ERROR [icuInterface.adapters.bis.BISBinaryDriver] - send pkt id: 1004 seq: 0 
+2014-02-13 14:48:01,825 ERROR [icuInterface.adapters.bis.BISBinaryDriver] - send pkt id: 1004 seq: 0 
+2014-02-13 14:48:13,330 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - requesting revision 
+2014-02-13 14:48:13,330 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - requesting revision 
+2014-02-13 14:48:13,330 ERROR [icuInterface.adapters.bis.BISBinaryDriver] - send pkt id: 1004 seq: 0 
+2014-02-13 14:48:13,330 ERROR [icuInterface.adapters.bis.BISBinaryDriver] - send pkt id: 1004 seq: 0 
+ --> start:   53 ab 00 00 00 00 ab 45 
+2014-02-13 14:48:21,821 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - requesting revision 
+2014-02-13 14:48:21,821 DEBUG [icuInterface.adapters.bis.BISBinaryDriver] - requesting revision 
+2014-02-13 14:48:21,821 ERROR [icuInterface.adapters.bis.BISBinaryDriver] - send pkt id: 1004 seq: 0 
+2014-02-13 14:48:21,821 ERROR [icuInterface.adapters.bis.BISBinaryDriver] - send pkt id: 1004 seq: 0 
+ --> start:   53 ab 00 00 00 00 ab 45 
+20

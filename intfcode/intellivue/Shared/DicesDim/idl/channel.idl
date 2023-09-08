@@ -1,0 +1,51 @@
+/**
+ * @file    channel.idl
+ * @author  WMS
+ * @date    MAY 2014
+ * @brief   DICES DIM Channel object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201 (x73)
+ */
+#include <vmd.idl>
+
+module ice
+{
+//===============================================================================
+/**
+ * Channel object [x73, 7.3.3]
+ *
+ * Use the Channel object to group Metric objects and organize information
+ * in a hierarchical manner. The Channel object is part of the x73 Medical
+ * package and derives from the VMO.
+ */
+
+typedef BITS16 ChannelStatus;
+enum ChannelStatusBits
+{
+  chan_off = 0x1,
+  chan_not_ready = 0x2,
+  chan_standby = 0x4,
+  chan_transduc_discon = 0x100,
+  chan_hw_discon = 0x200
+};
+
+/**
+ * Channel object class
+ */
+struct Channel : VMO
+{
+  OIDType channel_id;           //@key
+  ChannelStatus channel_status; // Example: Transducer Disconnected.
+  INTU16 physical_channel_no;   // Reference particular HW channel, e.g., A/D.
+  INTU16 logical_channel_no;    // Dynamic channel numbering.
+  OIDType parameter_group;      // Static group of metrics, e.g., cardiovascular.
+
+  // Describes the physical principle of the measurement.
+  MsmtPrinciple measurement_principle;
+
+  SimpleColor color;  // Use to assign common color to objects in one channel.
+
+}; //@top-level true
+const string ChannelTopic = "ice--Channel";
+
+};

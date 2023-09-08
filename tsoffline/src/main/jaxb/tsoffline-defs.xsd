@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://idea.mil/ts"
+	elementFormDefault="qualified" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:in="http://idea.mil/ts"
+	jaxb:version="1.0"
+	>
+
+<!-- <xs:annotation>
+        <xs:appinfo>
+            <jaxb:globalBindings generateIsSetMethod="true" localScoping="toplevel">
+                <jaxb:serializable/>
+            </jaxb:globalBindings>
+        </xs:appinfo>
+    </xs:annotation>  -->
+    
+
+    <xs:element name="tsoprefs-impl" type="in:tso-prefs"></xs:element>
+
+	<xs:complexType name="tso-prefs">
+		<xs:sequence>
+			<xs:element name="title" type="xs:string" />
+			<xs:element name="analysis" type="in:ts-analysis"
+				maxOccurs="unbounded" minOccurs="0">
+			</xs:element>
+			<xs:element name="codes" type="in:ts-code"
+				maxOccurs="unbounded" minOccurs="0">
+			</xs:element>
+			<xs:element name="filters" type="in:ts-filter"
+				maxOccurs="unbounded" minOccurs="0">
+			</xs:element>
+			<xs:element name="attributes" type="in:tso-attributeType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ts-analysis">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"></xs:element>
+			<xs:element name="analysisClass" type="xs:string"></xs:element>
+			<xs:element name="prefs" type="xs:string" minOccurs="0"
+				maxOccurs="1">
+			</xs:element>
+
+			<xs:element name="eval" type="xs:string" maxOccurs="1" minOccurs="1"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ts-code">
+		<xs:sequence>
+			<xs:element name="code" type="xs:string" minOccurs="1" maxOccurs="1"></xs:element>
+			<xs:element name="description" type="xs:string"></xs:element>
+			<xs:element name="color" type="xs:string"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ts-filter">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1"
+				maxOccurs="1">
+			</xs:element>
+			<xs:element name="description" type="xs:string"></xs:element>
+			<xs:element name="bidirectional" type="xs:boolean" maxOccurs="1" minOccurs="0"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="tsosession-impl" type="in:tso-session"></xs:element>
+	
+    <xs:complexType name="tso-session">
+    	<xs:sequence>
+    		<xs:element name="dataFile" type="xs:string"></xs:element>
+    		<xs:element name="audioFile" type="xs:string"></xs:element>
+    		<xs:element name="videoFile" type="xs:string"></xs:element>
+    		<xs:element name="dataStart" type="xs:dateTime"></xs:element>
+    		<xs:element name="dataEnd" type="xs:dateTime"></xs:element>
+
+    		<xs:element name="x-scale" type="xs:double"></xs:element>
+    		<xs:element name="x-translate" type="xs:double"></xs:element>
+
+    		<xs:element name="activeSignal" type="xs:string"></xs:element>
+    		<xs:element name="frame-x" type="xs:int"></xs:element>
+    		<xs:element name="frame-y" type="xs:int"></xs:element>
+    		<xs:element name="frame-width" type="xs:int"></xs:element>
+    		<xs:element name="frame-height" type="xs:int"></xs:element>
+    		<xs:element name="frame-state" type="xs:int"></xs:element>
+    		<xs:element name="tsoBands" type="in:ts-band"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</xs:element>
+    		<xs:element name="tsoDevices" type="in:tso-deviceType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</xs:element>
+    		<xs:element name="tsoAnnotations"
+    			type="in:tso-annotationInfoType" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="tsoFilters" type="in:ts-filter"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</xs:element>
+    		<xs:element name="tsoPhases" type="in:tso-phase"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tso-deviceType">
+    	<xs:sequence>
+            <xs:element name="deviceName" type="xs:string"></xs:element>
+            <xs:element name="signalLayer" type="in:tso-signalLayerType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tso-signalLayerType">
+    	<xs:sequence>
+    		<xs:element name="loc" type="xs:string"></xs:element>
+    		<xs:element name="name" type="xs:string" maxOccurs="1"
+    			minOccurs="0">
+    		</xs:element>
+    		<xs:element name="sidName" type="xs:string"></xs:element>
+    		<xs:element name="color" type="xs:hexBinary"></xs:element>
+    		<xs:element name="visible" type="xs:boolean"></xs:element>
+    		<xs:element name="ttype" type="xs:string"></xs:element>
+    		<xs:element name="band_id" type="xs:int"></xs:element>
+    		<xs:element name="attributes" type="in:tso-attributeType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</xs:element>
+    		<xs:element name="calibration" type="in:tso-calibration"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tso-annotationInfoType">
+    	<xs:sequence>
+    		<xs:element name="layerName" type="xs:string"></xs:element>
+    		<xs:element name="color" type="xs:hexBinary"></xs:element>
+    		<xs:element name="style" type="xs:string"></xs:element>
+    		<xs:element name="source" type="xs:string"></xs:element>
+    		<xs:element name="visible" type="xs:boolean"></xs:element>
+    		<xs:element name="attributes" type="in:tso-attributeType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    		<xs:element name="annotationEntry"
+    			type="in:tso-annotationEntryType" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tso-annotationEntryType">
+    	<xs:sequence>
+    		<xs:element name="tm" type="xs:dateTime"></xs:element>
+    		<xs:element name="offset" type="xs:double"></xs:element>
+    		<xs:element name="value" type="xs:double"></xs:element>
+    		<xs:element name="code" type="xs:string"></xs:element>
+    		<xs:element name="temp_seq" type="xs:int"></xs:element>
+    		<xs:element name="attributes" type="in:tso-attributeType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tso-attributeType">
+    	<xs:sequence>
+    		<xs:element name="key" type="xs:string"></xs:element>
+    		<xs:element name="typ" type="xs:string"></xs:element>
+    		<xs:element name="value" type="xs:string"></xs:element>
+    		<xs:element name="attribute" type="in:tso-attributeType" maxOccurs="unbounded" minOccurs="0"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ts-band">
+    	<xs:sequence>
+    		<xs:element name="band_name" type="xs:string"></xs:element>
+    		<xs:element name="band_id" type="xs:int"></xs:element>
+    		<xs:element name="band_weight" type="xs:float"></xs:element>
+    		<xs:element name="y-scale" type="xs:double"></xs:element>
+    		<xs:element name="y-translate" type="xs:double"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tso-calibration">
+    	<xs:sequence>
+    		<xs:element name="startTime" type="xs:int"></xs:element>
+    		<xs:element name="shift" type="xs:double"></xs:element>
+    		<xs:element name="gain" type="xs:double"></xs:element>
+    		<xs:element name="offset" type="xs:double"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tso-phase">
+    	<xs:sequence>
+    		<xs:element name="name" type="xs:string"></xs:element>
+    		<xs:element name="description" type="xs:string"></xs:element>
+    		<xs:element name="color" type="xs:hexBinary"></xs:element>
+    		<xs:element name="startTm" type="xs:dateTime"></xs:element>
+    		<xs:element name="stopTm" type="xs:dateTime"></xs:element>
+    	</xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,72 @@
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.8.0_77" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "240dlu"
+			"$rowSpecs": "fill:160dlu, relgap, default"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "30dlu, labelcompgap, default:grow, labelcompgap, 30dlu"
+				"$rowSpecs": "default, linegap, default:grow, linegap, default, linegap, max(default;50dlu), linegap, default:grow"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "warning"
+					"text": "WARNING"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "<html>Data capture not active.  Options are to warn again in 10 minutes or dismiss the alarm."
+					"border": sfield com.jgoodies.forms.factories.Borders DLU7_BORDER
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 5
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "confirmMessage"
+					"text": "<html><center>Press Dismiss a second time to confirm dismissal and disabling of the alarm."
+					"border": sfield com.jgoodies.forms.factories.Borders DLU14_BORDER
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 7
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 1
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "max(default;50dlu), labelcompgap, default:grow, labelcompgap, max(default;50dlu)"
+				"$rowSpecs": "default"
+			} ) {
+				name: "buttonPanel"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "dismiss"
+					"text": "Dismiss"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "dismissActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "sleep"
+					"text": "Sleep"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "sleepActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 5
+					"gridY": 1
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 3
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 440, 310 )
+		} )
+	}
+}

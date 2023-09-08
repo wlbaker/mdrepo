@@ -1,0 +1,99 @@
+#
+# You will need to have VC98 or VS.net 2003 installed and
+# in your path in order for this to work.
+#
+
+SDIR=
+DEST = ../../build/rhel/daqmxbase
+# SRCS =	NIDaqJ.cpp NIFuncs.cpp 
+SRCS = 	BaseLocal.cpp BaseTask.cpp BaseAIChannel.cpp BaseTiming.cpp BaseAnalogMultiChannelReader.cpp BaseDaqStream.cpp jDAQmxBase.cpp ../jniUtil.cpp
+HEADERS =	include/ni_DAQmxBase_BaseTask.h include/ni_DAQmxBase_BaseAIChannel.h include/ni_DAQmxBase_BaseTiming.h include/ni_DAQmxBase_BaseAnalogMultiChannelReader.h include/ni_DAQmxBase_BaseLocal.h include/ni_DAQmxBase_BaseAIChannelCollection.h include/ni_DAQmxBase_BaseDaqStream.h
+OBJS = $(SRCS:.cpp=.o)
+
+PROJBASE= 	../..
+PROJLIBS = 	$(PROJBASE)/lib/msvc
+PROJCP= 	$(PROJBASE)/../jdaqmx-java/bin
+
+# Set this variable to the location of your JDK
+JDKDIR =	/usr/java/jdk1.6.0_16
+NIDIR  = 	/usr/local/natinst/nidaqmxbase
+VISADIR =	/usr/local/vxippn/linux
+
+CLASSPATH =	.:lib:$(PROJCP)
+
+JAVA =		$(JDKDIR)/bin/java -classpath $(CLASSPATH)
+JAVAC =		$(JDKDIR)/bin/javac
+JAVAH =		$(JDKDIR)/bin/javah
+JAR =           $(JDKDIR)/bin/jar
+DEL =		rm
+LINK =		g++ -g
+
+
+INCLUDES =	-I$(JDKDIR)/include/linux \
+		-I$(JDKDIR)/include \
+		-I$(PROJBASE)/include \
+		-I$(NIDIR)/include \
+		-I.. \
+		-I$(VISADIR)/include \
+		-Iinclude
+
+#{$(SDIR)}.cpp{$(DEST)}.obj:
+#	$(CC) $(CFLAGS) -Zi $(INCLUDES) -Fo$(DEST)/$*.obj -c $<
+
+.cpp.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(DEST)/$*.o -c $<
+
+#.class.h:
+#	$(JAVAH) -d include -jni -classpath $(CLASSPATH) $**
+#
+# .class.jnih:
+#	$(JAVAH) -d include -jni -classpath $(CLASSPATH) $**
+
+VISALIBS =		-lvisa
+# MXLIBS =		-lnidaqmx
+BASELIBS =		-lnidaqmxbase
+#
+# build/win32/daqmx/jDAQmx.dll build/win32/daqmxbase/jDAQmxBase.dll
+#
+
+all:	$(HEADERS) libjDAQmxBase.so
+
+libjDAQmxBase.so: $(OBJS)
+	cd $(DEST)
+	$(LINK) -L$(NIDIR)/lib -shared -o libjDAQmxBase.so $(OBJS) $(MXLIBS)
+	cd ../../../src/daqmxbase
+	cp ../../build/win32/daqmxbase/libjDAQmxBase.so ../../../../exeport/ICUInterface/lib/rhel/
+
+
+include/ni_DAQmxBase_BaseTask.h: $(PROJCP)/ni/DAQmxBase/BaseTask.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.BaseTask
+
+include/ni_DAQmxBase_BaseAIChannel.h: $(PROJCP)/ni/DAQmxBase/BaseAIChannel.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.BaseAIChannel
+
+include/ni_DAQmxBase_BaseTiming.h: $(PROJCP)/ni/DAQmxBase/BaseTiming.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.BaseTiming
+
+include/ni_DAQmxBase_BaseAIChannelCollection.h: $(PROJCP)/ni/DAQmxBase/BaseAIChannelCollection.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.BaseAIChannelCollection
+
+include/ni_DAQmxBase_BaseAnalogMultiChannelReader.h: $(PROJCP)/ni/DAQmxBase/BaseAnalogMultiChannelReader.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.BaseAnalogMultiChannelReader
+
+include/ni_DAQmxBase_BaseLocal.h: $(PROJCP)/ni/DAQmxBase/BaseLocal.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.BaseLocal
+
+include/ni_DAQmxBase_BaseDaqStream.h: $(PROJCP)/ni/DAQmxBase/BaseDaqStream.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmxBase.BaseDaqStream
+
+
+sigs:
+	javap -s -private -classpath $(CLASSPATH) ni.DAQcommon.DaqStream
+
+clean:
+	$(DEL) build/win32/daqmx\*
+	$(DEL) $(HEADERS)
+
+visat: 
+	$(CC) $(CFLAGS)  $(INCLUDES) -Fobuild/win32/visat.obj -c src/util/visat.cc
+	$(LINK) -LIBPATH:$(WINSDKDIR)/Lib -LIBPATH:$(PROJLIBS) -out:build/win32/visat.exe build/win32/visat.obj $(VISALIBS) $(BASELIBS)

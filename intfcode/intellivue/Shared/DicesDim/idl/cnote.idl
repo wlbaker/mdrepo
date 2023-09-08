@@ -1,0 +1,69 @@
+/**
+ * @file    cnote.idl
+ * @author  WMS
+ * @date    MAR 2017
+ * @brief   Define objects concerning Clinical Note.
+ * @see     http://wiki.hl7.org/index.php?title=ClinicalNote_FHIR_Resource_Proposal
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Clinical Note Bundle object
+ *
+ * The Clinical Note Bundle object gathers a collection of Clinical Note
+ * objects into a single instance with containing context.
+ */
+struct ClinicalNoteBundle : Top
+{
+  GUID identifier; //@key
+  // Unique identifier for the note bundle. Serves as the binding element for a
+  // collection of clinical notes.
+
+  string<LONG_STRING_LEN> text;
+  // Description of the clinical note collection
+}; //@top-level true
+const string ClinicalNoteBundleTopic = "ice--ClinicalNoteBundle";
+
+//=============================================================================
+/**
+ * Clinical Note object
+ *
+ * The Clinical Note object allows ICE Operators to view and manually enter
+ * textual information about the patient.
+ *
+ * A Bundle object serves to gather a collection of related notes into a
+ * single virtual containing context.
+ */
+struct ClinicalNote : Top
+{
+  GUID note_bundle_id; //@key
+  // Unique identifier for the note bundle that this entry belongs to.
+
+  INTU16 note_id; //@key
+  // Unique identifier for this note.
+
+  INTU16 note_version;
+  // A user can edit a note. The version identifies different versions of the
+  // same note.
+
+  CareActivityCategory category;
+  // High-level categorization.
+
+  BOOL	deleted;
+  // Meaning depends on context.
+
+  string<LONGLONG_STRING_LEN> title;
+  // Title of note as free-text.
+
+  string<LONGLONG_STRING_LEN> text;
+  // Note content as free-text.
+
+  string<LONG_STRING_LEN> author;
+  // Person responsible for the text.
+}; //@top-level true
+const string ClinicalNoteTopic = "ice--ClinicalNote";
+
+};

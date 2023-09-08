@@ -1,0 +1,144 @@
+
+plugins {
+    id 'application'
+}
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+String osName = System.getProperty("os.name").toLowerCase()
+String osArch = System.getProperty("os.arch").toLowerCase()
+String osClassifier = osName
+if( osName.startsWith( "win" ) ) {
+    osClassifier = "windows"
+}
+osClassifier += "-"
+if( osArch.equals( "amd64" )  ) {
+    osClassifier += "x86_64"
+} else {
+    osClassifier += osArch
+}
+// sourceCompatibility = 1.8
+
+mainClassName = 'idea.tsoffline.Main'
+if( osName.startsWith( "win" ) ) {
+    // applicationDefaultJvmArgs = [ "-Djava.library.path=\"%EXEDIR%/../lib\"", "-Xmx=1536M" ]
+    applicationDefaultJvmArgs = [ '-Djava.library.path=\\"V:/HiFi Research/5. ISR - (Baker & Salinas)/tsOffline/lib\\"' ] //, "-Xmx=1536M" ]
+} else {
+    applicationDefaultJvmArgs = [ '-Djava.library.path=/usr/local/lib/R/library' ] //, "-Xmx=1536M" ]
+}
+
+run {
+    if( osName.startsWith( "win" ) ) {
+        environment    'PATH','V:\\HiFi Research\\5. ISR - (Baker & Salinas)\\tsOffline\\bin\\x64;'+"${System.env.PATH}"
+        environment    'R_HOME','V:\\HiFi Research\\5. ISR - (Baker & Salinas)\\tsOffline'
+    } else {
+        environment    'PATH','/usr/local/lib/R/library/rJava/libs:'+"${System.env.PATH}"
+        environment    'R_HOME','/usr/local/lib/R'
+    }
+}
+
+boolean useSWT = false
+ 
+if( useSWT ) {
+    sourceSets.main.java.srcDirs = ['src/main/java', 'src/swt/java']
+}
+
+System.out.println("OSCLASSIFIER===========" + osClassifier )
+
+dependencies {
+    // mslinks is needed by dm-core...why is it not exported as a req?
+    implementation 'com.github.vatbub:mslinks:1.0.5'
+    implementation 'com.toedter:jcalendar:1.4'
+    implementation 'org.apache.poi:poi-ooxml:4.1.0'
+    implementation 'org.apache.poi:poi-ooxml-schemas:4.1.0'
+    implementation 'org.apache.poi:poi:4.1.0'
+
+   		implementation project(":idea-rp-schema")
+   		implementation project(":idea-core-jpa")
+   		implementation project(":idea-core")
+   		implementation project(":dm-core")
+   		implementation project(":appsupportswing")
+   		implementation project(":algorithms")
+
+    implementation 'org.hibernate:hibernate-entitymanager:5.4.6.Final'
+    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+
+ implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+ implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+
+// implementation 'org.jfree:jfreechart:1.0.19'  // fixme...remove!
+    
+    // used for shuttlexpress or other jog wheel input 
+    implementation group: 'io.github.vveird', name: 'purejavahidapi', version: '0.0.3'
+
+    implementation( 'com.softhorizons:yajdsp:0.2') { changing = true }
+    implementation files(rLibraryDir + 'JavaGD/java/javaGD.jar')
+    implementation files(rLibraryDir + 'rJava/jri/JRI.jar')
+    implementation files(rLibraryDir + 'rJava/jri/JRIEngine.jar')
+    implementation files(rLibraryDir + 'rJava/jri/REngine.jar')
+
+    testImplementation 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    implementation 'org.piccolo2d:piccolo2d-core:3.0.1'
+    implementation 'org.piccolo2d:piccolo2d-extras:3.0.1'
+    
+    implementation 'com.fifesoft:rsyntaxtextarea:2.6.0'
+
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+    implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
+    implementation 'com.sun.xml.bind:jaxb-core:2.3.0.1'
+
+    implementation group: 'org.bytedeco', name: 'javacv', version: '1.3'
+    implementation group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: '3.2.1-1.3', classifier: "${osClassifier}"
+    // testCompile group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '3.1.0-1.3', classifier: "${osClassifier}"
+    
+    implementation 'com.google.code.gson:gson:2.6.2'
+    // GUI
+    implementation 'com.jgoodies:jgoodies-forms:1.7.2'
+        implementation "org.mini2Dx:universal-tween-engine:6.3.3"
+    
+    // filters
+    // implementation 'edu.mines.jtk:edu-mines-jtk:1.0.0'
+    
+    // implementation( 'idea.ext:tween:1.0') { changing = true }
+    implementation files(  'lib/jriSupport.jar', 'lib/beansbinding.jar') 
+    
+    implementation files(  'lib/help-share.jar',
+                    'lib/jewt.jar',
+                    'lib/ohj.jar',
+                    'lib/oracle_ice.jar',
+                    'lib/share.jar'
+                     ) 
+    // sftp
+    implementation 'com.jcraft:jsch:0.1.53'
+    implementation 'com.jtattoo:JTattoo:1.6.11'
+    
+    // hdf5
+    implementation files('../dm-core/lib/jarhdf5-1.10.5.jar')
+    implementation files('lib/miglayout-core.jar', 'lib/miglayout-swing.jar')
+
+    implementation 'javax.mail:javax.mail-api:1.6.2'
+    implementation 'com.sun.mail:javax.mail:1.6.2'
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+
+    // testCompile 'jcifs:jcifs:1.3.17' 
+
+    if( useSWT ) {
+        implementation 'org.eclipse.swt:org.eclipse.swt.win32.win32.x86_64:4.3'
+        implementation 'org.piccolo2d:piccolo2d-swt:3.0.1'
+        implementation 'org.piccolo2d:piccolo2d-swt-examples:3.0.1'
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'idea.tsoffline.Main'
+    }
+}
+

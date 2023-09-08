@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cpc type="LA" conntype="publisher" version="1.0" bid="000000001" seq="45" datetime="2012-03-14T07:16:10">
+    <device type="Ventilator" make="Newport Medical" model="HT70" timeout="5000" bid="000000001" seq="44">
+        <status>UP</status>
+        <settings>
+            <s name="MODE">1</s>
+            <s name="MVOLprhi">9.0</s>
+            <s name="MVOLprlo">3.0</s>
+            <s name="PPAWprhi">40</s>
+            <s name="PPAWprlo">5</s>
+            <s name="RATEprhi">30</s>
+            <s name="APINTVL">20</s>
+            <s name="FIO2prhi">Off</s>
+            <s name="FIO2prlo">Off</s>
+            <s name="ALVOL">6</s>
+            <s name="TVOLprcn">0.50</s>
+            <s name="PPAWprcn">18</s>
+            <s name="TI">1.0</s>
+            <s name="RATEprcn">12</s>
+            <s name="TRIG">2.0</s>
+            <s name="PSprcn">Off</s>
+            <s name="PEEPprcn">Off</s>
+            <s name="PFLOW">30</s>
+            <s name="FLOWTrig">5.0</s>
+            <s name="SLOPE">3</s>
+            <s name="PSeThresh">25%</s>
+            <s name="PSmaxTI">2.0</s>
+            <s name="WAVE">Square</s>
+            <s name="BIASFLOW">10</s>
+            <s name="NIV">Off</s>
+            <s name="NMpr">ACMV</s>
+            <s name="PCVMODE">Volume Control</s>
+        </settings>
+        <measurements>
+            <mg name="PAWwave">
+                <m name="Wave">CgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgo=</m>
+                <m name="Points">50</m>
+                <m name="PointsBytes">1</m>
+                <m name="Min">-10</m>
+                <m name="Max">100</m>
+                <m name="Offset">-10.0</m>
+                <m name="Gain">1.0</m>
+                <m name="Hz">50.0</m>
+            </mg>
+            <mg name="FLOWwave">
+                <m name="Wave">yMjIycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJycnJyck=</m>
+                <m name="Points">50</m>
+                <m name="PointsBytes">1</m>
+                <m name="Min">-200</m>
+                <m name="Max">200</m>
+                <m name="Offset">-200.0</m>
+                <m name="Gain">1.0</m>
+                <m name="Hz">50.0</m>
+            </mg>
+            <m name="TVOL">193</m>
+            <m name="MVOL">1.78</m>
+            <m name="RATE">12</m>
+            <m name="PPAW">36</m>
+            <m name="MAP">3</m>
+            <m name="PEEP">0</m>
+            <m name="FIO2">Disabled</m>
+            <m name="PFLOW">30</m>
+            <m name="I2E">1:4.0</m>
+            <m name="O2CylTime">Disabled</m>
+            <m name="BATTTIME">Ext. Pwr.</m>
+        </measurements>
+        <alarms>
+            <a name="SYSFAULT" seq="44">0</a>
+            <a name="BATTFail" seq="44">0</a>
+            <a name="PWRFail" seq="44">0</a>
+            <a name="OCCLUSIONsust" seq="44">0</a>
+            <a name="PROX" seq="44">0</a>
+            <a name="PPAWlo" seq="44">0</a>
+            <a name="OCCLUSION" seq="44">0</a>
+            <a name="APNEA" seq="44">0</a>
+            <a name="MVOLlo" seq="44">0</a>
+            <a name="MVOLhi" seq="44">0</a>
+            <a name="PCVNR" seq="44">0</a>
+            <a name="FIO2lo" seq="44">0</a>
+            <a name="PEEPlo" seq="44">0</a>
+            <a name="PPAWhi" seq="44">0</a>
+            <a name="BATTlo" seq="44">0</a>
+            <a name="ExtBATTlo" seq="44">0</a>
+            <a name="VTEhi" seq="44">0</a>
+            <a name="FIO2hi" seq="44">0</a>
+            <a name="PEEPhi" seq="44">0</a>
+            <a name="BATTon" seq="44">0</a>
+            <a name="BATTERY" seq="44">0</a>
+            <a name="RATEhi" seq="44">0</a>
+            <a name="FIO2Sensor" seq="44">0</a>
+            <a name="BACKUP" seq="44">0</a>
+            <a name="NOPWR" seq="44">0</a>
+        </alarms>
+    </device>
+    <crc>C363</crc>
+    <Len>0A51</Len>
+</cpc>
+

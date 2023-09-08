@@ -1,0 +1,156 @@
+14:54:13,548 DEBUG [main] DefaultModelClassFactory:284 - No user-defined packages for version 2.1
+14:54:13,554 DEBUG [main] DefaultModelClassFactory:284 - No user-defined packages for version 2.2
+14:54:13,554 DEBUG [main] DefaultModelClassFactory:284 - No user-defined packages for version 2.3
+14:54:13,557 DEBUG [main] DefaultModelClassFactory:284 - No user-defined packages for version 2.3.1
+14:54:13,557 DEBUG [main] DefaultModelClassFactory:284 - No user-defined packages for version 2.4
+14:54:13,557 DEBUG [main] DefaultModelClassFactory:284 - No user-defined packages for version 2.5
+14:54:13,558 DEBUG [main] DefaultModelClassFactory:284 - No user-defined packages for version 2.5.1
+14:54:13,558 DEBUG [main] DefaultModelClassFactory:284 - No user-defined packages for version 2.6
+14:54:13,562  INFO [main] Home:47 - hapi.home is set to C:\Users\MOST-BCB-LAPTOP3\git\ideadrivers\.
+14:54:13,577  INFO [main] VersionLogger:77 - HAPI version is: 2.2
+14:54:13,578  INFO [main] VersionLogger:65 - Default Structure libraries found for HL7 versions 2.6, 
+14:54:13,585 DEBUG [main] FileProfileStore:32 - Profile store directory doesn't exist: C:\Users\MOST-BCB-LAPTOP3\git\ideadrivers\./profiles
+reading
+Received: MSH|^~\&|iControl||||20171221145413||ORU^R01|20171221145413785|P|2.3
+Received: PID|1||anaphylactic shock^^^^||Demo^John||20000611000000|M||||||||||
+Received: PV1|1||^^||||||||||||||||
+Received: OBR|1||||||20171221145413
+Received: OBX|1|NM|||100|%|||||R|||20171221145413
+Received: OBX|2|NM|||100|bpm|||||R|||20171221145413
+Received: OBX|3|NM|||8.8|l/min|||||R|||20171221145413
+Received: OBX|4|NM|||3.2|BSA|||||R|||20171221145413
+Received: OBX|5|NM|||0.08|WT|||||R|||20171221145413
+Received: OBX|6|NM|||89|ml|||||R|||20171221145413
+Received: OBX|7|NM|||46|BSA|||||R|||20171221145413
+Received: OBX|8|NM|||1.17|WT|||||R|||20171221145413
+Received: OBX|9|NM|||39||||||R|||20171221145413
+Received: OBX|10|NM|||327|ms|||||R|||20171221145413
+Received: OBX|11|NM|||35.3||||||R|||20171221145413
+Received: OBX|12|NM|||0.15||||||R|||20171221145413
+Received: OBX|13|NM|||5|%|||||R|||20171221145413
+Received: OBX|14|NM|||8|%|||||R|||20171221145413
+Received: OBX|15|NM|||95|ms|||||R|||20171221145413
+Received: OBX|16|NM|||305|ms|||||R|||20171221145413
+Received: OBX|17|NM|||747|dyn?s/cm?|||||R|||20171221145413
+Received: OBX|18|NM|||1,926|BSA|||||R|||20171221145413
+Received: OBX|19|NM|||76,132|WT|||||R|||20171221145413
+Received: OBX|20|NM|||68||||||R|||20171221145413
+Received: OBX|21|NM|||133|BSA|||||R|||20171221145413
+Received: OBX|22|NM|||5,251|WT|||||R|||20171221145413
+Received: OBX|23|NM|||0.56|BSA|||||R|||20171221145413
+Received: OBX|24|NM|||0.014|WT|||||R|||20171221145413
+Received: OBX|25|NM|||19.6|ml/dL|||||R|||20171221145413
+Received: OBX|26|NM|||1,218|ml/min|||||R|||20171221145413
+Received: OBX|27|NM|||625|BSA|||||R|||20171221145413
+Received: OBX|28|NM|||15.8|WT|||||R|||20171221145413
+Received: OBX|29|NM|||9.2|ms|||||R|||20171221145413
+Received: OBX|30|NM|||0.73||||||R|||20171221145413
+Received: OBX|31|NM|||1.87||||||R|||20171221145413
+Received: OBX|32|NM|||0.00|%|||||R|||20171221145413
+Received: OBX|33|NM|||0.24||||||R|||20171221145413
+Received: OBX|34|NM|||6.6|kg?m|||||R|||20171221145413
+Received: OBX|35|NM|||3.4|BSA|||||R|||20171221145413
+Received: OBX|36|NM|||0.086|WT|||||R|||20171221145413
+Received: OBX|37|NM|||96.3||||||R|||20171221145413
+Received: OBX|38|NM|||49.4|BSA|||||R|||20171221145413
+Received: OBX|39|NM|||1.25|WT|||||R|||20171221145413
+Received: 
+parsing message: MSH|^~\&|iControl||||20171221145413||ORU^R01|20171221145413785|P|2.3
+PID|1||anaphylactic shock^^^^||Demo^John||20000611000000|M||||||||||
+PV1|1||^^||||||||||||||||
+OBR|1||||||20171221145413
+OBX|1|NM|||100|%|||||R|||20171221145413
+OBX|2|NM|||100|bpm|||||R|||20171221145413
+OBX|3|NM|||8.8|l/min|||||R|||20171221145413
+OBX|4|NM|||3.2|BSA|||||R|||20171221145413
+OBX|5|NM|||0.08|WT|||||R|||20171221145413
+OBX|6|NM|||89|ml|||||R|||20171221145413
+OBX|7|NM|||46|BSA|||||R|||20171221145413
+OBX|8|NM|||1.17|WT|||||R|||20171221145413
+OBX|9|NM|||39||||||R|||20171221145413
+OBX|10|NM|||327|ms|||||R|||20171221145413
+OBX|11|NM|||35.3||||||R|||20171221145413
+OBX|12|NM|||0.15||||||R|||20171221145413
+OBX|13|NM|||5|%|||||R|||20171221145413
+OBX|14|NM|||8|%|||||R|||20171221145413
+OBX|15|NM|||95|ms|||||R|||20171221145413
+OBX|16|NM|||305|ms|||||R|||20171221145413
+OBX|17|NM|||747|dyn?s/cm?|||||R|||20171221145413
+OBX|18|NM|||1,926|BSA|||||R|||20171221145413
+OBX|19|NM|||76,132|WT|||||R|||20171221145413
+OBX|20|NM|||68||||||R|||20171221145413
+OBX|21|NM|||133|BSA|||||R|||20171221145413
+OBX|22|NM|||5,251|WT|||||R|||20171221145413
+OBX|23|NM|||0.56|BSA|||||R|||20171221145413
+OBX|24|NM|||0.014|WT|||||R|||20171221145413
+OBX|25|NM|||19.6|ml/dL|||||R|||20171221145413
+OBX|26|NM|||1,218|ml/min|||||R|||20171221145413
+OBX|27|NM|||625|BSA|||||R|||20171221145413
+OBX|28|NM|||15.8|WT|||||R|||20171221145413
+OBX|29|NM|||9.2|ms|||||R|||20171221145413
+OBX|30|NM|||0.73||||||R|||20171221145413
+OBX|31|NM|||1.87||||||R|||20171221145413
+OBX|32|NM|||0.00|%|||||R|||20171221145413
+OBX|33|NM|||0.24||||||R|||20171221145413
+OBX|34|NM|||6.6|kg?m|||||R|||20171221145413
+OBX|35|NM|||3.4|BSA|||||R|||20171221145413
+OBX|36|NM|||0.086|WT|||||R|||20171221145413
+OBX|37|NM|||96.3||||||R|||20171221145413
+OBX|38|NM|||49.4|BSA|||||R|||20171221145413
+OBX|39|NM|||1.25|WT|||||R|||20171221145413
+
+
+14:54:13,723 DEBUG [main] DefaultModelClassFactory:326 - Trying to load: ca.uhn.hl7v2.model.v26.message.ORU_R01
+14:54:13,726 DEBUG [main] DefaultModelClassFactory:330 - Loaded: ca.uhn.hl7v2.model.v26.message.ORU_R01 class: class ca.uhn.hl7v2.model.v26.message.ORU_R01
+creating acknowledgement
+14:54:13,783 DEBUG [main] DefaultModelClassFactory:326 - Trying to load: ca.uhn.hl7v2.model.v26.message.ACK
+14:54:13,784 DEBUG [main] DefaultModelClassFactory:330 - Loaded: ca.uhn.hl7v2.model.v26.message.ACK class: class ca.uhn.hl7v2.model.v26.message.ACK
+14:54:13,792 DEBUG [main] HiLoGenerator:51 - Obtain next hi ID
+14:54:13,792  INFO [main] FileBasedGenerator:120 - Could not read ID file C:\Users\MOST-BCB-LAPTOP3\git\ideadrivers\.\id_file 
+14:54:13,800 DEBUG [main] AbstractValidator:96 - Validating message against 2 message rules
+sending ack: ca.uhn.hl7v2.model.v26.message.ACK - Failed to create toString(): Encoding characters (MSH-2) value '|^~\&|iControl||||20171221145413||ORU^R01|20171221145413785|P|2.3
+PID|1||anaphylactic shock^^^^||Demo^John||20000611000000|M||||||||||
+PV1|1||^^||||||||||||||||
+OBR|1||||||20171221145413
+OBX|1|NM|||100|%|||||R|||20171221145413
+OBX|2|NM|||100|bpm|||||R|||20171221145413
+OBX|3|NM|||8.8|l/min|||||R|||20171221145413
+OBX|4|NM|||3.2|BSA|||||R|||20171221145413
+OBX|5|NM|||0.08|WT|||||R|||20171221145413
+OBX|6|NM|||89|ml|||||R|||20171221145413
+OBX|7|NM|||46|BSA|||||R|||20171221145413
+OBX|8|NM|||1.17|WT|||||R|||20171221145413
+OBX|9|NM|||39||||||R|||20171221145413
+OBX|10|NM|||327|ms|||||R|||20171221145413
+OBX|11|NM|||35.3||||||R|||20171221145413
+OBX|12|NM|||0.15||||||R|||20171221145413
+OBX|13|NM|||5|%|||||R|||20171221145413
+OBX|14|NM|||8|%|||||R|||20171221145413
+OBX|15|NM|||95|ms|||||R|||20171221145413
+OBX|16|NM|||305|ms|||||R|||20171221145413
+OBX|17|NM|||747|dyn?s/cm?|||||R|||20171221145413
+OBX|18|NM|||1,926|BSA|||||R|||20171221145413
+OBX|19|NM|||76,132|WT|||||R|||20171221145413
+OBX|20|NM|||68||||||R|||20171221145413
+OBX|21|NM|||133|BSA|||||R|||20171221145413
+OBX|22|NM|||5,251|WT|||||R|||20171221145413
+OBX|23|NM|||0.56|BSA|||||R|||20171221145413
+OBX|24|NM|||0.014|WT|||||R|||20171221145413
+OBX|25|NM|||19.6|ml/dL|||||R|||20171221145413
+OBX|26|NM|||1,218|ml/min|||||R|||20171221145413
+OBX|27|NM|||625|BSA|||||R|||20171221145413
+OBX|28|NM|||15.8|WT|||||R|||20171221145413
+OBX|29|NM|||9.2|ms|||||R|||20171221145413
+OBX|30|NM|||0.73||||||R|||20171221145413
+OBX|31|NM|||1.87||||||R|||20171221145413
+OBX|32|NM|||0.00|%|||||R|||20171221145413
+OBX|33|NM|||0.24||||||R|||20171221145413
+OBX|34|NM|||6.6|kg?m|||||R|||20171221145413
+OBX|35|NM|||3.4|BSA|||||R|||20171221145413
+OBX|36|NM|||0.086|WT|||||R|||20171221145413
+OBX|37|NM|||96.3||||||R|||20171221145413
+OBX|38|NM|||49.4|BSA|||||R|||20171221145413
+OBX|39|NM|||1.25|WT|||||R|||20171221145413
+
+' invalid -- must be 4 characters
+14:54:13,801 DEBUG [main] AbstractValidator:96 - Validating message against 2 message rules

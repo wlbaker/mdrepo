@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:rp-study-impl xmlns:ns2="http://idea.mil/rp">
+    <ns2:identifier>test-drager</ns2:identifier>
+    <ns2:title>test-drager</ns2:title>
+    <ns2:pi>baker</ns2:pi>
+    <ns2:startDate>2017-12-19-06:00</ns2:startDate>
+    <ns2:hardware>
+        <ns2:name>Default Configuration</ns2:name>
+        <ns2:devices>
+            <ns2:name>monitor/Drager Infinity Network</ns2:name>
+            <ns2:revNo>0</ns2:revNo>
+            <ns2:deviceClass>idea.driver.InfinityDriver</ns2:deviceClass>
+            <ns2:connectionType>Infinity</ns2:connectionType>
+            <ns2:connectionValue>infinity://224.0.1.33/192.168.50.33</ns2:connectionValue>
+            <ns2:param>
+                <entry>
+                    <key>id</key>
+                    <value>/192.168.50.33</value>
+                </entry>
+                <entry>
+                    <key>group</key>
+                    <value>/224.0.1.33</value>
+                </entry>
+            </ns2:param>
+            <ns2:streams>
+                <ns2:name>waveform</ns2:name>
+                <ns2:model>idea.model.dev.DragerDelta_Sensors</ns2:model>
+                <ns2:metric>
+                    <ns2:code>EKG0</ns2:code>
+                    <ns2:location>ecg lead_I</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>MICROVOLT</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                    <ns2:sample-rate>200</ns2:sample-rate>
+                    <ns2:samples-per-packet>40</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>EKG1</ns2:code>
+                    <ns2:location>ecg lead_II</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>MICROVOLT</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                    <ns2:sample-rate>200</ns2:sample-rate>
+                    <ns2:samples-per-packet>40</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>EKG2</ns2:code>
+                    <ns2:location>ecg lead_III</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>MICROVOLT</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                    <ns2:sample-rate>200</ns2:sample-rate>
+                    <ns2:samples-per-packet>40</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>ABP</ns2:code>
+                    <ns2:location>art</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-linear-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:m>0.16666</ns2:m>
+                        <ns2:b>0.0</ns2:b>
+                    </ns2:unit>
+                    <ns2:sample-rate>100</ns2:sample-rate>
+                    <ns2:samples-per-packet>20</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>SPO2</ns2:code>
+                    <ns2:location>spo2 pulse</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName></ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                    <ns2:sample-rate>100</ns2:sample-rate>
+                    <ns2:samples-per-packet>20</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>PA</ns2:code>
+                    <ns2:location>pa</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-linear-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:m>0.16666</ns2:m>
+                        <ns2:b>0.0</ns2:b>
+                    </ns2:unit>
+                    <ns2:sample-rate>100</ns2:sample-rate>
+                    <ns2:samples-per-packet>20</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>CVP</ns2:code>
+                    <ns2:location>cvp</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-linear-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:m>0.16666</ns2:m>
+                        <ns2:b>0.0</ns2:b>
+                    </ns2:unit>
+                    <ns2:sample-rate>100</ns2:sample-rate>
+                    <ns2:samples-per-packet>20</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>LA</ns2:code>
+                    <ns2:location>la</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-linear-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:m>0.16666</ns2:m>
+                        <ns2:b>0.0</ns2:b>
+                    </ns2:unit>
+                    <ns2:sample-rate>100</ns2:sample-rate>
+                    <ns2:samples-per-packet>20</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>LV</ns2:code>
+                    <ns2:location>lv</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-linear-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:m>0.16666</ns2:m>
+                        <ns2:b>0.0</ns2:b>
+                    </ns2:unit>
+                    <ns2:sample-rate>100</ns2:sample-rate>
+                    <ns2:samples-per-packet>20</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>GP1</ns2:code>
+                    <ns2:location>gp1</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-linear-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:m>0.16666</ns2:m>
+                        <ns2:b>0.0</ns2:b>
+                    </ns2:unit>
+                    <ns2:sample-rate>100</ns2:sample-rate>
+                    <ns2:samples-per-packet>20</ns2:samples-per-packet>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>GP2</ns2:code>
+                    <ns2:location>gp2</ns2:location>
+                    <ns2:subtyp>14</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-linear-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:m>0.16666</ns2:m>
+                        <ns2:b>0.0</ns2:b>
+                    </ns2:unit>
+                    <ns2:sample-rate>100</ns2:sample-rate>
+                    <ns2:samples-per-packet>20</ns2:samples-per-packet>
+                </ns2:metric>
+            </ns2:streams>
+            <ns2:streams>
+                <ns2:name>numerics</ns2:name>
+                <ns2:model>idea.model.dev.DragerDelta_Measurements</ns2:model>
+                <ns2:metric>
+                    <ns2:code>SpO2.HR</ns2:code>
+                    <ns2:location>spo2.hr</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>bpm</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>CVP.MEAN</ns2:code>
+                    <ns2:location>cvp.mean</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>PA.PWP</ns2:code>
+                    <ns2:location>pa.pwp</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>PA.MEAN</ns2:code>
+                    <ns2:location>pa.mean</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>PA.SYS</ns2:code>
+                    <ns2:location>pa.sys</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>PA.DIA</ns2:code>
+                    <ns2:location>pa.dia</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>ART.PWP</ns2:code>
+                    <ns2:location>art.pwp</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>ART.MEAN</ns2:code>
+                    <ns2:location>art.mean</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>ART.SYS</ns2:code>
+                    <ns2:location>art.sys</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>ART.DIA</ns2:code>
+                    <ns2:location>art.dia</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>ART.HR</ns2:code>
+                    <ns2:location>art.hr</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>bpm</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>ECG P-P Interval</ns2:name>
+                    <ns2:code>ECG.PP</ns2:code>
+                    <ns2:location>ecg.pp</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>%</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>ECG Arrhythmia</ns2:name>
+                    <ns2:code>ECG.ARR</ns2:code>
+                    <ns2:location>ecg.arr</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>bpm</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>ECG Pre-ventricular contraction</ns2:name>
+                    <ns2:code>ECG.PVC</ns2:code>
+                    <ns2:location>ecg.pvc</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>bpm</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>ECG HR</ns2:name>
+                    <ns2:code>ECG.HR</ns2:code>
+                    <ns2:location>ecg.hr</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>bpm</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>ECG Derived V2</ns2:name>
+                    <ns2:code>ECG.DV2</ns2:code>
+                    <ns2:location>ecg.deriv_v2</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mm</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>ECG Derived V5</ns2:name>
+                    <ns2:code>ECG.DV5</ns2:code>
+                    <ns2:location>ecg.deriv_v5</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mm</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>SpO2 Saturation</ns2:name>
+                    <ns2:code>SPO2_SATU</ns2:code>
+                    <ns2:location>spo2.satu</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>%</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>SpO2 PR</ns2:name>
+                    <ns2:code>SPO2_PR</ns2:code>
+                    <ns2:location>spo2.pr</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>bpm</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>Arterial PR</ns2:name>
+                    <ns2:code>ART.PR</ns2:code>
+                    <ns2:location>art.pr</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>Tempurature A</ns2:name>
+                    <ns2:code>Ta</ns2:code>
+                    <ns2:location>tbasic.a</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>C</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>Tempurature B</ns2:name>
+                    <ns2:code>Tb</ns2:code>
+                    <ns2:location>tbasic.b</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>C</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>Tempurature Delta</ns2:name>
+                    <ns2:code>Tdelta</ns2:code>
+                    <ns2:location>tbasic.delta</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>C</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>TEMP1 A</ns2:name>
+                    <ns2:code>TEMP1.A</ns2:code>
+                    <ns2:location>temp1.a</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>C</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>TEMP1 B</ns2:name>
+                    <ns2:code>TEMP1.B</ns2:code>
+                    <ns2:location>temp1.b</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>C</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>LV.SYS</ns2:code>
+                    <ns2:location>lv.sys</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>LV.DIA</ns2:code>
+                    <ns2:location>lv.dia</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>LV.MEAN</ns2:code>
+                    <ns2:location>lv.mean</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>RA.MEAN</ns2:code>
+                    <ns2:location>ra.mean</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>A2CO2.ETCO2</ns2:code>
+                    <ns2:location>a2co2.etco2</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>A2CO2.ICO2</ns2:code>
+                    <ns2:location>a2co2.ico2</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>A2CO2.RR</ns2:code>
+                    <ns2:location>a2co2.rr</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName></ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>1</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:name>Respiratory Rate</ns2:name>
+                    <ns2:code>RESP.RR</ns2:code>
+                    <ns2:location>resp.rr</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>bpm</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>GP1.SYS</ns2:code>
+                    <ns2:location>gp1.sys</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>GP1.DIA</ns2:code>
+                    <ns2:location>gp1.dia</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>GP1.MEAN</ns2:code>
+                    <ns2:location>gp1.mean</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>GP2.SYS</ns2:code>
+                    <ns2:location>gp2.sys</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>GP2.DIA</ns2:code>
+                    <ns2:location>gp2.dia</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>GP2.MEAN</ns2:code>
+                    <ns2:location>gp2.mean</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+                <ns2:metric>
+                    <ns2:code>LA.MEAN</ns2:code>
+                    <ns2:location>la.mean</ns2:location>
+                    <ns2:subtyp>1</ns2:subtyp>
+                    <ns2:unit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:rp-precision-unit">
+                        <ns2:unitName>mmHg</ns2:unitName>
+                        <ns2:cached-typ>0</ns2:cached-typ>
+                        <ns2:precision>0</ns2:precision>
+                    </ns2:unit>
+                </ns2:metric>
+            </ns2:streams>
+            <ns2:streams>
+                <ns2:name>demographics</ns2:name>
+                <ns2:model>idea.model.dev.DragerDelta_Demographics</ns2:model>
+            </ns2:streams>
+            <ns2:streams>
+                <ns2:name>settings</ns2:name>
+            </ns2:streams>
+        </ns2:devices>
+    </ns2:hardware>
+    <ns2:repository-link>c:\opt\study\test-drager</ns2:repository-link>
+    <ns2:repository-id>c:\opt\study\test-drager</ns2:repository-id>
+    <ns2:param>
+        <entry>
+            <key>jdbc</key>
+            <value></value>
+        </entry>
+        <entry>
+            <key>hdf5</key>
+            <value>true</value>
+        </entry>
+        <entry>
+            <key>ascii</key>
+            <value>true</value>
+        </entry>
+        <entry>
+            <key>sql</key>
+            <value>false</value>
+        </entry>
+    </ns2:param>
+</ns2:rp-study-impl>

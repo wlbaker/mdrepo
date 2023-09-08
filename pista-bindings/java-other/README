@@ -1,0 +1,71 @@
+
+MANUALLY EDITED THE GENERATED SWIG...there has got to be a way to do this
+with Swig typedefs etc, but...for the moment...this works!
+
+note the lines with WLB tag
+
+int SwigDirector_PistaCommHandler::write(char const data[], size_t len) {
+  int c_result = SwigValueInit< int >() ;
+  jint jresult = 0 ;
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  jbyteArray jdata  ;
+  
+  if (!swig_override[2]) {
+    SWIG_JavaThrowException(JNIEnvWrapper(this).getJNIEnv(), SWIG_JavaDirectorPureVirtual, "Attempted to invoke pure virtual method PistaCommHandler::write.");
+    return c_result;
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    {
+      jbyteArray jb = (jenv)->NewByteArray((jsize)len);
+      (jenv)->SetByteArrayRegion(jb, 0, (jsize)len, (jbyte *)data);
+      jdata = jb;
+    }
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_PISTAXJNI, Swig::director_method_ids[3], swigjobj, jdata);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      // wlb jenv->ExceptionClear();
+      // wlb throw Swig::DirectorException(jenv, swigerror);
+      // wlb dont' clear the exception -- it stays active
+      return -1;
+    }
+    
+    c_result = (int)jresult; 
+    (jenv)->GetByteArrayRegion(jdata, 0, (jsize)len, (jbyte *)data);
+    (jenv)->DeleteLocalRef(jdata);
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in PistaCommHandler::write ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+  return c_result;
+}
+
+int SwigDirector_PistaCommHandler::close() {
+  int c_result = SwigValueInit< int >() ;
+  jint jresult = 0 ;
+  JNIEnvWrapper swigjnienv(this) ;
+  JNIEnv * jenv = swigjnienv.getJNIEnv() ;
+  jobject swigjobj = (jobject) NULL ;
+  
+  if (!swig_override[3]) {
+    return PistaCommHandler::close();
+  }
+  swigjobj = swig_get_self(jenv);
+  if (swigjobj && jenv->IsSameObject(swigjobj, NULL) == JNI_FALSE) {
+    jresult = (jint) jenv->CallStaticIntMethod(Swig::jclass_PISTAXJNI, Swig::director_method_ids[4], swigjobj);
+    jthrowable swigerror = jenv->ExceptionOccurred();
+    if (swigerror) {
+      jenv->ExceptionClear();
+      throw Swig::DirectorException(jenv, swigerror);
+    }
+    
+    c_result = (int)jresult; 
+  } else {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null upcall object in PistaCommHandler::close ");
+  }
+  if (swigjobj) jenv->DeleteLocalRef(swigjobj);
+  return c_result;
+}
+

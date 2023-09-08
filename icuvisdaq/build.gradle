@@ -1,0 +1,99 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'IDEA DAQ', 'Implementation-Version': version
+        attributes 'Main-Class': 'idea.meddaq.MedDAQLauncher'
+    }
+}
+
+String osName = System.getProperty("os.name").toLowerCase()
+String osArch = System.getProperty("os.arch").toLowerCase()
+String osClassifier = osName
+if( osName.startsWith( "win" ) ) {
+	osClassifier = "windows"
+}
+osClassifier += "-"
+if( osArch.equals( "amd64" )  ) {
+	osClassifier += "x86_64"
+} else {
+	osClassifier += osArch
+}
+System.out.println("OSNAME===========" + osName );
+System.out.println("OSCLASSIFIER===========" + osClassifier );
+
+dependencies {
+  implementation 'com.jgoodies:jgoodies-forms:1.7.2'
+  implementation 'com.jgoodies:jgoodies-binding:2.9.1'
+
+  implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+  implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+
+  implementation 'org.jfree:jfreechart:1.0.19'
+  implementation 'com.fazecast:jSerialComm:2.5.2'
+  implementation 'com.jtattoo:JTattoo:1.6.11'
+
+    implementation 'org.jogamp.gluegen:gluegen-rt-main:2.3.2'
+    implementation 'org.jogamp.jogl:jogl-all:2.3.2'
+    
+    implementation 'org.jogamp.jogl:jogl-all:2.3.2:natives-windows-i586'
+    implementation 'org.jogamp.jogl:jogl-all:2.3.2:natives-windows-amd64'
+    implementation 'org.jogamp.jogl:jogl-all:2.3.2:natives-linux-amd64'
+
+    
+    implementation files('lib/xuggle-xuggler.jar')
+    implementation ('com.github.vatbub:mslinks:1.0.4')
+ 	
+   		implementation project(":idea-rp-schema")
+   		implementation project(":idea-core-jpa")
+   		implementation project(":idea-core")
+   		implementation project(":idea-drivers")
+   		implementation project(":dm-core")
+   		implementation project(":appsupportswing")
+   		implementation project(":icuvisopengl")
+   		implementation project(":algorithms")
+
+   		// implementation project(":pista")
+   		implementation project(":pista-idea")
+   		implementation project(":pista-bindings")
+
+    
+    implementation files(rLibraryDir + 'JavaGD/java/javaGD.jar')
+    implementation files(rLibraryDir + 'rJava/jri/JRI.jar')
+    implementation files(rLibraryDir + 'rJava/jri/JRIEngine.jar')
+    implementation files(rLibraryDir + 'rJava/jri/REngine.jar')
+
+    implementation 'com.toedter:jcalendar:1.4'
+    
+    implementation files('../dm-core/lib/jarhdf5-1.10.2.jar');
+ 
+	implementation 'org.mobicents.external.freetts:freetts:1.0'
+	implementation 'org.jdesktop:beansbinding:1.2.1'
+
+	implementation group: 'org.bytedeco', name: 'javacv', version: '1.3.3'
+	implementation group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: '3.2.1-1.3', classifier: "${osClassifier}"
+    testImplementation group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '3.1.0-1.3', classifier: "${osClassifier}"
+	
+	// JAVA MAIL
+    implementation files('lib/javax.mail-1.5.6.jar')
+ 	
+    implementation files('../idea-drivers/lib/phidget21.jar')
+    
+
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+	implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
+	implementation 'com.sun.xml.bind:jaxb-core:2.3.0.1'
+
+	// GUI stuff
+	// runtime 'com.jtattoo:JTattoo:1.6.11'
+        implementation "org.mini2Dx:universal-tween-engine:6.3.3"
+    
+}

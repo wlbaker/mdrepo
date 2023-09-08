@@ -1,0 +1,52 @@
+message IppRationalUnit {
+    required double m = 1;
+    required double b = 2;
+    optional string unit = 3;
+}
+
+message IppLinearUnit {
+    required double m = 1;
+    required double b = 2;
+    optional string unit = 3;
+}
+
+message IppMetricDescription {
+    required int32  loc_typ = 1;  // type of loc value
+    required string loc = 2;
+    required DataTyp sub_typ = 3;  // was is_wave could be a more generic attribute
+    optional string var_code = 4;
+    optional string var_name = 5;
+    optional IppLinearUnit unit = 6;
+    optional int32 sampleRate = 7;       // used for wave type
+    optional int32 samplesPerPacket = 8;
+    optional int32 txtLen = 9;
+}
+
+message IppPair {
+    required string key = 1;
+    optional string value = 2;
+}
+
+message IppStream {
+    required string name = 1;  // stream ID
+    
+    repeated IppMetricDescription metrics = 10;
+}
+
+message IppDevice {
+    required string name = 1;
+    optional string modelName = 2;
+    optional DevT deviceType = 3;
+    optional string deviceId = 4;
+    optional string deviceClass = 5;
+    
+    repeated IppStream streams = 11;
+    repeated IppPair params = 13;
+    repeated IppDevice devices = 20;
+}
+
+message IppCapability {  // Hmm, really this is just an IppDevice!
+    required string name = 1;
+    
+    repeated IppDevice dev = 6;
+}

@@ -1,0 +1,69 @@
+1- HDF5 storage as VARR's
+2- Cookbook on reading waveforms into R from HDF5
+3- Python plugin
+4- No special exception for ECG Segmenter in doAnalysis routine
+5- SWT interface based on Eclipse
+
+----------------
+Q1: Fix Icons in TsControlPanel...three of them have tool text "Graph setup and ranges"...one should be Filters.
+Q2: What is AN in the TsControlPanel?
+
+----------------
+
+DONE 080917 : See B2B-step4 and DerivedUtil getMean()
+
+
+... Swing and Equinox 
+... export save to .dat
+
+[RUBAL] Here are some suggestions for futures for Sigma-PAD (not in a priority order)
+
+1)	Display step information in parameter boxes, to prevent confusion as to what step you are on.
+2)	Zero line for scales (on/off)
+[FIXED 040217] 3)	Using time select box lower right corner, y-axis rescales nice if it were on the last y-scale.
+4)	Handling PVC beats in Ensemble average routines and waterfall plots. 
+5)	Need for <.25 Hz low pass (or100-250 center  point mean sample) filter… Objective… from pulsatile mean but able to show step up in PCWP recordings. Would be nice to see low pass filter with respiratory  some respiratory variability and even nicer if overlay on raw pulsatile signal. 
+DONE 062817    6)	Piecewise bias and gain adjustments
+7)	Export raw and altered e.g. derivative, difference etc. waveforms
+8)	When adding a new annotation that is and annotation B2B table does not identify label for annotation
+9)	Using cursor on view, either lock on to waveform and see moving dot or a vertical line moving 
+10)	The view “Annotation” table only indicates xy values for time of  R-spike, would like to see “Annotation” tables for each layer…. … e.g. LVEDP that would show R spike info and beat sequence plus time for LVEDP and Y value.  (This example already goes to B2B, but other xy values for layers do not.
+11)        Mirror the left heart measures for equivalent right heart measures. E.g  layer for RVEDP, RVPs, PAPs,d,m... etc...
+12)        Option for trend over time plots (any Y (or derived Y) parameter.
+[13 WLB] Don't allow layers of the same name!
+14) Side-by-side plots: Standard monitor + trends+waterfall and Phase Space
+15) Dropping the same Feature layer on a graph twice will result in duplicate/overlapping feature layers!
+
+TODO
+
+DONE 062817 : Need to start and stop export at exact positions indicated.
+DONE 062817	: --> particularly important when exporting a single beat
+DONE 061817 : Could not merge annotations with simple WF export...got no WF data!
+
+
+DONE 030317   0- Sequential Order in signal nodes [add to check] [no errors found!]
+DONE 040317   1- Export Layers
+DONE 040317   2- Offsets for Beat boundary...to get EDP into the beat
+DONE 030317   3- Mucky EDITS...cannot grab and delete point
+4- Applying filters to a session
+5- Ctrl-Z
+6- Auto-timestamp w Save
+7- Save Read-Only
+8- Pressures to 1 decimal...3 sig figures max
+9- ML of cardiac annotation and annotations of other cardiac cycles as well
+DONE 040317   10- Add events to arbitrary layers
+11- Calibration
+12- Script Documentation/Book
+13- Export DAT
+14- Y-scale in PhasePlanePlot LVP changed when the 0.5/1.0/2.0/5.0 speed indicator was changed.
+ 
+
+Fix overlapping points when algorithm run twice
+
+Feb 23, 2017 TODO:
+- figure out how to get line numbers out of rengine for debugging..how does JGR do it?  RStudio?
+Nov 27, 2016 TODO:
+* BIOIMP...change sample frequency
+* Kreyer paper #2
+* Finish calibration procedure
+

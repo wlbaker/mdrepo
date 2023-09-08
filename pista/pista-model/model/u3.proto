@@ -1,0 +1,37 @@
+syntax = "proto3";
+package u3;
+
+option java_package = "pista.model";
+// option java_outer_classname = "UU"
+
+message u3_settings {
+     int32 hzz = 1;
+     int32 rps = 2;
+     int32 ms  = 3;
+     int32 fin_mask = 4;
+     int32 ein_mask = 5;
+     int32 fout_mask = 6;
+     int32 eout_mask = 7;
+}
+
+message u3_fsensor {
+    repeated int32 ain0 = 1 [packed=true];
+    repeated int32 ain1 = 2 [packed=true];
+    repeated int32 ain2 = 3 [packed=true];
+    repeated int32 ain3 = 4 [packed=true];
+    repeated int32 fio4 = 5 [packed=true];
+    repeated int32 fio5 = 6 [packed=true];
+    repeated int32 fio6 = 7 [packed=true];
+    repeated int32 fio7 = 8 [packed=true];
+}
+
+message u3_esensor {
+    repeated int32 eio0 = 1 [packed=true];
+    repeated int32 eio1 = 2 [packed=true];
+    repeated int32 eio2 = 3 [packed=true];
+    repeated int32 eio3 = 4 [packed=true];
+    repeated int32 eio4 = 5 [packed=true];
+    repeated int32 eio5 = 6 [packed=true];
+    repeated int32 eio6 = 7 [packed=true];
+    repeated int32 eio7 = 8 [packed=true];
+}

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>Medical Device Connectivity and Interoperability</title>
+    <date>April 6, 2015</date>
+    <author>
+        <firstname>William</firstname>
+        <othername>L</othername>
+        <surname>Baker</surname>
+        <email>william.l.baker2.civ@mail.mil</email>
+    </author>
+    <authorinitials>WLB</authorinitials>
+<revhistory><revision><revnumber>0.0</revnumber><date>April 6, 2015</date><authorinitials>WLB</authorinitials></revision></revhistory>
+</articleinfo>
+<section id="_intro">
+<title>Intro</title>
+<simpara> The API
+ The Encoding
+## Nomenclature Level
+11073</simpara>
+</section>
+<section id="_md_api_requirements">
+<title>MD-API Requirements</title>
+<simpara>Medical devices provide a number of data streams at varying frequency.  Data rate and data usage define the steram.  For convenience, streams can be broken into the following categories:</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Demographics
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Settings
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Vitals
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Waveforms / Sensors
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Alarms
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Devices can be queried to determine their capabilities.  Device streams and interface options are part of the capabilities.  Multiple values are usually provided with each stream.  For instance, a single VITALS stream from a patient monitory typically provides heart rate, blood pressure, SpO2.  Each device stream must</simpara>
+<itemizedlist>
+<listitem>
+<simpara>
+Connection Event (roll into Management)
+Additional messages include
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Login Request/Reply
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Transfer Request/Reply
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Annotation Event
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Management Event
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Display Layout
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Capabilities
+</simpara>
+</listitem>
+</itemizedlist>
+<section id="_signal_producers_and_signal_consumers">
+<title>Signal Producers and Signal Consumers</title>
+</section>
+<section id="_device_discovery_and_input_output">
+<title>Device Discovery and Input/Output</title>
+<itemizedlist>
+<listitem>
+<simpara>
+Serial
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Ethernet
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+API: DaqMX
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+API: LabJack
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+API: Phidget
+</simpara>
+</listitem>
+</itemizedlist>
+<simpara>Provide notes on discover of each of these I/O mechanisms.</simpara>
+</section>
+<section id="_the_driver_api">
+<title>The Driver API</title>
+<simpara>All devices provide the following functions:</simpara>
+<simpara>connect
+get_capabilities
+set_option
+tick
+disconnect</simpara>
+<section id="_callbacks">
+<title>Callbacks</title>
+</section>
+<section id="_memory_management">
+<title>Memory Management</title>
+</section>
+</section>
+</section>
+<section id="_publish_subscribe_systems">
+<title>Publish Subscribe Systems</title>
+<section id="_zeromq">
+<title>ZeroMQ</title>
+<itemizedlist>
+<listitem>
+<simpara>
+Encoding in Protobuf
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Encoding in EXI
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="_embedding_a_publisher_in_your_device">
+<title>Embedding a Publisher in Your Device</title>
+</section>
+<section id="_building_a_data_collection_system">
+<title>Building a Data Collection System</title>
+<section id="_importers_and_exporters">
+<title>Importers and Exporters</title>
+<itemizedlist>
+<listitem>
+<simpara>
+HDF5
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+SQL
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+Excel
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+ASCII
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+</section>
+<section id="_appendix_building_the_reference_source_and_documentation">
+<title>Appendix: Building the Reference Source and Documentation</title>
+<simpara> Gradle
+ ZeroMQ
+ Protobuf
+ Swig
+## Samples</simpara>
+</section>
+</article>

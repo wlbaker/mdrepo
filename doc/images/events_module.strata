@@ -1,0 +1,93 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-strata: <http://www.architexa.com/rdf/strata#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slevents_unmodule.strata> a atxa-core:strataFile .
+
+atxa:DetailNode atxa-core:detailLevel "0" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node16u2fb5g4x43134 .
+
+_:node16u2fb5g4x43134 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$NumericsEvent> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:3,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "false" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node16u2fb5g4x43135 .
+
+_:node16u2fb5g4x43135 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$CapabilitiesEvent> ;
+	atxa-strata:nestedLayerIndexes ":2,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "false" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node16u2fb5g4x43136 .
+
+_:node16u2fb5g4x43136 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ConnectionEvent> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node16u2fb5g4x43137 .
+
+_:node16u2fb5g4x43137 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$WaveformEvent> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:3,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node16u2fb5g4x43138 .
+
+_:node16u2fb5g4x43138 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$ManagementEvent> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:2,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "false" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node16u2fb5g4x43139 .
+
+_:node16u2fb5g4x43139 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$SecurityEvent> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:2,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "false" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node16u2fb5g4x43140 .
+
+_:node16u2fb5g4x43140 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AnnotationEvent> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "true" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node16u2fb5g4x43141 .
+
+_:node16u2fb5g4x43141 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$DisplayEvent> ;
+	atxa-strata:nestedLayerIndexes ":1,false,false,true:1,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "false" , "false" .
+
+atxa-core:docRoot atxa-core:contains _:node16u2fb5g4x43142 .
+
+_:node16u2fb5g4x43142 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.events$AlarmEvent> ;
+	atxa-strata:nestedLayerIndexes ":0,false,false,true:0,false,false,true:0,true,true,true" ;
+	atxa-strata:layerIndex "0" ;
+	atxa-strata:indexWithinLayer "-1" ;
+	atxa-core:containerState "false" , "false" , "false" .
+

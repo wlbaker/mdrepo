@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+
+<!--
+For more information about XML QoS Profiles see Chapter 15 in the 
+RTI Connext user manual.
+-->
+
+<dds>
+
+    <qos_library name="dices_dim_library">
+
+        <qos_profile name="default_profile" is_default_qos="true">
+
+            <participant_qos>
+
+                <participant_name>
+                    <name>Driver:intellivue-mp70</name>
+                </participant_name>
+
+<!--
+The following participant Qos settings are needed for communication with
+the RTI Recording Service. If the message size is not increased, then the
+Recording service will not be able to deserialize topic information.
+-->
+
+                <receiver_pool>
+                    <buffer_size>65530</buffer_size>
+                </receiver_pool>
+
+                <property>
+                    <value>
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.recv_socket_buffer_size</name>
+                            <value>1048576</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.parent.message_size_max</name>
+                            <value>65530</value>
+                        </element>
+                        <element>
+                            <name>dds.transport.UDPv4.builtin.send_socket_buffer_size</name>
+                            <value>65530</value>
+                        </element>
+                    </value>
+                </property>
+
+
+                <resource_limits>
+                    <type_code_max_serialized_length>65530</type_code_max_serialized_length>
+                    <type_object_max_serialized_length>65530</type_object_max_serialized_length>
+                </resource_limits>
+
+                <discovery_config>
+
+                    <!-- Note: The heartbeat_period should not be less than the
+                    rtps_reliable_reader.heartbeat_suppression_duration in the
+                    DATA_READER_PROTOCOL QosPolicy; otherwise those HBs will be
+                    lost.
+                    -->
+                    <publication_writer>
+                        <heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>500000000</nanosec>
+                        </heartbeat_period>
+                        <fast_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>500000000</nanosec>
+                        </fast_heartbeat_period>
+                        <late_joiner_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>500000000</nanosec>
+                        </late_joiner_heartbeat_period>
+                    </publication_writer>
+
+                    <subscription_writer>
+                        <heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>500000000</nanosec>
+                        </heartbeat_period>
+                        <fast_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>500000000</nanosec>
+                        </fast_heartbeat_period>
+                        <late_joiner_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>500000000</nanosec>
+                        </late_joiner_heartbeat_period>
+                    </subscription_writer>
+
+                    <participant_message_writer>
+                        <heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>500000000</nanosec>
+                        </heartbeat_period>
+                        <fast_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>500000000</nanosec>
+                        </fast_heartbeat_period>
+                        <late_joiner_heartbeat_period>
+                            <sec>0</sec>
+                            <nanosec>500000000</nanosec>
+                        </late_joiner_heartbeat_period>
+                    </participant_message_writer>
+
+                    <participant_liveliness_lease_duration>
+                        <sec>3</sec>
+                        <nanosec>0</nanosec>
+                    </participant_liveliness_lease_duration>
+
+                    <participant_liveliness_assert_period>
+                        <sec>0</sec>
+                        <nanosec>250000000</nanosec>
+                    </participant_liveliness_assert_period>
+
+                    <max_liveliness_loss_detection_period>
+                        <sec>3</sec>
+                        <nanosec>0</nanosec>
+                    </max_liveliness_loss_detection_period>
+
+                </discovery_config>
+
+            </participant_qos>
+
+        </qos_profile>
+
+        <qos_profile name="dices_dim_profile" is_default_qos="false">
+
+            <datawriter_qos>
+
+                <reliability>
+                    <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+                    <max_blocking_time>
+                        <sec>60</sec>
+                    </max_blocking_time>
+                </reliability>                
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+
+            </datawriter_qos>
+
+            <datareader_qos>
+
+		            <reliability>
+                    <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+                    <max_blocking_time>
+                      <sec>60</sec>
+                    </max_blocking_time>
+                </reliability>
+
+		            <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                </history>
+
+            </datareader_qos>
+
+        </qos_profile>
+
+        <qos_profile name="dices_dim_durable_profile" is_default_qos="false">
+
+            <datawriter_qos>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                    <max_blocking_time>
+                        <sec>60</sec>
+                    </max_blocking_time>
+                </reliability>                
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                    <refilter>DDS_ALL_REFILTER_QOS</refilter>
+                </history>
+
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+                
+                <ownership>
+                    <kind>DDS_EXCLUSIVE_OWNERSHIP_QOS</kind>
+                </ownership>
+
+            </datawriter_qos>
+
+            <datareader_qos>
+
+		            <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                    <max_blocking_time>
+                      <sec>60</sec>
+                    </max_blocking_time>
+                </reliability>
+
+		            <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                    <refilter>DDS_ALL_REFILTER_QOS</refilter>
+                </history>
+
+                <durability>
+                    <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+                </durability>
+
+                <ownership>
+                    <kind>DDS_EXCLUSIVE_OWNERSHIP_QOS</kind>
+                </ownership>
+
+            </datareader_qos>
+
+        </qos_profile>
+
+        <qos_profile name="dices_dim_reliable_volatile_profile" is_default_qos="false">
+
+            <datawriter_qos>
+
+                <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                    <max_blocking_time>
+                        <sec>60</sec>
+                    </max_blocking_time>
+                </reliability>                
+
+                <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                    <refilter>DDS_ALL_REFILTER_QOS</refilter>
+                </history>
+
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+                
+                <ownership>
+                    <kind>DDS_EXCLUSIVE_OWNERSHIP_QOS</kind>
+                </ownership>
+
+            </datawriter_qos>
+
+            <datareader_qos>
+
+		            <reliability>
+                    <kind>RELIABLE_RELIABILITY_QOS</kind>
+                    <max_blocking_time>
+                      <sec>60</sec>
+                    </max_blocking_time>
+                </reliability>
+
+		            <history>
+                    <kind>KEEP_LAST_HISTORY_QOS</kind>
+                    <depth>1</depth>
+                    <refilter>DDS_ALL_REFILTER_QOS</refilter>
+                </history>
+
+                <durability>
+                    <kind>VOLATILE_DURABILITY_QOS</kind>
+                </durability>
+
+                <ownership>
+                    <kind>DDS_EXCLUSIVE_OWNERSHIP_QOS</kind>
+                </ownership>
+
+            </datareader_qos>
+
+        </qos_profile>
+
+    </qos_library>
+
+</dds>
+

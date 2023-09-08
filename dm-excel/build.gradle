@@ -1,0 +1,58 @@
+
+//
+// export classpath entries
+//
+
+eclipse.classpath.file {
+    whenMerged { classpath ->
+        classpath.entries.findAll { entry -> entry.kind == 'lib' }*.exported = false
+    }
+}
+
+String osName = System.getProperty("os.name").toLowerCase();
+System.out.println("OSNAME===========" + osName );
+
+dependencies {
+    println "DM-CORE COMPILING SUB: " + project.name
+    println "                 ROOT: " + project.rootDir
+
+	//if( project.name.startsWith( "ideacore") ) {
+	//	compile project(":ideacore/idea-core")
+	//} else {
+	//	compile project(":idea-core")
+	//}
+	compile( 'idea.idea:idea-core:0.80') { changing = true }
+	
+    //compile 'org.apache.xmlbeans:xmlbeans:3.1.0'
+    compile 'org.apache.poi:poi-ooxml:4.1.0'
+    compile 'org.apache.poi:poi-ooxml-schemas:4.1.0'
+    compile 'org.apache.poi:poi:4.1.0'
+    compile 'org.apache.logging.log4j:log4j-core:2.1'
+    
+    compile files('lib/mslinks.jar')
+    //if( osName.contains("windows") ) {
+    	compile files('lib/jarhdf5-1.10.2.jar');
+    // } else {
+    //	compile files('/usr/lib/java/jhdf5.jar')
+    // }
+    testCompile 'junit:junit:4.11'
+	testCompile 'com.jgoodies:jgoodies-binding:2.6.1'
+	testCompile 'cglib:cglib-full:2.0.2'
+	testCompile group: 'org.apache.commons', name: 'commons-proxy', version: '1.0'
+	testCompile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+}
+
+sourceSets {
+	main {
+		java {
+			exclude '**/GettableResource.java'
+			exclude '**/RemoteJSONRepository.java'
+			exclude '**/SimulationDriver.java'
+		}
+	}
+	//test {
+		//java {
+			//exclude '**/*.java'
+		//}
+	//}
+}

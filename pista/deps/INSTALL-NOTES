@@ -1,0 +1,9 @@
+
+MINGW64
+-------
+
+Had to remove -Werror in CMakeList.txt to compile libwebsockets...had to run commands outside of script.
+
+----------------------
+
+./Configure android-arm --prefix=/home/ccsta/git/pista/distribution/libs/armeabi-v7a --with-zlib-include=/opt/Android-Studio/ndk-bundle/sysroot/usr/lib/arm-linux-androideabi/usr/include --with-zlib-lib=/opt/Android-Studio/ndk-bundle/sysroot/usr/lib/arm-linux-androideabi/usr/lib zlib no-asm no-shared no-unit-test -D__ANDROID_API__=21

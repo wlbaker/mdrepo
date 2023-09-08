@@ -1,0 +1,34 @@
+
+option java_package = "idea.proto";
+option java_outer_classname = "PistaPB";
+// option optimize_for = LITE_RUNTIME;
+// option optimize_for = CODE_SIZE;
+
+import "pista-x.proto";
+
+import "u3.proto";
+import "imp731.proto";
+
+enum DevT { DT_PHYSICAL = 1; DT_DERIVED = 2; DT_ARCHIVE = 3; }
+enum DataTyp {INT_TYP = 1; LONG_TYP = 2; DOUBLE_TYP = 3; BYTE_TYP=4; STRING_TYP=5; OBJ_TYP=6; INT_ARR_TYP=14; OBJ_ARR_TYP=16; INVALID_ARR_TYP=255; }
+enum StreamID { WAVEFORM = 87; METRIC = 77; ANNOTATION=65; CAPABILITY=67; ALARM=76; CONNECTION=78; MANAGEMENT=89; DISPLAY=88; }
+ 
+enum MessageTyp { 
+  	PING = 1; STREAM_DATA=2; SECURITY=19;  RSRV_21=21; STATUS=22;
+  				JOBREQ = 26; JOBCANCEL = 28; 
+  				TRANREPLY=30; TRANACK=31; TRANNAK=32; TRANEND = 33; 
+  				// MGM_ADD=40; MGM_UPDATE=41; MGM_REMOVE=42; MGM_SHUTDOWN=43; 
+  				SETTINGS_REPLY=50; 
+  				LOGINREQ=60; PINGREQ = 61; CAPREQ = 62; SETTINGS_REQ=63; TRANREQ=64; DISPREQ=65; STATUSREQ=66;
+  				ARCHIVEREQ=71; ARCHIVEREPLY=72; 
+}
+
+message IppMessage {
+  required MessageTyp type = 1;
+
+  // required oneof test_oneof {
+     optional string name = 4;
+     optional SubMessage sub_message = 9;
+  // }
+  
+}

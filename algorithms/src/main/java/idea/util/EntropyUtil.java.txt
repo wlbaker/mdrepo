@@ -1,0 +1,761 @@
+package idea.util;
+
+import icuInterface.RpUtil;
+import icuInterface.lib.SignalBuffer;
+import idea.Stats;
+import idea.intf.StreamConsumer;
+import idea.intf.StreamProducer;
+import idea.message.StreamID;
+import idea.model.IntfUtil;
+import idea.model.PersistentItem;
+import idea.persistence.PiImpStudyIntf;
+import idea.persistence.PiImpTableIntf;
+import idea.persistmanager.PiImporterUtil;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+
+import obsolete.MultiscaleEntropyProcessorOrig;
+import joptsimple.OptionParser;
+import joptsimple.OptionSet;
+import idea.analysis.EntropyFilter;
+import idea.analysis.HRVProcessor;
+import idea.analysis.LyaParams;
+import idea.analysis.LyaProcessor;
+import idea.analysis.PNNxProcessor;
+import idea.analysis.ecg.HRVPoint;
+import idea.analysis.event.BeatBlock;
+import idea.qrsdet.AbstractDetector;
+import idea.qrsdet.DetectorFactory;
+import idea.schema.rp.RpMetric;
+import idea.schema.rp.RpSubject;
+
+public class EntropyUtil implements StreamConsumer {
+	private static final int LYAPUNOV_SPACING = 50;
+	private static int LYAPUNOV_BLOCKSIZE = 1024;
+	private AbstractDetector detector;
+	private int sampleRate;
+	private static int ENTROPY_NSAMPLES = 200;
+	private static double ENTROPY_TOL = -6; // 0.2;
+
+	private int totSamples = 0;
+	// double[] rri_d = new double[200];
+	private SignalBuffer<Integer> rri_d;
+
+	// int[] rri_sen = new int[ENTROPY_SAMPLES];
+	int[] rri_i200 = new int[200];
+	int[] rri_i800 = new int[800];
+	static double[] rri_lya;
+	private int mstime = 0;
+
+	private static int maxEpoch = 2;
+
+	private DecimalFormat df4 = new DecimalFormat("0.000");
+	private DecimalFormat df3 = new DecimalFormat("0.000");
+	private DecimalFormat df2 = new DecimalFormat("0.00");
+
+	private static HRVProcessor hrvProcessor;
+	private static PrintStream metric_out;
+	private static PrintStream rri_out = null;
+	private static Date sampleDate;
+
+	private static boolean doQ = false;
+	private static boolean doRMSSD = false;
+	private static boolean doSD = false;
+
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+	// private static OldLya lyaProcessor;
+	private static LyaProcessor lyaProcessor;
+	private static double lastLyapunov = 0.0;
+	static LyaParams parms;
+
+	private static LinkedList<Integer> multiscaleEntropySteps;
+	private static MultiscaleEntropyProcessorOrig msEntropy;
+	private static boolean pnn;
+	private static double[] pnnBucket;
+
+	static {
+		metric_out = System.out;
+	}
+
+	public EntropyUtil(AbstractDetector detector, int sampleRate, boolean append) {
+
+		this.rri_d = new SignalBuffer<Integer>(ENTROPY_NSAMPLES, true);
+		this.sampleRate = sampleRate;
+		this.detector = detector;
+
+		if (detector != null) {
+			detector.addStreamListener(StreamID.MEASUREMENT, this);
+		}
+
+		if (append == false) {
+
+			metric_out.print("DATE_TIME\tSEC_TIME\tINTERVAL_MS"); // \tSD_M\tMEAN");
+
+			metric_out.print("\tENTROPY\tSD");
+
+			if (doQ) {
+				metric_out.print("\tQ");
+			}
+			if (doRMSSD) {
+				metric_out.print("\tRMSSD");
+			}
+			if (lyaProcessor != null) {
+				metric_out.print("\tLYA");
+				metric_out.print("\tLYA_ASY");
+			}
+			if (hrvProcessor != null) {
+				metric_out.print("\tHF\tLF\tHF_LF");
+			}
+			if (msEntropy != null) {
+				for (Integer step : multiscaleEntropySteps) {
+					metric_out.print("\tMS");
+					metric_out.print(step);
+				}
+			}
+			if (pnn) {
+				for (double d : pnnBucket) {
+					metric_out.print("\tPNN");
+					metric_out.print((int) d);
+				}
+			}
+			metric_out.println();
+
+			if (rri_out != null) {
+				rri_out.println("TM\tTOTMS\tSEC\tIVL\tMS");
+			}
+		}
+
+	}
+
+	public static void setMetricOutputStream(PrintStream out) {
+		metric_out = out;
+	}
+
+	public static void setRRIOutputStream(PrintStream out) {
+		rri_out = out;
+	}
+
+	double mean;
+	Number sd;
+	double variance;
+	double[] entropyValue = new double[10];
+
+	private void get_smv() {
+		mean = 0.0;
+
+		int tot = rri_d.getSampleCount();
+		for (int i = 0; i < tot; ++i) {
+			mean += rri_d.get(i); // rwaves[i];
+		}
+		mean /= tot;
+
+		for (int i = 0; i < tot; ++i) {
+			variance += Math.pow(rri_d.get(i) - mean, 2.0);
+		}
+		variance /= (tot - 1);
+
+		sd = Math.sqrt(variance);
+	}
+
+	public void rwaveDetect(int rPos, int interval, int rAmplitude, int leadId, int detId) {
+
+		int msInterval = (interval * 1000) / sampleRate;
+		mstime += msInterval;
+
+		long tm = sampleDate.getTime();
+		tm += msInterval;
+		sampleDate.setTime(tm);
+
+		double secTime = mstime / 1000.0;
+
+		// if( secTime > 54558 ) { //secTime > 14766 ) {
+		// System.err.println("debug here for animal id 420");
+		// }
+
+		if (rri_out != null) {
+			rri_out.print(sdf.format(sampleDate));
+			rri_out.print("\t");
+			rri_out.print(mstime);
+			rri_out.print("\t");
+			rri_out.print(secTime);
+			rri_out.print("\t");
+			rri_out.print(interval);
+			rri_out.print("\t");
+			rri_out.print(msInterval);
+			rri_out.println();
+		}
+		/*
+		 * THESE ARE UNDESIRABLES!
+		 * 
+		 * SHOULD USE CIRCULAR BUFFER
+		 */
+
+		for (int i = 0; i < 199; i++) {
+			rri_i200[i] = rri_i200[i + 1];
+		}
+		for (int i = 0; i < 799; i++) {
+			rri_i800[i] = rri_i800[i + 1];
+		}
+
+		rri_i200[199] = msInterval; // interval;
+		rri_i800[799] = msInterval; // interval;
+		rri_d.addData(msInterval);
+
+		if (msEntropy != null) {
+			msEntropy.setRRI(rri_d);
+		}
+
+		if (rri_lya != null) {
+			for (int i = 0; i < LYAPUNOV_BLOCKSIZE - 1; i++) {
+				rri_lya[i] = rri_lya[i + 1];
+			}
+
+			rri_lya[LYAPUNOV_BLOCKSIZE - 1] = msInterval; // interval;
+		}
+
+		totSamples++;
+
+		Number saEntropy = null;
+		sd = null;
+		Number q = null;
+
+		if (totSamples > ENTROPY_NSAMPLES) {
+
+			get_smv();
+			if (ENTROPY_TOL < 0) {
+				saEntropy = EntropyFilter.SaEn(rri_d, -ENTROPY_TOL, maxEpoch);
+
+			} else {
+				saEntropy = EntropyFilter.SaEn(rri_d, sd.doubleValue() * ENTROPY_TOL, maxEpoch);
+
+				if (saEntropy.doubleValue() > 10.0) {
+					saEntropy = 10.0; // caused when saEntropy goes to
+					// infinity...rfactor too small
+				}
+			}
+			if (sd != null && sd.doubleValue() > 0) {
+				q = saEntropy.doubleValue() + Math.log(0.4) + Math.log(sd.doubleValue());
+			}
+		}
+
+		metric_out.print(sdf.format(sampleDate) + "\t" + df3.format(secTime) //
+				+ "\t" + msInterval // interval
+		);
+
+		metric_out.print("\t");
+		if (saEntropy != null && saEntropy.doubleValue() > 0) {
+			String txt = df3.format(saEntropy);
+			metric_out.print("?".equals(txt) ? "" : txt);
+		}
+		metric_out.print("\t");
+		if (sd != null) {
+			metric_out.print(df4.format(sd));
+		}
+
+		if (doQ) {
+			metric_out.print("\t");
+			if (q != null) {
+				String txt = df3.format(saEntropy);
+				metric_out.print("?".equals(txt) ? "" : txt);
+			}
+		}
+		if (doRMSSD) {
+			metric_out.print("\t");
+			if (totSamples > rri_i200.length) {
+				double rmssd = Stats.rmssd(rri_i200);
+				metric_out.print(df3.format(rmssd));
+			}
+		}
+
+		if (lyaProcessor != null) {
+			Double lastLyapunov = lyaProcessor.add(tm, interval);
+			Double asymptote = null;
+			metric_out.print("\t");
+			if (lastLyapunov != null) {
+				metric_out.print(df3.format(lastLyapunov));
+				asymptote = lyaProcessor.getDivergenceAsymptote();
+			}
+			metric_out.print("\t");
+			if (asymptote != null) {
+				metric_out.print(df3.format(asymptote));
+			}
+			// System.out.println( " " + lastLyapunov + " asymptote: " +
+			// asymptote );
+		}
+
+		if (hrvProcessor != null) {
+			double hf = 0.0;
+			double lf = 0.0;
+			double hf_lf = 0.0;
+
+			if (totSamples > 200) {
+				HRVPoint hrv = hrvProcessor.ComputeHRV(rri_i200);
+				hf = hrv.getHF();
+				lf = hrv.getLF();
+				hf_lf = hrv.getHF_LF();
+			}
+			metric_out.print("\t" + df2.format(hf) + "\t" + df2.format(lf) + "\t" + df2.format(hf_lf));
+		}
+
+		if (msEntropy != null) {
+			for (Integer step : multiscaleEntropySteps) {
+				metric_out.print("\t");
+				if (totSamples >= 200 && (totSamples % step) == 0) {
+					double ms = msEntropy.process(step);
+					metric_out.print(df3.format(ms));
+				}
+			}
+		}
+		if (pnn) {
+			if (totSamples < 800) {
+				for (int i = 0; i < pnnBucket.length; i++) {
+					metric_out.print("\t");
+				}
+			} else {
+				double[] vals = PNNxProcessor.PNNx(pnnBucket, rri_i800);
+				int idx = 0;
+				for (int i = 0; i < pnnBucket.length; i++) {
+					metric_out.print("\t");
+					metric_out.print(vals[idx++]);
+				}
+			}
+		}
+
+		metric_out.println();
+
+		// System.out.println( "" + msInterval + "\t" + saEntropy + "\t" +
+		// msEntropy2 );
+	}
+
+	private static void processRriFile(String fileName, int sampleRate, boolean hasTime, boolean asSec, boolean append)
+			throws IOException {
+
+		if (sampleDate == null) {
+			sampleDate = new Date(); // default to now...in case we are using
+			// direct RRI's
+		}
+
+		long startTime = sampleDate.getTime();
+
+		File file = new File(fileName);
+		FileReader strm = new FileReader(file);
+		BufferedReader reader = new BufferedReader(strm);
+
+		EntropyUtil anal = new EntropyUtil(null, sampleRate, append);
+
+		String del = "[\t, ]+";
+
+		double prev_t = 0;
+
+		String line = reader.readLine(); // skip header line
+
+		do { // for each row
+			line = reader.readLine();
+			if (line == null || line.length() == 0) {
+				break;
+			}
+			String[] ar = line.split(del);
+
+			if (ar.length < 1) {
+				continue; // skip empty line!???...maybe start of file
+
+			}
+
+			int col = 0;
+			if (hasTime) {
+				double curr_t = Double.parseDouble(ar[0]);
+				long ms = (long) (prev_t * 1000.0) + startTime;
+				sampleDate.setTime(ms);
+				prev_t = curr_t;
+				col++;
+			}
+
+			double d = Double.parseDouble(ar[col]);
+			if (asSec) {
+				d = d * 1000; // convert to ms
+			}
+			int rri = (int) (d + 0.5);
+			anal.rwaveDetect(0, rri, 1, 0, 0);
+		} while (true);
+
+		reader.close();
+		strm.close();
+	}
+
+	public static void processWaveformFile(String detectorName, File file, String devName, String sigCode,
+			boolean append) throws IOException {
+
+		if (!file.exists()) {
+			System.out.println("File not found.");
+			return;
+		}
+		PiImpStudyIntf importer = PiImporterUtil.getImporterFromFile(file);
+
+		if (importer == null) {
+			System.out.println("File format not recognized.");
+			return;
+		}
+
+		importer.connect();
+
+		if (sampleDate == null) {
+			RpSubject header = importer.getStudyHeader();
+			sampleDate = header.getSurgeryDate();
+		}
+		PiImpTableIntf[] devs = importer.getDevices();
+
+		PiImpTableIntf importDev = getImportDevice(devs, devName);
+		if (importDev == null) {
+			return;
+		}
+		RpMetric importWave = RpUtil.getMetricFromStreamID(importDev.getConfiguration(), StreamID.WAVEFORM, sigCode);
+		if (importWave == null) {
+			return;
+		}
+
+		String importWaveLoc = importWave.getLocation();
+
+		int sampleRate = importWave.getSampleRate();
+
+		AbstractDetector detector = DetectorFactory.createDetector(detectorName, importWave);
+
+		if (detector == null) {
+			System.err.println("unknown R-Wave detector: " + detectorName);
+			System.exit(0);
+		}
+
+		EntropyUtil anal = new EntropyUtil(detector, sampleRate, append);
+
+		PersistentItem msg;
+
+		while ((msg = importer.next()) != null) {
+			if (msg.getStreamID() == StreamID.WAVEFORM.getCode() ) {
+
+				RpMetric m = msg.getMetric(importWaveLoc);
+				if( m != null ) {
+					int[] vals = (int[])IntfUtil.getRawValue(msg, m);
+					detector.addWaveform(m,vals);
+				}
+
+			}
+		}
+
+		importer.disconnect();
+
+	}
+
+	private static PiImpTableIntf getImportDevice(PiImpTableIntf[] devs, String devName) {
+		boolean list = false;
+		if ("list".equals(devName)) {
+			System.out.println("device name");
+			System.out.println("---------------------------------------------");
+			list = true;
+		}
+
+		if (devs.length == 0) {
+			System.out.println("NO DEVICES FOUND");
+			return null;
+		}
+
+		PiImpTableIntf importDev = null;
+		for (PiImpTableIntf dev : devs) {
+			if (dev.getConfiguration() == null) {
+				System.err.println("null device config: " + dev);
+				continue;
+			}
+			String name = dev.getConfiguration().getName();
+
+			if (devName == null) {
+				devName = name; // autoselect first device
+			}
+			if (name.startsWith(devName)) {
+				importDev = dev;
+			}
+			if (list)
+				System.out.println(" " + name);
+		}
+
+		if (list) {
+			return null;
+		}
+
+		if (importDev == null) {
+			System.out.println("device not found: " + devName);
+		}
+
+		return importDev;
+	}
+
+	private static boolean isRRI(String detectorName) {
+		return detectorName.equals("nil") || detectorName.startsWith("nul") || detectorName.startsWith("rri");
+	}
+
+	private static boolean isTmRRI(String detectorName) {
+		return detectorName.equals("tmnil") || detectorName.startsWith("tmnul") || detectorName.startsWith("tmrri");
+	}
+
+	@Override
+	public void streamEvent(int jobID, StreamProducer source, StreamID sid, PersistentItem item) {
+
+		if (sid == StreamID.MEASUREMENT) {
+
+			BeatBlock block = (BeatBlock) item;
+
+			int rPos = block.getPos();
+			int rrInterval = block.getSamp_interval();
+			int rAmplitude = block.getAmplitude();
+			int leadId = block.getLead_id();
+			int detId = block.getDetector_id();
+
+			rwaveDetect(rPos, rrInterval, rAmplitude, leadId, detId);
+		}
+	}
+
+	/**
+	 * @param args
+	 * @throws IOException
+	 * @throws ParseException
+	 */
+	public static void main(String[] args) throws IOException, ParseException {
+
+		int verbose = 0;
+		int sampleRate = 1000;
+
+		String devName = "list";
+		String sigName = "list";
+		boolean append = false;
+
+		sampleDate = null; // need to get rid of these globals!
+
+		multiscaleEntropySteps = new LinkedList<Integer>();
+
+		OptionParser parser = new OptionParser() {
+			{
+				accepts("detector").withRequiredArg().describedAs(
+						"detector: pt1, pt2, cat, fb, mobd, nul, tmnul -- used for RRI's");
+
+				accepts("verbose");
+				accepts("Q");
+				accepts("hrv");
+				accepts("rrisec");
+				accepts("island");
+				accepts("append");
+				accepts("replace"); // default value...opposite of append
+				accepts("rmssd");
+				accepts("sd");
+				accepts("rate").withRequiredArg().describedAs("Sample rate for RRI values, used with nul detector.");
+				accepts("etol").withRequiredArg().describedAs(
+						"Positive values are % SD.  Negative values are -(absolute-r-value).");
+				accepts("mse").withOptionalArg().describedAs("MultiScale Entropy");
+				accepts("pnn").withOptionalArg().describedAs("PNN 20,30,40,50");
+				accepts("epoch").withRequiredArg().describedAs("For Entropy, embedding dimension.");
+				accepts("lya").withRequiredArg().describedAs("Lyapunov: m,J,W,divergT.");
+				accepts("out").withRequiredArg().describedAs("Metrics output file.");
+				accepts("rriout").withRequiredArg().describedAs("RRI output file.");
+				accepts("time").withRequiredArg().describedAs("Start time of the form YYYYMMDD-hhmmss");
+				accepts("ewin").withRequiredArg().describedAs("Number of pooints for entropy window, default 200");
+				accepts("lwin").withRequiredArg().describedAs("Number of pooints for lyapunov window");
+				accepts("dev").withRequiredArg().describedAs("Device name");
+				accepts("sig").withRequiredArg().describedAs("Signal name");
+
+				acceptsAll(Arrays.asList("h", "?"), "show help");
+			}
+		};
+
+		OptionSet options = parser.parse(args);
+
+		if (options.has("?") || options.has("help")) {
+			parser.printHelpOn(System.out);
+			return;
+		}
+
+		String detectorName = "pt1";
+		metric_out = System.out;
+
+		if (options.has("etol")) {
+			String v = (String) options.valueOf("etol");
+			ENTROPY_TOL = Double.parseDouble(v);
+		}
+		if (options.has("append")) {
+			append = true;
+		}
+		if (options.has("epoch")) {
+			String v = (String) options.valueOf("epoch");
+			maxEpoch = Integer.parseInt(v);
+		}
+		if (options.has("ewin")) {
+			String v = (String) options.valueOf("ewin");
+			ENTROPY_NSAMPLES = Integer.parseInt(v);
+		}
+		if (options.has("lwin")) {
+			String v = (String) options.valueOf("lwin");
+			LYAPUNOV_BLOCKSIZE = Integer.parseInt(v);
+		}
+		if (options.has("Q")) {
+			doQ = true;
+		}
+		if (options.has("rmssd")) {
+			doRMSSD = true;
+		}
+		if (options.has("sd")) {
+			doSD = true;
+		}
+		if (options.has("detector")) {
+			detectorName = (String) options.valueOf("detector");
+		}
+		if (options.has("dev")) {
+			devName = (String) options.valueOf("dev");
+		}
+		if (options.has("sig")) {
+			sigName = (String) options.valueOf("sig");
+		}
+		if (options.has("rate")) {
+			sampleRate = Integer.parseInt(options.valueOf("rate").toString());
+		}
+		if (options.has("mse")) {
+			msEntropy = new MultiscaleEntropyProcessorOrig(800, -2, 2);
+			String v = (String) options.valueOf("mse");
+			if (v == null) {
+				v = "2,3,4";
+			}
+
+			String[] ar = v.split(",");
+			for (String param : ar) {
+				multiscaleEntropySteps.add(Integer.parseInt(param));
+			}
+
+		}
+		if (options.has("pnn")) {
+			pnn = true;
+			String v = (String) options.valueOf("pnn");
+			if (v == null) {
+				v = "10,20,30,40,50";
+			}
+
+			String[] ar = v.split(",");
+			pnnBucket = new double[ar.length];
+			int i = 0;
+			for (String param : ar) {
+				pnnBucket[i++] = Double.parseDouble(param);
+			}
+
+		}
+		if (options.has("lya")) {
+			String lyaParams = (String) options.valueOf("lya");
+			String[] ar = lyaParams.split(",");
+
+			parms = new LyaParams();
+			parms.m = Integer.parseInt(ar[0]);
+			parms.J = Integer.parseInt(ar[1]);
+			parms.W = Integer.parseInt(ar[2]);
+			parms.divergeT = Integer.parseInt(ar[3]);
+
+			rri_lya = new double[LYAPUNOV_BLOCKSIZE];
+
+			// lyaProcessor = new OldLya(parms.divergeT, 1);
+			lyaProcessor = new LyaProcessor(LYAPUNOV_BLOCKSIZE, 100, parms.W, parms.divergeT, parms.m, parms.W,
+					parms.J, null);
+		}
+
+		if (options.has("hrv")) {
+			System.err.println("HARDCODED RATE OF 1000 FOR HRVPROCESSOR");
+			sampleRate = 1000; // ERROR: should not be here!!!!
+
+			hrvProcessor = new HRVProcessor(sampleRate, // hrv processor
+					sampleRate * 120, // two minutes worth of data...actually,
+					// this
+					// is a lie
+					// there is some explanation that needs to be done here
+					1024);
+		}
+
+		if (options.has("out")) {
+			File f = new File((String) options.valueOf("out"));
+			if (f.exists() == false) {
+				append = false; // can't append unless the file exists
+			}
+			FileOutputStream fout = new FileOutputStream(f, append);
+			metric_out = new PrintStream(fout);
+		}
+		if (options.has("rriout")) {
+			File f = new File((String) options.valueOf("rriout"));
+			FileOutputStream fout = new FileOutputStream(f, append);
+			rri_out = new PrintStream(fout);
+		}
+		if (options.has("time")) {
+			SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd-hhmmss");
+			sampleDate = df.parse((String) options.valueOf("time"));
+		}
+		if (options.has("verbose")) {
+			verbose++;
+			System.err.println("V1.2 dim=" + maxEpoch);
+
+			System.err.println(" +ewin=" + ENTROPY_NSAMPLES);
+			System.err.println(" +tol=" + ENTROPY_TOL);
+			System.err.print(" +detector=" + detectorName);
+			if (isRRI(detectorName)) {
+				System.err.print(" rate=" + sampleRate);
+			}
+			System.err.println();
+
+			if (doQ) {
+				System.err.println(" +Q");
+			}
+
+			if (lyaProcessor != null) {
+				System.err.format(" +lya m=%d,J=%d,W=%d,divergeT=%d\n", parms.m, parms.J, parms.W, parms.divergeT);
+				System.err.format(" lwin=%d spacing=%d\n", LYAPUNOV_BLOCKSIZE, LYAPUNOV_SPACING);
+			}
+
+			if (msEntropy != null) {
+				System.err.print(" +mse ");
+				System.err.println(multiscaleEntropySteps);
+			}
+		}
+
+		if (detectorName == null) {
+			System.err.println("ERROR: must indicate a detector.");
+			System.err.println();
+			parser.printHelpOn(System.err);
+			return;
+		}
+
+		List<String> names = options.nonOptionArguments();
+
+		if (names.size() == 0) {
+			System.err.println("ERROR: must indicate a file to process.");
+			return;
+		}
+
+		for (String fileName : names) {
+			try {
+				if (isRRI(detectorName) || isTmRRI(detectorName)) {
+					boolean asSec = options.has("rrisec");
+					processRriFile(fileName, sampleRate, isTmRRI(detectorName), asSec, append);
+				} else {
+					File f = new File(fileName);
+					processWaveformFile(detectorName, f, devName, sigName, append);
+				}
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+				if (verbose > 0) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+}

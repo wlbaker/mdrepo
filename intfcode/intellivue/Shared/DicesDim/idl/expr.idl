@@ -1,0 +1,79 @@
+/**
+ * @file    expr.idl
+ * @author  Brendan Murphy
+ * @date    NOV 2015
+ * @brief   DICES DIM Expiremental (expr) Topics
+ */
+
+
+#include <patdemo.idl>
+
+module expr
+{
+//=============================================================================
+/**
+ * Globally Unique Identifier (GUID)
+ * 
+ * The GUID is composed of a GuidPrefix_t prefix capable of holding 12 bytes,
+ * and an EntityId_t entityId capable of holding 4 bytes.
+ */
+typedef octet HostId[6];
+struct GuidTimespec
+{
+  //  Number of seconds since 1970-01-01 00:00 UTC
+  octet seconds[4]; //@key
+  //  Fractional seconds to 100-microsecond resolution
+  octet fraction[2]; //@key
+}; //@top-level false
+
+struct GuidPrefix_t
+{
+  HostId hostid; //@key
+  GuidTimespec timestamp; //@key
+}; //@top-level false
+
+#define GUIDPREFIX_UNKNOWN {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}
+
+struct Diagnosis : ice::Top
+{
+  string<ice::LONG_STRING_LEN> diagnosis;
+  sequence<string<ice::LONG_STRING_LEN> > procedure_list;
+  string<ice::LONG_STRING_LEN> physician;
+  ice::PatientIdentification patient_identification;
+}; // @top-level true
+
+const string DiagnosisTopic = "expr--Diagnosis";
+const string DiagnosisReqTopic = "expr--DiagnosisReq";
+
+struct DxHistory : ice::Top
+{
+  string<ice::LONG_STRING_LEN> health_problem;
+  string<ice::LONG_STRING_LEN> recent_procedure;
+  ice::PatientIdentification patient_identification;
+  ice::INTU16 problem_count;
+  sequence<string<ice::LONG_STRING_LEN> > problem_list;
+  string<ice::LONG_STRING_LEN> recent_procedures;
+}; // @top-level true
+
+const string DxHistoryTopic = "expr--DxHistory";
+const string DxHistoryReqTopic = "expr--DxHistoryReq";
+
+struct Medication
+{
+  string<ice::LONG_STRING_LEN> name; //@key
+  string<ice::LONG_STRING_LEN> dose;
+}; // @top-level false
+typedef sequence<Medication> MedicationList;
+
+struct PatientMedication : ice::Top
+{
+  ice::PatientIdentification patient_identification;
+  ice::INTU16 medication_count;
+  MedicationList medication_list;
+}; // @top-level true
+
+const string PatientMedicationTopic = "expr--PatientMedication";
+const string PatientMedicationReqTopic = "expr--PatientMedicationReq";
+
+};
+

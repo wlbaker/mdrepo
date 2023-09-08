@@ -1,0 +1,12 @@
+syntax = "proto3";
+package bmp180;
+
+option java_package = "pista.model";
+// option java_outer_classname = "UU"
+
+message measurement {
+    int64 tm = 1;
+    float T = 2;
+    float P = 3;
+}
+

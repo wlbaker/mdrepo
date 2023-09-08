@@ -1,0 +1,141 @@
+/**
+ * @file    allergy.idl
+ * @author  AF
+ * @date    APR 2014
+ * @brief   DICES DIM Allergy object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201 (x73)
+ * @see     HITSP/C154 Data Dictionary
+ * @see     HITSP/C80 Clinical Document and Message Terminology
+ * @see     HITSP/C32 Summary Documents
+ * @see     HITSP/C83 Content Modules
+ */
+#include <patdemo.idl>
+
+module ice
+{
+/**
+ * Code System Types. A code system uniquely identifies the data value set.
+ * @see HITSP/C80 section 2.1.2
+ */
+struct CodeSystemPair
+{
+  // OID (dotted notation) that uniquely identifies code system.
+  string<MEDIUM_STRING_LEN>  code_system_identifier;
+
+  // Offical name of code system as determined by its source.
+  string<MEDIUM_STRING_LEN>  code_system_name;
+}; //@top-level false
+
+/**
+ * CodeLabelPair specifies a code and code label within a coding system.
+ */
+struct CodeLabelPair
+{
+  CodeSystemPair  code_system_pair; // code system
+  string<SHORT_STRING_LEN>  code;   // code value
+  string<MEDIUM_STRING_LEN> label;  // code label
+}; //@top-level false
+
+/**
+ * @see HITSP/C80 section 2.2.3.4.2, table 2-86 Allergy/Adverse Event Type
+ * Value Definition.
+ * The SNOMED CT has been limited by HITSP to the value set reproduced below.
+ */
+enum AdverseEventType
+{
+  propensity_adverse_reactions = 420134006, 
+  propensity_adverse_reactions_substance = 418038007,
+  propensity_adverse_reactions_drug = 419511003,
+  propensity_adverse_reactions_food = 418471000,
+  substance_allergy = 419199007,
+  drug_allergy = 416098002,
+  food_allergy = 414285001,
+  drug_intolerance = 59037007,
+  food_intolerance = 235719002
+};
+
+/**
+ * Severity of reaction.
+ * @see HITSP/C80 Section 2.2.3.4.3 Allergy/Adverse Event Severity.
+ * This section specifies that adverse event severity should be coded as
+ * problem severity.
+ * @see HITSP/C80 Section 2.2.3.1.6 (Problem Severity).
+ * The SNOMED CT has been limited by HITSP to the value set reproduced below
+ * (Problem  Severity Value Set Definition.) These terms derive from the
+ * severities (272141005) concept.
+ */
+enum CodedSeverityType
+{
+  mild = 255604002, 
+  mild_to_moderate = 371923003,
+  moderate = 6736007,
+  moderate_to_severe = 371924009,
+  severe = 24484000,
+  fatal = 399166001
+};
+
+struct SeverityType
+{
+  CodedSeverityType  coded_severity;
+  string<LONGLONG_STRING_LEN> free_text_severity;
+}; //@top-level false
+
+/**
+ * Adverse event reaction. Any unintended effects of the product. For example:
+ * full body rash, nausea.
+ * @see HITSP/C80 Section 2.2.3.4.1 Allergy/Adverse Event (Reaction). This
+ * section specifies that adverse event reaction should be coded as problem.
+ * @see HITSP/C80 Section 2.2.3.1.1 (Problem). This section defines the problem
+ * value set. The SNOMED CT has been limited by HITSP to terms decending from
+ * the Clinical Findings (404684003) or Situation with Explicit Context
+ * (243796009) hierarchies.
+ */
+struct ReactionType
+{
+  CodeLabelPair  coded_reaction;
+  string<LONGLONG_STRING_LEN>  free_text_reaction;
+  SeverityType severity;
+}; //@top-level false
+typedef sequence<ReactionType> ReactionList;
+
+/**
+ * Adverse Event Entry represents a single instance of an adverse event.
+ * Note: coded_product represents the product or agent that causes the
+ * intolerance. coded_product can be food/non-medicinal, drug class or specific
+ * medication.
+ * See the following sections for coding information.
+ * @see HITSP/C80 Section 2.2.3.3.11 (Ingredient Name)
+ *  for food and non-medicinal products.
+ * @see HITSP/C80 Section 2.2.3.3.9 (Medication Drug Class)
+ *  for drug class product.
+ * @see HITSP/C80 Section 2.2.3.3.7 (Medication Brand Name) and
+ * @see HITSP/C80 Section 2.2.3.3.8 (Medication Clinical Drug Name)
+ *  for specific medication products.
+ */
+struct AdverseEventEntry
+{
+  Date  adverse_event_date;
+  AdverseEventType  adverse_event_type;
+  CodeLabelPair  coded_product;  
+  string<LONG_STRING_LEN> free_text_product;
+  ReactionList  reactions;
+}; //@top-level false    
+typedef sequence<AdverseEventEntry> AdverseEventList;
+
+/**
+ * Allergy object
+ */
+struct Allergy : Top
+{
+  PatientIdentification patient_id; // patient id from information source
+
+  // Could indicate no known allergies/adverse events (if = 0)?
+  INTU16 adverse_event_count;
+
+  AdverseEventList adverse_events;
+}; //@top-level true
+const string AllergyTopic = "ice--Allergy";
+const string AllergyReqTopic = "ice--AllergyReq";
+
+};

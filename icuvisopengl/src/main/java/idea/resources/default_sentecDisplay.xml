@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-display-impl xmlns="http://idea.mil/rp">
+    <numBands>3</numBands>
+    <numPBoxes>3</numPBoxes>
+    <horizPBoxes>0</horizPBoxes>
+    <vertPBoxes>3</vertPBoxes>
+    <opmode>0</opmode>
+    <bandData>
+        <bandNum>1</bandNum>
+        <bandAttr>1</bandAttr>
+        <waveformSetup>
+            <sweepSpeed>0</sweepSpeed>
+            <sampleRate>1</sampleRate>
+            <scaleValue1>0</scaleValue1>
+            <scaleValue2>0</scaleValue2>
+            <waveColor>10</waveColor>
+            <desc>
+                <name>CCO</name>
+                <code>CCO</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x00</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <sample-rate>0</sample-rate>
+                <samples-per-packet>1</samples-per-packet>
+            </desc>
+        </waveformSetup>
+    </bandData>
+    <pboxData>
+        <pboxId>1</pboxId>
+        <pboxFormat>91</pboxFormat>
+        <foreground>10</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">PACO2</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+        <pboxId>2</pboxId>
+        <pboxFormat>92</pboxFormat>
+        <foreground>3</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">SPO2</location>
+        </paramSetup>
+    </pboxData>
+    <pboxData>
+        <pboxId>3</pboxId>
+        <pboxFormat>92</pboxFormat>
+        <foreground>5</foreground>
+        <paramSetup>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">HR</location>
+        </paramSetup>
+    </pboxData>
+</rp-display-impl>

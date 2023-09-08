@@ -1,0 +1,147 @@
+/**
+ * @file    cplan.idl
+ * @author  WMS
+ * @date    MAR 2017
+ * @brief   Define objects concerning Care Plan.
+ * @see:    https://www.hl7.org/fhir/careplan.html
+ *          "DocBox ICE information model (ICE-IM) – Care Plan"
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Care Plan object
+ *
+ * The CarePlan object represents a healthcare plan for patient. Serves to bind
+ * instances of CarePlanActivity objects.
+ */
+
+// CarePlanStatus
+// Indicates whether the plan is currently being acted upon, represents future
+// intentions or is now a historical record.
+// Ref: http://hl7.org/fhir/ValueSet/care-plan-status
+enum CarePlanStatus
+{
+  cps_unknown = 0,
+  // The authoring system doesn't know the current state
+
+  cps_draft = 1,
+  // In development or awaiting use but not yet intended to be acted upon
+
+  cps_active = 2,
+  // Intended to be followed and used as part of patient care
+
+  cps_suspended = 3,
+  // Temporarily stopped but expected to resume in future
+
+  cps_completed = 4,
+  // No longer in use and not expected to be followed or used in patient care
+
+  cps_entered_in_error = 5,
+  // Plan entered in error and voided
+
+  cps_canceled = 6
+  // The plan has been terminated prior to reaching completion
+  // (though it may have been replaced by a new plan)
+};
+
+struct CarePlan : Top
+{
+  GUID identifier;
+  // Unique identifier for the care plan. Binds instances of
+  // CarePlanActivity objects.
+
+  CarePlanStatus status;
+  // Indicates whether the plan is currently being acted upon, represents
+  // future intentions or is now a historical record.
+
+  string<LONGLONG_STRING_LEN> title;
+  // Human-friendly name for the CarePlan.
+
+  string<LONGLONG_STRING_LEN> description;
+  // Summary of nature of plan.
+
+  string<LONG_STRING_LEN> author;
+  // Person responsible for contents of the plan.
+}; //@top-level true
+const string CarePlanTopic = "ice--CarePlan";
+
+//=============================================================================
+/**
+ * Care Plan Activity object
+ *
+ * The CarePlanActivity object represents an action to occur as part of a
+ * Care Plan.
+ */
+
+// CarePlanActivityStatus
+// Indicates where the activity is at in its overall life cycle.
+// Ref: http://hl7.org/fhir/ValueSet/care-plan-activity-status
+enum CarePlanActivityStatus
+{
+  astat_unknown = 0,
+  // The authoring system doesn't know the current state
+
+  astat_not_started = 1,
+  // Activity is planned but no action has yet been taken
+
+  astat_scheduled = 2,
+  // Appointment or other booking has occurred but activity has not yet begun
+
+  astat_in_progress = 3,
+  // Activity has been started but is not yet complete
+
+  astat_on_hold = 4,
+  // Activity was started but has temporarily ceased with an expectation of
+  // resumption at a future time
+
+  astat_completed = 5,
+  // The activities have been completed (more or less) as planned
+
+  astat_canceled = 6
+  // The activities have been ended prior to completion (perhaps even before
+  // they were started).
+};
+
+struct CarePlanActivity : Top
+{
+  GUID care_plan_id; //@key
+  // Unique identifier for the care plan that this entry binds to.
+
+  INTU16 activity_id; //@key
+  // Unique identifier for this activity within the associated care plan.
+
+  INTU16 version_number;
+  // An activity can be edited. version_number identifies different versions of
+  // the same activity. The value increments when the activity text changes.
+
+  CareActivityCategory category;
+  // High-level categorization.
+
+  CarePlanActivityStatus status;
+  // Indicates where the activity is at in its overall life cycle. Indicates
+  // whether the activity is currently being acted upon, represents future
+  // intentions or is now a historical record.
+
+  string<MEDIUM_STRING_LEN> scheduled;
+  // The period, timing or frequency the described activity is to occur.
+  // For Medanta: Day | Night.
+
+  string<MEDIUM_STRING_LEN> grouping;
+  // Set of grouping criteria. Specific to the deploy environment.
+  // For Medanta: Current | Previous
+
+  boolean deleted;
+  // Meaning depends on context. For a Medanta ICE app, this means "Deleted from view".
+
+  string<LONGLONG_STRING_LEN> text;
+  // Activity description as free-text.
+
+  string<LONG_STRING_LEN> author;
+  // Person responsible for the activity text.
+}; //@top-level true
+const string CarePlanActivityTopic = "ice--CarePlanActivity";
+
+};

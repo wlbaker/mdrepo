@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libpistacxx
+Description: C++ bindings for libpista
+URL: http://www.softhorizons.com
+Requires: libpista
+Version: @PISTA_PACKAGE_VERSION@
+Libs: -L${libdir} -lpistacxx
+Libs.private: -lm
+Cflags: -I${includedir}

@@ -1,0 +1,13 @@
+SET (DEFINITIONS "-DNDEBUG -g -O2 -std=c++11  -pipe -Wall")
+
+# SET (DEFINITIONS "-g  -O2 -pipe -std=c++0x ")
+#         IF(DEBUG)
+#                 SET (DEFINITIONS "-ansi -g3 -pg -pipe -std=c++0x")
+#         ELSE(DEBUG)
+#                 IF(PEDANTIC)
+#                         SET (DEFINITIONS "-ansi -g -pg -pipe -Wall -Wstrict-null-sentinel -Weffc++ -Wold-style-cast -pedantic -std=c++0x")
+#                         SET (DEBUG 1)
+#                 ELSE(PEDANTIC)
+#                         SET (DEFINITIONS "-DNDEBUG -O5 -pipe -std=c++0x")
+#                 ENDIF(PEDANTIC)
+#         ENDIF(DEBUG)

@@ -1,0 +1,62 @@
+syntax = "proto3";
+package propaqm;
+
+option java_package = "pista.model";
+
+message ident {
+     string model = 1;  //[9];
+  	 string serial_no = 2; // [10];
+}
+
+message vitals { // settings
+        int64 tm = 1;
+        int32 sid = 2;
+
+        int32 monitored_bits = 3;
+        int32 alarm_bits = 4;
+        int32 datastate_bits = 5;
+        int32 temp0  = 6;  // Temp_0
+        int32 temp1  = 7;  // Temp_1
+        int32 temp2  = 8;  // Temp_2
+        int32 hr = 9;  // Hr
+        int32 fico2 = 10;  // Spo2
+        int32 patmode   = 11;
+
+        int32 spo2_spco = 12;   // 
+        int32 spo2_spmet = 13;  // 
+        int32 spo2_pvi  = 14;   // 
+        int32 spo2_pi   = 15;   // 
+        int32 spo2_spoc = 16;   // 
+        int32 spo2_sphb = 17;   // 
+        int32 spo2_pct  = 18;   // 
+
+        int32 nibp_sys = 19;  // Nibp.sys
+        int32 nibp_dia = 20;  // Nibp.dia
+        int32 nibp_map = 21;  // Nipb.map
+
+        int32 etco2 = 22;  // etco2
+        int32 resp = 23;  // resp rate
+
+        int32 ibp0_sys = 30;  // Ibp_0.sys
+        int32 ibp0_dia = 31;  // Ibp_0.dia
+        int32 ibp0_map = 32;  // Ibp_0.map
+
+        int32 ibp1_sys = 33;  // Ibp_1.sys
+        int32 ibp1_dia = 34;  // Ibp_1.dia
+        int32 ibp1_map = 35;  // Ibp_1.map
+
+        int32 ibp2_sys = 36;  // Ibp_2.sys
+        int32 ibp2_dia = 37;  // Ibp_2.dia
+        int32 ibp2_map = 38;  // Ibp_2.map
+}
+
+
+message sensors {
+        int64 tm = 1;
+        int32 sid = 2;
+
+	repeated int32 ecg = 3;
+	repeated int32 co2 = 4;
+	repeated int32 wf3 = 5;
+}
+

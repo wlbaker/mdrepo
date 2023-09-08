@@ -1,0 +1,59 @@
+syntax = "proto3";
+package mccul;
+
+option java_package = "pista.model";
+// option java_outer_classname = "UU"
+
+message mccul_settings {
+    // board_num is in PRIV structure, not settings
+    //  int32 board_num = 1;
+
+     int32 hzz = 2;
+     int32 rps = 3;
+     int32 ms  = 4;
+     int32 gain = 5;
+
+     int32 low_chan = 6;
+     int32 high_chan = 7;
+}
+
+message mccul_isensor {
+     int64 tm = 1;
+    repeated int32 ch0 = 2 [packed=true];
+    repeated int32 ch1 = 3 [packed=true];
+    repeated int32 ch2 = 4 [packed=true];
+    repeated int32 ch3 = 5 [packed=true];
+    repeated int32 ch4 = 6 [packed=true];
+    repeated int32 ch5 = 7 [packed=true];
+    repeated int32 ch6 = 8 [packed=true];
+    repeated int32 ch7 = 9 [packed=true];
+    repeated int32 ch8 = 10 [packed=true];
+    repeated int32 ch9 = 11 [packed=true];
+    repeated int32 ch10 = 12 [packed=true];
+    repeated int32 ch11 = 13 [packed=true];
+    repeated int32 ch12 = 14 [packed=true];
+    repeated int32 ch13 = 15 [packed=true];
+    repeated int32 ch14 = 16 [packed=true];
+    repeated int32 ch15 = 17 [packed=true];
+}
+
+message mccul_fsensor {
+     int64 tm = 1;
+    repeated float ch0 = 2 [packed=true];
+    repeated float ch1 = 3 [packed=true];
+    repeated float ch2 = 4 [packed=true];
+    repeated float ch3 = 5 [packed=true];
+    repeated float ch4 = 6 [packed=true];
+    repeated float ch5 = 7 [packed=true];
+    repeated float ch6 = 8 [packed=true];
+    repeated float ch7 = 9 [packed=true];
+    repeated float ch8 = 10 [packed=true];
+    repeated float ch9 = 11 [packed=true];
+    repeated float ch10 = 12 [packed=true];
+    repeated float ch11 = 13 [packed=true];
+    repeated float ch12 = 14 [packed=true];
+    repeated float ch13 = 15 [packed=true];
+    repeated float ch14 = 16 [packed=true];
+    repeated float ch15 = 17 [packed=true];
+}
+

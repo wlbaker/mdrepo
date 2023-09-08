@@ -1,0 +1,56 @@
+/**
+ * @file    rtsa.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Real Time Sample Array (RTSA) object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ */
+#include <sa.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ * Real Time Sample Array object (RTSA)
+ *
+ * A Sample Array that represents a real-time continuous waveform
+ */
+
+struct RTSAContext : SampleArrayContext
+{
+  Duration sample_period;
+  MetricMeasure sweep_speed; //@Optional
+  Duration average_reporting_delay; //@Optional
+
+  Duration sample_time_sync; //@Optional
+}; //@top-level true
+
+struct RTSAObservedValue : SampleArrayObservedValue
+{
+  long sequence_number; //@key
+  INT16 quiet_code_gen;  // Dummy val (code generator prohibits empty struct)
+}; //@top-level true
+
+/**
+ * RTSA Measurement
+ */
+const string RTSAMeasContextTopic = "ice--RTSAMeasContext";
+const string RTSAMeasContextReqTopic = "ice--RTSAMeasContextReq";
+const string RTSAMeasObservedValueTopic = "ice--RTSAMeasObservedValue";
+
+/**
+ * RTSA Calculation
+ */
+const string RTSACalcContextTopic = "ice--RTSACalcContext";
+const string RTSACalcContextReqTopic = "ice--RTSACalcContextReq";
+const string RTSACalcObservedValueTopic = "ice--RTSACalcObservedValue";
+
+/**
+ * RTSA Setting
+ */
+const string RTSASettContextTopic = "ice--RTSASettContext";
+const string RTSASettContextReqTopic = "ice--RTSASettContextReq";
+const string RTSASettObservedValueTopic = "ice--RTSASettObservedValue";
+
+};

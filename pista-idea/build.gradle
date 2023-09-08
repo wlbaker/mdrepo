@@ -1,0 +1,74 @@
+
+// apply plugin: 'eclipse'
+// apply plugin: 'maven'
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = "idea"
+version = '0.90'
+
+repositories {
+        mavenLocal()
+        mavenCentral()
+}
+
+// how to exclude a file or directory
+// ...i bet it works with eclipse project generation as well
+//
+sourceSets {
+    main {
+        java {
+            include '**'
+            exclude 'idea/driver/NIDAQmxOutputDriver.java'
+	}
+    }
+}
+
+
+dependencies {
+
+    implementation( 'idea:pista-bindings:0.90') { changing = true }
+    implementation( 'idea:jDAQmx:0.70') { changing = true }
+   		implementation project(":idea-rp-schema")
+   		implementation project(":idea-core-jpa")
+   		implementation project(":idea-core")
+   		implementation project(":dm-core")
+    //implementation( 'idea:idea-core:0.90') { changing = true }
+    //implementation( 'idea:idea-core-jpa:0.90') { changing = true }
+    //implementation( 'idea:idea-rp-schema:0.90') { changing = true }
+    
+    implementation 'org.hibernate:hibernate-entitymanager:5.4.6.Final'
+    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+    implementation 'com.fazecast:jSerialComm:2.5.2'
+    implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+    implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+
+
+    // implementation "org.mini2Dx:universal-tween-engine:6.3.3"
+    
+ implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'net.java.dev.jna:jna:4.1.0'
+    implementation files( 'lib/ljud-2015-04.jar' )
+
+	
+	// implementation files('../ideadrivers/lib/phidget.jar' )  // fixme: to be removed!
+
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+}
+
+configurations {
+	implementation {
+		description = "implementation classpath"
+		transitive = true
+	}
+	runtime {
+		extendsFrom implementation
+	}
+}
+
+

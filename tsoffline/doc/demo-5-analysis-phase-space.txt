@@ -1,0 +1,143 @@
+
+# Bill I would not have chosen this case  for either the Ensemble or Phase Space 
+# demonstration.   The better case was the one I had scaled for you originally 
+# 4685 REST.  It is very NICE FILE!!    It has  been scaled and offset correctly.. 
+#
+# The file is 4685 REST.  I tried running tsOffline 32� to demonstrate but 
+# there are now glitch in my version.
+#
+
+Hello, my name is Bill Baker.  Welcome to our continuation of tutorials on tsOffline, 
+the analysis software developed at the US Army Institute of Surgical Research.
+
+--
+
+In this demo, we will look at the phase space representation of a simple cardiac pressure 
+signal.  Phase space images capture state as well as configuration and can elucidate 
+qualities of a system that might not otherwise be obvious.
+  
+We will be continuing our analysis of Active Duty Normal soldiers from the 
+Hemodynamic Waveform Library of the Cardiology Service at Brooke Army Medical Center.  
+If you are following our videos, you can open our data file from the recently opened
+list of files.  Select File/BAMC 0049 tutorial 2.
+
+At this point, it is not necessary to understand the details of phase space in order
+to appreciate its use as a novel method of cardiac waveform analysis.
+So lets jump right into the analysis.
+
+---------
+
+In this phase space analysis, we will be looking closely at the Left distal, Left proxal,
+and ECG waveforms and we will be comparing their phase space representations to 
+the simple waveform image.
+Select a range of data near the beginning of our ECG segmentation and zoom in
+to inspect the waveforms.  
+
+Select Run/Analysis, PHASE-5pt-smooth-video then Next.  
+This analysis will covern an extended time range, so select "Time Range".  For
+the Start, enter the initial time from the display, 12:42:00.  The Stop time
+defaults to the end of our data file, which works well for our purpose.  
+Select Next, L dist, and Next again.  We will accept the default script, and 
+press Next.
+
+##   
+
+[# press 0!]
+Resize the window as needed, and press the green "play" arrow at the 
+bottom of the screen.  The top screen displays a phase space 
+representation for Left Ventricular pressure.  The bottom illustrates 
+left ventricular pressure recording.  In the phase diagram, the X axis 
+is the pressure measurement and the  axis is the first derivative of 
+the pressure signal.  The most recent data is drawn in white.  And the 
+lines fade to black over a 30-second interval.
+
+Several Premature ventricular beats may be seen both on the phase space display and in the time domain.  
+
+Press the + key twice to zoom in on the actual waveform, then press the Pause
+button.
+
+From the phase space image, we see the pressure oscillates between a low 
+pressure close to zero mmHg, and high pressure slightly over 100 mmHg.  Let's slow 
+down the visualization to 1/10th real time, press Play, and observe that
+the indicator moves around in a clockwise path around the figure.
+
+## This record also shows the result of zeroing and calibrating the catheter during the original recording sequence. 
+
+Press Pause again.
+
+This somewhat stable figure is called an attractor, and it has several
+prominent features.  It is not completely symmetric.  The upper half is flatter than
+the lower half.  This indicatives the pressure inside the ventricle rises
+more slowly than it falls.  The lower half is also separable into two segments with
+different slopes.  With close inspection of the L dist pressure waveform, one can
+see an inflection point at approximately 60 mm Hg.  This is the source of the
+discontinuity in the lower half of the image.
+
+We can conclude that small features of this signal are more easily observed
+in the phase space representation than by direct inspection of the waveform. 
+The phase diagram for left ventricular pressure provides quantitative information 
+about contractile and diastolic properties of the heart as well as ventricular 
+vascular coupling. 
+
+---------
+
+We can look at other waveforms in the same way.  Press Previous twice, select ECG, and press
+Next twice, [# press 0!] and press Play.
+
+In this video, we see a stable attractor with occasional perturbations due to
+Ectopic beats.  The shape of this attractor will change with placement of ECG leads
+as well as changes to the patient condition.  
+##Hemodynamic stability is directly observable in the attractor.  
+Stresses such as hypo or hypervolemia 
+also manifest themselves in the attractors, as well as
+more intrinsic indicators of cardiac condition.  
+
+Although the ECG signal is feature rich, it is also a very repetitive signal
+and easily observed with this method.
+
+For less stable signals, some modifications may be needed.  
+We will use the Aortic pressure waveform for this example.  
+Press Pause, Previous
+and select L proxal.  Now click Next, twice.  Press C to center the Left
+Proxal center in the display.  [#Press 0!] From simple observation, this
+signal is clearly less stable than the others that we have observed.  
+Press Play and notice that it is difficult to see the signal structure 
+in this attractor.  
+
+The derivative in the phase space which we have chosen
+is too sensitive for this signal, however, we can modify
+this script to show a more useful phase space which is less sensitive
+to noise and small changes.  Our new phase space will consist of the same
+pressure signal in the X coordinate, but the
+Y coordinate will be a time-shifted value of the X coordinate.
+
+To make this change, press Pause & Previous.  
+Three lines of code will be changed to create a lag in the signal to 
+improve the phase space display.  
+Create a variable "lag", and assign a value of 30, which corresponds 
+to 60 ms for our 500 hz signal.  Our X value must go from (lag+1) to n.  
+And the corresponding y values will then go from 1 to n-lag.
+
+This accomplishes our objective: two arrays of equal length, an array of X 
+values and an array of Y values, that differ in time by 60ms.
+
+Press Next, and Play.  Zoom in on the attractor as desired by pressing the
+right mouse button while dragging the mouse.  Now we can observe a much 
+more well-formed attractor.
+
+---------
+
+
+Meaningful non-random signals always have a visually interesting phase space
+representation, though some filtering and experimentation may be necessary to see it.
+
+# This analysis view could be extended in several ways, such as removal
+# of respiratory variability from the signal to give
+# a much cleaner attractor for the Left proxal sensor or 
+# adding a centroid of the figure, and  track it over a time
+# to provide long term indication of hemodynamic status and trends.
+
+----------
+
+This concludes our phase space analysis tutorial.
+

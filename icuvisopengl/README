@@ -1,0 +1,20 @@
+Gradle loads the jogl libraries, but also creates a problem with the classpath.  The 
+load-natives-from-jar expectes to find the primary JAR and native jars in the same directory,
+but inside 
+
+/home/bbaker/.gradle/caches/modules-2/files-2.1/org.jogamp.jogl/jogl-all
+
+You will find:
+
+./2.2.4/1b448ebc2b850080f409e8aa4452b17756c53c09/jogl-all-2.2.4.jar
+./2.2.4/7d48e2335d34a2a9274277e9c963c12b8f5cf57f/jogl-all-2.2.4-natives-windows-i586.jar
+./2.2.4/d03f147e1030e8bd2ead7a897feda2a359f62ddd/jogl-all-2.2.4-natives-linux-amd64.jar
+
+The natives must be copied to the same directory as jogl-all-2.2.4.jar.
+
+The same goes for gluegen
+
+# cd org.jogamp.gluegen/gluegen-rt/2.2.4/9e149bd4cc20855c0bf1baf59c51b176053808ef/
+# locate gluegen-rt-2.2.4-natives-linux-amd64
+# cp ../c76e57f7f25b56733305e1589e21c5fd12803078/gluegen-rt-2.2.4-natives-linux-amd64.jar .
+ 

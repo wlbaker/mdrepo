@@ -1,0 +1,184 @@
+/**
+ * @file    sa.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Sample Array (SA) object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ * @see     Medical waveform description Format Encoding Rules MFER Part I
+ *          Version 1.01 – 2003 <http://ecg.heart.or.jp/En/MFER101E-2003.pdf>
+ */
+#include <metric.idl>
+
+module ice
+{
+const long LONG_SA_OBS_VAL_LEN    = 128;
+
+//=============================================================================
+/**
+ * Sample Array object
+ */
+
+typedef BITS16 SaFlags;   // See SaFlagsBits
+enum SaFlagsBits
+{
+  smooth_curve  = 0x1,  // for optimum display, use a smoothing algorithm
+  delayed_curve = 0x2,  // curve is delayed (not real time)
+  static_scale  = 0x4,  // ScaleRangeSpec does not change
+
+  /*
+   * The sa_ext_val_range flag is valid only if we define the SaObsValue object
+   * member variable as an array of octets. We currently define array as an
+   * array of FLOATType.
+   *
+   * The nonsignificant bits in a sample are not 0 e.g., when used for
+   * annotations or markers the receiver must apply a bit mask to extract the
+   * significant bits from the sample.
+   */
+  sa_ext_val_range = 0x8
+};
+
+struct SampleType
+{
+  // Describe one sample in the observed value array
+
+  INTU8 sample_size;    // e.g., 8 for 8-bit samples, 16 for 16-bit samples,
+                        // shall be divisible by 8
+  INTU8 significant_bits; // significant bits in one sample
+  INTU8 signed_samples;   // if value is 255, the samples are signed; all bits
+                          // significant. Interpret samples in twos complement
+}; //@top-level false
+
+struct SaSpec
+{
+  INTU16 array_size;    // number of samples per metric update period
+  SampleType sample_type; //@Optional
+  SaFlags flags;
+}; //@top-level false
+
+struct MarkerEntrySaVal
+{
+  OIDType marker_id;  // from VMO::Type or Metric-Id-Partition partition
+  INTU32 marker_val;  // a value or bit mask depending on marker-id
+}; //@top-level false
+typedef sequence<MarkerEntrySaVal> MarkerListSaVal;
+
+/*
+ * scale_and_range_specification attribute describes a relation between scaled
+ * values and absolute values. Depending on the sample size, multiple
+ * attribute types exist.
+ *
+ * NOTE   If a wave does not represent absolute values, the absolute value
+ * fields should contain a special value. If the sa_specification attribute
+ * indicates signed samples, interpret the scaled values as signed values.
+ */
+struct ScaleRangeSpec
+{
+  FLOATType lower_absolute_value;
+  FLOATType upper_absolute_value;
+  INTU32 lower_scaled_value;
+  INTU32 upper_scaled_value;
+}; //@top-level false
+
+/*
+ * If the sa_specification attribute indicates signed samples, interpret the
+ * scaled values as signed values.
+ */
+struct ScaledRange
+{
+  INTU32 lower_scaled_value;
+  INTU32 upper_scaled_value;
+}; //@top-level false
+
+/*
+ * visual_grid attribute defines grid lines at different levels of grid lines.
+ * If the sa_specification attribute indicates signed samples, interpret the
+ * scaled values as signed values.
+ */
+struct SaGridEntry
+{
+  FLOATType absolute_value;
+  INTU32 scaled_value;
+  INTU16 level;
+}; //@top-level false
+typedef sequence<SaGridEntry> SaVisualGrid;
+
+/*
+ * sa_calibration_data attribute defines calibration markers on a display or
+ * on a recording strip. If the sa_specification attribute indicates signed
+ * samples, interpret the scaled values as signed values.
+ */
+enum SaCalDataType
+{
+  bar = 0,  // display a calibration bar
+  stair = 1 // display a calibration stair
+};
+
+struct SaCalData
+{
+  FLOATType lower_absolute_value;
+  FLOATType upper_absolute_value;
+  INTU32 lower_scaled_value;
+  INTU32 upper_scaled_value;
+  INTU32 increment;   // scaled value for each step of the stair
+  SaCalDataType cal_type;
+}; //@top-level false
+
+/* Applied filter spec */
+enum SaFilterType
+{
+  other = 0,
+  low_pass = 1,
+  high_pass = 2,
+  notch = 3
+};
+
+struct SaFilterEntry
+{
+  SaFilterType filter_type;
+  FLOATType filter_frequency;
+  INT16 filter_order;   // e.g., -1: 6 dB/octet
+}; //@top-level false
+typedef sequence<SaFilterEntry> SaFilterSpec;
+
+struct SaSignalFrequency
+{
+  FLOATType low_edge_freq;
+  FLOATType high_edge_freq;   // both in hertz
+}; //@top-level false
+
+struct SaObsValue
+{
+  OIDType metric_id; //@key
+  MeasurementStatus state;
+  sequence<FLOATType, LONG_SA_OBS_VAL_LEN> array;  // 11073 defines this as an OCTET STRING
+}; //@top-level false
+
+struct SampleArrayContext : MetricContext
+{
+  /**
+   * Static context attributes
+   */
+  SaSpec sa_specification;
+  PrivateOid compression; //@Optional
+  MarkerListSaVal sa_marker_list; //@Optional
+
+  /**
+   * Dyanamic context attributes
+   */
+  ScaleRangeSpec scale_and_range_specification;
+  ScaledRange sa_physiological_range; //@Optional
+  SaVisualGrid visual_grid;
+  SaCalData sa_calibration_data; //@Optional
+  SaFilterSpec filter_specification;
+  string<LONG_STRING_LEN> filter_label_string;
+  SaSignalFrequency sa_signal_frequency; //@Optional
+  FLOATType sa_measure_resolution; //@Optional
+}; //@top-level false
+
+struct SampleArrayObservedValue : MetricObservedValue
+{
+  SaObsValue sa_observed_value;
+}; //@top-level false
+
+};

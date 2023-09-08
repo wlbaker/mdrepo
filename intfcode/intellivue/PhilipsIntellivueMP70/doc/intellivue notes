@@ -1,0 +1,21 @@
+Wave data (simultaneous access to 2 ECG and 5 other waves or 3 ECG and 2 other waves
+depending on monitor and client configuration)
+
+Up to three ECG waves (500 samples/s) can be polled simultaneously by selecting the appropriate
+lead labels in the Wave object priority list. 
+
+Up to eight non-ECG waves (125 or 62.5 samples/s) can be polled simultaneously by selecting the
+appropriate labels in the Wave object priority list.
+
+Entries in the Wave object priority list are ignored if the label does not exist or the object is not
+available, or more than three ECG and/or more than eight non-ECG waves are specified
+
+
+The wave context can be polled separately or multiplexed with the wave observed values. If the
+polled_attr_grp is 0 in a periodic data poll request, the monitor reports one object’s static and
+dynamic context per 1024 ms. Context attributes are included in the observation poll.
+
+
+
+
+

@@ -1,0 +1,17 @@
+mkdir hdf5_static_x86-64
+cd hdf5_static_x86-64
+cmake \
+ -Wno-dev \
+ -DBUILD_SHARED_LIBS:BOOL=OFF \
+ -DCMAKE_BUILD_TYPE:STRING=Release \
+ -DHDF5_BUILD_HL_LIB:BOOL=ON \
+ -DHDF5_BUILD_FORTRAN:BOOL=OFF \
+ -DHDF5_BUILD_JAVA:BOOL=ON\
+ -DHDF5_ENABLE_F2003:BOOL=OFF \
+ -DHDF5_BUILD_CPP_LIB:BOOL=ON \
+ -DHDF5_BUILD_TOOLS:BOOL=ON \
+ -DCMAKE_Fortran_FLAGS="-cpp" \
+ -G"MSYS Makefiles" \
+ -DCMAKE_INSTALL_PREFIX:PATH="C:/opt/tools/HDF5_1_10_1-static-x86-64" \
+ ../hdf5-1.10.1
+make install

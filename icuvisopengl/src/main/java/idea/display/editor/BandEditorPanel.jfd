@@ -1,0 +1,136 @@
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.8.0_45" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "default:grow, labelcompgap, 20px"
+			"$rowSpecs": "default, linegap, default, relgap, default, linegap, fill:default:grow"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "default, labelcompgap, default:grow, labelcompgap, default, labelcompgap, default, default"
+				"$rowSpecs": "default"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "  Editing:"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 1
+					"gridY": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "bandNameLabel"
+					"text": "text"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+					"gridY": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "resize"
+					"toolTipText": "Resize waveforms to fit the display."
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/idea/image/select_all.png" )
+					"maximumSize": &Dimension0 new java.awt.Dimension( 32, 32 )
+					"minimumSize": &Dimension1 new java.awt.Dimension( 32, 32 )
+					"preferredSize": &Dimension2 new java.awt.Dimension( 32, 32 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "resizeActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 5
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "insertBand"
+					"toolTipText": "Insert a new waveform band"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/idea/image/process_add.png" )
+					"maximumSize": #Dimension0
+					"minimumSize": #Dimension1
+					"preferredSize": #Dimension2
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "insertBandActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 7
+					"gridY": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "removeBand"
+					"toolTipText": "Delete current waveform band"
+					"icon": new com.jformdesigner.model.SwingIcon( 0, "/idea/image/process_remove.png" )
+					"maximumSize": new java.awt.Dimension( 32, 32 )
+					"minimumSize": new java.awt.Dimension( 32, 32 )
+					"preferredSize": new java.awt.Dimension( 32, 32 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "removeBandActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 8
+					"gridY": 1
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 3
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "bandSelectorPanel"
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 3
+				"gridY": 7
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				"preferredSize": new java.awt.Dimension( 150, 40 )
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+					"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( true )
+							add( null )
+							add( null )
+							add( null )
+						} )
+						add( new java.util.Vector {
+							add( null )
+							add( null )
+							add( true )
+							add( null )
+							add( null )
+							add( null )
+						} )
+					}, new java.util.Vector {
+						add( "O" )
+						add( "Sig" )
+						add( "Vis" )
+						add( "Max" )
+						add( "Min" )
+						add( "Color" )
+					}, new java.util.Vector {
+						add( null )
+						add( null )
+						add( class java.lang.Boolean )
+						add( class java.lang.Double )
+						add( class java.lang.Double )
+						add( null )
+					}, new java.util.Vector {
+						add( false )
+						add( false )
+						add( null )
+						add( null )
+						add( null )
+						add( null )
+					}, new java.util.Vector {
+						add( new com.jformdesigner.model.SwingTableColumn( null, 1, 1, 1, false ) )
+						add( null )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 26, 0, 0, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 50, 0, 0, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 50, 0, 0, true ) )
+						add( new com.jformdesigner.model.SwingTableColumn( null, 40, 0, 0, true ) )
+					} )
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 7
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 310, 395 )
+		} )
+	}
+}

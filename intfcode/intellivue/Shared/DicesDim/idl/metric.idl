@@ -1,0 +1,258 @@
+/**
+ * @file    metric.idl
+ * @author  WMS
+ * @date    SEP 2013
+ * @brief   DICES DIM Metric object.
+ * @see     ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201
+ * @note    x73 = "ISO/IEEE 11073"
+ */
+#include <common.idl>
+
+module ice
+{
+//=============================================================================
+/**
+ *  Metric object
+ */
+
+/*
+ * Indicates sources of this metric in the form of a list of metric IDs.
+ */
+typedef sequence<OIDType> MetricSourceList;
+
+/*
+ * Ordered list of measurement sites, e.g., EEG electrode positions.
+ */
+typedef sequence<OIDType> SiteList;
+
+/*
+ * Defines the state of the measurement. (Usually part of an observed value.)
+ */
+typedef BITS16 MetricStatus;  // See MetricStatusBits
+enum MetricStatusBits
+{
+  metric_off = 0x1,
+  metric_not_ready = 0x2,
+  metric_standby = 0x4,
+  metric_transduc_discon = 0x100,
+  metric_hw_discon = 0x200
+};
+
+/*
+* The MetricAccess bit field specifies how to access the metric value
+* and when a new value becomes available.
+*/
+typedef BITS16 MetricAccess;
+enum MetricAccessBits
+{
+  /*
+   * See x73-10201, 7.3.4 Metric object.
+   */
+
+  avail_intermittent = 0x1,
+  upd_periodic = 0x2,
+  upd_episodic = 0x4,
+  msmt_noncontinuous = 0x8,
+  acc_evrep = 0x10,
+  acc_get = 0x20,
+  acc_scan = 0x30,
+  gen_opt_sync = 0x100,
+  sc_opt_normal = 0x400,
+  sc_opt_extensive = 0x800,
+  sc_opt_long_pd_avail = 0x1000,
+  sc_opt_confirm = 0x2000
+};
+
+/*
+ * Metric relevance defines the way to use the metric
+ * (i.e., a value of 0 means normal).
+ */
+typedef BITS16 MetricRelevance;
+enum MetricRelevanceBits
+{
+  rv_unspec = 0x1,
+  rv_internal = 0x2,
+  rv_store_only = 0x4,
+  rv_no_recording = 0x8,
+  rv_phys_ev_ind = 0x10,
+  rv_btb_metric = 0x20,
+  rv_app_specific = 0x100,
+  rv_service = 0x200
+};
+
+/**
+ * The metric category distinguishes between measurements,
+ * settings and calculations.
+ */
+enum MetricCategory
+{
+  mcat_unspec = 0,
+  auto_measurement = 1,
+  manual_measurement = 2,
+  auto_setting = 3,
+  manual_setting = 4,
+  auto_calculation = 5,
+  manual_calculation = 6
+};
+
+/*
+ * MetricSpec defines all mandatory static properties of a Metric object.
+ */
+struct MetricSpec
+{
+  Duration update_period; // Min time between changes of observed value
+  MetricCategory category; // measurement, setting or calculation
+  MetricAccess access;
+  MetricRelevance relevance;
+}; //@top-level false
+
+/*
+ * VmoSourceList defines references to other VMO-derived objects used as
+ * sources of this metric. This is an ordered list.
+ */
+struct VmoSourceEntry
+{
+  OIDType vmo_type;
+  GLBHANDLE glb_handle;
+}; //@top-level false
+typedef sequence<VmoSourceEntry> VmoSourceList;
+
+/*
+ * MeasurementStatus defines the state of the measurement. 
+ * Used by derived classes.
+ */
+typedef BITS16 MeasurementStatus;
+enum MeasurementStatusBits
+{
+  invalid = 0x1,
+  questionable = 0x2,
+  not_available = 0x4,
+  calibration_ongoing = 0x8,
+  test_data = 0x10,
+  demo_data = 0x20,
+  validated_data = 0x100,
+  early_indication = 0x200,
+  msmt_ongoing = 0x400,
+  msmt_state_in_alarm = 0x4000,
+  msmt_state_al_inhibited = 0x8000
+};
+
+enum MetricCalState
+{
+  not_calibrated = 0,
+  cal_required = 1,
+  calibrated = 2
+};
+
+enum MetricCalType
+{
+  cal_unspec = 0,
+  cal_offset = 1,
+  cal_gain = 2,
+  cal_two_point = 3
+};
+
+struct MetricCalEntry
+{
+  MetricCalType   cal_type;
+  MetricCalState  cal_state;
+  Timespec cal_time;
+}; //@top-level false
+typedef sequence<MetricCalEntry> MetricCalibration;
+
+struct MetricMeasure
+{
+  // For attributes that have a value and a dimension
+
+  FLOATType value;
+  OIDType unit_code;  // From dimensions nomenclature partition
+}; //@top-level false
+
+//=============================================================================
+/**
+ * MetricContext object
+ *
+ * The MetricContext object combines static and dynamic attribute groups of the
+ * Metric object as defined in Table 7.10 of x73-10201.
+ */
+struct MetricContext : VMO
+{
+  long context_seq_number;
+
+  MetricSpec metric_specification;  // Mandatory basic properties
+  // Static. Max delay to real time
+  Duration max_delay_time; //@Optional
+
+  string<LONG_STRING_LEN> vmo_label_string; // From VMO Dynamic Context Group
+
+  // Vmo-Source-List attribute defines references to other VMO-derived
+  // objects used as sources of this metric (this is an ordered list)
+  VmoSourceList vmo_source_list;
+
+  // Indicates sources of this metric in the form of a list of metric IDs.
+  MetricSourceList metric_source_list;
+
+  OIDType unit_code;  // Example: mmHG. Usually part of observed value.
+  string<LONG_STRING_LEN> unit_label_string;  // Dimension as text.
+
+  // Measurement sites, specified in internal or external nomenclature.
+  SiteList msmt_site_list;
+
+  // Body sites, specified in internal or external nomenclature.
+  SiteList body_site_list;
+
+  // @see MetricStatusBits
+  MetricStatus metric_status;
+
+  // Measurement repetition time. Not necessarily same as update period.
+  MetricMeasure measure_period; //@Optional
+
+  // Period used to average values, e.g., a metric for avg flow of last hour.
+  MetricMeasure averaging_period; //@Optional
+
+  // Time when measurement activity started, e.g., when infusion started.
+  Timespec start_time; //@Optional
+
+  // Time when measurement activity stopped.
+  Timespec stop_time; //@Optional
+
+  MetricCalibration metric_calibration; // Type, time of last calibration.
+  // Color for representation.
+  SimpleColor color; //@Optional
+  MeasurementStatus measurement_status; // Usually part of observed value.
+
+  // Contains dynamic id (e.g., a specific blood pressure label) compared to
+  // static, generic ID in the metric_specification. OID is from VMO::Type or
+  // Metric-Id-Partition partition. Usually this attribute is part of an
+  // observed value, not an individual attribute.
+  OIDType metric_id; //@key
+
+  // Textual attribute, e.g., to specify electrode displacements
+  // or other specific information about the measurement.
+  string<LONG_STRING_LEN> metric_info_label_string;
+
+  // Substance to which a metric pertains.
+  // Expressed in nomenclature defined outside of x73.
+  ExtNomenRef substance; //@Optional
+
+  // Textual attribute that identifies the substance.
+  string<LONG_STRING_LEN> substance_label_string;
+}; //@top-level false
+
+struct MetricObservedValue : VMO
+{
+  long context_seq_number;
+
+  // Identifies the nomenclature partition associated with the metric_id if
+  // different from that specified in the object's VMO::Type attribute.
+  NomPartition metric_id_partition;
+
+  // Legacy devices may output time info. It may be presented as a time-of-day
+  // (device timestamp) or a relative time, i.e., a time relative to some vent.
+  Timespec device_timestamp; //@Optional
+
+  Duration device_relative_timestamp; //@Optional
+}; //@top-level false
+
+};

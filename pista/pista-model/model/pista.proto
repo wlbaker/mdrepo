@@ -1,0 +1,19 @@
+syntax = "proto3";
+//
+// Standard PISTA packages, not device specific
+//
+
+package pista;
+
+option java_package = "pista.model";
+
+//message dev_ident {
+    // string model = 1;  //[9];
+  	// string serial_no = 2; // [10];
+//}
+
+// connection still needs a message data...status is also part of deviceinfo struct
+message connection {
+        int32 status = 1;  // 0 --> not connected, 1 --> connected
+}
+

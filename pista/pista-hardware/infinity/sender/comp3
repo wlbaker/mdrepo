@@ -1,0 +1,14 @@
+echo ""
+echo "Compiling..."
+gcc -c -g -I /opt/git/github/LightPcapNg/include main.c
+echo "Linking..."
+gcc  -g -o main main.o /opt/git/github/LightPcapNg/liblight_pcapng_static.a -lreadline
+if [ $? -ne 0 ]
+then
+	echo "Compile FAILED:" $?
+else
+	echo "Executing..."
+	./main.exe --pause /opt/git/cloudforge/ideacentral/doc/sample.pcapng
+
+
+fi

@@ -1,0 +1,26 @@
+# gcc -g -O0 -c bytebuffer.c
+# gcc -g -O0 -c log.c
+# gcc -g -O0 -c map.c
+# gcc -g -O0 -c infinityNet.c
+# gcc -g -O0 -c main.c
+# gcc -g -o main main.o infinityNet.o map.o bytebuffer.o log.o -lpcap
+echo "Using https://github.com/rvelea/LightPcapNg"
+echo ""
+echo "Compiling..."
+gcc -std=c99 -c -g -I /opt/git/github/LightPcapNg/include main.c
+echo "Linking..."
+gcc  -g -o main main.o /opt/git/github/LightPcapNg/liblight_pcapng_static.a -lreadline
+if [ $? -ne 0 ]
+then
+	echo "Compile FAILED:" $?
+else
+	echo "Executing..."
+	# ./main.exe 192.168.50.2  /opt/study/EP-RESUS/full-disclosure-3901.pcapng
+	./main.exe --filter_ip 192.168.50.2  --pause \
+		/opt/study/EP-RESUS/model-dev/full-disclosure-3952.pcapng
+#		/opt/study/EP-RESUS/model-dev/full-disclosure-3954.pcapng  \
+#		/opt/study/EP-RESUS/model-dev/full-disclosure-3954-b.pcapng  \
+#		/opt/study/EP-RESUS/model-dev/full-disclosure-3901.pcapng
+
+
+fi

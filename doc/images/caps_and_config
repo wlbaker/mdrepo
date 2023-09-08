@@ -1,0 +1,321 @@
+@prefix atxa-rse-eclipse: <http://www.architexa.com/rdf/rse-eclipse#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix atxa-jdt-wkspc: <http://www.architexa.com/rdf/jdt-wkspc#> .
+@prefix atxa-core: <http://www.architexa.com/rdf/core#> .
+@prefix atxa: <http://www.architexa.com/rdf/> .
+@prefix atxa-jdt: <http://www.architexa.com/rdf/jdt#> .
+
+<http://www.architexa.com/rdf/rse-eclipse#doc_slcapreq.relo> a atxa-core:reloFile .
+
+atxa:DetailNode atxa-core:detailLevel "0" .
+
+atxa-core:docRoot atxa-core:browseModel "com.architexa.diagrams.relo.jdt/com.architexa.diagrams.relo.jdt.browse.ClassStrucBrowseModel" ;
+	atxa-core:contains _:node16uaoqtqcx1 .
+
+_:node16uaoqtqcx1 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf> ;
+	atxa-core:posX "161" ;
+	atxa-core:posY "33" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration> .
+
+_:node16uaoqtqcx1 atxa-core:contains _:node16uaoqtqcx37 .
+
+_:node16uaoqtqcx37 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities> ;
+	atxa-core:posX "187" ;
+	atxa-core:posY "486" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.DeviceCapabilities()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.DeviceCapabilities(DeviceCapabilities,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addParam(String,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getParam(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getParams()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getSettings()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addAlarm(Object,String,String,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addAlarm(AlarmDescription,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addSetting(MetricDescription,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addSetting(Object,String,String,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.setStartTime(long,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getStartTime()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.setEndTime(long,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getEndTime()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addInterface(InterfaceDescription,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getInterfaces()> .
+
+_:node16uaoqtqcx38 a atxa-core:link ;
+	atxa-core:model atxa-jdt:inherits ;
+	rdf:subject _:node16uaoqtqcx37 ;
+	rdf:object _:node16uaoqtqcx39 ;
+	atxa-core:bendpoint _:node16u2fb5g4x42077 .
+
+_:node16u2fb5g4x42077 atxa-core:bpLocation "391,469" ;
+	atxa-core:bpIndex "0" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx41 .
+
+_:node16uaoqtqcx41 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addAlarm(AlarmDescription,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "508" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx42 .
+
+_:node16uaoqtqcx42 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addAlarm(Object,String,String,String,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "524" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx43 .
+
+_:node16uaoqtqcx43 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addInterface(InterfaceDescription,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "540" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx44 .
+
+_:node16uaoqtqcx44 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addParam(String,String,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "556" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx45 .
+
+_:node16uaoqtqcx45 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addSetting(MetricDescription,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "572" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx46 .
+
+_:node16uaoqtqcx46 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.addSetting(Object,String,String,String,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "588" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx47 .
+
+_:node16uaoqtqcx47 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.DeviceCapabilities()> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "604" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx48 .
+
+_:node16uaoqtqcx48 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.DeviceCapabilities(DeviceCapabilities,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "620" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx49 .
+
+_:node16uaoqtqcx49 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getEndTime()> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "636" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx50 .
+
+_:node16uaoqtqcx50 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getInterfaces()> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "652" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx51 .
+
+_:node16uaoqtqcx51 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getParam(String,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "668" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx52 .
+
+_:node16uaoqtqcx52 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getParams()> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "684" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx53 .
+
+_:node16uaoqtqcx53 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getSettings()> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "700" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx54 .
+
+_:node16uaoqtqcx54 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.getStartTime()> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "716" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx55 .
+
+_:node16uaoqtqcx55 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.setEndTime(long,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "732" .
+
+_:node16uaoqtqcx37 atxa-core:contains _:node16uaoqtqcx56 .
+
+_:node16uaoqtqcx56 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceCapabilities.setStartTime(long,)> ;
+	atxa-core:posX "188" ;
+	atxa-core:posY "748" .
+
+_:node16uaoqtqcx1 atxa-core:contains _:node16uaoqtqcx39 .
+
+_:node16uaoqtqcx39 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration> ;
+	atxa-core:posX "167" ;
+	atxa-core:posY "58" .
+
+<http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration> atxa-core:contains <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getMetrics()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getName()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getDeviceClass()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.DeviceConfiguration()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.DeviceConfiguration(DeviceConfiguration,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getDevices()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getWaveforms()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.DeviceConfiguration(Class,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setName(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setDeviceClass(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getModelName()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setModelName(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getDriverName()> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setDriverName(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setKeyValue(String,String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setWaveforms(WaveformDescription[],)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setMetrics(MetricDescription[],)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.addWaveform(WaveformDescription,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.addMetric(MetricDescription,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getWaveformDescription(Object,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getWaveformDescriptionFromString(String,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getMetricDescription(Object,)> , <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.addDevice(DeviceConfiguration,)> .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx57 .
+
+_:node16uaoqtqcx57 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.addDevice(DeviceConfiguration,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "80" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx58 .
+
+_:node16uaoqtqcx58 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.addMetric(MetricDescription,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "96" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx59 .
+
+_:node16uaoqtqcx59 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.addWaveform(WaveformDescription,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "112" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx60 .
+
+_:node16uaoqtqcx60 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.DeviceConfiguration()> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "128" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx61 .
+
+_:node16uaoqtqcx61 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.DeviceConfiguration(Class,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "144" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx62 .
+
+_:node16uaoqtqcx62 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.DeviceConfiguration(DeviceConfiguration,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "160" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx63 .
+
+_:node16uaoqtqcx63 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getDeviceClass()> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "176" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx64 .
+
+_:node16uaoqtqcx64 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getDevices()> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "192" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx65 .
+
+_:node16uaoqtqcx65 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getDriverName()> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "208" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx66 .
+
+_:node16uaoqtqcx66 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getMetricDescription(Object,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "224" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx67 .
+
+_:node16uaoqtqcx67 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getMetrics()> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "240" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx68 .
+
+_:node16uaoqtqcx68 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getModelName()> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "256" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx69 .
+
+_:node16uaoqtqcx69 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getName()> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "272" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx70 .
+
+_:node16uaoqtqcx70 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getWaveformDescription(Object,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "288" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx71 .
+
+_:node16uaoqtqcx71 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getWaveformDescriptionFromString(String,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "304" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx72 .
+
+_:node16uaoqtqcx72 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.getWaveforms()> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "320" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx73 .
+
+_:node16uaoqtqcx73 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setDeviceClass(String,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "336" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx74 .
+
+_:node16uaoqtqcx74 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setDriverName(String,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "352" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx75 .
+
+_:node16uaoqtqcx75 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setKeyValue(String,String,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "368" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx76 .
+
+_:node16uaoqtqcx76 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setMetrics(MetricDescription[],)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "384" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx77 .
+
+_:node16uaoqtqcx77 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setModelName(String,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "400" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx78 .
+
+_:node16uaoqtqcx78 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setName(String,)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "416" .
+
+_:node16uaoqtqcx39 atxa-core:contains _:node16uaoqtqcx79 .
+
+_:node16uaoqtqcx79 a atxa-core:node ;
+	atxa-core:model <http://www.architexa.com/rdf/jdt-wkspc#icuInterface.conf$DeviceConfiguration.setWaveforms(WaveformDescription[],)> ;
+	atxa-core:posX "168" ;
+	atxa-core:posY "432" .
+

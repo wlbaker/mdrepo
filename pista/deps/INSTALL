@@ -1,0 +1,35 @@
+OPENSSH:
+
+# Comment out the following line from openssl-1.1.1
+# Configurations/15-android.conf:                $cflags .= " -mandroid";
+
+# export ANDROID_NDK
+wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz
+tar xzvf openssl-1.1.1a.tar.gz
+cd openssl-1.1.1a
+
+P=${PATH}
+
+PATH=${ANDROID_NDK}/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:${P}
+./Configure android-arm --prefix=/home/ccsta/git/pista/distribution/armeabi-v7a --with-zlib-include=${ANDROID_NDK}/sysroot/usr/lib/arm-linux-androideabi/usr/include --with-zlib-lib=${ANDROID_NDK}/sysroot/usr/lib/arm-linux-androideabi/usr/lib zlib no-asm no-shared no-unit-test  -D__ANDROID_API__=21
+make
+make install
+make clean
+PATH=${ANDROID_NDK}/toolchains/x86_64-linux-androideabi-4.9/prebuilt/linux-x86_64/bin:${P}
+./Configure android-x86_64 --prefix=/home/ccsta/git/pista/distribution/x86_64 --with-zlib-include=${ANDROID_NDK}/sysroot/usr/lib/x86_64-linux-androideabi/usr/include --with-zlib-lib=${ANDROID_NDK}/sysroot/usr/lib/x86_64-linux-androideabi/usr/lib zlib no-asm no-shared no-unit-test  -D__ANDROID_API__=21
+make
+make install
+make clean
+# PATH=${ANDROID_NDK}/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/bin:${P}
+PATH=${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/bin:${P}
+PATH=${ANDROID_NDK}/toolchains/aarch64-linux-android-4.9/prebuilt/linux-x86_64/aarch64-linux-android/bin:${PATH}
+CC=clang ./Configure android-arm64 --prefix=/home/ccsta/git/pista/distribution/arm64-v8a --with-zlib-include=${ANDROID_NDK}/sysroot/usr/lib/aarch64-linux-androideabi/usr/include --with-zlib-lib=${ANDROID_NDK}/sysroot/usr/lib/aarch64-linux-androideabi/usr/lib zlib no-asm no-shared no-unit-test  -D__ANDROID_API__=28
+make
+make install
+make clean
+PATH=${P}
+
+
+CURL:
+
+

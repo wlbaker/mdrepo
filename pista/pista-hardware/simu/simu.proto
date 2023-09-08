@@ -1,0 +1,29 @@
+syntax = "proto3";
+package simu;
+
+option java_package = "pista.model";
+// option java_outer_classname = "UU"
+
+message simu_settings {
+     int64 tm = 1;
+     int32 hzz = 2;
+     int32 rps = 3;
+     int32 ms  = 4;
+}
+
+message simu_vitals {
+     int64 tm = 1;
+     int32 v0 = 2;
+     int32 v1 = 3;
+     int32 v2 = 4;
+     int32 v3 = 5;
+}
+
+message simu_waveform {
+     int64 tm = 1;
+    repeated int32 w0 = 2 [packed=true];
+    repeated int32 w1 = 3 [packed=true];
+    repeated float w2 = 4 [packed=true];
+    repeated float w3 = 5 [packed=true];
+}
+

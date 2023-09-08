@@ -1,0 +1,30 @@
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>J:\ISR_CCCE_IDEA\c3e-offline\bin\c3e-offline.jar</jar>
+  <outfile>J:\ISR_CCCE_IDEA\c3e-offline\bin\c3e-offline.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <customProcName>false</customProcName>
+  <stayAlive>false</stayAlive>
+  <manifest></manifest>
+  <icon>C:\Users\william.l.baker2\git\icuvisdaq\deployment_resources\biosig.ico</icon>
+  <jre>
+    <path></path>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion>9.0.0</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <initialHeapSize>256</initialHeapSize>
+    <maxHeapSize>512</maxHeapSize>
+  </jre>
+  <splash>
+    <file>C:\opt\workspace\chaktaw\cardioStrip\deployment_resources\offline_classic.bmp</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+</launch4jConfig>

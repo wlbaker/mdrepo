@@ -1,0 +1,345 @@
+// file   diagnostics.idl
+// author WMS
+// date   JUN 2017
+// brief  Define FHIR-based data objects concerned with observing the patient,
+//        and the diagnostic service process built around this.
+//
+// note   These object definitions are for ICE-IM 1.0
+//
+// The Observation resource is a widely used general purpose tool. Typical uses
+// include recording the following kinds of data:
+//  - Laboratory Results
+//  - Vital Signs (including Blood Pressure)
+//  - Physical Examinations
+//  - Social history (e.g. Smoking History)
+//
+// FHIR REFERENCES
+//    http://hl7.org/fhir/index.html
+//    http://hl7.org/fhir/observation.html
+//    http://hl7.org/fhir/observation-vitalsigns.html
+//    https://www.hl7.org/FHIR/observation-definitions.html#Observation.component
+//    http://hl7.org/fhir/diagnosticreport.html
+
+#include "common.idl"
+
+module ice
+{
+// Specimen object
+//
+// A sample to be used for analysis 
+// Ref: http://hl7.org/fhir/specimen.html
+struct Specimen
+{
+  string<MEDIUM_STRING_LEN> id;
+  // Id for specimen.
+  // NOTE  This is a business identifier, not a resource identifier
+  // Ref: https://www.hl7.org/fhir/resource.html#identifiers
+
+  CodeableConcept type; //@Optional
+  // Kind of material that forms the specimen
+  // Ref: http://hl7.org/fhir/v2/0487/index.html
+
+  CT_dateTime collected_time;
+  // The time when specimen was collected.
+
+  CT_dateTime received_time;
+  // The time when specimen was received for processing or testing.
+
+  CT_dateTime registered_time;
+  // The time when specimen was registered.
+}; //@top-level false
+
+// ObservationValue
+// The information determined as a result of making the observation, if the
+// information has a simple value.
+// Ref: http://hl7.org/fhir/observation.html#notes
+enum ObservationValueType
+{
+  ov_quantity = 0,
+  ov_codeableconcept = 1,
+  ov_string = 2,
+  ov_range = 3,
+  ov_ratio = 4,
+  ov_sampleddata = 5,
+  ov_attachment = 6,
+  ov_time = 7,
+  ov_datetime = 8,
+  ov_period = 9
+};
+
+union ObservationValue switch(ObservationValueType)
+{
+  case ov_quantity:
+    Quantity val_quantity;
+
+  case ov_codeableconcept:
+    CodeableConcept val_codeableconcept;
+
+  case ov_string:
+    string<LONG_STRING_LEN> val_string;
+
+  case ov_range:
+    Range val_range;
+
+  case ov_ratio:
+    Ratio	val_ratio;
+
+//  case ov_sampleddata:
+//    SampledData val_sampleddata;
+// Not yet defined. WMS 2017-07
+
+//  case ov_attachment:
+//    Attachment val_attachment;
+// Not yet defined. WMS 2017-07
+
+  case ov_time:
+    CT_time val_time;
+
+  case ov_datetime:
+    CT_dateTime	val_datetime;
+
+  case ov_period:
+  default:
+    Period val_period;
+}; //@top-level false
+
+// ReferenceRange
+// Provides guide for interpretation
+// Must have at least a low or a high or text
+// Ref: http://hl7.org/fhir/observation-definitions.html#Observation.referenceRange
+struct ReferenceRange
+{
+  SimpleQuantity low; //@Optional
+  // The value of the low bound of the reference range.
+
+  SimpleQuantity high; //@Optional
+  // The value of the high bound of the reference range.
+
+  CodeableConcept type; //@Optional
+  // Codes to indicate what part of the targeted reference population it
+  // applies to. For example, the normal or therapeutic range.
+
+  Range age; //@Optional
+  // The age at which this reference range is applicable. This is a neonatal
+  // age (e.g. number of weeks at term) if the meaning says so.
+
+  string<LONG_STRING_LEN> text; //@Optional
+  // Text based reference range in an observation which may be used when a
+  // quantitative range is not appropriate for an observation. An example
+  // would be a reference value of "Negative" or a list or table of 'normals'.
+}; //@top-level false
+
+// Result
+// The information determined as a result of making the observation, if the
+// information has a simple value.
+struct ObservationResult
+{
+  CodeableConcept code_;
+  // Describes what was observed. Sometimes this is called the observation "name".
+
+  ObservationValue value; //@Optional
+  // Quantity|CodeableConcept|string|boolean|Range|Ratio|SampledData|Attachment|time|dateTime|Period
+  // The information determined as a result of making the observation, if the
+  // information has a simple value.
+
+  CodeableConcept data_absent_reason; //@Optional
+  // Provides a reason why the expected value in the element
+  // Result.value is missing.
+
+  CodeableConcept interpretation; //@Optional
+  // Examples: high, low, normal
+  // The assessment made based on the result of the observation. Intended as a
+  // simple compact code often placed adjacent to the result value in reports
+  // and flow sheets to signal the meaning/normalcy status of the result.
+  // Otherwise known as abnormal flag.
+  //
+  // NOTE  As part of an Observation.ObservationComponent.ObservationResult,
+  // interpretation applies only to the individual
+  // ObservationComponent.ObservationResult value. For an overall
+  // interpretation all components together use the
+  // Observation.ObservationResult element.
+  //
+  // Ref:
+  //  https://www.hl7.org/fhir/observation-definitions.html#Observation.interpretation
+  //  https://www.hl7.org/fhir/observation-definitions.html#Observation.component.interpretation
+
+  ReferenceRange reference_range; //@Optional
+  // Guidance on how to interpret the value by comparison to a normal or
+  // recommended range.
+}; //@top-level false
+
+// Medanta-specific Performer
+enum PerfomerRole
+{
+  role_unknown = 0,
+  role_doctor = 1,
+  role_admit_doctor = 2,
+  role_order_doctor = 3
+};
+
+struct Performer
+{
+  string<MEDIUM_STRING_LEN> id;
+  string<LONG_STRING_LEN> name;
+  PerfomerRole role;
+}; //@top-level false
+
+//
+// Observation object
+//
+// Measurements and simple assertions made about a patient, device or
+// other subject. 
+// Ref: http://hl7.org/fhir/observation.html
+struct Observation : Top
+{
+  GUID report_id;
+  // Unique identifier for entity that "owns" this observation, i.e.,
+  // DiagnosticReport. Assign the value GUID_DEFAULT if the observation is
+  // stand-alone.
+
+  GUID id; //@Key
+  // Unique identifier for this observation.
+  // Provides the binding for associated Observation Components.
+
+  INT32 observation_number; //@key
+
+  INT32 component_count;
+  // Number of Observation Components associated with this observation.
+
+  string<MEDIUM_STRING_LEN> order_id; //@Optional
+  // This definition is Medanta-specific.
+  // The FHIR attribute is named basedOn, defined as Reference(CarePlan
+  //  | DeviceRequest | ImmunizationRecommendation | MedicationRequest
+  //  | NutritionOrder | ProcedureRequest | ReferralRequest). 
+
+  CT_code status;
+  // registered | preliminary | final | amended +
+  // The status of the result value.
+  // Ref 1: http://hl7.org/fhir/valueset-observation-status.html
+  // Ref 2: http://hl7.org/fhir/observation.html#4.20.4.5
+
+  CodeableConcept category; //@Optional
+  // A code that classifies the general type of observation being made. This is
+  // used for searching, sorting and display purposes.
+  //
+  // The level of granularity is defined by the category concepts in the value
+  // set. More fine-grained filtering can be performed using the metadata
+  // and/or terminology hierarchy in Observation.code.
+  // Observation Category Codes:
+  //  http://hl7.org/fhir/valueset-observation-category.html
+
+  EffectiveTime effective; //@Optional
+  // The time or time-period the observed value is asserted as being true. For
+  // biological subjects - e.g. human patients - this is usually called the
+  // "physiologically relevant time". This is usually either the time of the
+  // procedure or of specimen collection, but very often the source of the
+  // date/time is not known, only the date/time itself.
+  // Ref: http://hl7.org/fhir/observation.html#4.20.4.3
+
+  CT_instant issued; //@Optional
+  // Date/Time this observation was made available.
+  // Updated when the result is updated.
+
+  string<MEDIUM_STRING_LEN> subject; //@Optional
+  // Who and / or what this is about.
+  // For Medanta, use patient id (UHID). 
+
+  CodeableConcept method; //@Optional
+  // Indicates the mechanism used to perform the observation.
+  // Ref:
+  //  https://www.hl7.org/fhir/observation-definitions.html#Observation.method
+  //  https://www.hl7.org/fhir/valueset-observation-methods.html
+
+  Specimen specimen; //@Optional
+  // Specimen used for this observation
+
+  ObservationResult result;
+  // The information determined as a result of making the observation, if the
+  // information has a simple value.
+  // Ref: http://hl7.org/fhir/observation.html#valuex
+}; //@top-level true
+const string ObservationTopic = "ice--Observation";
+
+//
+// ObservationComponent object
+// Component observations are expressed as separate code value pairs that share
+// the same attributes. Examples include systolic and diastolic component
+// observations for blood pressure measurement and multiple component
+// observations for genetics observations.
+struct ObservationComponent : Top
+{
+  GUID observation_id; //@Key
+  // Unique identifier for the observation instance which this component is a
+  // part of. Binds the component to the associated observation.
+
+  INT32 component_number; //@key
+  // Uniquely identifies each component of the associated observation.
+
+  ObservationResult value;
+  // The information determined as a result of making the observation, if the
+  // information has a simple value.
+}; //@top-level true
+const string ObservationComponentTopic = "ice--ObservationComponent";
+
+//
+// DiagnosticReport object
+//
+// Findings and interpretation of diagnostic tests performed on patients,
+// groups of patients, devices, and locations, and/or specimens derived from
+// these. The report includes clinical context such as requesting and provider
+// information, and some mix of atomic results, images, textual and coded
+// interpretations, and formatted representation of diagnostic reports.
+// Ref 1: http://hl7.org/fhir/diagnosticreport.html
+// Ref 2: http://hl7.org/fhir/diagnosticreport.html#bnr
+struct DiagnosticReport : Top
+{
+  GUID id; //@key
+  // Unique identifier for this report. Provides the binding for Observations -
+  // simple or complex nested groups - associated with this report. The number
+  // of associated observations is specified by observation_count.
+
+  INT32 observation_count;
+  // Number of Observations associated with this report.
+
+  CT_code status;
+  // registered | partial | final | corrected | appended | canceled
+  //  | entered-in-error
+  // The status of the diagnostic report as a whole.
+  // Ref: http://hl7.org/fhir/valueset-diagnostic-report-status.html
+
+  CodeableConcept category; //@Optional
+  // A code that classifies the clinical discipline, department or diagnostic
+  // service that created the report (e.g. cardiology, biochemistry,
+  // hematology, MRI). Used for searching, sorting and display purposes.
+  // Ref: http://hl7.org/fhir/ValueSet/diagnostic-service-sections
+
+  CodeableConcept	code_;
+  // Name/Code for this diagnostic report.
+  // Ref: https://www.hl7.org/fhir/valueset-report-codes.html
+  // Terminology Binding: LOINC Diagnostic Report Codes (Prefered)
+
+  string<MEDIUM_STRING_LEN> subject; //@Optional
+  // The subject of the report - usually, but not always, the patient (identified by patient id, i.e., Medanta UHID).
+
+  string<MEDIUM_STRING_LEN> encounter_id; //@Optional
+
+  EffectiveTime effective; //@Optional
+  // The time or time-period the observed values are related to. When the
+  // subject of the report is a patient, this is usually either the time of the
+  // procedure or of specimen collection(s), but very often the source of the
+  // date/time is not known, only the date/time itself.
+  // Ref: http://hl7.org/fhir/observation.html#4.20.4.3
+
+  CT_instant issued; //@Optional
+  // The date and time that this version of the report was released from the
+  // source diagnostic service.
+
+  sequence<Performer> performer; //@Optional
+  // Indicates who participated in producing the report.
+
+  string<MEDIUM_STRING_LEN> ordering_doctor_specialty; //@Optional
+  // Medanta-specific (ORDERING_DOCTOR_SPECIALTY).
+}; //@top-level true
+const string DiagnosticReportTopic = "ice--DiagnosticReport";
+
+};

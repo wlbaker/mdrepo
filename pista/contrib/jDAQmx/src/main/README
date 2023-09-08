@@ -1,0 +1,8 @@
+
+TO BUILD on WIN32:
+
+1) Get the microsoft utilities in your path by running vcvars32.
+2) cd to the jdaqmx-c\src\daqmx directory
+3) run nmake -f makefile.msc
+
+

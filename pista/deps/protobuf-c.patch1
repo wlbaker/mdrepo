@@ -1,0 +1,12 @@
+diff -Naur protobuf-c/build-cmake/CMakeLists.txt protobuf-c-wlb/build-cmake/CMakeLists.txt
+--- protobuf-c/build-cmake/CMakeLists.txt	2018-10-10 12:12:21.000000000 -0500
++++ protobuf-c-wlb/build-cmake/CMakeLists.txt	2018-10-15 16:23:48.277309499 -0500
+@@ -34,7 +34,7 @@
+         ${MAIN_DIR}/protobuf-c/protobuf-c.c
+         ${MAIN_DIR}/protobuf-c/protobuf-c.h)
+ 
+-ADD_LIBRARY(protobuf-c ${PC_SOURCES})
++ADD_LIBRARY(protobuf-c SHARED ${PC_SOURCES})
+ 
+ INCLUDE_DIRECTORIES(${MAIN_DIR})
+ INCLUDE_DIRECTORIES(${MAIN_DIR}/protobuf-c)

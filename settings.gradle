@@ -1,0 +1,17 @@
+println "ideacore: Processing includes..."
+
+include 'idea-core-jpa'
+include 'idea-rp-schema'
+include 'idea-core'
+include 'dm-core'
+include 'idea-bindings'
+include 'algorithms'
+include 'appsupportswing'
+include 'idea-drivers'
+include 'icuvisopengl'
+include 'icuvisdaq'
+include 'pista-bindings'
+include 'pista-idea'
+include 'tsoffline'
+
+rootProject.name = 'ideacore'

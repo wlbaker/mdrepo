@@ -1,0 +1,13 @@
+20050626 GV	Fix the hell of options writing.
+20050626 GV	Work on the directory/marker block. 
+20050626 GV	Marker block: http://www.winpcap.org/pipermail/ntar-workers/2005-June/000003.html
+		Suppose we use sections to group packets: every section contains its own IDB.
+		Sections are used to both group packets, and to support tracefile cat'ting. Can/should we distinguish these two approaches? How?
+20050626 GV	We need a way to access files randomly (this is needed by ethereal, as well as by the directory/marker blocks).
+20050626 GV	Ronnie suggested tools to offline "patch" files (e.g. patch pipe'd files, and rewrite the missing data, for example the SHB section length). To patch the SHB::length we can create a specific api for api for that. The problem is that the user has no access to the SHB informations 
+		It seems useful, NTAR does not support mixed read/write of the files. We should basically add a function to rewrite block contents.
+20050626 GV	Add some ntar_open option to enable disable seeks in the file. As I know, on win32 fsetpos and fgetpos are extremely slow!
+20050626 GV	Deal with DLTs: at the moment ntar does not contain the definitions for the linktypes. We need to be very careful to avoid multiple
+		definitions of the DLTs when the user include both pcap and ntar... maybe redefine DLTs as NTAR_DLT_xxx??
+
+20050626 GV	Dealing with cyphered blocks: since now we have methods to read/write with external callbacks, we can cheat. Basically, get_block_dta on a cyphered block returns a sort of fake handle, that supports reads and writes. We can feed a new ntar instance with these handle and read/write functions. Problem: a cyphered block contains one or more blocks, no SHBs... We could cheat again creating a wrapping read function that returns a fake SHB when reading the beginning of the uncyphered content! Cool!

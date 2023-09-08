@@ -1,0 +1,306 @@
+
+Medical Device Connectivity and Interoperability
+================================================
+:Author: William L Baker
+:Email: william.l.baker2.civ@mail.mil
+:Date: April 6, 2015
+:Revision: 0.0
+
+
+
+=Intro
+
+==Why
+
+The move away from proprietary communications protocols is a requirement for advancement...
+
+I've been toying with implementing device support in C for some time.  By "toying" I mean thinking about it and writing a few test programs.  This C implementation of device support is only tangentially related to my work at ISR, though it may work it's way into a project for the AF in the future.  My work at ISR consists of Java code with supporting code in C as required.
+
+The goals of the C code are multiple.  On the PC side:
+* support a wide range of host platforms and languages
+* provide reference connectivity implementations for network access
+** DIY pub/sub
+** DDS
+** ZeroMQ
+** MQTT
+** various web services implementations
+* provide a reference set of tools for data recording and display
+
+On the device side, some of the goals are:
+* provide a reference platform that device mfgs can easily incorporate into their devices
+* provide code that can run on devices as small as ARDUINO
+* minimum configurable components: don't compile what you don’t need
+
+The architecture is a very classical and traditional approach: C code for all the base functions and bindings to other languages using SWIG.
+
+A fair amount of inspiration comes from Tim.  Tim has embarked on a similar effort.  We have both discussed the need for this for some time.  I'm very interested in seeing what he can do, and either contributing my code to his effort or merging the efforts.  But it is too immature for that in the near future.  We will both need to pursue our own technical solutions before figuring out how we can integrate our work.
+
+I'll make my work available via a GIT repository on CloudForge in the near future (days).  It will be very immature software which will probably compile reliably only for my primary platforms: Linux and BeagleBone Black.  Tim prefers GITHUB for his work, but I can't access GITHUB directly from the Army network...don't get me started talking about stupid Army network admin policies or I'll never get any work done.  I can still access GITHUB a couple of ways, indirectly, and with some additional effort, but it's not practical for me to try to develop on GITHUB.
+
+Intellivue in C will not be one of the first device implementations.  It is one of the more complex and obtuse protocols, and I have a working implementation in Java for my own needs.  I need to start with simple device and build up.
+
+To get started with code I provide, you will need some level of familiarity with some technologies I intend to use.  Here is a short list in case either of you have extra time and want to do some research:
+
+For devices:
+* GCC and GNU autoconf
+* DOxygen
+* SWIG
+* SIGROK: this is a good project for reference on cross platform project building.  There are others.
+* There will be some C++ code and usage of "boost asio" and "boost signals2" as optionals.
+
+Host side:
+* Protobuf
+* HDF5 & SQL repository backends
+* Qt, but that is low on the list, after all the architecture in C/C++ is complete.
+* PUB/SUB systems as mentioned above.
+
+As you may have noticed, this is not a small project, and it will not replace the Java code anytime soon.  The C code will start off small, implement a few devices, and expand slowly.  For short term Intellivue support, I still recommend you work with the Java application.  It works.
+
+[why now]: open source
+There are several robust PUB/SUB systems that have come about in the last three or four years.  
+I would look at MQTT, ZeroMQ, AllSeen Aliance framework.  My recommendation: find a tool that 
+helps you for your own goals.
+
+Don't look for a great universal solution for the whole world.  It doesn’t exist.
+
+
+==Goals
+
+The purpose of this document is to present a communications system that can be easily
+incorporated into medical devices, and a set of tools for retrieving and analyzing
+medical data from a wide variety of instruments.
+
+=The Big Picture
+
+Workflow considerations need to account for two types of devices: online and offline.
+Online devices are usually in the patient room and connected directly to the patient.
+These devices provide immediate feedback to the clinician.  A patient monitor is an
+online devices.
+
+Offline devices are typically not in the patient room, though some may be.  These devices
+are designed to service multiple patients.  Blood and culture analysis devices fall into
+this category.  These devices are often incorporated into a Laboratory Management System, or LIMS.
+
+=Existing Standards and Basics
+
+Existing Standards and relevant standards bodies
+
+Does ANSI have any standards in this area?  NIST?
+
+==The IHE Rosetta Document and 11073
+
+*Yearly Connectathon Conference* 
+
+Description:
+
+Others:
+
+
+HL7
+DICOM
+DoD specific: DHMSM
+Lessons learned: 30 years ago, 1984, Congress mandated use of MUMPS, led to CHCS and DbVISTA...and look how well that worked.  Surely one language will enable interoperability.
+
+ASTM F2761-09 (ICE)
+LOINC (Nancy?...we need LOINC codes in the metadata)
+3 standards in IEC 62443 series
+
+Recognition of related standards on risk management of IT-networks with medical devices (e.g., standards in ISO/IEC 80001 series)
+
+
+Rosetta Terminology Mapping (RTM) gives a vendor-neutral harmonized mapping for 
+patient care device observations based on the ISO/IEEE 11073 Medical Device 
+Communications (MDC) Nomenclature.
+
+The primary purpose of the Rosetta Terminology Mapping (RTM) profile is to harmonize 
+the use of existing ISO/IEEE 11073-10101 nomenclature terms by systems compliant 
+with IHE PCD profiles. The RTM profile specifies the correct units-of-measure and 
+enumerated values permitted for each numeric parameter to facilitate safe and 
+interoperable communication between devices and systems. Also, the Rosetta Table is 
+designed to serve as a temporary repository that can be used to define new nomenclature 
+terms that are currently not present in the ISO/IEEE 11073-10101 nomenclature. Based on
+our experience to date, well over 100 new terms will be required, principally in the 
+area of ventilator and ventilator settings. This could serve as a framework for adding
+and reconciling new terms to support the IEEE 11073 Personal Health Devices initiative.
+
+http://wiki.ihe.net/index.php?title=PCD_Profile_Rosetta_Terminology_Mapping_Overview
+
+http://wiki.ihe.net/index.php?title=PCD_Profile_Rosetta_Terminology_Mapping
+
+ftp://ftp.ihe.net/Patient_Care_Devices/Profiles/RTM/Models/NIST_RTM_UML5.jpg
+
+NIST Site (really interesting and helpful).
+
+https://rtmms.nist.gov/rtmms/index.htm#!help
+
+I am sending you the latest version of the IHE PCD RTM "Rosetta Terminology Mapping" files (2f), as 
+currently captured in «RosettaTable.2f.xls».  The spreadsheet contains the ISO/IEEE 11073-10101 
+nomenclature terms that are currently being profiled by the IHE PCD Rosetta Terminology Mapping (RTM) 
+effort as well as many of the terms that will be implemented by PCD compliant systems in the future.
+ 
+The current version (2f) has over 1150 rows submitted by nine vendors.  Approximately 810 (70%) of 
+the rows use existing ISO/IEEE 11073-10101 terms (aka RefIDs) for a total of 336 distinct RefIDs.  
+Approximately 340 (30%) of the rows require new RefIDs and were excluded from the units-of-measure 
+mapping effort, including many of the proposed new ventilator terms until they are finalized by the 
+RTM ventilator team.
+ 
+The Units table was a major focus of this effort.  Starting with the corrected units-of-measure 
+table from ISO/IEEE 11073-10101, a complete mapping to UCUM was defined (including a decade 
+scale factors) and 30 new and distinct units-of-measure were added to support the RTM.  This 
+information is captured in a publication-ready Excel worksheet as well as an XML file that 
+permits run-time conversion between IEEE 11073 Û UCUM units using XSLT.  The Enums table was 
+also updated to include all the enumerated value sets and external measurement sites.
+ 
+The primary goal of the RTM effort is to harmonize the selection of existing terms in the current 
+ISO/IEEE 11073-10101 standard to facilitate interoperability between systems compliant with PCD-01
+and other protocols that use the ISO/IEEE 11073 family of standards.  The Rosetta Table also
+specifies essential co-constraints such as the units-of-measure and enumerated values permitted
+for each numeric parameter.
+ 
+The RTM effort willfacilitate the next step towards the goal of rigorously interoperable communication
+between devices and systems by providing a consolidated table of all the RefIDs, units-of-measure and
+enumerations.  To facilitate this, the XSLT transform «RefID.Groups.Units.Enums.2n.xsl» was used to
+distill the entire RTM into an easily reviewable document, and from there we can vote inappropriate
+identifiers, units-of-measure and enumerations off the island to create the final harmonized Rosetta
+Table that supports rigorous message validation.  It is a goal of the RTM to define such a harmonized
+table for the roughly 330+ existing RefIDs already in the RTM by the end of October 2008 so that it
+can begin to be used for semantic validation.
+ 
+I will review the overall status of the RTM effort and these documents at our (general) RTM tcon
+tomorrow at (Oct. 8, 2008) 11AM CDT.  After that, you will need to review the consolidated RTM table 
+RosettaTable.2f.2008-10-07.doc with your colleagues.  
+
+One of the goals of this effort is to define and enforce the use of scientifically correct
+units-of-measure, which may be different than the traditional and incorrect units-of-measure
+used for certain parameters (e.g. "mm" instead of "mV" or "uV" for ST deviation, "g.m" instead
+of "gf.m" for cardiac stroke volume, etc.).  Since we are all trying to facilitate interoperability
+by using common messaging and semantics, it is also a propitious time to change to the correct
+units-of-measure as well.
+ 
+ 
+==DDS and MDPnP
+
+OpenDDS -- Open source, not binary compatible with other vendors. The community is not 
+fully supported and updating its features has been very slow and cumbersome.
+
+PrismTech - OpenSplice – Open source with commercial support, binary compatible with RTI 
+(less expensive than RTI, no deployment royalties). DDS architecture far more complicated 
+than RTI-DDS. Open Source Free Community license available but requires user an updated 
+license every couple of months. More confusing and complicated than RTI-DDS, steep 
+learning curve, interoperability with Open DDS and RTI-DDS is highly doubtful, less 
+expensive than RTI-DDS, in house support will be difficult to maintain.
+
+RTI – Commercial with support, binary compatible with OpenSplice (a bit more expensive, 
+requires royalties, with more QoS and tooling support than OpenSplice). Steep learning 
+curve and interoperability with Prismtech and OpenDDS is questionable. User has to renew 
+its community license every couple of months. Expiration license of community RTI-DDS 
+intentionally done to persuade user to purchase commercial based license. Major concern 
+of how to provide inhouse support.
+
+
+
+=An API
+
+# Nomenclature Level
+## 11073
+# The Encoding
+
+=MD-API Requirements for Online Devices
+
+
+Medical devices provide a number of data streams at varying frequency.  Data rate and data usage define the steram.  For convenience, streams can be broken into the following categories:
+
+* Demographics
+* Settings
+* Vitals
+* Waveforms / Sensors
+* Alarms
+
+Devices can be queried to determine their capabilities.  Device streams and interface options are part of the capabilities.  Multiple values are usually provided with each stream.  For instance, a single VITALS stream from a patient monitory typically provides heart rate, blood pressure, SpO2.  Each device stream must
+
+* Connection Event (roll into Management)
+Additional messages include
+
+* Login Request/Reply
+* Transfer Request/Reply
+* Annotation Event
+* Management Event
+* Display Layout
+* Capabilities
+
+
+==Signal Producers and Signal Consumers
+
+
+
+==Device Discovery and Input/Output
+
+* Serial
+* Ethernet
+* API: DaqMX
+* API: LabJack
+* API: Phidget
+
+Provide notes on discover of each of these I/O mechanisms.
+
+
+==The Driver API
+
+All devices provide the following functions:
+
+connect
+get_capabilities
+set_option
+tick
+disconnect
+
+===Callbacks
+^^^^^^^^^
+
+===Memory Management
+
+
+=A Demo Device
+
+BBB and RPi
+
+==Embedding a Publisher in Your Device
+
+==Publish Subscribe Systems
+
+===ZeroMQ
+
+* Encoding in Protobuf
+* Encoding in EXI
+
+
+==Testing and Conformance
+
+Scripting and unit tests
+
+=A Host GUI
+
+=A Data Collection and Distribution System
+
+==Importers and Exporters
+* HDF5
+* SQL
+* Excel
+* ASCII
+
+=Appendix: Building the Reference Device Source and Documentation
+
+* Doxygen
+* C/C++
+* Swig
+
+=Appendix: Building the Reference Java Source and Documentation
+
+## Gradle
+## ZeroMQ
+## Protobuf
+## Swig
+## Samples
+## JUnit
+## OSGI
+ 

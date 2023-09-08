@@ -1,0 +1,374 @@
+/*
+ * Created by JFormDesigner on Thu May 05 13:31:07 CDT 2011
+ */
+
+package idea.meddaq;
+
+import icuInterface.discovery.SerialDiscoveryWorker;
+import icuInterface.events.AnnotationEvent;
+import icuInterface.events.DisplayEvent;
+import icuInterface.events.NumericsEvent;
+import idea.intf.StreamProducer;
+import icuInterface.events.WaveformEvent;
+import icuInterface.message.NumericBlock;
+import idea.conf.DeviceConfiguration;
+import idea.intf.AbstractStreamProducer;
+import idea.intf.AdapterInterface;
+import idea.intf.StreamConsumer;
+import idea.message.StreamID;
+import idea.model.PersistentItem;
+import idea.persistence.ArchiveMetaData;
+import idea.persistence.PiImpStudyIntf;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.EventObject;
+import java.util.Hashtable;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import lombok.extern.slf4j.Slf4j;
+import idea.GuiUtil;
+import idea.display.ChartRefresher;
+
+import com.jgoodies.forms.layout.CellConstraints;
+import com.jgoodies.forms.layout.FormLayout;
+
+/**
+ * @author User #2
+ */
+@Slf4j
+@SuppressWarnings("serial")
+public class SimulatorControlSubpanel extends JPanel implements MgDAQSubpanelInterface {
+	private SimulationDriver sim;
+	private long tm_start;
+	private long tm_stop;
+	private boolean updating_slider;
+	
+	private long tm_curr;
+
+	public SimulatorControlSubpanel( ) {
+		initComponents();
+
+		slider1.setMinimum(0);
+		slider1.setMaximum(100);
+		slider1.setValue(0);
+
+		oneSec.setEnabled(false);
+
+	}
+
+	private void slider1StateChanged(ChangeEvent e) {
+		//FIXME:
+		return;
+//		if (updating_slider) {
+//			return; // ignore our own updates
+//		}
+//
+//		if (sim == null) {
+//			return;
+//		}
+//
+//		JSlider source = (JSlider) e.getSource();
+//		if (!source.getValueIsAdjusting()) {
+//			long delta_tm = source.getValue() * 1000L;
+//
+//			long tm = tm_start + delta_tm;
+//
+//			{
+//				Date dt = new Date(tm);
+//				System.out.println("new val: " + dt);
+//			}
+//
+//			try {
+//				seek(tm);
+//			} catch (IOException e1) {
+//				GuiUtil.showMessage(e1.getMessage());
+//			}
+//		} else {
+//
+//			sim.setPause(true);
+//			System.out.println("pause simulator");
+//		}
+	}
+
+	public SimulationDriver runSimulator(SimulationDriver sim, PiImpStudyIntf importer) throws IOException {
+		
+		this.sim = sim;
+		
+		StreamConsumer l = new StreamConsumer() {
+
+			@Override
+			public void streamEvent(int jobID, StreamProducer source, StreamID sid, PersistentItem item) {
+				// mp.signalSimulatedEvent(type, event);
+
+				updateSlider(event);
+		
+
+			}
+
+		};
+		listenToAllEvents(sim, l);
+
+		try {
+			ArchiveMetaData meta = importer.getMetaData();
+			setSliderMeta(meta);
+			
+			sim.connect();
+
+		} catch (Exception e1) {
+			GuiUtil.showError("MgDAQ Simulator", e1);
+		}
+		
+		return sim;
+	}
+
+	protected void updateSlider(PersistentItem pi) {
+		long tm = pi.getTime()
+
+		if (tm > 0) {
+			int v = (int) ((tm - tm_start) / 1000);
+			updating_slider = true;
+			slider1.setValue(v);
+			updating_slider = false;
+
+			this.tm_curr = tm;
+		}
+	}
+
+	public long getSimulationTime() {
+		return tm_curr;
+	}
+	
+	private void setSliderMeta(ArchiveMetaData meta) {
+		Date dt_start = meta.getStartTime();
+		Date dt_stop = meta.getStopTime();
+
+		if (dt_start == null || dt_stop == null) {
+			log.error("Could not find meta start/stop time.");
+			return;
+		}
+
+		tm_start = dt_start.getTime();
+		tm_stop = dt_stop.getTime();
+		slider1.setMinimum(0);
+		slider1.setMaximum((int) ((tm_stop - tm_start) / 1000));
+
+		long secs = (tm_stop - tm_start) / 1000;
+		long hrs = secs / 3600;
+
+//		if (secs < 3600) {
+//			slider1.setMajorTickSpacing(300);
+//			slider1.setMinorTickSpacing(60);
+//		} else if (hrs < 48) {
+//			slider1.setMajorTickSpacing(3600 / 10);
+//			slider1.setMinorTickSpacing(3600 / (4*10) );
+//		} else {
+//			slider1.setMajorTickSpacing(100 ); // 24 * 3600);
+//			slider1.setMinorTickSpacing( 10 ); // 3600);
+//		}
+//		setSliderLabels();
+	}
+
+	private void setSliderLabels() {
+		int delta = slider1.getMaximum() / 10;
+
+		DateFormat dtf = new SimpleDateFormat("dd-MMM");
+		DateFormat tmf = new SimpleDateFormat("HH:mm:ss");
+
+		Hashtable labelTable = new Hashtable();
+		for (int i = 0; i < 11; i++) {
+			int v = i * delta;
+			long tm = tm_start + 1000L * v;
+			Date dt = new Date(tm);
+			String txt = "<html><center>" + tmf.format(dt);
+			txt += "<br>" + dtf.format(dt);
+
+			labelTable.put(new Integer(v), new JLabel(txt));
+		}
+		slider1.setLabelTable(labelTable);
+
+	}
+
+	private void listenToAllEvents(AdapterInterface driver, StreamConsumer consumer) {
+		driver.addStreamListener(StreamID.CONNECTION, consumer);
+		driver.addStreamListener(StreamID.WAVEFORM, consumer);
+		driver.addStreamListener(StreamID.MEASUREMENT, consumer);
+		driver.addStreamListener(StreamID.ANNOTATION, consumer);
+		driver.addStreamListener(StreamID.DISPLAY, consumer);
+
+	}
+
+	private void pauseActionPerformed(ActionEvent e) {
+		sim.setPause(true);
+
+		ChartRefresher.setGlobalPause(true);
+		oneSec.setEnabled(true);
+	}
+
+	private void resumeActionPerformed(ActionEvent e) {
+		sim.setRealtime( true );
+		ChartRefresher.setGlobalPause(false);
+		oneSec.setEnabled(false);
+		sim.setPause(false);
+	}
+
+	private void oneSecActionPerformed(ActionEvent e) {
+		sim.addTime(1000);
+	}
+
+	private void maxButtonActionPerformed(ActionEvent e) {
+		sim.setRealtime( false );
+		sim.setPause( false );
+	}
+
+	private void initComponents() {
+		// JFormDesigner - Component initialization - DO NOT MODIFY
+		// //GEN-BEGIN:initComponents
+		// Generated using JFormDesigner non-commercial license
+		panel1 = new JPanel();
+		slider1 = new JSlider();
+		pause = new JButton();
+		resume = new JButton();
+		panel2 = new JPanel();
+		oneSec = new JButton();
+		maxButton = new JButton();
+		CellConstraints cc = new CellConstraints();
+
+		//======== this ========
+		setLayout(new FormLayout(
+			"default:grow, 2*($lcgap, [50dlu,default]), $rgap, [50dlu,default]",
+			"fill:default:grow, $lgap, default"));
+
+		//======== panel1 ========
+		{
+			panel1.setLayout(new FormLayout(
+				"default:grow",
+				"2*(default, $lgap), default"));
+
+			//---- slider1 ----
+			slider1.setPaintTicks(true);
+			slider1.setMinorTickSpacing(1);
+			slider1.setMajorTickSpacing(12);
+			slider1.setMinimum(2);
+			slider1.setPaintLabels(true);
+			slider1.addChangeListener(new ChangeListener() {
+				@Override
+				public void stateChanged(ChangeEvent e) {
+					slider1StateChanged(e);
+				}
+			});
+			panel1.add(slider1, cc.xy(1, 1));
+		}
+		add(panel1, cc.xy(1, 1));
+
+		//---- pause ----
+		pause.setText("Pause");
+		pause.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				pauseActionPerformed(e);
+			}
+		});
+		add(pause, cc.xy(3, 1));
+
+		//---- resume ----
+		resume.setText("Resume");
+		resume.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				resumeActionPerformed(e);
+			}
+		});
+		add(resume, cc.xy(5, 1));
+
+		//======== panel2 ========
+		{
+			panel2.setLayout(new FormLayout(
+				"default:grow",
+				"2*(fill:default:grow, $lgap), default"));
+
+			//---- oneSec ----
+			oneSec.setText("+1sec");
+			oneSec.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					oneSecActionPerformed(e);
+				}
+			});
+			panel2.add(oneSec, cc.xy(1, 1));
+
+			//---- maxButton ----
+			maxButton.setText("Max");
+			maxButton.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					maxButtonActionPerformed(e);
+				}
+			});
+			panel2.add(maxButton, cc.xy(1, 3));
+		}
+		add(panel2, cc.xy(7, 1));
+		// //GEN-END:initComponents
+	}
+
+	// JFormDesigner - Variables declaration - DO NOT MODIFY
+	// //GEN-BEGIN:variables
+	// Generated using JFormDesigner non-commercial license
+	private JPanel panel1;
+	private JSlider slider1;
+	private JButton pause;
+	private JButton resume;
+	private JPanel panel2;
+	private JButton oneSec;
+	private JButton maxButton;
+	// JFormDesigner - End of variables declaration //GEN-END:variables
+
+	@Override
+	public void addAlarm(AlarmEnum timeout) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void removeAlarm(AlarmEnum timeout) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setRunMode(RunMode runMode) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void updateClock(Date dt) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void disconnect() {
+		sim.disconnect();
+
+	}
+
+	public void seek(long tm) throws IOException {
+		sim.setPause(true);
+
+		MgDaqFrame frame = MgDaqFrame.getInstance();
+		frame.clear();
+
+		sim.seek(tm);
+		sim.setPause(false);
+	}
+}

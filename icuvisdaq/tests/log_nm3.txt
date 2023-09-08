@@ -1,0 +1,266 @@
+
+serial: COM35
+serial: COM36
+serial: COM37
+serial: COM38
+serial: COM39
+serial: COM40
+parallel: LPT1
+FIXME: need better determination of field validity
+ row: 0 = COM37
+ row: 0 = COM37
+ clearing: Messages
+**req init
+ to device: c9 [STOP] 01 [NBF] chk=b6
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+ to device: ca [SR: GET REV] 02 [NBF] 00 chk=b4
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+**sending wave req 1
+ to device: 9a 22 [NBF] 10 0a 0b 0e 12 13 14 15 17 1a 1b 1c 1d 1e 1f 21 26 27 28 33 3d 3e 50 51 53 54 55 57 59 58 64 65 66 chk=69
+ recv:  [9a] [12] [1] [1] [2] [10] [a] [b] [13] [14] [15] [17] ! = > Q d f ~ #
+9a 12 [NBF] 01 01 02 10 0a 0b 13 14 15 17 21 3d 3e 51 64 66 7e 23 
+added (form consumer) to icuInterface.adapters.PhilipsNM3Driver@113cf49 class=class icuInterface.adapters.PhilipsNM3Driver
+**req init
+ to device: c9 [STOP] 01 [NBF] chk=b6
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+System property "mbrola.base" is undefined.  Will not use MBROLA voices.
+ to device: ca [SR: GET REV] 02 [NBF] 00 chk=b4
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+**sending wave req 1
+ to device: 9a 22 [NBF] 10 0a 0b 0e 12 13 14 15 17 1a 1b 1c 1d 1e 1f 21 26 27 28 33 3d 3e 50 51 53 54 55 57 59 58 64 65 66 chk=69
+ recv:  [9a] [12] [1] [1] [2] [10] [a] [b] [13] [14] [15] [17] ! = > Q d f ~ #
+9a 12 [NBF] 01 01 02 10 0a 0b 13 14 15 17 21 3d 3e 51 64 66 7e 23 
+ recv:  [9c] [c] [1] [1] [7] [9] [f] \ [9] ; [1b] [3] ` [19]
+9c 0c [NBF] 01 01 07 09 0f 5c 09 3b 1b 03 60 19 
+ recv:  [9c] [5] [1] [2] [2] [0] Z
+9c 05 [NBF] 01 02 02 00 5a 
+ [9c] [5] [1] [10] [0] [0] N
+9c 05 [NBF] 01 10 00 00 4e 
+ [9c] [5] [1] [a] [0] [0] T
+9c 05 [NBF] 01 0a 00 00 54 
+ [9c] [5] [1] [b] [0] [0] S
+9c 05 [NBF] 01 0b 00 00 53 
+ [9c] [5] [1] [13] [0] [1e] -
+9c 05 [NBF] 01 13 00 1e 2d 
+ [9c] [5] [1] [14] [0] [0] J
+9c 05 [NBF] 01 14 00 00 4a 
+ [9c] [5] [1] [15] [0] [e] ;
+9c 05 [NBF] 01 15 00 0e 3b 
+ [9c] [5] [1] [17] [2] ( [1d]
+9c 05 [NBF] 01 17 02 28 1d 
+ [9c] [5] [1] ! [3] [1e] [1c]
+9c 05 [NBF] 01 21 03 1e 1c 
+ [9c] [5] [1] = [0] [a] [17]
+9c 05 [NBF] 01 3d 00 0a 17 
+ [9c] [5] [1] > [2] . p
+9c 05 [NBF] 01 3e 02 2e 70 
+ [9c] [5] [1] Q [0] [0] [d]
+9c 05 [NBF] 01 51 00 00 0d 
+ [9c] [5] [1] d [0] [0] z
+9c 05 [NBF] 01 64 00 00 7a 
+ [9c] [5] [1] f [0] [0] x
+9c 05 [NBF] 01 66 00 00 78 
+ recv:  [9c] [5] [1] ~ [0] [0] `
+9c 05 [NBF] 01 7e 00 00 60 
+**req init
+ to device: c9 [STOP] 01 [NBF] chk=b6
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+ to device: ca [SR: GET REV] 02 [NBF] 00 chk=b4
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+**sending wave req 1
+ to device: 9a 22 [NBF] 10 0a 0b 0e 12 13 14 15 17 1a 1b 1c 1d 1e 1f 21 26 27 28 33 3d 3e 50 51 53 54 55 57 59 58 64 65 66 chk=69
+ recv:  [9a] [12] [1] [1] [2] [10] [a] [b] [13] [14] [15] [17] ! = > Q d f ~ #
+9a 12 [NBF] 01 01 02 10 0a 0b 13 14 15 17 21 3d 3e 51 64 66 7e 23 
+
+
+
+unknown qname: rp-repository
+End element ignored:protocol
+End element ignored:protocol
+End element ignored:protocol
+End element ignored:protocol
+End element ignored:rp-repository
+unknown qname: rp-repository
+End element ignored:protocol
+End element ignored:protocol
+End element ignored:protocol
+End element ignored:rp-repository
+---serial library loaded.
+Stable Library
+=========================================
+Native lib Version = RXTX-2.1-7
+Java lib Version   = RXTX-2.1-7
+get icon
+set icon: SUBSTANCE HAS A LISTENER ERROR PROBLEM
+serial: COM1
+serial: COM2
+serial: COM3
+serial: COM4
+serial: COM5
+serial: COM6
+serial: COM7
+serial: COM8
+serial: COM9
+serial: COM10
+serial: COM11
+serial: COM12
+serial: COM13
+serial: COM14
+serial: COM15
+serial: COM16
+serial: COM17
+serial: COM18
+serial: COM20
+serial: COM33Could not load qrs2: no qrs2 in java.library.path
+
+serial: COM34
+serial: COM35
+serial: COM36
+serial: COM37
+serial: COM38
+serial: COM39
+serial: COM40
+parallel: LPT1
+FIXME: need better determination of field validity
+ row: 0 = COM37
+ row: 0 = COM37
+ clearing: Messages
+**req init
+ to device: c9 [STOP] 01 [NBF] chk=b6
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+ to device: ca [SR: GET REV] 02 [NBF] 00 chk=b4
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+**sending wave req 1
+ to device: 9a 22 [NBF] 10 0a 0b 0e 12 13 14 15 17 1a 1b 1c 1d 1e 1f 21 26 27 28 33 3d 3e 50 51 53 54 55 57 59 58 64 65 66 chk=69
+ recv:  [9a] [12] [1] [1] [2] [10] [a] [b] [13] [14] [15] [17] ! = > Q d f ~ #
+9a 12 [NBF] 01 01 02 10 0a 0b 13 14 15 17 21 3d 3e 51 64 66 7e 23 
+added (form consumer) to icuInterface.adapters.PhilipsNM3Driver@113cf49 class=class icuInterface.adapters.PhilipsNM3Driver
+**req init
+ to device: c9 [STOP] 01 [NBF] chk=b6
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+System property "mbrola.base" is undefined.  Will not use MBROLA voices.
+ to device: ca [SR: GET REV] 02 [NBF] 00 chk=b4
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+**sending wave req 1
+ to device: 9a 22 [NBF] 10 0a 0b 0e 12 13 14 15 17 1a 1b 1c 1d 1e 1f 21 26 27 28 33 3d 3e 50 51 53 54 55 57 59 58 64 65 66 chk=69
+ recv:  [9a] [12] [1] [1] [2] [10] [a] [b] [13] [14] [15] [17] ! = > Q d f ~ #
+9a 12 [NBF] 01 01 02 10 0a 0b 13 14 15 17 21 3d 3e 51 64 66 7e 23 
+ recv:  [9c] [c] [1] [1] [7] [9] [f] \ [9] ; [1b] [3] ` [19]
+9c 0c [NBF] 01 01 07 09 0f 5c 09 3b 1b 03 60 19 
+ recv:  [9c] [5] [1] [2] [2] [0] Z
+9c 05 [NBF] 01 02 02 00 5a 
+ [9c] [5] [1] [10] [0] [0] N
+9c 05 [NBF] 01 10 00 00 4e 
+ [9c] [5] [1] [a] [0] [0] T
+9c 05 [NBF] 01 0a 00 00 54 
+ [9c] [5] [1] [b] [0] [0] S
+9c 05 [NBF] 01 0b 00 00 53 
+ [9c] [5] [1] [13] [0] [1e] -
+9c 05 [NBF] 01 13 00 1e 2d 
+ [9c] [5] [1] [14] [0] [0] J
+9c 05 [NBF] 01 14 00 00 4a 
+ [9c] [5] [1] [15] [0] [e] ;
+9c 05 [NBF] 01 15 00 0e 3b 
+ [9c] [5] [1] [17] [2] ( [1d]
+9c 05 [NBF] 01 17 02 28 1d 
+ [9c] [5] [1] ! [3] [1e] [1c]
+9c 05 [NBF] 01 21 03 1e 1c 
+ [9c] [5] [1] = [0] [a] [17]
+9c 05 [NBF] 01 3d 00 0a 17 
+ [9c] [5] [1] > [2] . p
+9c 05 [NBF] 01 3e 02 2e 70 
+ [9c] [5] [1] Q [0] [0] [d]
+9c 05 [NBF] 01 51 00 00 0d 
+ [9c] [5] [1] d [0] [0] z
+9c 05 [NBF] 01 64 00 00 7a 
+ [9c] [5] [1] f [0] [0] x
+9c 05 [NBF] 01 66 00 00 78 
+ recv:  [9c] [5] [1] ~ [0] [0] `
+9c 05 [NBF] 01 7e 00 00 60 
+**req init
+ to device: c9 [STOP] 01 [NBF] chk=b6
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+ to device: ca [SR: GET REV] 02 [NBF] 00 chk=b4
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+**sending wave req 1
+ to device: 9a 22 [NBF] 10 0a 0b 0e 12 13 14 15 17 1a 1b 1c 1d 1e 1f 21 26 27 28 33 3d 3e 50 51 53 54 55 57 59 58 64 65 66 chk=69
+ recv:  [9a] [12] [1] [1] [2] [10] [a] [b] [13] [14] [15] [17] ! = > Q d f ~ #
+9a 12 [NBF] 01 01 02 10 0a 0b 13 14 15 17 21 3d 3e 51 64 66 7e 23 
+**req init
+ to device: c9 [STOP] 01 [NBF] chk=b6
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+ to device: ca [SR: GET REV] 02 [NBF] 00 chk=b4
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+**sending wave req 1
+ to device: 9a 22 [NBF] 10 0a 0b 0e 12 13 14 15 17 1a 1b 1c 1d 1e 1f 21 26 27 28 33 3d 3e 50 51 53 54 55 57 59 58 64 65 66 chk=69
+ recv:  [9a] [12] [1] [1] [2] [10] [a] [b] [13] [14] [15] [17] ! = > Q d f ~ #
+9a 12 [NBF] 01 01 02 10 0a 0b 13 14 15 17 21 3d 3e 51 64 66 7e 23 
+**req init
+ to device: c9 [STOP] 01 [NBF] chk=b6
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+ to device: ca [SR: GET REV] 02 [NBF] 00 chk=b4
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+**sending wave req 1
+ to device: 9a 22 [NBF] 10 0a 0b 0e 12 13 14 15 17 1a 1b 1c 1d 1e 1f 21 26 27 28 33 3d 3e 50 51 53 54 55 57 59 58 64 65 66 chk=69
+ recv:  [9a] [12] [1] [1] [2] [10] [a] [b] [13] [14] [15] [17] ! = > Q d f recv:  ~ #
+9a 12 [NBF] 01 01 02 10 0a 0b 13 14 15 17 21 3d 3e 51 64 66 7e 23 
+**req init
+ to device: c9 [STOP] 01 [NBF] chk=b6
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+ to device: ca [SR: GET REV] 02 [NBF] 00 chk=b4
+ recv:  [c8] [2] [5] 1
+c8 [NAK] 02 [NBF] 05 31 
+**sending wave req 1
+ to device: 9a 22 [NBF] 10 0a 0b 0e 12 13 14 15 17 1a 1b 1c 1d 1e 1f 21 26 27 28 33 3d 3e 50 51 53 54 55 57 59 58 64 65 66 chk=69
+ recv:  [9a] [12] [1] [1] [2] [10] [a] [b] [13] [14] [15] [17] ! = > Q d f ~ #
+9a 12 [NBF] 01 01 02 10 0a 0b 13 14 15 17 21 3d 3e 51 64 66 7e 23 
+ recv:  [9c] [c] [1] [1] [7] [9] [f] \ [a] [0] [1b] [3] a R
+9c 0c [NBF] 01 01 07 09 0f 5c 0a 00 1b 03 61 52 
+ recv:  [9c] [5] [1] [2] [2] [0] Z
+9c 05 [NBF] 01 02 02 00 5a 
+ [9c] [5] [1] [10] [0] [0] N
+9c 05 [NBF] 01 10 00 00 4e 
+ [9c] [5] [1] [a] [0] [0] T
+9c 05 [NBF] 01 0a 00 00 54 
+ [9c] [5] [1] [b] [0] [0] S
+9c 05 [NBF] 01 0b 00 00 53 
+ [9c] [5] [1] [13] [0] [1e] -
+9c 05 [NBF] 01 13 00 1e 2d 
+ [9c] [5] [1] [14] [0] [0] J
+9c 05 [NBF] 01 14 00 00 4a 
+ [9c] [5] [1] [15] [0] [e] ;
+9c 05 [NBF] 01 15 00 0e 3b 
+ [9c] [5] [1] [17] [2] & [1f]
+9c 05 [NBF] 01 17 02 26 1f 
+ [9c] [5] [1] ! [3] [1d] [1d]
+9c 05 [NBF] 01 21 03 1d 1d 
+ [9c] [5] [1] = [0] [a] [17]
+9c 05 [NBF] 01 3d 00 0a 17 
+ [9c] [5] [1] > [2] . p
+9c 05 [NBF] 01 3e 02 2e 70 
+ [9c] [5] [1] Q [0] [0] [d]
+9c 05 [NBF] 01 51 00 00 0d 
+ [9c] [5] [1] d [0] [0] z
+9c 05 [NBF] 01 64 00 00 7a 
+ [9c] [5] [1] f [0] [0] x
+9c 05 [NBF] 01 66 00 00 78 
+ [9c] [5] [1] ~ [0] [0] `
+9c 05 [NBF] 01 7e 00 00 60 
+

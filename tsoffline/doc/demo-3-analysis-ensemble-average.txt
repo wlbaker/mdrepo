@@ -1,0 +1,167 @@
+Hello, my name is Bill Baker.  Welcome to our continuation of tutorials on tsOffline, 
+the analysis software developed at the US Army Institute of Surgical Research.
+
+--
+
+We are finally getting to the heart of this program: offline analysis. We will 
+be continuing with the data set for Active Duty Normal soldiers from the 
+Hemodynamic Waveform Library of the Cardiology Service at Brooke Army Medical Center.  
+
+In our previous tutorial, we segmented the ECG and pressure waveforms using 
+the peak of the R wave of the ECG as a fiducial marker.  If you are following
+our videos, you can open that file from the recently opened list of files.  
+Select File/BAMC 0049 tutorial 2.  
+
+The first analysis script that we will examine will be used to generate the 
+ensemble average of the Left Ventricular Pressure as well as other selected 
+waveforms. The ensemble average, also known as a statistical ensemble, is a
+probability distribution for the state of the system, which we will obtain
+using a simple point-by-point average from a series of overlapping beats.
+
+To obtain our ensemble average, we segment a continuous waveform into distinct
+beats representing consecutive cardiac cycles over many respiratory periods.  Next,
+beats are overlaid and aligned by our fiducial marker, which is the R-wave 
+indicator.  Finally we take the average of the set of beats at each point in time.  
+We shall use ensemble averaging to provide: 1) a waveform representative of the
+patient’s hemodynamic status during the recording period 2) provided a measure of
+respiratory variability and 3) demonstrate consequences of ectopy and other
+aberrant events during the recording period.
+ 
+# [NOTE:  Feature: 1) more representative of patient status (especially used in conjunction with 
+# trend data) than snapshots of data,  2) QA data – to quickly define physiologic and non-physiologic 
+# outliers, 3) novel way to assess respiratory variability for diagnoses and prognoses.],  
+-----
+
+First we need to select the time frame of interest for this analysis.  
+
+For our purpose, we want to avoid large anomalies such as ectopic beats.
+Pressing the key 'A' will zoom out to a display showing entire timeline.
+The dense area of magenta are the R-wave indicators that we have previously 
+generated.  Zoom in to the beginning of the data with R-wave indicators by
+dragging a small rectangle over this area.  I am using a clean window 
+I've selected a window between the time of 28:50 to 29:20.
+
+-------
+
+Lets look closely at the pressure waveforms by pressing the + key multiple times.
+The Left Distal pressure comes from a sensor placed inside the left ventricle.
+The Left Proximal pressure comes from a sensor in the aorta, slightly
+outside the left ventricle.  During the heartbeat phase when the ventricle opens,
+these pressures represent the force of cardiac contraction. When the heart valves
+close, the Left Proxal (or aortic) pressure drops slowly, as the left distal
+pressure drops dramatically as the heart chamber prepares to refill.
+
+Scrolling through the data, the beat-to-beat pressure profile looks very uniform
+at this scale.  Let's zoom back to approximately a 30-second interval using the "-"
+key and center the pressure waveform.  At this scale, some respiratory induced
+variation is visible in the pressure waveforms.  For patients breathing spontaneously,
+thoracic and cardiac pressures will decrease during the inhalation.  For mechanically
+ventilated patients, thoracic and cardiac pressures will be increased.   The
+ventilatory changes in hemodynamics waveforms have clinical diagnostic and
+prognostic significance.          
+
+-------
+
+To generate the ensemble average of the displayed data, Select Run/Analysis,
+ensemble-average and Next.
+We have three options for selecting the time range of our analysis.  We can
+choose the interval visible in the display, specific event markers, or a
+specific time range for the analysis.  For this analysis, the 30-second window
+in the display will work well.  Select "Display" and click Next.
+
+The first Ensemble Average that we wish to view is the Left Distal.  
+Select "L dist" and Next.
+
+-------
+
+Our next screen shows the default script for generating the Ensemble Average.
+For most of the analysis scripts, tsOffline uses R, which is a programming
+language and software environment for graphics and statistical computing.
+This allows the user with even minimal programming skills to alter existing
+analysis scripts as well as derive new analysis scripts using a well-known
+language and environment.  R is a useful tool which will already be familiar
+to many researchers and most statisticians.
+
+For the moment, we will accept the default script, and press Next generate the graph.
+
+--------
+
+The primary features of the Ensemble Average Graph are the gray lines which
+represent the individual beats, the red line, which is the average at each
+point in time of the individual beats, and the blue line, which indicates the
+position of our R-wave fiducial point.  
+
+Most of the data needed to reproduce this graph is shown in the graph itself.
+We see the subject, 0049, at the top of the graph.  The subtitle at the bottom
+of the graph indicates that this is an "Ensemble Average" graph of the "Left distal"
+signal with 34 beats taken from a specific range of the dataset.  
+
+The "lead time" for the waveform display  is -.15 sec, meaning that  our graph
+starts slightly before the R-wave, and ends at the "lag time" of -.15 sec before
+the subsequent R-wave.  
+
+--------
+
+Any continuously recorded waveform can be ensemble averaged.  Let's take another
+look at the Ensemble Average, this time from the ECG signal.  Press "Previous" twice,
+select ECG and press "Next" twice to recreate the graph.  This ensemble average does
+not look ideal.  The vertical blue line is not necessary and possibly even distracting.
+Also, the red dots might be big enough to obscure some of the more subtle features.
+We can make two small changes to the script to improve the results we want.
+Press "Previous". 
+
+The last line of the script draws the vertical blue line that we wish to remove.
+Delete this line.  The line above this draws the red points of the average.
+Instead of the command "points", change the command to "lines", and press Next.
+
+Now we can clearly distinguish the P, Q, R, S and T waves in the ensemble average,
+even though these features were difficult to distinguish from any single ECG segment.
+For periodic waveforms ensemble averaging reduces signal noise.   Press "Finish".
+
+Now the plot has it's own independent window.  Resize the plot as desired.  Right
+click on the plot and you will find options for copying the image or the data.  The
+image can be pasted into any program that accepts graphic images, such as Word or
+Powerpoint.  Data can be pasted directly into programs such as Excel.
+Now close the graph window.
+
+--------
+
+We can easily build upon the ensemble average by graphing the beat-to-beat
+variation in pressure over multiple respiratory phases.  To see the variances,
+we can take the pressure waveform from each beat and subtract the ensemble average.
+We have already included a script to do that which uses the standard Analysis commands.
+
+Select Run/Analysis...ensemble average with variances.  We will again use the
+display time range and the L-distal pressure.  Click Next.
+We will accept the default script, and click Next.  Now we can clearly see
+that the variation between beats is not uniform over the entire beat the
+display is a novel way to express respiratory variability. This type of
+display provides insight into parameters currently reported to guide fluid
+therapy in patients in shock.    Press Cancel to close the graph without
+opening a separate plot window.
+---------
+# [The info provided below sound a little like an advertisement …  and may not be necessary 
+# at this point.] More information on R can be found in free and comprehensive books and 
+# on the Internet. Youtube is also a good resource for tutorials on common statistical techniques 
+# used in R, such as linear regressions and ANOVA.
+ #
+# Also, the online courses at Coursera.com can be taken for free, or for a small fee if 
+# certification is desired. Or consult your friendly local statistician, who, in all probability, 
+# has experience with this language.
+
+----------
+
+We have also explored the potential the use of ensemble displays for representing
+data acquired during dynamic procedures over a steady state period.  For example pulmonary
+artery pressure can be displayed simultaneously with and with pulmonary capillary wedge pressure
+in critical care environments requiring flow directed right heart catheters. 
+# [For this would need to trigger two ensemble average routines based on  EVENT markers.  
+# Figure below would require two red lines one for PAP the other for PCWP and essentially 
+# create an ensemble averaged Wiggers’ diagram ] 
+
+Diagram 4685(rest)_160830_1554_w_001.dat
+Ensemble Average: Fluid lead: -0.15, lag: -0.15
+
+----------
+
+This concludes the ensemble average analysis tutorial.

@@ -1,0 +1,64 @@
+
+// become root for every command.
+apt-get install dhcp3-server 
+
+// do ifconfig command to see if you already have an ip address for eth0
+ifconfig
+
+// set inet address of ethernet
+// If you do have an ip address for eth0 you could skip this command
+// and replace subnet in the dhcpd.conf file.
+// It might be easier to just set it.   
+ifconfig eth0 169.254.6.206
+
+// copy etc/dhcp/dhcpd.conf  etc dhcp/dhcpd.conf_orig to save original
+cp etc/dhcp/dhcpd.conf etc/dhcp/dhcpd.conf_orig
+
+// put this in etc/dhcp/dhcpd.conf
+// to define a range of addresses you would do 
+// option broadcast-address 169.254.6.200 169.254.6.207;
+// I think that is random and not recommended though.
+// I just picked one that worked.
+DHCPDARGS=eth0;
+ddns-update-style none;
+authoritative;
+allow bootp;
+subnet 169.254.6.206 netmask 255.255.255.254
+{
+
+	range dynamic-bootp 169.254.6.206 ; 
+	option broadcast-address 169.254.6.207;
+	option subnet-mask 255.255.0.0;
+	option routers 0.0.0.0;   
+}
+
+
+host eth0 
+{	
+	hardware ethernet 00:09:FB:70:57:1E; 
+	fixed-address 169.254.6.207;	
+}
+
+
+// put this in etc/default/isc-dhcp-server so that it listens to eth0 iface 
+// instead of wlan0
+INTERFACES="eth0"
+
+// server commands 
+Usage: /etc/init.d/isc-dhcp-server {start|stop|restart|force-reload|status}
+
+// this is a good sign 
+root@mike-Precision-M4600:/# /etc/init.d/isc-dhcp-server restart
+ * Stopping ISC DHCP server dhcpd                                        [fail] 
+ * Starting ISC DHCP server dhcpd                                        [ OK ] 
+ 
+// example of a bad message.
+
+root@mike-Precision-M4600:/# /etc/init.d/isc-dhcp-server restart
+ * Stopping ISC DHCP server dhcpd                                        [fail] 
+ * Starting ISC DHCP server dhcpd                                                
+ * check syslog for diagnostics.
+                                                                         [fail]
+
+// to check syslog
+root@mike-Precision-M4600:/# tail -n 100 /var/log/syslog

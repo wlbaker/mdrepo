@@ -1,0 +1,13 @@
+Hello Bill,
+
+I suggest you use 'csv' files instead of text.
+
+I attach the csv file based on your data and the obf file which you can view by uploading here:
+
+http://mapview.qbt.ch/
+
+As you can see, it works fine.
+
+Regards,
+
+Jacek

@@ -1,0 +1,33 @@
+<html>
+<!--
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js"></script> 
+-->
+<body>
+A difference filter, with a transpose, inverse, and inverse-transpose. 
+A 1-D difference filter is an approximation to a backward-difference filter: 
+y[i] = x[i]-0.999*x[i-1]. The constant 0.999 is less than one so that the 
+recursive inverse filter $$y_i = x_i+0.999*y_{i-1}$$ is stable. The inverse 
+filter is sometimes called \"leaky integration\", and is especially useful 
+for preconditioning inverse problems with smooth solutions.
+<p>
+Sequential application of the backward-difference filter and its transpose 
+yields an approximation to a negative centered 2nd-difference filter: 
+y[i] = -x[i-1]+2*x[i]-x[i+1].
+<p>
+Extensions to 2-D and 3-D backward-difference filters are defined as in 
+Claerbout, J., 1998, Multidimensional recursive filters via a helix: 
+Geophysics, v. 63, n. 5, p. 1532-1541.
+<p>
+These extensions were obtained here by factoring the negative centered 
+2-D and 3-D 2nd-difference filters, respectively, using the Wilson-Burg 
+algorithm, as in Fomel, S., Sava, P., Rickett, J., and Claerbout, J., 2003, 
+The Wilson-Burg method of spectral factorization with application to helical 
+filtering: Geophysical Prospecting, v. 51, p. 409-420.
+<p>
+For all dimensions, these approximations yield less than one percent error
+in the negative centered 2nd-difference filter, relative to the exact central
+filter coefficient. For example, the error for a 2-D filter is less than
+0.04 = 0.01*4, where 4 is the central coefficient in the exact negative
+2nd-difference filter.
+</body>
+</html>

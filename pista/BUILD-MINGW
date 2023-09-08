@@ -1,0 +1,46 @@
+#
+# First, see doc/INSTALL
+#
+
+#
+# Convenient to define DISTRIB_PATH and you may need to add the msys64
+# directrory to PKG_CONFIG_PATH so that cmake can find them...a mingw thing
+#
+#
+export DISTRIB_PATH=/mingw64/usr
+export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/msys64/mingw64/lib/pkgconfig
+
+# Additional PREREQUISITES
+# -------------
+pacman -S mingw64/mingw-w64-x86_64-gcc mingw64/mingw-w64-x86_64-swig
+pacman -S mingw64/mingw-w64-x86_64-python3-pip
+pacman -S mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja
+pacman -S mingw-w64-x86_64-protobuf-c
+pacman -S mingw-w64-x86_64-dlfcn
+pacman -S mingw64/mingw-w64-x86_64-libwebsockets
+pacman -S mingw64/mingw-w64-x86_64-protobuf-c
+pacman -S mingw64/mingw-w64-x86_64-yajl
+# note: you must use the mingw version of pkg-config, not the msys version!
+pacman -S mingw-w64-x86_64-pkg-config
+
+# useful but optional
+pacman -S msys/vim
+pacman -S mingw64/mingw-w64-x86_64-doxygen
+pacman -S mingw64/mingw-w64-x86_64-qt5
+
+#
+# git config for windows 
+#
+#
+git config core.fileMode false
+git config --global core.autocrlf false
+
+#
+# Additional python config
+#
+
+alias python=python3
+pip3 install numpy
+pip3 install matplotlib
+
+pip3 install opencv_python-4.1+contrib-cp37m-win_amd64.whl

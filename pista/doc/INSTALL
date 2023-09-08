@@ -1,0 +1,130 @@
+
+Prerequisites: protobuf, protobuf-c
+
+WINDOWS/Mingw32
+===============
+
+
+NOTE: if you want to load protobuf related DLL's into the JVM, then you want
+to use MINGW to compile it.  But if you only want the protobuf utilities to
+generate code with no external runtime dependencies...then creating protobuf
+and protobuf-c executables in native cygwin is fine.  At this point in time,
+I'm not sure why I went down the MINGW route for protobuf or if it is necessary.  YYMV.
+
+NOTE: XML parsing is done with expat.  Setup/install/apt-get/Download as needed.
+NOTE: libexpat.dll.a...will not link in Windows C++ with -lexpat
+
+HOMEPAGE: http://www.msys2.org
+DOWNLOAD: http://repo.msys2.org/distrib/x86_64/msys2-x86_64-20180531.exe
+
+Using MSYS2
+-----------
+$ pacman -S base-devel cmake doxygen autoconf-archive make protobuf pkgconfig
+$ pacman -S mingw-w64-x86_64-python2-setuptools
+$ pacman -S mingw-w64-x86_64-python3-setuptools
+$ pacman -S mingw-w64-x86_64-pygobject-devel
+$ pacman -S mingw-w64-x86_64-pygobject2-devel
+$ pacman -S mingw-w64-x86_64-protobuf-c
+$ pacman -S mingw-w64-x86_64-yajl
+$ pacman -S mingw-w64-x86_64-python3-ipython
+$ pacman -S mingw-w64-x86_64-cmake
+
+You may also want these packages:
+$ pacman -S vim
+$ pacman -S mingw-w64-x86_64-python3-pyqt5
+
+$ # (wish: pacman -S yajl)
+$ export JAVA_HOME=/opt/jdk/jdk-9.0.4
+$ export PATH=${JAVA_HOME}/bin:${PATH}
+
+$ # you may also need this to get JAVA_HOME to make sense to both msys and Windows
+C:\msys64>mklink /J opt c:\opt
+
+
+Cygwin/Mingw64
+--------------
+Needed cygwin packages: mingw64-x86_64-gcc-g++, mingw64-x86_64-openssl, autoconf, libtool, automake, pkg-config, python, python-setuptools, swig
+(libyajl2, libyajl-devel)
+cygwin advised: zlib -- used by protobuf if found
+cygwin advised: doxygen -- used by pista c++ bindings...should be optional but isn't
+cygwin useful: vim, hdf5
+Java bindings: jdk > 1.8.x
+Python bindings: python > 3.0?
+
+ALL CYGWIN NATIVE COMPILES
+--------------------------
+$ export CC=x86_64-w64-mingw32-gcc
+$ export CXX=x86_64-w64-mingw32-g++
+
+Protobuf 
+--------
+NOTE: Optional? protobuf-c can be built without it.
+NOTE: Required by config script, and used for files that can be supplied in a distribution.
+$ echo CC MUST BE DEFINED -- SEE ABOVE
+$ unzip protobuf-master.zip
+$ cd protobuf-master
+$ autoconf -i
+$ autoreconf -ivf
+$ ./configure --prefix=/usr/x86_64-w64-mingw32/sys-root/mingw
+$ make install
+
+Protobuf-c
+----------
+$ unzip protobuf-c-master.zip
+$ cd protobuf-c-master
+$ echo CC MUST BE DEFINED -- SEE ABOVE
+$ ./autogen.sh
+$  PKG_CONFIG_PATH=/usr/x86_64-w64-mingw32/sys-root/mingw/lib/pkgconfig ./configure --prefix=/usr/x86_64-w64-mingw32/sys-root/mingw --disable-protoc
+$ make install
+
+
+Pista
+-----
+NOTE: in jdk1.8.0_72/include/win32/jni_md.h, you must change __int64 to int64_t for GCC, or add the fag -fms-extensions to CFLAGS
+$ cd pista-core
+$ pushd /usr
+$ makdir /usr/java
+$ ln -s /opt/jdk/jdk1.8.0_72 /usr/java/latest
+$ echo CC MUST BE DEFINED -- SEE ABOVE
+$ ./autogen.sh
+$ export CFLAGS=-I/opt/jdk/jdk1.8.0_72/include/win32 
+$ export CXXFLAGS="-fms-extensions -I/opt/jdk/jdk1.8.0_72/include -I/opt/jdk/jdk1.8.0_72/include/win32"
+$ PATH=/opt/jdk/jdk1.8.0_72/bin:${PATH} PKG_CONFIG_PATH=/usr/x86_64-w64-mingw32/sys-root/mingw/lib/pkgconfig ./configure  --with-jni-include-path=/opt/jdk/jdk1.8.0_72/include --disable-mccul
+
+
+FEDORA
+======
+
+$ sudo dnf install protobuf protobuf-devel
+$ sudo dnf install protobuf-c protobuf-devel
+
+DEBIAN
+======
+$ apt-get install libprotobuf-dev libprotobuf-c-dev protobuf-c-compiler libprotobuf-java
+
+
+MORE WINDOWS
+============
+
+If YAJL is not found for mingw...you can always build it yourself!  NOTE the SPACE between --prefix and the arg.  Build system is actually CMake, so don't take things for granted.
+
+ git clone http://github.com/lloyd/yajl
+ ./configure --prefix /usr/x86_64-w64-mingw32/sys-root/
+ make install
+
+
+ANDROID
+=======
+
+
+
+
+ALL PLATFORMS
+=============
+
+Install the local copy of libwebsockets, which is used by the Propaq drivers only.
+$ cd pista-core
+$ ./configure --prefix=/opt/bernard
+$ make
+$ make install
+

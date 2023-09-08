@@ -1,0 +1,11 @@
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew install gradle
+  brew search ninja
+  brew info ninja
+  brew install ninja
+  brew install cmake
+  brew install pkg-config
+  brew search protobuf
+  brew install protobuf-c
+  brew search websockets
+  brew install libwebsockets

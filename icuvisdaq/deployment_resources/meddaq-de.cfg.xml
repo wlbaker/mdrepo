@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\opt\meddaq\bin\meddaq.jar</jar>
+  <outfile>c:\opt\meddaq\bin\meddaq64.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\users\bbaker\git\icuvisdaq\deployment_resources\meddaq.ico</icon>
+  <var>PATH=%EXEDIR%\win64;%PATH%</var>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.6.0</minVersion>
+    <maxVersion>9.0.0</maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64</runtimeBits>
+    <initialHeapSize>256</initialHeapSize>
+    <maxHeapSize>512</maxHeapSize>
+    <opt>-Djava.library.path=&quot;%EXEDIR%&quot;</opt>
+  </jre>
+</launch4jConfig>

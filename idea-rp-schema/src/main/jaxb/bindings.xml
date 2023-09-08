@@ -1,0 +1,206 @@
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ci="http://jaxb.dev.java.net/plugin/code-injector"
+	version="2.1">
+
+	<jaxb:globalBindings>
+		<jaxb:javaType name="java.util.Date" xmlType="xs:dateTime"
+			parseMethod="idea.schema.rp.DateAdapter.parseDate" printMethod="idea.schema.rp.DateAdapter.printDate" />
+	</jaxb:globalBindings>
+
+	<jaxb:bindings schemaLocation="repository-defs.xsd">
+
+		<jaxb:bindings
+			node="//xs:complexType[@name='rp-study']//xs:element[@name='param']">
+			<jaxb:property>
+				<jaxb:baseType name="idea.schema.rp.StringStringMap;" />
+			</jaxb:property>
+		</jaxb:bindings>
+
+		<jaxb:bindings
+			node="//xs:complexType[@name='rp-device']//xs:element[@name='param']">
+			<jaxb:property>
+				<jaxb:baseType name="idea.schema.rp.StringStringMap;" />
+			</jaxb:property>
+		</jaxb:bindings>
+
+		<jaxb:bindings
+			node="//xs:complexType[@name='rp-analysis']//xs:element[@name='param']">
+			<jaxb:property>
+				<jaxb:baseType name="idea.schema.rp.StringStringMap;" />
+			</jaxb:property>
+		</jaxb:bindings>
+
+		<!-- <jaxb:bindings node="//xs:complexType[@name='rp-metric']//xs:element[@name='internal']"> 
+			<jaxb:property> <jaxb:baseType name="idea.schema.rp.RpInternalMetric;" /> </jaxb:property> 
+			</jaxb:bindings> -->
+
+		<jaxb:bindings node="//xs:complexType[@name='rp-unit']">
+			<ci:code>
+<![CDATA[
+				public abstract double transform(int val);
+				public abstract	int inverse(double val);
+				
+				public abstract double transform_d(double val);
+				public abstract	double inverse_d(double val);
+]]>
+			</ci:code>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:complexType[@name='rp-linear-unit']">
+			<ci:code>
+<![CDATA[
+	public static RpLinearUnit unit = new RpLinearUnit( 1.0, 0.0, "");
+			
+	public RpLinearUnit() { }
+	public RpLinearUnit(double m, double b, String name) {
+		setM(m);
+		setB(b);
+		setUnitName(name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof RpLinearUnit)) {
+			return false;
+		}
+		RpLinearUnit u = (RpLinearUnit) obj;
+		if (m != u.m) {
+			return false;
+		}
+		if (b != u.b) {
+			return false;
+		}
+		return unitName.equals(u.unitName);
+	}
+
+	public double transform(int	val) { return m*val + b; }
+	public int inverse(double val) { return	(int)((val - b)/m + 0.5); }  // simple rounding method via truncation
+	public double transform_d(double	val) { return m*val + b; }
+	public double inverse_d(double val) { return	((val - b)/m); }
+	
+	@Override
+	public String toString() {	return unitName + "[" + m + "," + b + "]"; }
+]]>
+			
+			</ci:code>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:complexType[@name='rp-precision-unit']">
+			<ci:code>
+<![CDATA[
+				public RpPrecisionUnit() { }
+				public RpPrecisionUnit(int	p, String u) {
+					setPrecision( p );
+					setUnitName( u );
+				}
+				
+				public double transform(int val) {
+				int p = precision;
+				double v = val;
+				while (p > 0) {	v = v / 10;	p--; }
+				while (p < 0) {	v = v * 10;	p++; }
+				return v;
+				}
+
+				public int inverse(double val) {
+				int p = precision;
+				while( p > 0 ) { val *= 10.0; p--;	}
+				while( p < 0 ) { val /= 10.0; p++;	}
+				return (int)(val + .5);
+				}
+				
+				@Override
+				public String toString() {	return unitName + "[" + precision + "]"; }
+	private static double transform_d(double val, int p) {
+		double v = val;
+		while (p > 0) {
+			v = v / 10;
+			p--;
+		}
+		while (p < 0) {
+			v = v * 10;
+			p++;
+		}
+		return v;
+	}
+
+	public double transform_d(double val) {
+		return transform_d( val, precision );
+	}
+	public double inverse_d(double val) {
+		return transform_d( val, -precision );
+	}
+]]>
+				
+			</ci:code>
+		</jaxb:bindings>
+
+		<jaxb:bindings node="//xs:complexType[@name='rp-stream']">
+			<ci:code>
+<![CDATA[
+				@javax.xml.bind.annotation.XmlTransient
+			   protected Class<?> piClass;
+    public Class<?> getPIClass() {
+    	return piClass;
+    }
+    public void setPIClass( Class<?> cl) {
+    	this.piClass = cl;
+    }
+			
+			]]></ci:code>
+		</jaxb:bindings>
+		
+		<jaxb:bindings node="//xs:complexType[@name='rp-metric']">
+			<ci:code>
+<![CDATA[
+				public RpMetric() {}
+				public RpMetric( String loc, String code, String name, RpUnit u, int subtyp ) {
+					setLocation(loc);
+					setCode( code );
+					setName( name );
+					setUnit( u );
+					setSubtyp( subtyp );
+				}
+		
+				public String getUnitName() { return (unit == null) ? "" : unit.getUnitName(); }
+				
+				@javax.xml.bind.annotation.XmlTransient
+				public java.lang.reflect.Method getter;
+				@javax.xml.bind.annotation.XmlTransient
+				public java.lang.reflect.Method setter;
+				
+				@javax.xml.bind.annotation.XmlTransient				
+				public java.lang.String h5FieldName;
+				public String getH5FieldName() {
+					return h5FieldName;
+				}
+				public void setH5FieldName(String val) {
+					h5FieldName = val;
+				}
+				
+				@javax.xml.bind.annotation.XmlTransient
+				private boolean active;
+				public void setActive( boolean b ) { active = b; }
+				public boolean isActive( ) { return active; }
+				
+				public String getAlias() {
+					String alias = getName();
+					if( alias == null || alias.length() == 0 ) {
+						alias = getCode();
+					}
+					if( alias == null || alias.length() == 0 ) {
+						alias = getLocation();
+					}
+		
+					return alias;
+				}
+				
+]]>
+				 
+			</ci:code>
+		</jaxb:bindings>
+
+	</jaxb:bindings>
+
+</jaxb:bindings>
+

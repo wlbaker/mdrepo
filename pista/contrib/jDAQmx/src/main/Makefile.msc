@@ -1,0 +1,90 @@
+#
+# You will need to have VC98 or VS.net 2003 installed and
+# in your path in order for this to work.
+#
+
+#
+# this env set by vcvars64.bat: VSCMD_ARG_TGT_ARCH=x64
+#
+MXDEST = ../../build/%VSCMD_ARG_TGT_ARCH%/daqmx
+MXSRCS =	NIDaqJ.cpp NIFuncs.cpp MxLocal.cpp MxTask.cpp MxAIChannel.cpp MxTiming.cpp MxAnalogMultiChannelReader.cpp ../jniUtil.cpp MxDaqStream.cpp MxAOChannel.cpp MxAnalogMultiChannelWriter.cpp
+MXHEADERS =	include/ni_DAQmx_MxTask.h include/ni_DAQmx_MxAIChannel.h include/ni_DAQmx_MxTiming.h \
+include/ni_DAQmx_MxAnalogMultiChannelReader.h \
+include/ni_DAQmx_MxAnalogMultiChannelWriter.h \
+include/ni_DAQmx_MxLocal.h include/ni_DAQmx_MxAIChannelCollection.h
+
+PROJBASE= 	../..
+PROJLIBS = 	$(PROJBASE)/lib/msvc
+PROJCP= 	$(PROJBASE)/../jdaqmx-java/bin
+
+# Set this variable to the location of your JDK
+JDKDIR =	"c:/opt/jdk1.6.0_17"
+WINSDKDIR =	"c:/program files/microsoft SDKs/Windows\v6.0A"
+
+CLASSPATH =	.\;lib\;$(PROJCP)
+
+JAVA =		$(JDKDIR)/bin/java -classpath $(CLASSPATH)
+JAVAC =		$(JDKDIR)/bin/javac
+JAVAH =		$(JDKDIR)/bin/javah
+JAR =           $(JDKDIR)/bin/jar
+DEL =		del/q
+LINK =		link
+
+INCLUDES =	-I$(JDKDIR)/include/win32 \
+		-I$(JDKDIR)/include \
+		-I$(WINSDKDIR)/include \
+		-I$(PROJBASE)/include \
+		-I.. \
+		-Iinclude
+
+#{$(SRCDIR)}.cpp{$(MXDEST)}.obj:
+#	$(CC) $(CFLAGS) -Zi $(INCLUDES) -Fo$(MXDEST)/$*.obj -c $<
+
+.cpp.obj:
+	$(CC) $(CFLAGS) -Zi $(INCLUDES) -Fo$(MXDEST)/$*.obj -c $<
+
+#.class.h:
+#	$(JAVAH) -d include -jni -classpath $(CLASSPATH) $**
+#
+
+MXLIBS =		NIDAQmx.lib user32.lib
+BASELIBS =		NIDAQmxBase.lib user32.lib
+
+#
+# build/win32/daqmx/jDAQmx.dll build/win32/daqmxbase/jDAQmxBase.dll
+#
+
+all:	$(MXHEADERS) $(MXDEST)/jDAQmx.dll
+
+include/ni_DAQmx_MxTask.h: $(PROJCP)/ni/DAQmx/MxTask.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.MxTask
+
+include/ni_DAQmx_MxAOChannel.h: $(PROJCP)/ni/daqmx/MxAOChannel.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.MxAOChannel
+
+include/ni_DAQmx_MxAIChannel.h: $(PROJCP)/ni/daqmx/MxAIChannel.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.MxAIChannel
+
+include/ni_DAQmx_MxTiming.h: $(PROJCP)/ni/daqmx/MxTiming.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.MxTiming
+
+include/ni_DAQmx_MxAIChannelCollection.h: $(PROJCP)/ni/daqmx/MxAIChannelCollection.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.MxAIChannelCollection
+
+include/ni_DAQmx_MxAnalogMultiChannelWriter.h: $(PROJCP)/ni/daqmx/MxAnalogMultiChannelWriter.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.MxAnalogMultiChannelWriter
+
+include/ni_DAQmx_MxAnalogMultiChannelReader.h: $(PROJCP)/ni/daqmx/MxAnalogMultiChannelReader.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.MxAnalogMultiChannelReader
+
+include/ni_DAQmx_MxLocal.h: $(PROJCP)/ni/daqmx/MxLocal.class
+	$(JAVAH) -d include -jni -classpath $(CLASSPATH) ni.DAQmx.MxLocal
+
+$(MXDEST)/jDAQmx.dll: $(MXSRCS:.cpp=.obj)
+	cd ../../build/win32/daqmx
+	$(LINK) -LIBPATH:$(WINSDKDIR)/Lib -LIBPATH:../$(PROJLIBS) -dll -out:jDAQmx.dll $** $(MXLIBS)
+	cd ../../../src/daqmx
+
+clean:
+	$(DEL) build/win32/daqmx\*
+	$(DEL) $(HEADERS)

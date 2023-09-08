@@ -1,0 +1,7 @@
+
+println "ideacore: Processing includes..."
+
+include 'core'
+include 'gui'
+
+// rootProject.name = 'ideadrivers'

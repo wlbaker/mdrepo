@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-study-impl xmlns="http://idea.mil/rp">
+    <identifier>ibi_variability</identifier>
+    <title>ibi_variability</title>
+    <pi>white</pi>
+    <startDate>09:09:12.956-06:00</startDate>
+    <hardware>
+        <name>V500</name>
+        <devices>
+            <name>V500</name>
+            <modelName>V500</modelName>
+            <deviceClass>icuInterface.adapters.V500Driver</deviceClass>
+            <connectionType>RS_232</connectionType>
+            <connectionValue>COM1</connectionValue>
+            <param>
+                <key>port</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">COM1</value>
+            </param>
+            <waveforms>
+                <name>Airway Pressure</name>
+                <code>PAW</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x00</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <sample-rate>126</sample-rate>
+                <samples-per-packet>64</samples-per-packet>
+                <visible>true</visible>
+                <global>false</global>
+            </waveforms>
+            <waveforms>
+                <name>Flow (insp./exp.)</name>
+                <code>Flow</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x01</location>
+                <unit>
+                    <unitName>L/min</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <sample-rate>126</sample-rate>
+                <samples-per-packet>64</samples-per-packet>
+                <visible>true</visible>
+                <global>false</global>
+            </waveforms>
+            <metrics>
+                <name>Compliance</name>
+                <code>C</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x06</location>
+                <unit>
+                    <unitName>L/bar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Compliance (Dynamic)</name>
+                <code>Cdyn</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x07</location>
+                <unit>
+                    <unitName>L/bar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Resistance</name>
+                <code>R</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x0B</location>
+                <unit>
+                    <unitName>mbar/L/s</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Resistance (Alt)</name>
+                <code>Ralt</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x08</location>
+                <unit>
+                    <unitName>mbar/L/s</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Minimum Airway Pressure</name>
+                <code>Pmin</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x71</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Occlusion Pressure</name>
+                <code>Pocc</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x72</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Mean Airway Pressure</name>
+                <code>Pmean</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x73</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Plateau Airway Pressure</name>
+                <code>Pplat</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x74</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>PEEP Airway Pressure</name>
+                <code>PEEP</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x78</location>
+                <unit>
+                    <unitName>cmH2O</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Peak Airway Pressure</name>
+                <code>Ppeak</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x7D</location>
+                <unit>
+                    <unitName>cmH2O</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Expiratory Tidal Volume</name>
+                <code>TVexp</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x88</location>
+                <unit>
+                    <unitName>mL</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Minute Volume</name>
+                <code>MV</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xB9</location>
+                <unit>
+                    <unitName>mL/min</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Breathing Frequency</name>
+                <code>ftotal</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xD6</location>
+                <unit>
+                    <unitName>1/min</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Negative Inspiratory Force</name>
+                <code>NIF</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x8D</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Rapid Shallow Breathing Index</name>
+                <code>RSBI</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xC9</location>
+                <unit>
+                    <unitName>1/L x min</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Insp. O2</name>
+                <code>FiO2</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xF0</location>
+                <unit>
+                    <unitName>%</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+        </devices>
+    </hardware>
+    <hardware>
+        <name>Evita</name>
+        <devices>
+            <name>Evita 4</name>
+            <modelName>Evita 4</modelName>
+            <deviceClass>icuInterface.adapters.EvitaDriver</deviceClass>
+            <connectionType>RS_232</connectionType>
+            <connectionValue>COM1</connectionValue>
+            <param>
+                <key>port</key>
+                <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">COM1</value>
+            </param>
+            <waveforms>
+                <name>Airway Pressure</name>
+                <code>PAW</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x00</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <sample-rate>126</sample-rate>
+                <samples-per-packet>64</samples-per-packet>
+                <visible>true</visible>
+                <global>false</global>
+            </waveforms>
+            <waveforms>
+                <name>Flow (insp./exp.)</name>
+                <code>Flow</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x01</location>
+                <unit>
+                    <unitName>L/min</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <sample-rate>126</sample-rate>
+                <samples-per-packet>64</samples-per-packet>
+                <visible>true</visible>
+                <global>false</global>
+            </waveforms>
+            <metrics>
+                <name>Compliance</name>
+                <code>C</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x06</location>
+                <unit>
+                    <unitName>L/bar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Compliance (Dynamic)</name>
+                <code>Cdyn</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x07</location>
+                <unit>
+                    <unitName>L/bar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Resistance</name>
+                <code>R</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x0B</location>
+                <unit>
+                    <unitName>mbar/L/s</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Minimum Airway Pressure</name>
+                <code>Pmin</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x71</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Occlusion Pressure</name>
+                <code>Pocc</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x72</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Mean Airway Pressure</name>
+                <code>Pmean</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x73</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Plateau Airway Pressure</name>
+                <code>Pplat</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x74</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>PEEP Airway Pressure</name>
+                <code>PEEP</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x78</location>
+                <unit>
+                    <unitName>cmH2O</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Peak Airway Pressure</name>
+                <code>Ppeak</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x7D</location>
+                <unit>
+                    <unitName>cmH2O</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Expiratory Tidal Volume</name>
+                <code>TVexp</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x88</location>
+                <unit>
+                    <unitName>mL</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Minute Volume</name>
+                <code>MV</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xB9</location>
+                <unit>
+                    <unitName>mL/min</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Breathing Frequency</name>
+                <code>ftotal</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xD6</location>
+                <unit>
+                    <unitName>1/min</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Negative Inspiratory Force</name>
+                <code>NIF</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0x8D</location>
+                <unit>
+                    <unitName>mbar</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Rapid Shallow Breathing Index</name>
+                <code>RSBI</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xC9</location>
+                <unit>
+                    <unitName>1/L x min</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+            <metrics>
+                <name>Insp. O2</name>
+                <code>FiO2</code>
+                <location xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">0xF0</location>
+                <unit>
+                    <unitName>%</unitName>
+                    <m>1.0</m>
+                    <b>0.0</b>
+                </unit>
+                <visible>true</visible>
+                <global>false</global>
+            </metrics>
+        </devices>
+    </hardware>
+    <analysis/>
+</rp-study-impl>

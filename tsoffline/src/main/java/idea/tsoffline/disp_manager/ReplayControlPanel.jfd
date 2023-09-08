@@ -1,0 +1,89 @@
+JFDML JFormDesigner: "5.2.5.0.333" Java: "1.8.0_72" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "4dlu, max(default;16dlu), labelcompgap, default:grow, labelcompgap, max(default;50dlu), labelcompgap, default, labelcompgap, max(default;50dlu), labelcompgap, default, labelcompgap, default, labelcompgap, default, 4dlu"
+			"$rowSpecs": "fill:default, 2dlu"
+		} ) {
+			name: "this"
+			"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "message"
+				"text": "FUNC"
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 2
+			} )
+			add( new FormComponent( "javax.swing.JProgressBar" ) {
+				name: "progressBar"
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 4
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "cancel"
+				"text": "Cancel"
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 6
+				"gridY": 1
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Scale:"
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 8
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "scale"
+				"model": new javax.swing.DefaultComboBoxModel {
+					selectedItem: "?"
+					addElement( "?" )
+					addElement( "3 sec" )
+					addElement( "6 sec" )
+					addElement( "15 sec" )
+					addElement( "30 sec" )
+					addElement( "60 sec" )
+					addElement( "10 min" )
+					addElement( "30 min" )
+					addElement( "1 hr" )
+					addElement( "4 hr" )
+				}
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "scaleActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 10
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "rewind"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/idea/image/rewind-hot-icon.png" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "rewindActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 12
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "pause"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/idea/image/Pause-Normal-icon.png" )
+				"toolTipText": "Pause"
+				"maximumSize": &Dimension0 new java.awt.Dimension( 23, 23 )
+				"minimumSize": &Dimension1 new java.awt.Dimension( 23, 23 )
+				"preferredSize": &Dimension2 new java.awt.Dimension( 23, 23 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "pauseActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 14
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "resume"
+				"icon": new com.jformdesigner.model.SwingIcon( 0, "/idea/image/Play-1-Hot-icon.png" )
+				"toolTipText": "Resume"
+				"maximumSize": #Dimension0
+				"minimumSize": #Dimension1
+				"preferredSize": #Dimension2
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "resumeActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 16
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 640, 30 )
+		} )
+	}
+}

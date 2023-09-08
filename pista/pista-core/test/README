@@ -1,0 +1,7 @@
+
+You will want to develope unit testing using "check": https://libcheck.github.io/check
+On Fedora,
+
+dnf install check check-devel
+
+

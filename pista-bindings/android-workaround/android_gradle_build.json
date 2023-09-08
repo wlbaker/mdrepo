@@ -1,0 +1,19 @@
+
+{
+	"buildFiles" : 
+	[
+		"/home/bbaker/git/pista/pista-bindings/android-workaround/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"/home/bbaker/Android/Sdk/cmake/3.6.4111459/bin/cmake --build /home/bbaker/git/pista/pista-bindings/android-workaround --target clean"
+	],
+	"toolchains" : 
+	{
+		"13658860683627290226" : 
+		{
+			"cCompilerExecutable" : "/opt/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/opt/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+		}
+	}
+}

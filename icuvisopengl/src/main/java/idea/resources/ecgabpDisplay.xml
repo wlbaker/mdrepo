@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rp-display-impl xmlns="http://idea.mil/rp">
+    <numBands>2</numBands>
+    <numPBoxes>2</numPBoxes>
+    <horizPBoxes>2</horizPBoxes>
+    <vertPBoxes>1</vertPBoxes>
+    <opmode>0</opmode>
+    <bandData>
+        <bandNum>0</bandNum>
+        <bandAttr>0</bandAttr>
+        <waveformSetup>
+            <sweepSpeed>0</sweepSpeed>
+            <sampleRate>200</sampleRate>
+            <scaleValue1>0</scaleValue1>
+            <scaleValue2>0</scaleValue2>
+            <waveColor>10</waveColor>
+            <loc>ecg lead_II</loc>
+        </waveformSetup>
+    </bandData>
+    <bandData>
+        <bandNum>1</bandNum>
+        <bandAttr>0</bandAttr>
+        <waveformSetup>
+            <sweepSpeed>0</sweepSpeed>
+            <sampleRate>100</sampleRate>
+            <scaleValue1>0</scaleValue1>
+            <scaleValue2>0</scaleValue2>
+            <waveColor>3</waveColor>
+            <loc>art</loc>
+        </waveformSetup>
+    </bandData>
+</rp-display-impl>

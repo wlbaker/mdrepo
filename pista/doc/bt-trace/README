@@ -1,0 +1,147 @@
+
+Create bridge interface bnep0 and assign address 10.5.0.5.
+#!/bin/bash
+
+br=bnep0
+
+[[ -n "$(brctl show $br 2>&1 1>/dev/null)" ]] && {
+  brctl addbr $br
+  brctl setfd $br 0
+  brctl stp $br off
+  ip addr add 10.5.0.5/16 dev $br
+  ip link set $br up
+}
+
+
+ sdptool records local
+ sdptool del 0x10004
+ sdptool del 0x10003
+ sdptool del 0x10001
+ sdptool del 0x10002
+ sdptool records local
+ sdptool del 0x10006
+ sdptool del 0x10005
+ sdptool records local
+ sdptool records 04:A3:16:56:33:00
+
+
+bt-network --server gn bnep0 &
+bt-network --server panu bnep0 &
+bt-network --server nap bnep0 &
+
+ADD COMPAT FLAG TO THE BT SERVICECTL DESCRIPTOR
+[root@linlab ~]# cat /usr/lib/systemd/system/bluetooth.service 
+[Unit]
+Description=Bluetooth service
+Documentation=man:bluetoothd(8)
+ConditionPathIsDirectory=/sys/class/bluetooth
+
+[Service]
+Type=dbus
+BusName=org.bluez
+ExecStart=/usr/libexec/bluetooth/bluetoothd --compat
+NotifyAccess=main
+#WatchdogSec=10
+#Restart=on-failure
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+LimitNPROC=1
+
+# Filesystem lockdown
+ProtectHome=true
+ProtectSystem=full
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ReadWritePaths=/var/lib/bluetooth
+ReadOnlyPaths=/etc/bluetooth
+
+# Execute Mappings
+MemoryDenyWriteExecute=true
+
+# Privilege escalation
+NoNewPrivileges=true
+
+# Real-time
+RestrictRealtime=true
+
+[Install]
+WantedBy=bluetooth.target
+Alias=dbus-org.bluez.service
+
+
+POWER UP AND FIND BT
+--------------------
+
+--- machine-1
+% bluetoothctl
+[NEW] Controller 00:02:72:XX:XX:XX malediction [default]
+[bluetooth]# power on
+Changing power on succeeded
+[CHG] Controller 00:02:72:XX:XX:XX Powered: yes
+[bluetooth]# discoverable on
+Changing discoverable on succeeded
+[CHG] Controller 00:02:72:XX:XX:XX Discoverable: yes
+[bluetooth]# agent on
+...
+
+--- machine-2 (snipped)
+% bluetoothctl
+[NEW] Controller 00:02:72:YY:YY:YY rpbox [default]
+[bluetooth]# power on
+[bluetooth]# scan on
+[bluetooth]# agent on
+[bluetooth]# pair 00:02:72:XX:XX:XX
+[bluetooth]# trust 00:02:72:XX:XX:XX
+
+
+On PC: set up DHCPD to serve addresses on bnep0:
+
+  subnet 10.5.0.0 netmask 255.255.0.0 {
+    range 10.5.0.40 10.5.0.60;
+    option routers 10.5.0.5;
+    option broadcast-address 10.5.255.255;
+  
+    default-lease-time 600;
+    max-lease-time 7200;
+  
+    option domain-name "cicrlab.com";
+    ddns-domainname "cicrlab.com.";
+    ddns-rev-domainname "5.10.in-addr.arpa.";
+  }
+
+
+# bluetoothctl
+[bluetooth]# show
+Controller 00:1A:7D:DA:71:11 (public)
+	Name: linlab.localdomain
+	Alias: ChromeLinux_8B2F
+	Class: 0x000e0108
+	Powered: yes
+	Discoverable: yes
+	Pairable: yes
+	UUID: Generic Access Profile    (00001800-0000-1000-8000-00805f9b34fb)
+	UUID: Generic Attribute Profile (00001801-0000-1000-8000-00805f9b34fb)
+	UUID: NAP                       (00001116-0000-1000-8000-00805f9b34fb)
+	UUID: PnP Information           (00001200-0000-1000-8000-00805f9b34fb)
+	UUID: GN                        (00001117-0000-1000-8000-00805f9b34fb)
+	UUID: PANU                      (00001115-0000-1000-8000-00805f9b34fb)
+	Modalias: usb:v1D6Bp0246d0532
+	Discovering: no
+[bluetooth]# discover on
+
+
+On Zoll: pair, then "Update Distribution List"
+
+?? lsmod
+?? modprobe rfcomm
+
+RFCOMM
+------
+sdptool add [--handle=0x10011] --channel=11 SP
+sdptool setattr 0x10011 key 1234
+
+# create the /dev/rfcomm0 file
+rfcomm -A bind 0 04:A3:16:56:33:00 11
+
+# ?? needed ??
+rfcomm listen 04:A3:16:56:33:00 11

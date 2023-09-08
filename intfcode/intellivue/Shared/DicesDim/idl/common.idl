@@ -1,0 +1,735 @@
+/**
+ * file     common.idl
+ * author   WMS
+ * date     SEP 2013, last update AUG 2017
+ * brief    ICE information model (ICE-IM) common data types.
+ * see      -- ISO/IEEE 11073 Health informatics - Point-of-care medical device
+ *          communication - Parts 10101 and 10201 (x73)
+ *          -- Fast Healthcare Interoperability Resources (FHIR, hl7.org/fhir)
+ */
+
+module ice
+{
+//=============================================================================
+/**
+ * DDS definitions
+ */
+const long DDS_DOMAIN_ID_COORDINATOR  = 3;
+const long DDS_DOMAIN_ID_MANAGER      = 2;
+
+const string DICES_28MAY_QOS_LIBRARY_NAME = "dices_dim_library";
+const string DICES_28MAY_QOS_PROFILE_NAME = "dices_dim_durable_profile";
+
+const long TINY_STRING_LEN  = 8;
+const long SHORTSHORT_STRING_LEN  = 16;
+const long SHORT_STRING_LEN   = 32;
+const long MEDIUM_STRING_LEN  = 64;
+const long LONG_STRING_LEN    = 128;
+const long LONGLONG_STRING_LEN    = 250;
+
+const unsigned long DIM_HANDLE_MANAGER = 1;
+const unsigned long DIM_HANDLE_MDS = 10;
+
+const long NOT_A_NUMBER = 0x7fffff;
+
+/**
+ * Integer and bit string types
+ */
+typedef octet OCTET;
+typedef OCTET INTU8;
+typedef short INT16;
+typedef unsigned short INTU16;
+typedef long INT32;
+typedef unsigned long INTU32;
+typedef unsigned long long INTU64;
+typedef INTU16 BITS16;
+typedef INTU32 BITS32;
+typedef INTU64 BITS64;
+
+typedef long TIME_T;
+typedef boolean BOOL;
+
+/**
+ * Identification types
+ */
+typedef INTU16 OIDType;     // See x73-10101 for set of valid OIDs
+typedef INTU16 PrivateOid;  // For IDs not part of the standard nomenclature
+
+typedef INTU16 HANDLE;
+
+/**
+ * ICE_ID uniquely identifies a device within the context of a single
+ * responsible organization.
+ */
+
+const long MAX_LEN_ICE_ID = 16;
+typedef string<MAX_LEN_ICE_ID> ICE_ID;
+
+/**
+ * Use the instance number data type to distinguish class or object instances
+ * of the same type or object instances that are not directly manageable.
+ */
+typedef INTU16 InstNumber;
+
+typedef float FLOATType;
+
+/**
+ * MDS Context ID
+ */
+typedef INTU16 MdsContext;
+
+/**
+ * Use the global handle to distinguish objects within multiple device system.
+ */
+struct GLBHANDLE
+{
+  MdsContext context_id;
+  HANDLE handle;
+}; //@top-level false
+
+/**
+ * Managed OID as a type for complete global object identification
+ */
+struct ManagedObjectId
+{
+  OIDType m_obj_class;
+  GLBHANDLE m_obj_inst;
+}; //@top-level false
+
+/**
+ * Example: A medical device may interface with further medical devices (ie,
+ * sub-devices). In the MDIB, this device may model these sub-devices as
+ * individual MDS objects with their own naming context. In this way, name
+ * space collisions (e.g., duplicate handle values, duplicate nomenclature
+ * codes) can be avoided without reassigning handle values. A manager system 
+ * needs to interpret the MDS context IDs together with handle values to
+ * uniquely identify object instances within this composite MDIB. The context
+ * IDs are assigned when the MDIB is created by Context Scanner object create
+ * notifications.
+ */
+
+enum NomPartition
+{
+  nom_part_unspec = 0,
+  nom_part_obj = 1,     // object-oriented partition
+  nom_part_metric = 2,  // metric (SCADA) partition
+  nom_part_alert = 3,   // alerts/events partition
+  nom_part_dim = 4,     // dimensions partition
+  nom_part_vattr = 5,   // virtual attribute partition for Operation objects
+  nom_part_pgrp = 6,    // parameter group ID partition
+  nom_part_sites = 7,   // measurement and body site locations
+  nom_part_infrastruct = 8, // infrastructure elements partition
+  nom_part_fef = 9,         // file exchange format partition
+  nom_part_ecg_extn = 10,   // ECG extensions partition
+  nom_part_ext_nom = 256,   // IDs of other nomenclatures and dictionaries
+  nom_part_priv = 1024      // private partiotin
+};
+
+struct TYPE
+{
+  NomPartition partition;
+  OIDType code;
+}; //@top-level false
+
+/**
+ * Time represented by the number of seconds and fractional seconds (nanosecs).
+ *
+ * Use a Timespec time to specify wall clock time (or x73 Absolute Time).
+ *
+ * Timespec specifies the number of seconds and nanoseconds since
+ * 1970-01-01 00:00:00 UTC.
+ */
+struct Timespec
+{
+  long seconds;
+  long nanoseconds;  // Fractional second, always less than one billion.
+}; //@top-level false
+
+/**
+ * Duration Time represented by the number of seconds and fractional
+ * seconds (nanosecs).
+ *
+ * Use a Duration type to specify a time interval.
+ *
+ * Specifies a high-resolution time interval, or a time relative to some
+ * event (e.g., a synchronization event at startup).
+ *
+ * Use Duration Time to represent x73 Relative Time.
+ */
+struct Duration
+{
+  long seconds;
+  long nanoseconds;  // Fractional second, always less than one billion.
+}; //@top-level false
+
+/**
+ * The date data type specifies a certain calendar date. (NOT BCD-encoded.)
+ */
+struct Date
+{
+  INTU8 century;  // Ex: for year 2011, century = 20, ...
+  INTU8 year;     // and year = 11
+  INTU8 month;    // January = 1
+  INTU8 day;
+}; //@top-level false
+
+enum SimpleColor
+{
+  // The color data type represents basic RGB colors
+  //                   R G B
+  col_black = 0,    // 0 0 0
+  col_red = 1,      // 1 0 0
+  col_green = 2,    // 0 1 0
+  col_yellow = 3,   // 1 1 0
+  col_blue = 4,     // 0 0 1
+  col_magenta = 5,  // 1 0 1
+  col_cyan = 6,     // 0 1 1
+  col_white = 7     // 1 1 1
+};
+
+/**
+ * Locale data type
+ *
+ * @see notes in 11073-10201, section 7.1.2.18 "Locale data type"
+ */
+enum CharSet
+{
+  charset_unspec = 0,
+
+  // ISO 10646 two-octet character encoding scheme big endian
+  charset_iso_10646_ucs_2 = 1000,
+
+  // ISO 10646 four-octet character encoding scheme, big endian
+  charset_iso_10646_ucs_4 = 1001,
+
+  charset_iso_8859_1 = 4, // ISO/IEC 8859 Part 1
+  charset_iso_8859_2 = 5, // ISO/IEC 8859 Part 2
+
+  charset_iso_8859_3 = 6, // ISO/IEC 8859 Part 3
+  charset_iso_8859_4 = 7, // ISO/IEC 8859 Part 4
+  charset_iso_8859_5 = 8, // ISO/IEC 8859 Part 5
+  charset_iso_8859_6 = 9, // ISO/IEC 8859 Part 6
+  charset_iso_8859_7 = 10, // ISO/IEC 8859 Part 7
+  charset_iso_8859_8 = 11, // ISO/IEC 8859 Part 8
+  charset_iso_8859_9 = 12, // ISO/IEC 8859 Part 9
+  charset_iso_8859_10 = 13, // ISO/IEC 8859 Part 10
+  charset_iso_8859_13 = 109, // ISO/IEC 8859 Part 13
+  charset_iso_8859_14 = 110, // ISO/IEC 8859 Part 14
+  charset_iso_8859_15 = 111, // ISO/IEC 8859 Part 15
+  charset_iso_2022_kr = 37, // RFC 1557 (Korean Character Encoding)
+  charset_ks_c_5601 = 36, // Korean Industrial Standard, KSC 5601-1987
+  charset_iso_2022_jp = 39, // RFC 1468 (Japanese Character Encoding)
+  charset_iso_2022_jp_2 = 40, // RFC 1554 (Japanese Character Encoding)
+  charset_jis_x0208 = 63,     // JIS X0208:1983,1990
+  charset_iso_2022_cn = 104,  // RFC 1922 (Chinese Character Encoding)
+  charset_gb_2312 = 2025  // Chinese Graphic Character Set, GB 2312:1980
+};
+
+typedef BITS16 StringFlags;
+enum StringFlagsBits
+{
+  str_flag_nt = 0x1 // strings are null terminated
+};
+
+struct StringSpec
+{
+  INTU16 str_max_len; // maximum string length
+  StringFlags str_flags;  // specific flags for string representation & coding
+}; //@top-level false
+
+struct Locale
+{
+  INTU32 language;
+  INTU32 country;
+  CharSet charset;
+  StringSpec str_spec;
+}; //@top-level false
+
+/*
+ * Locale constants for current implementation
+ */
+const INTU32 LocaleLanguageEnglish  = 0x656E0000; // "en"
+const INTU32 LocaleCountryUSA       = 0x55530000; // "US"
+// LocaleCharSetUTF8 is a long because RTI Recording Service failed to parse
+// the CharSet type in xml. When using this constant, cast long to CharSet.
+// The value 4 comes from CharSet::charset_iso_8859_1
+const long LocaleCharSetUTF8 = 4; // this ok?
+const INTU16 LocaleStrMaxLen = 256; // this ok?
+/*
+ * Note  Generates typecast error
+const BITS16 LocaleStrFlagNt = str_flag_nt;
+ */
+
+struct ExtNomenRef
+{
+  // External nomenclature ID from external nomenclature partition
+  OIDType nomenclature_id;
+
+  string<LONG_STRING_LEN> nomenclature_code;
+}; //@top-level false
+
+struct SystemModel
+{
+  string<MEDIUM_STRING_LEN> manufacturer;
+  string<MEDIUM_STRING_LEN> model_number;
+}; //@top-level false
+
+enum ProdSpecType
+{
+  unspecified   = 0,
+  serial_number = 1,
+  part_number = 2,
+  hw_revision = 3,
+  sw_revision = 4,
+  fw_revision = 5,
+  protocol_revision = 6,
+
+  // Global Medical Device Nomenclature. GMDN is based on
+  // ISO 15225, developed under auspices of CEN TC257 SC1.
+  prod_spec_gmdn = 7,
+
+  // Universal Device Identifier. Specifies UDI for devices with
+  // more than one component/module. For example, 
+  // consider a multiparameter monitor to which one or more
+  // modular devices may connect. The monitor specifies its
+  // UDI in its MDSIdentification object. Each modular device
+  // connected to the monitor uses prod_spec_udi to specify
+  // the module's UDI.
+  prod_spec_udi = 8
+};
+
+struct ProdSpecEntry
+{
+  ProdSpecType spec_type;
+  PrivateOid component_id;
+  string<LONG_STRING_LEN> prod_spec;
+}; //@top-level false
+typedef sequence<ProdSpecEntry> ProductionSpec;
+
+/**
+ * Alert-Op-State attribute defines the current limit alert state
+ * NOTE--The bits refer to the limit alarm only, not to the global alert
+ * state of the metric
+ */
+typedef BITS16 CurLimAlStat;
+enum CurLimAlStatBits
+{
+  lim_alert_off = 0x1,  // if this bit is set, all alerts (high & low) are off
+  lim_low_off = 0x2,    // low-limit violation detection is off
+  lim_high_off = 0x4    // high-limit violation detection is off
+};
+
+/**
+ * Current-Limits attribute
+ */
+struct CurLimAlVal
+{
+  FLOATType lower;
+  FLOATType upper;
+}; //@top-level false
+
+struct EventReport
+{
+  OIDType object_class; //@key
+  HANDLE object_instance; //@key
+};
+
+// High-level categorization of the type of care activity.
+// Applies to ClinicalNote and CarePlanActivity objects.
+enum CareActivityCategory
+{
+  acat_unknown = 0,
+  acat_diet = 1,
+  acat_drug = 2,
+  acat_encounter = 3,
+  acat_observation = 4,
+  acat_procedure = 5,
+  acat_supply = 6,
+  acat_other = 7
+};
+
+//=============================================================================
+// GUID definition
+//=============================================================================
+/**
+ * Globally Unique Identifier (GUID)
+ *
+ * The GUID defines a type used to hold globally-unique ICE identifiers.
+ *
+ * The GUID is composed of a GuidPrefix prefix capable of holding 12 bytes,
+ * and an entity_id of two integer types.
+ *
+ * NOTE  Design of ICE GUID derives from a mash up of the OMG DDS standard and
+ * the RTI DDS GUID.
+ */
+
+// GuidPrefix
+// The prefix has two parts: a host identifier (i.e., MAC address), and
+// timestamp to 100 microsecond resolution.
+
+typedef OCTET HostId[6];
+struct GuidTimespec
+{
+  OCTET seconds[4];
+  //  Number of seconds since 1970-01-01 00:00 UTC
+
+  OCTET fraction[2];
+  //  Fractional seconds to 100-microsecond resolution
+}; //@top-level false
+
+struct GuidPrefix
+{
+  HostId hostid;
+  // Use MAC address
+
+  GuidTimespec timestamp;
+}; //@top-level false
+
+//@copy-declaration #define GUID_HOSTID_UNKNOWN {0x00,0x00,0x00,0x00,0x00,0x00}
+//@copy-declaration #define GUID_TIMESTAMP_UNKNOWN {0x00,0x00,0x00,0x00,0x00,0x00}
+//@copy-declaration #define GUID_PREFIX_UNKNOWN {GUID_HOSTID_UNKNOWN,GUID_TIMESTAMP_UNKNOWN}
+
+// EntityId
+
+typedef INTU16 EntityKind;
+typedef INTU16 EntityKey;
+
+struct EntityId
+{
+  EntityKind  kind_of_entity;
+  EntityKey   entity_key;
+}; //@top-level false
+
+// Kind of entity (KOE), i.e., Topic identifiers
+//@copy-declaration #define KOE_UNKNOWN         (0)
+//@copy-declaration #define ENTITY_KEY_UNKNOWN  (0)
+
+// Fully defined EntityId values
+//@copy-declaration #define ICE_ENTITYID_UNKNOWN  {KOE_UNKNOWN,ENTITY_KEY_UNKNOWN}
+
+/**
+ * GUID
+ */
+struct GUID
+{
+  GuidPrefix prefix;
+  EntityId entity_id;
+}; //@top-level false
+
+//@copy-declaration #define GUID_DEFAULT {GUID_PREFIX_UNKNOWN,ICE_ENTITYID_UNKNOWN}
+
+typedef INTU32 SequenceNumber;
+//@copy-declaration #define ICE_SEQUENCE_NUMBER_UNKNOWN (0)
+
+// InstanceIdentifier
+// The combination of Top attributes guid and sequence_number defines a
+// globally unique identifier for instance data published by an ICE entity.
+struct InstanceIdentifier
+{
+  GUID	guid;
+  SequenceNumber sequence_number; // default: ICE_SEQUENCE_NUMBER_UNKNOWN
+}; //@top-level false
+
+//@copy-declaration #define INSTANCE_IDENTIFIER_UNKNOWN {GUID_DEFAULT,ICE_SEQUENCE_NUMBER_UNKNOWN}
+//=============================================================================
+
+//=============================================================================
+/**
+ * Top object
+ */
+struct Top
+{
+  ICE_ID ice_id;          //@key
+  HANDLE handle;          //@key
+  HANDLE parent_handle;   //@key
+
+  // Timestamp obtained from host system when sample is passed to DataWriter
+  Timespec source_timestamp;
+}; //@top-level false
+
+//=============================================================================
+/**
+ * VMO
+ *
+ * The VMO is the base class for all medical-related objects in the x73 DIM. It
+ * provides consistent naming and identification across the x73 Medical Package
+ * model.
+ */
+
+/**
+ * Note: The VMO defines the Label-String attribute as the sole member of
+ * the object's VMO Dynamic Context Group. You must implement the attribute as
+ * a member of derived object's Dynamic Context Group object.
+ */
+
+struct VMO : Top
+{
+  TYPE type;
+
+  /**
+   * Relationship Attribute Group
+   * - Not yet implmented
+   */
+}; //@top-level false
+
+//=============================================================================
+//=============================================================================
+//
+// Definitions of common clinical-related data types, based on FHIR
+//
+// ABOUT Fast Healthcare Interoperability Resources (FHIR)
+//  FHIR is a next generation standards framework created by HL7. FHIR combines
+//  features of HL7 v2, HL7 v3, CDA, web standards, and applies a tight focus
+//  on implementability.
+//
+// REFERENCES, FHIR
+// - FHIR Home:
+//    http://hl7.org/fhir/index.html
+// - FHIR data types:
+//    https://www.hl7.org/fhir/datatypes.html
+// - FHIR data type examples:
+//    https://www.hl7.org/fhir/datatypes-examples.html
+// - FHIR schema visualization (very cool, zoom in):
+//    http://community.fhir.org/t/visualizing-the-fhir-schema/69/4
+//    https://github.com/boxysean/hapi-fhir/raw/master/hapi-fhir-structures-dstu3/class-diagram-20160323.pdf
+//
+// REFERENCES, NON-FHIR
+// - SMART on FHIR is a set of open specifications to integrate apps with HIS
+//    http://docs.smarthealthit.org/
+
+//=============================================================================
+//
+// FHIR Data Types
+// Ref: https://www.hl7.org/fhir/datatypes.html
+// Examples ref: https://www.hl7.org/fhir/datatypes-examples.html
+//
+// FHIR Primitive Types
+// Ref: https://www.hl7.org/fhir/datatypes.html#primitive
+//
+typedef boolean CT_boolean;
+// true | false
+
+typedef long CT_integer;
+// A signed 32-bit integer
+
+typedef unsigned long CT_unsignedInt;
+// Any non-negative integer (e.g. >= 0)
+
+typedef unsigned long CT_positiveInt;
+// Any positive integer (e.g. > 0)
+
+// decimal type
+// Rational numbers that have decimal representation.
+// NOTE	The precision of the decimal value has significance:
+// --	e.g. 0.010 is regarded as different to 0.01, and the original precision
+//    should be preserved
+// -- Handle decimal values in ways that preserve and respect the precision of
+//    the value as represented for presentation purposes
+struct CT_decimal
+{
+  float value;
+  octet presentation_precision;  // number of digits to show after decimal pt
+}; //top-level false
+
+const CT_integer MAXLEN_CT_DATETIME = 40;
+typedef string<MAXLEN_CT_DATETIME> CT_dateTime;
+// A date, date-time or partial date (e.g. just year or year + month) as used
+// in human communication.
+// FHIR specifies format for date time as "YYYY-MM-DDTHH:MM:SS.sss+hh:mm"
+// NOTE  The maximum length allows for at least microsecond resolution.
+
+const CT_integer MAXLEN_CT_INSTANT = MAXLEN_CT_DATETIME;
+typedef string<MAXLEN_CT_INSTANT> CT_instant;
+// An instant in time, known at least to the second. Always includes time zone.
+// EXAMPLE  The instant a document was created, expressed in UTC, w millisecs:
+//  <instant value="2013-06-08T09:57:34.123Z" />
+
+const CT_integer MAXLEN_CT_DATE = 11;
+typedef string<MAXLEN_CT_DATE> CT_date;
+// A date, or partial date (e.g. just year or year + month) as used in human
+// communication. There is no time zone.
+
+const CT_integer MAXLEN_CT_TIME = 10;
+typedef string<MAXLEN_CT_TIME> CT_time;
+// A time during the day, with no date specified (can be converted to Duration
+// since midnight). The time "24:00" is not allowed, nor a time zone.
+
+const CT_integer MAXLEN_CT_CODE = 64;
+typedef string<MAXLEN_CT_CODE> CT_code;
+// Indicates that the value is taken from a set of controlled strings defined
+// elsewhere. A code is restricted to a string which has at least one character
+// and no leading or trailing whitespace, and where there is no whitespace
+// other than single spaces in the contents
+
+const CT_integer MAXLEN_CT_ID = 64;
+typedef string<MAXLEN_CT_ID> CT_id;
+// Any combination of upper or lower case ASCII letters ('A'..'Z', and
+// 'a'..'z', numerals ('0'..'9'), '-' and '.', with a length limit of 64 chars.
+// Ids are case sensitive.
+
+const CT_integer MAXLEN_CT_URI = 260;
+typedef string<MAXLEN_CT_URI> CT_uri;
+// A Uniform Resource Identifier Reference.
+// A Uniform Resource Identifier (URI) provides a simple and extensible
+// means for identifying a resource.
+// Ref: https://tools.ietf.org/html/rfc3986).
+// NOTE  URIs are case sensitive.
+
+//=============================================================================
+//
+// FHIR Complex Types
+// Ref: https://www.hl7.org/fhir/datatypes.html#complex
+//
+// A comment immediately following the field definition specifies its
+// cardinality. Cardinality is defined as the lower and  upper bounds on how
+// many times this element is allowed to appear in the resource.
+//
+
+// Coding
+// A reference to a code defined by a terminology system
+// Ref: https://www.hl7.org/fhir/datatypes.html#codesystem
+struct Coding
+{
+  CT_uri system;
+  // 0..1
+  // Identity of the terminology system
+
+  string<MEDIUM_STRING_LEN> version;
+  // 0..1
+  // Version of the system - if relevant
+
+  CT_code code_; // The name "code" is a keyword. Does not compile
+  // 0..1
+  // A symbol in syntax defined by the system. The symbol may be a predefined
+  // code or an expression in a syntax defined by the coding system
+  // (e.g. post-coordination). Must refer to a particular code in the system.
+
+  string<MEDIUM_STRING_LEN> display;
+  // 0..1
+  // Human-readable representation of the meaning of the code in the system.
+
+  CT_boolean user_selected;
+  // 0..1
+  // If this coding was chosen directly by the user, i.e., off a pick list of
+  // available items (codes or displays).
+}; //@top-level false
+
+// CodeableConcept
+// A concept that may be defined by a formal reference to a terminology or
+// ontology or may be provided by text.
+// Ref: http://hl7.org/fhir/datatypes.html#codeableconcept
+struct CodeableConcept
+{
+  Coding coding;
+  // 0..*
+  // A reference to a code defined by a terminology system
+
+  string<LONGLONG_STRING_LEN> text;
+  // 0..1
+  // Plain text representation of the concept
+}; //@top-level false
+
+// SimpleQuantity
+// A measured amount (or an amount that can potentially be measured).
+// Ref: https://www.hl7.org/fhir/datatypes.html#QuantityVariations
+struct SimpleQuantity
+{
+  CT_decimal value;
+  // 0..1
+
+  string<MEDIUM_STRING_LEN> unit;
+  // 0..1
+  // A human-readable form of the unit
+
+  CT_uri system;
+  // 0..1
+  // The identification of the system that provides the coded form of the unit.
+
+  CT_code code_; // The name "code" is a keyword. Does not compile
+  // 0..1
+  // A computer processable form of the unit in some unit representation system.
+  // The preferred system is UCUM, but SNOMED CT can also be used
+  // (for customary units) or ISO 4217 for currency. The context of use may
+  // additionally require a code from a particular system.
+  // Ref: https://www.hl7.org/fhir/datatypes-definitions.html#Quantity.code
+}; //@top-level false
+
+// Quantity
+// Ref: https://www.hl7.org/fhir/datatypes.html#Quantity
+struct Quantity : SimpleQuantity
+{
+  string<TINY_STRING_LEN> comparator;
+  // < | <= | >= | >
+  // 	How the Quantity should be understood and represented.
+  // Ref: https://www.hl7.org/fhir/valueset-quantity-comparator.html
+}; //@top-level false
+
+// Range
+// Ref: https://www.hl7.org/fhir/datatypes-definitions.html#Range
+struct Range
+{
+  SimpleQuantity low;
+  // 0..1
+
+  SimpleQuantity high;
+  // 0..1
+}; //@top-level false
+
+// Ratio
+// A ratio of two Quantity values - a numerator and a denominator
+// Ref: https://www.hl7.org/fhir/datatypes-definitions.html#Ratio
+struct Ratio
+{
+  Quantity numerator;
+  // 0..1
+
+  Quantity denominator;
+  // 0..1
+}; //@top-level false
+
+// Period
+// Time range defined by start and end date/time
+// Ref: https://www.hl7.org/fhir/datatypes-definitions.html#Period
+struct Period
+{
+  CT_dateTime start; //@Optional
+  // 0..1
+  // Starting time with inclusive boundary
+
+  CT_dateTime end;  //@Optional
+  // 0..1
+  // End time with inclusive boundary, if not ongoing
+
+}; //@top-level false
+
+//=============================================================================
+//=============================================================================
+
+// EffectiveTime
+// A specific date/time or interval of time during which a clinically relevant
+// action took place.
+enum EffectiveTimeType
+{
+  et_datetime = 0,
+  et_period = 1
+};
+union EffectiveTime switch(EffectiveTimeType)
+{
+  case et_period:
+    Period period;
+
+  case et_datetime:
+  default:
+    CT_dateTime datetime;
+}; //@top-level false
+
+};
+
+// NOTE: The following Topic name is used for builtin type DDS::KeyedOctets.
+// The Data type is not defined in IDL. Outside of ice namespace.
+const string KeyedOctetsTopic = "KeyedOctets";
+
+// NOTE: The following are the default maximum sizes of DDS::KeyedOctets key
+// and value members. Maybe we can get this value programmatically somehow.
+const long KEYEDOCTETS_MAX_KEY_SIZE = 1024; // Includes the null terminator
+const long KEYEDOCTETS_MAX_VALUE_SIZE = 2048;

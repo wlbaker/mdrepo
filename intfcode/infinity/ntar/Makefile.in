@@ -1,0 +1,129 @@
+#
+# Copyright (c) 2005, Condor Engineering, Inc. 
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without 
+# modification, are permitted provided that the following conditions 
+# are met:
+# 
+# 1. Redistributions of source code must retain the above copyright 
+# notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright 
+# notice, this list of conditions and the following disclaimer in the 
+# documentation and/or other materials provided with the distribution. 
+# 3. Neither the name of the Company (Condor Engineering, Inc) nor the
+# names of its contributors may be used to endorse or promote products 
+# derived from this software without specific prior written permission. 
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR 
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT 
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT 
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY 
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT 
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
+#
+#
+#  This is a very stripped down the libpcap configure.in,
+#  copyright The Regents of the University of California
+#
+
+#
+# Various configurable paths (remember to edit Makefile.in, not Makefile)
+#
+
+# Top level hierarchy
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+# Pathname of directory to install the include files
+includedir = @includedir@
+# Pathname of directory to install the library
+libdir =  @libdir@
+# Pathname of directory to install the man page
+mandir = @mandir@
+
+# VPATH
+srcdir = @srcdir@
+VPATH = @srcdir@
+
+#
+# You shouldn't need to edit anything below.
+#
+
+CC = @CC@
+CCOPT = @V_CCOPT@ -fPIC
+INCLS = -I. @V_INCLS@
+DEFS = @DEFS@ @V_DEFS@
+LIBS = @V_LIBS@ 
+LDCONFIG = ldconfig
+
+# Standard CFLAGS
+CFLAGS = $(CCOPT) $(INCLS) $(DEFS)
+
+INSTALL = @INSTALL@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+INSTALL_DATA = @INSTALL_DATA@
+RANLIB = @RANLIB@
+
+# Explicitly define compilation rule since SunOS 4's make doesn't like gcc.
+# Also, gcc does not remove the .o before forking 'as', which can be a
+# problem if you don't own the file but can write to the directory.
+.c.o:
+	@rm -f $@
+	$(CC) $(CFLAGS) -c $(srcdir)/$*.c
+
+SSRC =  @SSRC@
+CSRC =	block.c option_readers.c plugin_idb.c plugins.c file_handlers.c\
+	ntar.c option_writers.c plugin_pktb.c plugin_spb.c section.c error.c
+LIBOBJS = @LIBOBJS@
+
+SRC =	$(CSRC) $(SSRC)
+
+# We would like to say "OBJ = $(SRC:.c=.o)" but Ultrix's make cannot
+# hack the extra indirection
+OBJ =	$(CSRC:.c=.o) $(SSRC:.c=.o) $(LIBOBJS)
+HDR =	bittypes.h option.h plugins.h \
+	block_headers.h plugin_idb.h plugins_int.h section.h \
+	ntar_debug.h plugin_idb_int.h plugin_spb.h version.h \
+	ntar.h plugin_pktb.h plugin_spb_int.h ntar_int.h plugin_pktb_int.h 
+
+TAGFILES = \
+	$(SRC) $(HDR)
+
+CLEANFILES = $(OBJ) libntar.so
+
+all: libntar.so
+
+libntar.so: $(OBJ)
+	@rm -f $@
+	$(CC) -shared -o $@ $(OBJ) $(LIBS)
+
+ntar.o: version.h
+
+install:
+	[ -d $(DESTDIR)$(libdir) ] || \
+	    (mkdir -p $(DESTDIR)$(libdir); chmod 755 $(DESTDIR)$(libdir))
+	$(INSTALL_DATA) libntar.so $(DESTDIR)$(libdir)/libntar.so
+	[ -d $(DESTDIR)$(includedir) ] || \
+	    (mkdir -p $(DESTDIR)$(includedir); chmod 755 $(DESTDIR)$(includedir))
+	$(INSTALL_DATA) $(srcdir)/ntar.h $(DESTDIR)$(includedir)/ntar.h
+	$(LDCONFIG) $(DESTDIR)$(libdir)
+		 
+uninstall:
+	rm -f $(DESTDIR)$(libdir)/libntar.so
+	rm -f $(DESTDIR)$(includedir)/ntar.h
+
+clean:
+	rm -f $(CLEANFILES)
+
+distclean:
+	rm -f $(CLEANFILES) Makefile config.cache config.log config.status \
+	    config.h
+
+depend:	ntar.c
+	./mkdep -c $(CC) $(DEFS) $(INCLS) $(SRC)

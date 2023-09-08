@@ -1,0 +1,5 @@
+#
+# see 
+# https://github.com/m-pilia/disptools
+
+python3 -m trace --trace --timing demo-simu.py
