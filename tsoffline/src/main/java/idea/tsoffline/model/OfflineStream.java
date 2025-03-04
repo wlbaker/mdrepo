@@ -3,7 +3,6 @@ package idea.tsoffline.model;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.jfree.util.Log;
 
 import idea.message.StreamID;
 import idea.schema.rp.RpMetric;
@@ -48,7 +47,7 @@ public class OfflineStream extends RpStream {
 	}
 
 	public List<OfflineSignal> getCachedSignals() {
-		Log.error( "FIXME: bad method to get signal info...deleteme");
+		// log.error( "FIXME: bad method to get signal info...deleteme");
 		List<OfflineSignal> l = new LinkedList<OfflineSignal>();
 		
 		List<RpMetric> mm = super.getMetric();

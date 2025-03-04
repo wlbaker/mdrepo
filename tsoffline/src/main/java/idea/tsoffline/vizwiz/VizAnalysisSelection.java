@@ -31,7 +31,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import idea.schema.rp.RpAnalysis;
 import lombok.extern.slf4j.Slf4j;
 import idea.analysis.AnalysisFactory;
-import idea.analysis.SBSegmentFilter;
+// import idea.analysis.SBSegmentFilter;
 import idea.gui.TableSorter;
 import idea.gui.WizardMasterInterface;
 import idea.gui.WizardPanelInterface;
@@ -77,7 +77,8 @@ public class VizAnalysisSelection extends JPanel implements WizardPanelInterface
 
 	private void initPlugins() {
 		// dummy reference to tell the class loader to find this package...needed by AnalysisFactory()
-		System.out.println(SBSegmentFilter.class);
+		// System.err.println(SBSegmentFilter.class);
+		System.err.println("SBSegmentFilter.class");
 		List<RpAnalysis> analyses = AnalysisFactory.getAnalyses();
 		
 		ArrayList<String> rfiles = null;
