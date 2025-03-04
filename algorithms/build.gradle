@@ -1,5 +1,7 @@
 
 // String rLibraryDir = "/usr/local/lib/R/library/"
+// String rLibraryDir = "c:/Program Files/R/R-4.2.1/library"
+String rLibraryDir = "c:/Users/willi/AppData/Local/R/win-library/4.2/"
 
 dependencies {
    		implementation project(":idea-rp-schema")
@@ -12,9 +14,13 @@ dependencies {
 
     implementation 'net.java.dev.jna:jna:4.2.2'
     // implementation 'com.googlecode.matrix-toolkits-java:mtj:1.0.4'
-    implementation files('lib/mtj-0.9.12.jar', 'lib/arpack_combo-0.1.jar', 'lib/netlib-java-0.9.3.jar')
+    // implementation files('lib/mtj-0.9.12.jar', 'lib/arpack_combo-0.1.jar', 'lib/netlib-java-0.9.3.jar')
     
-    implementation files('lib/jopt-simple-3.2.jar')
+    // implementation files('lib/jopt-simple-3.2.jar')
+    implementation 'net.sf.jopt-simple:jopt-simple:4.4'
+    implementation 'com.googlecode.netlib-java:netlib-java:0.9.3'
+
+
     implementation files(rLibraryDir + 'JavaGD/java/javaGD.jar')
     implementation files(rLibraryDir + 'rJava/jri/JRI.jar')
     implementation files(rLibraryDir + 'rJava/jri/JRIEngine.jar')
