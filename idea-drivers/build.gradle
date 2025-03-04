@@ -17,7 +17,8 @@ sourceSets {
 
 dependencies {
 
-    implementation files( 'lib/phidget.jar', 'lib/TempusListener.jar' )
+    implementation files( 'lib/TempusListener.jar' )
+    // implementation files( 'lib/phidget.jar' )
     
     implementation 'net.java.dev.jna:jna:4.1.0'  // not sure if this is necessary since moving PISTA related items to PISTA
     

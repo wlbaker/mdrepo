@@ -62,7 +62,7 @@ import idea.ct.CtIntellivuePanel;
 import idea.ct.CtInterface;
 import idea.ct.CtLabjackPanel;
 import idea.ct.CtNonePanel;
-import idea.ct.CtPhidgetPanel;
+// import idea.ct.CtPhidgetPanel;
 import idea.ct.CtSerialPanel;
 import idea.gui.ColorRenderer;
 import idea.gui.WizardMasterInterface;
@@ -168,8 +168,8 @@ public class WizStreamAdapterPanel extends JPanel
 			connectionPanel = new CtSerialPanel();
 		} else if (intf.getTyp() == RpConnType.DA_QMX_BASE) {
 			connectionPanel = new CtSerialPanel();
-		} else if (intf.getTyp() == RpConnType.PHIDGET) {
-			connectionPanel = new CtPhidgetPanel();
+		// } else if (intf.getTyp() == RpConnType.PHIDGET) {
+			// connectionPanel = new CtPhidgetPanel();
 		} else if (intf.getTyp() == RpConnType.ETHERNET) {
 			connectionPanel = new CtEthernetPanel();
 		} else if (intf.getTyp() == RpConnType.INTELLIVUE) {

@@ -85,7 +85,7 @@ dependencies {
 	// JAVA MAIL
     implementation files('lib/javax.mail-1.5.6.jar')
  	
-    implementation files('../idea-drivers/lib/phidget21.jar')
+    // implementation files('../idea-drivers/lib/phidget21.jar')
     
 
 	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
