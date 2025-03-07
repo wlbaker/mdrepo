@@ -15,7 +15,8 @@ dependencies {
     deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
     deployerJars 'org.apache.maven.wagon:wagon-webdav:1.0-beta-2'
     
-	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.2'
+    implementation "org.glassfish.jaxb:jaxb-runtime:4.0.5"
 }
 
 

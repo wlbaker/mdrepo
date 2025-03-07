@@ -13,14 +13,9 @@ dependencies {
     println "IDEACORE COMPILING SUB: " + project.name
     println "                  ROOT: " + project.rootDir
 
-//	if( project.name.startsWith( "ideacore") ) {
-//		implementation project(":ideacore/idea-rp-schema")
-//		implementation project(":ideacore/idea-core-jpa")
-//	} else {
-   		implementation project(":idea-rp-schema")
-   		implementation project(":idea-core-jpa")
-   		implementation 'org.javassist:javassist:3.26.0-GA'
-//	}
+    implementation project(":idea-rp-schema")
+    implementation project(":idea-core-jpa")
+    implementation 'org.javassist:javassist:3.26.0-GA'
 
     implementation 'commons-collections:commons-collections:3.2'
     implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
@@ -35,12 +30,12 @@ dependencies {
     implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
 
     testImplementation 'junit:junit:4.12'
-    testImplementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
-    testImplementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
-    testImplementation 'com.sun.xml.bind:jaxb-core:2.3.0.1'
+    // testImplementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+    // testImplementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
+    // testImplementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
+    // testImplementation 'com.sun.xml.bind:jaxb-core:2.3.0.1'
 
-    implementation 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-
+    implementation 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 }
 

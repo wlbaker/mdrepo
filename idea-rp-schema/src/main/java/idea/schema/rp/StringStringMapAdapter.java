@@ -3,7 +3,7 @@ package idea.schema.rp;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class StringStringMapAdapter extends XmlAdapter<StringStringMapModeller, HashMap<String, String>> {
 

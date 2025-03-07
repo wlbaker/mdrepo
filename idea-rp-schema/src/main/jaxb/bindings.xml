@@ -138,7 +138,7 @@
 		<jaxb:bindings node="//xs:complexType[@name='rp-stream']">
 			<ci:code>
 <![CDATA[
-				@javax.xml.bind.annotation.XmlTransient
+				@jakarta.xml.bind.annotation.XmlTransient
 			   protected Class<?> piClass;
     public Class<?> getPIClass() {
     	return piClass;
@@ -164,12 +164,12 @@
 		
 				public String getUnitName() { return (unit == null) ? "" : unit.getUnitName(); }
 				
-				@javax.xml.bind.annotation.XmlTransient
+				@jakarta.xml.bind.annotation.XmlTransient
 				public java.lang.reflect.Method getter;
-				@javax.xml.bind.annotation.XmlTransient
+				@jakarta.xml.bind.annotation.XmlTransient
 				public java.lang.reflect.Method setter;
 				
-				@javax.xml.bind.annotation.XmlTransient				
+				@jakarta.xml.bind.annotation.XmlTransient				
 				public java.lang.String h5FieldName;
 				public String getH5FieldName() {
 					return h5FieldName;
@@ -178,7 +178,7 @@
 					h5FieldName = val;
 				}
 				
-				@javax.xml.bind.annotation.XmlTransient
+				@jakarta.xml.bind.annotation.XmlTransient
 				private boolean active;
 				public void setActive( boolean b ) { active = b; }
 				public boolean isActive( ) { return active; }

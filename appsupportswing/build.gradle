@@ -1,14 +1,4 @@
 
-
-// how to exclude a file or directory
-// ...i bet it works with eclipse project generation as well
-//
-// if(JavaVersion.current() != JavaVersion.VERSION_1_8) {
-//   throw new GradleException("This build must be run with java 8")
-// }
-
-System.out.println( "java version: " + JavaVersion.current() )
-
 sourceSets {
     main {
         java {
@@ -27,16 +17,13 @@ sourceSets {
     }
 }
 
-
-
 dependencies {
 
-   		implementation project(":idea-rp-schema")
-   		implementation project(":idea-core-jpa")
-   		implementation project(":idea-core")
-   		implementation project(":dm-core")
+    implementation project(":idea-rp-schema")
+    implementation project(":idea-core-jpa")
+    implementation project(":idea-core")
+    implementation project(":dm-core")
 
-    // runtime( 'idea.pista:pista:0.90') { changing = true }
     implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
     implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
     implementation 'org.apache.poi:poi-ooxml:4.1.0'
@@ -59,11 +46,14 @@ dependencies {
     // implementation 'com.github.insubstantial:substance:7.3'
     
     //implementation files('lib/substance-7.3.1-jdk9.jar', 
-              //'lib/trident-7.3.1-jdk9.jar')
+    //'lib/trident-7.3.1-jdk9.jar')
     // implementation files('lib/synthetica.jar')
 
-    // implementation files('../ideadrivers/lib/phidget.jar' )  // fixme: to be removed!
-    implementation files('lib/phidget.jar' )  // fixme: to be removed!
+    // fixme: to be removed!
+    // implementation files('../ideadrivers/lib/phidget.jar' )  
+
+    // fixme: to be removed!
+    implementation files('lib/phidget.jar' )
 
 }
 
