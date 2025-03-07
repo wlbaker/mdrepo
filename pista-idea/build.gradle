@@ -50,7 +50,7 @@ dependencies {
     // implementation "org.mini2Dx:universal-tween-engine:6.3.3"
     
  implementation 'com.google.code.gson:gson:2.6.2'
-    implementation 'net.java.dev.jna:jna:4.1.0'
+    implementation 'net.java.dev.jna:jna:5.16.0'
     implementation files( 'lib/ljud-2015-04.jar' )
 
 	

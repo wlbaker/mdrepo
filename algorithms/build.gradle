@@ -12,7 +12,7 @@ dependencies {
     implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
 
 
-    implementation 'net.java.dev.jna:jna:4.2.2'
+    implementation 'net.java.dev.jna:jna:5.16.0'
     // implementation 'com.googlecode.matrix-toolkits-java:mtj:1.0.4'
     // implementation files('lib/mtj-0.9.12.jar', 'lib/arpack_combo-0.1.jar', 'lib/netlib-java-0.9.3.jar')
     
@@ -29,4 +29,8 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
     implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
 
+    implementation 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    testImplementation 'org.projectlombok:lombok:1.18.36'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 }

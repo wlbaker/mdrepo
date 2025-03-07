@@ -30,6 +30,7 @@ ext {
 subprojects {
      
     apply plugin: 'java'
+    apply plugin: 'eclipse'
     apply plugin: 'maven-publish'
 
     repositories {
@@ -37,10 +38,10 @@ subprojects {
     }
 
     dependencies {
-    implementation 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    testImplementation 'org.projectlombok:lombok:1.18.24'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    testImplementation 'org.projectlombok:lombok:1.18.36'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
     }
 
     publishing {

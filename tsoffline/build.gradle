@@ -1,6 +1,7 @@
 
 plugins {
     id 'application'
+    id 'eclipse'
 }
 
     repositories {
@@ -22,12 +23,11 @@ if( osArch.equals( "amd64" )  ) {
 } else {
     osClassifier += osArch
 }
-// sourceCompatibility = 1.8
 
 mainClassName = 'idea.tsoffline.Main'
 if( osName.startsWith( "win" ) ) {
     // applicationDefaultJvmArgs = [ "-Djava.library.path=\"%EXEDIR%/../lib\"", "-Xmx=1536M" ]
-    applicationDefaultJvmArgs = [ '-Djava.library.path=\\"V:/HiFi Research/5. ISR - (Baker & Salinas)/tsOffline/lib\\"' ] //, "-Xmx=1536M" ]
+    applicationDefaultJvmArgs = [ '-Djava.library.path=\\"c:/opt/sigmapad/sigmapad-6/lib' ] //, "-Xmx=1536M" ]
 } else {
     applicationDefaultJvmArgs = [ '-Djava.library.path=/usr/local/lib/R/library' ] //, "-Xmx=1536M" ]
 }
@@ -42,15 +42,10 @@ run {
     }
 }
 
-boolean useSWT = false
- 
-if( useSWT ) {
-    sourceSets.main.java.srcDirs = ['src/main/java', 'src/swt/java']
-}
-
 System.out.println("OSCLASSIFIER===========" + osClassifier )
 
 dependencies {
+    implementation( 'net.java.dev.jna:jna:5.16.0' )
     // mslinks is needed by dm-core...why is it not exported as a req?
     implementation 'com.github.vatbub:mslinks:1.0.5'
     implementation 'com.toedter:jcalendar:1.4'
@@ -76,7 +71,7 @@ dependencies {
     // used for shuttlexpress or other jog wheel input 
     implementation group: 'io.github.vveird', name: 'purejavahidapi', version: '0.0.3'
 
-    implementation( 'com.softhorizons:yajdsp:0.1') { changing = true }
+    implementation( 'com.softhorizons:yajdsp:0.2') { changing = true }
     implementation files(rLibraryDir + 'JavaGD/java/javaGD.jar')
     implementation files(rLibraryDir + 'rJava/jri/JRI.jar')
     implementation files(rLibraryDir + 'rJava/jri/JRIEngine.jar')
@@ -130,12 +125,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 
     // testCompile 'jcifs:jcifs:1.3.17' 
+    // implementation 'javax.xml:jaxrpc:1.1'
 
-    if( useSWT ) {
-        implementation 'org.eclipse.swt:org.eclipse.swt.win32.win32.x86_64:4.3'
-        implementation 'org.piccolo2d:piccolo2d-swt:3.0.1'
-        implementation 'org.piccolo2d:piccolo2d-swt-examples:3.0.1'
-    }
 }
 
 jar {

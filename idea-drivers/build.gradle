@@ -17,15 +17,14 @@ sourceSets {
 
 dependencies {
 
+    implementation( 'net.java.dev.jna:jna:5.16.0' )
     implementation files( 'lib/TempusListener.jar' )
     // implementation files( 'lib/phidget.jar' )
     
-    implementation 'net.java.dev.jna:jna:4.1.0'  // not sure if this is necessary since moving PISTA related items to PISTA
-    
-   		implementation project(":idea-rp-schema")
-   		implementation project(":idea-core-jpa")
-   		implementation project(":idea-core")
-   		implementation project(":dm-core")
+    implementation project(":idea-rp-schema")
+    implementation project(":idea-core-jpa")
+    implementation project(":idea-core")
+    implementation project(":dm-core")
 
     //implementation( 'idea.idea:pista-bindings:0.81') { changing = true }
     //implementation( 'idea.idea:jDAQmx:0.70') { changing = true }
@@ -63,6 +62,9 @@ implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Fina
 	testImplementation 'com.jgoodies:jgoodies-binding:2.6.1'
     testImplementation 'junit:junit:4.12'
     testImplementation files('../dm-core/lib/jarhdf5-1.10.5.jar')
+
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
 
 //publishing {

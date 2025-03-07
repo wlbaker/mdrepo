@@ -1,3 +1,7 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+}
 
 jar {
     manifest {
@@ -34,6 +38,9 @@ dependencies {
     testImplementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
     testImplementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
     testImplementation 'com.sun.xml.bind:jaxb-core:2.3.0.1'
+
+    implementation 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
 }
 
