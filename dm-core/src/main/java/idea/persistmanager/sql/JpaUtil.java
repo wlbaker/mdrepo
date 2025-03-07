@@ -19,10 +19,10 @@ import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceUtil;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceUtil;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -147,9 +147,9 @@ public class JpaUtil {
 	 */
 	// @Bean
 	// public LocalContainerEntityManagerFactoryBean emf(){
-	// properties.put("javax.persistence.jdbc.driver", dbDriverClassName);
-	// properties.put("javax.persistence.jdbc.url", dbConnectionURL);
-	// properties.put("javax.persistence.jdbc.user", dbUser); //if needed
+	// properties.put("jakarta.persistence.jdbc.driver", dbDriverClassName);
+	// properties.put("jakarta.persistence.jdbc.url", dbConnectionURL);
+	// properties.put("jakarta.persistence.jdbc.user", dbUser); //if needed
 	//
 	// LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 	// emf.setPersistenceProviderClass(org.eclipse.persistence.jpa.PersistenceProvider.class); //If your using eclipse

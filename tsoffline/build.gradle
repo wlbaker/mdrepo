@@ -36,10 +36,10 @@ run {
 
 System.out.println("OSCLASSIFIER===========" + osClassifier )
 
-configurations {
-    compile.exclude group: 'xml-apis', module: 'xml-apis'
-    compile.exclude group: 'xml-apis', module: ' '
-}
+// configurations {
+    // compile.exclude group: 'xml-apis', module: 'xml-apis'
+    // compile.exclude group: 'xml-apis', module: ' '
+// }
 
 dependencies {
     implementation( 'net.java.dev.jna:jna:5.16.0' )
@@ -67,13 +67,11 @@ dependencies {
     implementation 'org.hibernate:hibernate-entitymanager:5.4.6.Final'
     implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
 
- implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
- implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+    implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+    implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
 
-// implementation 'org.jfree:jfreechart:1.0.19'  // fixme...remove!
-    
     // used for shuttlexpress or other jog wheel input 
-    implementation group: 'io.github.vveird', name: 'purejavahidapi', version: '0.0.3'
+    implementation 'io.github.vveird:purejavahidapi:0.0.3'
 
     implementation( 'com.softhorizons:yajdsp:0.2') { changing = true }
     implementation files(rLibraryDir + 'JavaGD/java/javaGD.jar')
@@ -81,8 +79,8 @@ dependencies {
     implementation files(rLibraryDir + 'rJava/jri/JRIEngine.jar')
     implementation files(rLibraryDir + 'rJava/jri/REngine.jar')
 
-    testImplementation 'org.projectlombok:lombok:1.18.36'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+    implementation 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
     implementation 'org.piccolo2d:piccolo2d-core:3.0.1'
     implementation 'org.piccolo2d:piccolo2d-extras:3.0.1'
@@ -90,14 +88,8 @@ dependencies {
     implementation 'com.fifesoft:rsyntaxtextarea:2.6.0'
 
     implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.2'
-    // implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
-    // implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
-    // implementation 'com.sun.xml.bind:jaxb-core:2.3.0.1'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.5'
 
-    implementation group: 'org.bytedeco', name: 'javacv', version: '1.3'
-    implementation group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: '3.2.1-1.3', classifier: "${osClassifier}"
-    // testCompile group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '3.1.0-1.3', classifier: "${osClassifier}"
-    
     implementation 'com.google.code.gson:gson:2.6.2'
     // GUI
     implementation 'com.jgoodies:jgoodies-forms:1.7.2'
@@ -129,9 +121,9 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 
-    // testCompile 'jcifs:jcifs:1.3.17' 
-    // implementation 'javax.xml:jaxrpc:1.1'
-
+    implementation 'org.bytedeco:javacv:1.3'
+    implementation group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: '3.2.1-1.3', classifier: "${osClassifier}"
+    
 }
 
 jar {

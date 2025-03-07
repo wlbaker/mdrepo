@@ -8,13 +8,11 @@ import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBElement;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 
 import idea.persistence.PiSubjectImporter;
 import idea.persistmanager.PiImporterUtil;
@@ -373,13 +371,13 @@ public class LocalJAXBRepository implements RepositoryInterface {
 
 	public void _getSessionFilesList(File root, File parent, List<RpFile> files) {
 
-		DatatypeFactory xmlFactory = null;
-		try {
-			xmlFactory = DatatypeFactory.newInstance();
-		} catch (DatatypeConfigurationException e) {
+		// DatatypeFactory xmlFactory = null;
+		//try {
+		//	xmlFactory = DatatypeFactory.newInstance();
+		//} catch (DatatypeConfigurationException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//	e.printStackTrace();
+		//}
 
 		String root_path = root.getPath();
 		root_path = root_path.replace('\\', '/'); // this is necessary

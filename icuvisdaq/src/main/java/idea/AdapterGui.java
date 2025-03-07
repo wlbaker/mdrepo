@@ -33,7 +33,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import javax.swing.JPanel;
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 
 import org.pistax.PistaAdapter;
 

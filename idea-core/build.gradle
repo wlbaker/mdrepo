@@ -5,7 +5,7 @@ plugins {
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'IDEA Core', 'Implementation-Version': version
+        attributes 'Implementation-Title': 'IDEA Core', 'Implementation-Version': '0.90'
     }
 }
 
@@ -34,6 +34,8 @@ dependencies {
     // testImplementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
     // testImplementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
     // testImplementation 'com.sun.xml.bind:jaxb-core:2.3.0.1'
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.2'
+    // implementation "org.glassfish.jaxb:jaxb-runtime:4.0.5"
 
     implementation 'org.projectlombok:lombok:1.18.36'
     annotationProcessor 'org.projectlombok:lombok:1.18.36'

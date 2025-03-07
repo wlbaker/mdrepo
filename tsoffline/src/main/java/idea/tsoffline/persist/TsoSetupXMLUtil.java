@@ -3,7 +3,7 @@ package idea.tsoffline.persist;
 import java.io.File;
 import java.util.List;
 
-import javax.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBContext;
 
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.Marshaller;

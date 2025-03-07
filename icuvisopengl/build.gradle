@@ -24,7 +24,6 @@ dependencies {
     implementation "org.mini2Dx:universal-tween-engine:6.3.3"
     implementation 'com.jgoodies:jgoodies-forms:1.7.2'
 
-    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
     implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
     implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
     implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
@@ -35,6 +34,8 @@ dependencies {
     // implementation 'org.jogamp.jogl:newt:2.2.4'
     // implementation 'org.jogamp.jogl:jogl:2.2.4'
     testImplementation 'junit:junit:4.12'
+
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.2'
 }
 
 configurations {

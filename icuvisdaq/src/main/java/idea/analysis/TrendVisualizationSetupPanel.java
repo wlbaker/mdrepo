@@ -19,7 +19,7 @@ import javax.swing.JTable;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 
 import idea.GuiUtil;
 

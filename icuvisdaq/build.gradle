@@ -75,25 +75,20 @@ dependencies {
     
     implementation files('../dm-core/lib/jarhdf5-1.10.2.jar');
  
-	implementation 'org.mobicents.external.freetts:freetts:1.0'
-	implementation 'org.jdesktop:beansbinding:1.2.1'
+    implementation 'org.mobicents.external.freetts:freetts:1.0'
+    implementation 'org.jdesktop:beansbinding:1.2.1'
 
-	implementation group: 'org.bytedeco', name: 'javacv', version: '1.3.3'
-	implementation group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: '3.2.1-1.3', classifier: "${osClassifier}"
+    implementation group: 'org.bytedeco', name: 'javacv', version: '1.3.3'
+    implementation group: 'org.bytedeco.javacpp-presets', name: 'ffmpeg', version: '3.2.1-1.3', classifier: "${osClassifier}"
     testImplementation group: 'org.bytedeco.javacpp-presets', name: 'opencv', version: '3.1.0-1.3', classifier: "${osClassifier}"
 	
-	// JAVA MAIL
+    // JAVA MAIL
     implementation files('lib/javax.mail-1.5.6.jar')
  	
-    // implementation files('../idea-drivers/lib/phidget21.jar')
-    
+    // GUI stuff
+    // runtime 'com.jtattoo:JTattoo:1.6.11'
+    implementation "org.mini2Dx:universal-tween-engine:6.3.3"
 
-	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
-	implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.4.0-b180830.0438'
-	implementation 'com.sun.xml.bind:jaxb-core:2.3.0.1'
-
-	// GUI stuff
-	// runtime 'com.jtattoo:JTattoo:1.6.11'
-        implementation "org.mini2Dx:universal-tween-engine:6.3.3"
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.2'
     
 }

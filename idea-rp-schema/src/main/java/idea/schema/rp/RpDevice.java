@@ -57,7 +57,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "streams",
     "devices"
 })
-public class RpDevice {
+public class RpDevice<T extends RpStream> {
 
     @XmlElement(required = true)
     protected String name;
@@ -75,7 +75,7 @@ public class RpDevice {
     protected String connectionValue;
     @XmlElement(required = true, type = Integer.class)
     protected StringStringMap param;
-    protected List<RpStream> streams;
+    protected List<T> streams;
     protected List<RpDevice> devices;
 
     /**
@@ -287,7 +287,7 @@ public class RpDevice {
      * @return
      *     The value of the streams property.
      */
-    public List<RpStream> getStreams() {
+    public List<T> getStreams() {
         if (streams == null) {
             streams = new ArrayList<>();
         }

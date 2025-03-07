@@ -30,7 +30,7 @@ dependencies {
     implementation 'org.apache.poi:poi-ooxml-schemas:4.1.0'
     implementation 'org.apache.poi:poi:4.1.0'
     implementation 'com.fazecast:jSerialComm:2.5.2'
-    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
+    // implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
     
     implementation "org.mini2Dx:universal-tween-engine:6.3.3"
     
@@ -54,6 +54,9 @@ dependencies {
 
     // fixme: to be removed!
     implementation files('lib/phidget.jar' )
+
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.2'
+    // implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.5'
 
 }
 
