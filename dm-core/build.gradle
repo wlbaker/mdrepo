@@ -52,7 +52,6 @@ dependencies {
     // }
     implementation 'org.hibernate:hibernate-core:6.6.9.Final'
     implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
-    // implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
 
     testImplementation 'junit:junit:4.11'
     testImplementation 'com.jgoodies:jgoodies-binding:2.9.1'

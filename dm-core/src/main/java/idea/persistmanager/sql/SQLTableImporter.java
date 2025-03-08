@@ -3,9 +3,9 @@ package idea.persistmanager.sql;
 import java.io.IOException;
 import java.util.Iterator;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Query;
 
 import idea.intf.AbstractStreamProducer;
 import idea.message.StreamID;

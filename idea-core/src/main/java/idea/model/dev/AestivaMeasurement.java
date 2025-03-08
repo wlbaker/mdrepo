@@ -5,8 +5,8 @@ import idea.model.PersistentItem;
 import idea.persistence.Metric;
 import idea.schema.rp.RpMetric;
 
-import javax.persistence.Column;
-import javax.persistence.Transient;
+import jakarta.persistence.Column;
+import jakarta.persistence.Transient;
 
 import lombok.Data;
 

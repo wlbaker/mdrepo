@@ -28,7 +28,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.persistence.JoinColumn;
+import jakarta.persistence.JoinColumn;
 
 import lombok.extern.slf4j.Slf4j;
 

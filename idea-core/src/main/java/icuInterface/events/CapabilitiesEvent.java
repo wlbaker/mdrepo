@@ -1,6 +1,6 @@
 package icuInterface.events;
 
-import javax.persistence.Transient;
+import jakarta.persistence.Transient;
 
 import idea.conf.DeviceConfiguration;
 import idea.intf.StreamProducer;

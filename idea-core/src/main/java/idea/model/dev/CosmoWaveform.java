@@ -6,7 +6,7 @@ import idea.model.PersistentItem;
 import idea.persistence.Waveform;
 import idea.schema.rp.RpMetric;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 import lombok.Data;
 

@@ -75,10 +75,10 @@ public class ModelUtil {
 
 		// create the entity annotation
 		AnnotationsAttribute attr = new AnnotationsAttribute(cp, AnnotationsAttribute.visibleTag);
-		Annotation entity = new Annotation("javax.persistence.Entity", cp);
+		Annotation entity = new Annotation("jakarta.persistence.Entity", cp);
 		attr.addAnnotation(entity);
 
-		// Annotation table = new Annotation("javax.persistence.Table", cp);
+		// Annotation table = new Annotation("jakarta.persistence.Table", cp);
 		// table.addMemberValue("name", new
 		// StringMemberValue("PUT_SHORT_NAME_HERE", cp) );
 		// attr.addAnnotation(table);
@@ -304,7 +304,7 @@ public class ModelUtil {
 
 		// create the entity annotation
 		AnnotationsAttribute attr = new AnnotationsAttribute(cp, AnnotationsAttribute.visibleTag);
-		Annotation entity = new Annotation("javax.persistence.Entity", cp);
+		Annotation entity = new Annotation("jakarta.persistence.Entity", cp);
 		attr.addAnnotation(entity);
 		cf.addAttribute(attr);
 

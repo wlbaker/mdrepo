@@ -7,7 +7,7 @@ import idea.persistence.Metric;
 import idea.persistence.Text;
 import idea.schema.rp.RpMetric;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 import lombok.Data;
 

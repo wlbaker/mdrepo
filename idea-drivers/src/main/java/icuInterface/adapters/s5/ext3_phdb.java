@@ -1,6 +1,6 @@
 package icuInterface.adapters.s5;
 
-import javax.persistence.Transient;
+import jakarta.persistence.Transient;
 
 import idea.message.StreamID;
 import idea.model.IntfUtil;

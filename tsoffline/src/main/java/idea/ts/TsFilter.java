@@ -131,7 +131,7 @@ public class TsFilter {
      * This is a transient flag to indicate if this value should be saved as part of the
      * user preferences.
      */
-    @javax.xml.bind.annotation.XmlTransient
+    @jakarta.xml.bind.annotation.XmlTransient
     protected boolean global;
     
     public boolean isGlobal() {

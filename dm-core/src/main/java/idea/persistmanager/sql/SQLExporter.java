@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Table;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Table;
 
 import idea.intf.StreamProducer;
 import idea.message.StreamID;

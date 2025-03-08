@@ -7,7 +7,7 @@ import idea.model.PersistentItem;
 import idea.persistence.Waveform;
 import idea.schema.rp.RpMetric;
 
-import javax.persistence.Transient;
+import jakarta.persistence.Transient;
 
 import lombok.Data;
 

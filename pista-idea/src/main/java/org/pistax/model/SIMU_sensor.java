@@ -1,7 +1,7 @@
 package org.pistax.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import idea.message.StreamID;
 import idea.model.IntfUtil;

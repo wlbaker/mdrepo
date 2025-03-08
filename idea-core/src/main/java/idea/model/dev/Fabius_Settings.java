@@ -8,8 +8,8 @@ import idea.model.PersistentItem;
 import idea.persistence.Metric;
 import idea.schema.rp.RpMetric;
 
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Transient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

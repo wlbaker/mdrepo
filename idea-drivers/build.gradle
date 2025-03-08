@@ -26,16 +26,18 @@ dependencies {
     implementation project(":idea-core")
     implementation project(":dm-core")
 
-    //implementation( 'idea.idea:pista-bindings:0.81') { changing = true }
-    //implementation( 'idea.idea:jDAQmx:0.70') { changing = true }
+    implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
+    implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
 
- implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
- implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
+    implementation 'com.fazecast:jSerialComm:2.5.2'
 
-implementation 'com.fazecast:jSerialComm:2.5.2'
-implementation 'org.hibernate:hibernate-entitymanager:5.4.6.Final'
-implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+    implementation 'org.hibernate:hibernate-core:6.6.9.Final'
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
 
+
+    implementation 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 
     // HL7 support for Mindray
     implementation 'ca.uhn.hapi:hapi-base:2.2'
@@ -63,8 +65,6 @@ implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Fina
     testImplementation 'junit:junit:4.12'
     testImplementation files('../dm-core/lib/jarhdf5-1.10.5.jar')
 
-    implementation 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
 
 //publishing {

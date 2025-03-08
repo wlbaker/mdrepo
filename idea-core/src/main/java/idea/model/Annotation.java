@@ -7,9 +7,9 @@ import idea.schema.rp.RpMetric;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

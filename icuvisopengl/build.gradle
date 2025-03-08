@@ -24,7 +24,8 @@ dependencies {
     implementation "org.mini2Dx:universal-tween-engine:6.3.3"
     implementation 'com.jgoodies:jgoodies-forms:1.7.2'
 
-    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
+
     implementation 'org.slf4j:slf4j-api:1.8.0-beta2'
     implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
 

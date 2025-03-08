@@ -2,10 +2,10 @@ package idea.tsoffline.persist;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 // Generated May 17, 2007 10:53:35 AM by Hibernate Tools 3.2.0.b9
 

@@ -8,12 +8,12 @@ import idea.model.PersistentItem;
 import idea.persistence.Metric;
 import idea.schema.rp.RpMetric;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

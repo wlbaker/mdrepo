@@ -26,8 +26,8 @@ dependencies {
     // implementation 'com.github.calimero:calimero-rxtx:2.3-beta'
     implementation 'com.fazecast:jSerialComm:2.5.2'
 
-    implementation 'org.hibernate:hibernate-entitymanager:5.4.6.Final'
-    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+    implementation 'org.hibernate:hibernate-core:6.6.9.Final'
+    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
 
     testImplementation 'junit:junit:4.12'
     // testImplementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
