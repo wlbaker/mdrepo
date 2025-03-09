@@ -14,12 +14,18 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import com.softhorizons.filterdesigner.GuiUtil;
+
 import idea.schema.rp.RpStudy;
 import lombok.extern.slf4j.Slf4j;
 import idea.gui.UndecoratedFilechooser;
 import idea.gui.WizardMasterInterface;
 import idea.gui.WizardPanelInterface;
+import idea.persistmanager.PiImporterUtil;
+import idea.repository.io.LocalJAXBRepository;
 import idea.tsoffline.TsOfflineSetup;
+import idea.tsoffline.persist.TsoSessionXMLUtil;
+import jakarta.xml.bind.JAXBException;
 
 /**
  * @author User #2
@@ -52,10 +58,11 @@ public class ImportFileSelectionPanel extends JPanel implements WizardPanelInter
 		String lastDir = TsOfflineSetup.getArchiveFile(); // PrefUtil.getUserPref(pref_key,
 															// null);
 
-		FileNameExtensionFilter session_filter = new FileNameExtensionFilter("Session Files: spad, xml, stp", "spad", "xml", "stp");
-		FileNameExtensionFilter study_filter = new FileNameExtensionFilter("Study Files: dat, h5", "dat", "h5" );
+		FileNameExtensionFilter session_filter = new FileNameExtensionFilter("Session Files: spad, xml, stp", "spad",
+				"xml", "stp");
+		FileNameExtensionFilter study_filter = new FileNameExtensionFilter("Study Files: dat, h5", "dat", "h5");
 		fc.setFileFilter(session_filter);
-		fc.addChoosableFileFilter(  study_filter);
+		fc.addChoosableFileFilter(study_filter);
 
 		fc.createDialog(null);
 		if (lastDir != null) {
@@ -71,9 +78,12 @@ public class ImportFileSelectionPanel extends JPanel implements WizardPanelInter
 		// evt.getNewValue() );} );
 	}
 
-	private void panelToModel(File file) {
+	private void panelToModel(File file) throws JAXBException {
 		log.error("FIXME: need function PiImporterUtil.getStudyFromFile(file)");
-		profile = null; // PiImporterUtil.getStudyFromFile(file);
+		// profile = PiImporterUtil.getStudyFromFile(file);
+		// profile = LocalJAXBRepository.createStudyFromFile(file);
+		GuiUtil.showMessage("FIXME: need function PiImporterUtil.getStudyFromFile()");
+		// profile = TsoSessionXMLUtil.readSessionFile(file); // read spad file:?
 		return;
 	}
 
@@ -160,7 +170,11 @@ public class ImportFileSelectionPanel extends JPanel implements WizardPanelInter
 		// header.setBaseFileName(file.getAbsolutePath());
 		// header.setCompany("Simulation");
 
-		panelToModel(null); // FIXME: here as a reminder
+		try {
+			panelToModel(file);
+		} catch (Exception e) {
+			GuiUtil.showError("Could not load file", e);
+		}
 
 		return true;
 	}

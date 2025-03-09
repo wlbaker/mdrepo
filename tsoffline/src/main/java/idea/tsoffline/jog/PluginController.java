@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
-import purejavahidapi.HidDevice;
-import purejavahidapi.HidDeviceInfo;
-import purejavahidapi.InputReportListener;
-import purejavahidapi.PureJavaHidApi;
+//import purejavahidapi.HidDevice;
+//import purejavahidapi.HidDeviceInfo;
+//import purejavahidapi.InputReportListener;
+//import purejavahidapi.PureJavaHidApi;
 import idea.tsoffline.AppModel;
 import idea.tsoffline.TsPluginAPI;
 import idea.tsoffline.canvas.TsPSwingCanvas;
@@ -18,6 +18,8 @@ public class PluginController implements TsPluginAPI {
 
 	public void initPlugin(AppModel app) throws IOException {
 		this.app = app;
+		
+		/*
 		HidDevice shuttle;
 		List<HidDeviceInfo> devs = PureJavaHidApi.enumerateDevices();
 		
@@ -71,7 +73,7 @@ public class PluginController implements TsPluginAPI {
 				prev_b1 = b1;
 				
 			} } );
-
+*/
 	}
 
 }

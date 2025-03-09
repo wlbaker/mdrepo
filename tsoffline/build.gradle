@@ -36,10 +36,11 @@ run {
 
 System.out.println("OSCLASSIFIER===========" + osClassifier )
 
-// configurations {
-    // compile.exclude group: 'xml-apis', module: 'xml-apis'
-    // compile.exclude group: 'xml-apis', module: ' '
-// }
+configurations {
+    compile.exclude group: 'xml-apis', module: 'xml-apis-ext'
+    compile.exclude group: 'xml-apis', module: 'xml-apis'
+    compile.exclude group: 'xml-apis', module: ' '
+}
 
 dependencies {
     implementation( 'net.java.dev.jna:jna:5.16.0' )
@@ -71,7 +72,8 @@ dependencies {
     implementation 'org.slf4j:slf4j-log4j12:1.8.0-beta2'
 
     // used for shuttlexpress or other jog wheel input 
-    implementation 'io.github.vveird:purejavahidapi:0.0.3'
+    // implementation 'io.github.vveird:purejavahidapi:0.0.3'
+    // implementation 'com.github.nyholku:purejavahidapi:1.6.0'
 
     implementation( 'com.softhorizons:yajdsp:0.2') { changing = true }
     implementation files(rLibraryDir + 'JavaGD/java/javaGD.jar')
