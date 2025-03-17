@@ -15,7 +15,7 @@ dependencies {
 
     implementation project(":idea-rp-schema")
     implementation project(":idea-core-jpa")
-    implementation 'org.javassist:javassist:3.26.0-GA'
+    implementation 'org.javassist:javassist:3.30.2-GA'
 
     implementation 'commons-collections:commons-collections:3.2'
     implementation 'org.slf4j:slf4j-api:1.8.0-beta2'

@@ -88,8 +88,23 @@ public class LegendTool extends PBasicInputEventHandler {
 	Color theme_y_range_color = Color.BLACK;
 	Color theme_header_color = Color.WHITE;
 
-	private static Font emph_font = new Font("Ariel", Font.BOLD, 12);
-	private static Font ticFont = new Font("Ariel", Font.BOLD, 10);
+	// emphasis font is selected when the mouse hovers over the signal
+	private static int baseFontSize;
+
+	private static Font emphFont;
+	private static Font ticFont;
+	protected static Font tfFont;
+	static {
+		refreshFonts( 14 );
+	}
+	
+	public static void refreshFonts( int baseFontSize ) {
+		LegendTool.baseFontSize = baseFontSize;
+		emphFont = new Font("Ariel", Font.BOLD, baseFontSize+2); // 12);
+	    ticFont = new Font("Ariel", Font.BOLD, baseFontSize); // 10);
+		tfFont = new Font("Ariel", Font.PLAIN, baseFontSize); // 10);
+		
+	}
 
 	private LegendPopupMenu popupLegendMenu = new LegendPopupMenu(this);
 	PText curr;
@@ -105,7 +120,6 @@ public class LegendTool extends PBasicInputEventHandler {
 	@Getter
 	private PCamera selectedCamera;
 
-	protected static Font tfFont = new Font("Ariel", Font.PLAIN, 10);
 
 	FocusAdapter gainFocusListener = new FocusAdapter() {
 
@@ -387,7 +401,7 @@ public class LegendTool extends PBasicInputEventHandler {
 			curr = (PText) event.getPickedNode();
 			node.addAttribute("paint", curr.getTextPaint());
 			node.addAttribute("font", curr.getFont());
-			curr.setFont(emph_font);
+			curr.setFont(emphFont);
 
 			curr.setTextPaint(Color.WHITE);
 		}
@@ -535,7 +549,7 @@ public class LegendTool extends PBasicInputEventHandler {
 			pt_label.setTextPaint(sig.getPaint()); // y_ruler.color
 			pt_label.addInputEventListener(this);
 			axisLayer.addChild(pt_label);
-			top += 15;
+			top += LegendTool.baseFontSize + 5;
 		}
 
 		top += 15;

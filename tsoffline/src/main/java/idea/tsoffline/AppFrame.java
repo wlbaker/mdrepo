@@ -100,6 +100,7 @@ import idea.ts.TsoSession;
 import idea.ts.TsoSignalLayerType;
 import idea.tsoffline.canvas.DisplayLayout;
 import idea.tsoffline.canvas.PLayerSignalProducer;
+import idea.tsoffline.canvas.TsBaseCanvas;
 import idea.tsoffline.canvas.TsControlPanel;
 import idea.tsoffline.canvas.TsPSwingCanvas;
 import idea.tsoffline.disp_manager.DisplayManager;
@@ -118,6 +119,10 @@ import idea.tsoffline.prefs.PreferencesPanel;
 import idea.tsoffline.script.ConsolePanel;
 import idea.tsoffline.script.ScriptPanel;
 import idea.tsoffline.setup.TsoSetupWizard;
+import idea.tsoffline.tspico.AnnotationEditorTool;
+import idea.tsoffline.tspico.CursorLocatorTool;
+import idea.tsoffline.tspico.LegendTool;
+import idea.tsoffline.tspico.RulerComponent;
 import idea.tsoffline.video.TsPhaseControlPanel;
 import idea.tsoffline.vizwiz.RPlotterPanel;
 import idea.tsoffline.vizwiz.VizWizard;
@@ -161,6 +166,7 @@ public class AppFrame extends JFrame  {
 
 		AppFrame.instance = this;
 		initComponents();
+		initAdditionalComponents();
 
 		consoleMenuItem.setEnabled(true);
 
@@ -287,6 +293,33 @@ public class AppFrame extends JFrame  {
 
 		close(); // set default items...disabled and/or not visible
 
+	}
+
+	private void initAdditionalComponents() {
+		// TODO Auto-generated method stub
+
+		JMenu zoomMenu = new JMenu();
+		zoomMenu.setText("Zoom");
+		zoomMenu.setIcon(null);
+		zoomMenu.setMnemonic('Z');
+		for( int sz : new int [ ] { 10, 14, 18, 22 } ){
+			JMenuItem mi = new JMenuItem();
+			mi.setText("" + sz);
+			mi.setEnabled(true);
+			mi.addActionListener(e -> setZoom(e, sz));
+			zoomMenu.add(mi);
+		}
+
+		menu2.add( zoomMenu );
+	}
+	
+	protected void setZoom(ActionEvent e, int sz) {
+		TsBaseCanvas.refreshFonts(sz);
+		LegendTool.refreshFonts( sz );
+		RulerComponent.refreshFonts( sz + 1);
+		CursorLocatorTool.refreshFonts( sz - 1);
+		AnnotationEditorTool.refreshFonts( sz );
+		TsPSwingCanvas.refreshFonts( sz - 2);
 	}
 
 	protected void submitMessage() throws IOException, URISyntaxException {
@@ -449,15 +482,28 @@ public class AppFrame extends JFrame  {
 	}
 
 	public void openMenuItemActionPerformed(ActionEvent e) {
-		final OpenStudyWizard panel = new OpenStudyWizard();
+		final OpenStudyWizard openWiz = new OpenStudyWizard();
 
-		GuiUtil.doDialog("Open Study", this, panel, null);
+		GuiUtil.doDialog("Open Study", this, openWiz, null);
 
-		if (panel.isFinished()) {
+		
+		if (openWiz.isFinished()) {
+			GuiUtil.showMessage("ADDED OPEN SESSION");
+			File file = openWiz.__getLocalFile();
+			
+			try {
+				// OpenStudyWizard.openDataImporter(file); // the
+				session = getSessionInfoStep1(file);
+				openSessionFiles(null, session, file.getParentFile());
+				return;
+			} catch (Exception e1) {
+				GuiUtil.showError("Could not open session file", e1);
+			}
+
 			// RpStudy study = panel.getStudy();
-			study_importer = panel.getImporter();
-			session = panel.getSession();
-			File sessionDir = panel.getSessionDir();
+			study_importer = openWiz.getImporter();
+			session = openWiz.getSession();
+			File sessionDir = openWiz.getSessionDir();
 			
 			/*
 			 * This is used when picking the menu item "Save Session"

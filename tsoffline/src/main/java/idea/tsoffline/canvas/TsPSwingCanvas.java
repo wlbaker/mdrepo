@@ -9,6 +9,7 @@ import static idea.tsoffline.canvas.DisplayLayout.TILED;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -123,7 +124,7 @@ public class TsPSwingCanvas extends TsBaseCanvas {
 	public static final float LEFT_MARGIN = 60;
 
 	private static final float BOTTOMM_MARGIN = 4;
-	public static final float TOP_ANNOTATION_MARGIN = 30;
+	public static float TOP_ANNOTATION_MARGIN = 30;
 	public static float TOP_MARGIN = 10 + TOP_ANNOTATION_MARGIN;
 
 	private static final float RIGHT_MARGIN = 20;
@@ -219,6 +220,20 @@ public class TsPSwingCanvas extends TsBaseCanvas {
 	private LabelType timelineLabelFormat = LabelType.LABEL_CLOCKTIME;
 	private PLayer prevSegLayer;
 	// the axis layer
+
+	
+	private static int baseFontSize;
+
+	static {
+		refreshFonts( 12 );
+	}
+	
+	public static void refreshFonts( int baseFontSize ) {
+		TsPSwingCanvas.baseFontSize = baseFontSize;
+		TOP_ANNOTATION_MARGIN = 3* baseFontSize;
+		TOP_MARGIN = baseFontSize + TOP_ANNOTATION_MARGIN;
+		
+	}
 
 	public TsPSwingCanvas() {
 		this(true, true);

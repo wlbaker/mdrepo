@@ -38,7 +38,7 @@ dependencies {
     implementation 'org.apache.poi:poi:4.1.0'
     implementation 'org.apache.logging.log4j:log4j-core:2.1'
     
-    implementation 'org.javassist:javassist:3.26.0-GA'
+    implementation 'org.javassist:javassist:3.30.2-GA'
     
     implementation 'com.github.vatbub:mslinks:1.0.5'
     implementation 'io.kaitai:kaitai-struct-runtime:0.8'

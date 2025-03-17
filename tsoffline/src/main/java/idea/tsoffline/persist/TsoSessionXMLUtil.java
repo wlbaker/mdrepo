@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,6 +18,10 @@ import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.text.MutableAttributeSet;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.util.StreamReaderDelegate;
+
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBElement;
 import jakarta.xml.bind.Marshaller;
@@ -48,6 +53,25 @@ import idea.tsoffline.TimeseriesType;
 import idea.tsoffline.canvas.TsPSwingCanvas;
 import idea.tsoffline.model.OfflineSignal;
 
+
+/* Solution for reading JAXB documents and ignoring the namespace
+ * https://stackoverflow.com/questions/277502/jaxb-how-to-ignore-namespace-during-unmarshalling-xml-document
+ */
+
+class XMLReaderWithoutNamespace extends StreamReaderDelegate {
+    public XMLReaderWithoutNamespace(XMLStreamReader reader) {
+      super(reader);
+    }
+    @Override
+    public String getAttributeNamespace(int arg0) {
+      return "";
+    }
+    @Override
+    public String getNamespaceURI() {
+      return "http://idea.mil/ts";
+    }
+}
+
 @Slf4j
 public class TsoSessionXMLUtil {
 
@@ -67,15 +91,15 @@ public class TsoSessionXMLUtil {
 	}
 
 	public static TsoSession readSessionFile(File f_session) throws Exception {
-		Unmarshaller marshaller = jaxbContext.createUnmarshaller();
 
 		if (!f_session.exists()) {
 			throw new FileNotFoundException(f_session.getPath());
 		}
-		FileInputStream fin = new FileInputStream(f_session);
+
+		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
 		TsoSession session = null;
-		try {
+		try ( FileInputStream fin =  new FileInputStream(f_session ) ) {
 			// BUGFIX: the unmarshaller can take a File, but with a really messy
 			// file name it will fail
 			// to open the file. This one failed when the file name had a #
@@ -83,8 +107,11 @@ public class TsoSessionXMLUtil {
 
 			// File name was: 6. HCM - (Smith-Watts)\BAMC Case #3961 repeated
 			// HCM (R,E, hifi-fluid pullback, BB) TT-F DT-F\....xml
+			XMLStreamReader xsr = XMLInputFactory.newFactory().createXMLStreamReader(fin);
+			XMLReaderWithoutNamespace xr = new XMLReaderWithoutNamespace(xsr);
 
-			JAXBElement<TsoSession> env = (JAXBElement<TsoSession>) marshaller.unmarshal(fin);
+
+			JAXBElement<TsoSession> env = (JAXBElement<TsoSession>) unmarshaller.unmarshal(xr);
 			session = (TsoSession) env.getValue();
 
 			// apply one small fix to session file: normalize field loc's
@@ -100,9 +127,8 @@ public class TsoSessionXMLUtil {
 					}
 				}
 			}
-		} finally {
-			fin.close();
 		}
+		
 		return session;
 	}
 

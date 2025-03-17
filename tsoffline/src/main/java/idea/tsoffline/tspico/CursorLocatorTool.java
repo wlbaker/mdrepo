@@ -63,13 +63,25 @@ public class CursorLocatorTool extends PBasicInputEventHandler implements KeyLis
 	private boolean showCursorValue = true;
 	private PText data_val;
 	private PText tm_val;
-	private static Font font = new Font("Ariel", Font.BOLD, 9);
+	private static Font font;
 	private DecimalFormat df2 = new DecimalFormat("0.00");
 	private LabelType labelType;
 	private long startTime;
 	private TsPSwingCanvas canv;
 	private int defaultEditMode;
 	private PLayer cursorLayer;
+	
+	private static int baseFontSize;
+	static {
+		refreshFonts( 10 );
+	}
+	
+	public static void refreshFonts( int baseFontSize ) {
+		CursorLocatorTool.baseFontSize = baseFontSize;
+		font = new Font("Ariel", Font.BOLD, baseFontSize - 1); // 9);
+		
+	}
+
 
 	public CursorLocatorTool(TsPSwingCanvas canv) {
 		this.canv = canv;

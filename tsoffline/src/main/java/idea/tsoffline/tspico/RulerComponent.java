@@ -35,11 +35,22 @@ public class RulerComponent extends Ruler {
 	Color theme_ruler_color = Color.WHITE;
 	Color theme_y_range_color = Color.GREEN;
 
-	private static Font axisFont = new Font("Ariel", Font.BOLD, 11);
+	private static int baseFontSize;
+	private static Font axisFont;
 
 	private static final DecimalFormat df0 = new DecimalFormat("#,##0");
 	private static final DecimalFormat df1 = new DecimalFormat("#,##0.0");
 	private static final DecimalFormat df2 = new DecimalFormat("#,##0.00");
+
+	static {
+		refreshFonts( 11 );
+	}
+	
+	public static void refreshFonts( int baseFontSize ) {
+		RulerComponent.baseFontSize = baseFontSize;
+		axisFont = new Font("Ariel", Font.BOLD, baseFontSize);
+		
+	}
 
 	public void drawXRuler(long startTime, Font ticFont, XWilkinson wilkinson, PLayer axisLayer, PCamera camera,
 			boolean isSummary, boolean inline, LabelType labelType) {

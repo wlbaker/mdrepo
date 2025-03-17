@@ -53,6 +53,7 @@ import idea.tsoffline.canvas.edit.PanViewBoundsEdit;
 import idea.tsoffline.canvas.edit.TransformEdit;
 import idea.tsoffline.tspico.AnnotationEditorTool;
 import idea.tsoffline.tspico.CursorLocatorTool;
+import idea.tsoffline.tspico.LegendTool;
 import idea.tsoffline.tspico.TsCanvasToolInterface;
 
 @SuppressWarnings("serial")
@@ -117,11 +118,21 @@ public class TsBaseCanvas extends PSwingCanvas {
 	protected PLayer axisLayer;
 	@Getter
 	protected PLayer phaseLayer;
-	protected static Font ticFont = new Font("Ariel", Font.BOLD, 10);
+	
+	protected static Font ticFont;
+	private static int baseFontSize;
 
 	private Timer redraw_timer;
 	Double analysisPoint;
+	static {
+		refreshFonts( 14 );
+	}
 	
+	public static void refreshFonts( int baseFontSize ) {
+		TsBaseCanvas.baseFontSize = baseFontSize;
+		ticFont = new Font("Ariel", Font.BOLD, baseFontSize + 4); // 14);		
+	}
+
 	public TsBaseCanvas() {
 		
 		psupport = new PropertyChangeSupport(this);

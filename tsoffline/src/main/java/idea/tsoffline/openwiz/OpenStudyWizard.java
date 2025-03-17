@@ -605,4 +605,9 @@ public class OpenStudyWizard extends JPanel implements WizardMasterInterface {
 		return new File(sessionDir);
 	}
 
+	public File __getLocalFile() {
+		return fileSelection.getSelectedFile();
+		
+	}
+
 }

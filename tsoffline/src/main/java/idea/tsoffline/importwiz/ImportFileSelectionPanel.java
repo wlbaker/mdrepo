@@ -21,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import idea.gui.UndecoratedFilechooser;
 import idea.gui.WizardMasterInterface;
 import idea.gui.WizardPanelInterface;
+import idea.persistence.PiSubjectImporter;
 import idea.persistmanager.PiImporterUtil;
 import idea.repository.io.LocalJAXBRepository;
 import idea.tsoffline.TsOfflineSetup;
@@ -80,10 +81,14 @@ public class ImportFileSelectionPanel extends JPanel implements WizardPanelInter
 
 	private void panelToModel(File file) throws JAXBException {
 		log.error("FIXME: need function PiImporterUtil.getStudyFromFile(file)");
+		PiSubjectImporter importer = PiImporterUtil.getImporterFromFile(file); // NE@ NEW
+		// HELPME .file. no such importer for SPAD file
+
 		// profile = PiImporterUtil.getStudyFromFile(file);
 		// profile = LocalJAXBRepository.createStudyFromFile(file);
 		GuiUtil.showMessage("FIXME: need function PiImporterUtil.getStudyFromFile()");
-		// profile = TsoSessionXMLUtil.readSessionFile(file); // read spad file:?
+		//profile = TsoSessionXMLUtil.readSessionFile(file); // read spad file:?
+		// profile = TsoSession
 		return;
 	}
 
@@ -156,7 +161,8 @@ public class ImportFileSelectionPanel extends JPanel implements WizardPanelInter
 
 	@Override
 	public boolean finish() {
-		return next();
+		GuiUtil.showMessage("probaby need:  next(); ");
+		return true;
 	}
 
 	@Override

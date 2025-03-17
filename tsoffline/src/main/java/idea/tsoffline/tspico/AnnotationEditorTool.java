@@ -1,6 +1,7 @@
 package idea.tsoffline.tspico;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Paint;
 import java.awt.Point;
 import java.awt.event.ComponentEvent;
@@ -75,6 +76,18 @@ public class AnnotationEditorTool extends PBasicInputEventHandler {
 	@Setter
 	@Getter
 	private String editableLayerName;
+	
+	protected static Font annoFont;
+	private static int baseFontSize;
+	static {
+		refreshFonts( 10 );
+	}
+	
+	public static void refreshFonts( int baseFontSize ) {
+		AnnotationEditorTool.baseFontSize = baseFontSize;
+		annoFont = new Font("Ariel", Font.BOLD, baseFontSize); // was unspecified
+	}
+
 
 	public AnnotationEditorTool(TsPSwingCanvas canvas) {
 		this.canvas = canvas;
@@ -552,12 +565,13 @@ public class AnnotationEditorTool extends PBasicInputEventHandler {
 					message = "??";
 				}
 				txt_val = new PText(message);
+				txt_val.setFont( annoFont );
 
 				PBounds txt_bounds = txt_val.getBoundsReference();
 				txt_val.setPickable(false);
 				// first, translate to the desired position
 				txt_val.translate(-(3 * message.length()),
-						txt_bounds.height + TsPSwingCanvas.TOP_MARGIN - TsPSwingCanvas.TOP_ANNOTATION_MARGIN - 16);
+						txt_bounds.height + TsPSwingCanvas.TOP_MARGIN - TsPSwingCanvas.TOP_ANNOTATION_MARGIN - ( baseFontSize*3)/2 );
 				// second, rotate to the desired angle
 				// txt_val.rotate(-Math.PI / 2);
 				txt_val.setTextPaint(color); // theme_annotation_text_color);
@@ -569,6 +583,7 @@ public class AnnotationEditorTool extends PBasicInputEventHandler {
 				if (enum_by == null) {
 					String seqNo = "" + seq_no;
 					txt_seq = new PText(seqNo);
+					txt_seq.setFont( annoFont );
 					txt_seq.setPickable(false);
 					txt_seq.translate(-(3 * seqNo.length()),
 							txt_bounds.height + TsPSwingCanvas.TOP_MARGIN - TsPSwingCanvas.TOP_ANNOTATION_MARGIN - 2);

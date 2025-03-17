@@ -1,3 +1,11 @@
+Running Locally
+
+* Must use JVM args: 
+--add-opens java.base/java.io=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED
+
+* Must add path for R libraries to the application path: 
+
+
 1237-86  -- 263-97
 
 Strategy:
