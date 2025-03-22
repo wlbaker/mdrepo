@@ -488,7 +488,7 @@ public class AppFrame extends JFrame  {
 
 		
 		if (openWiz.isFinished()) {
-			GuiUtil.showMessage("ADDED OPEN SESSION");
+			log.info("ADDED OPEN SESSION");
 			File file = openWiz.__getLocalFile();
 			
 			try {
@@ -541,7 +541,7 @@ public class AppFrame extends JFrame  {
 		}
 
 		// don't load sigs that are already loaded
-		GuiUtil.showMessage("FIXME: dont load signals that are already loaded 071219");
+		log.error("FIXME: dont load signals that are already loaded 071219 sz: " + sigs.size() + " sigs: "+ sigs.toArray() );
 //		Iterator<RpMetric> ii = sigs.iterator();
 //		while (ii.hasNext()) {
 //			RpMetric sig = ii.next();

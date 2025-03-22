@@ -553,6 +553,8 @@ public class PiDreImportDevice extends AbstractStreamProducer implements PiDatas
 		long relative_tm = abs_tm - start_tm;
 		log.error("FIXME: this is a relative time seek, not abs time, and its wrong anyway");
 		
+		pos = 0;
+		log.error("RESETTING POS to 0...not desired behavior for seek!");
 //		} else if ((data_typ & BINARY_FLAG) > 0) {
 //		block = next_binary_block();
 		if( binary_reader != null ) {

@@ -260,7 +260,7 @@ public class JobManager {
 	}
 
 	public static void executeOneJob() {
-
+		log.debug("executeOneJob");
 		SignalImporter.stop = false;
 
 		if (running > 1) {

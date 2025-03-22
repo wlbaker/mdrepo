@@ -140,7 +140,12 @@ public class SignalImporter extends Component implements StreamConsumer {
 
 		if (loadStartTime != 0) {
 			startTime = loadStartTime;
-			dev.seek(loadStartTime);
+			// FIXME: seek does not work...reset POS in DRE implementation
+			// dev.seek(loadStartTime);
+			// block = dev.next();
+			// long ttm = block.getTime();
+			log.error("SEEK DOES NOT WORK...must reset /pos/ using rewind() instead of dev.seek(loadStartTime);");
+			dev.rewind();
 		} else {
 			dev.rewind();
 		}
@@ -171,6 +176,11 @@ public class SignalImporter extends Component implements StreamConsumer {
 			}
 
 			long tm = block.getTime();
+			if( first ) {
+				log.debug("Starting data import at: {}", tm);
+			} else {
+				log.debug("...block: {}", tm );
+			}
 
 			if (startTime == 0 && first) {
 				startTime = tm;
