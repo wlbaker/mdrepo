@@ -1,7 +1,7 @@
 
-// String rLibraryDir = "/usr/local/lib/R/library/"
+String rLibraryDir = "/usr/local/lib/R/library/"
 // String rLibraryDir = "c:/Program Files/R/R-4.2.1/library"
-String rLibraryDir = "c:/Users/willi/AppData/Local/R/win-library/4.2/"
+// String rLibraryDir = "c:/Users/willi/AppData/Local/R/win-library/4.2/"
 
 dependencies {
    		implementation project(":idea-rp-schema")
