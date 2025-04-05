@@ -445,6 +445,29 @@ public class AppFrame extends JFrame  {
 					session.setDataFile(df.getName());
 				}
 			}
+			
+			// Find audiofile
+			String audioFileName = session.getAudioFile();
+			File af = null;
+			if( audioFileName != null ) {
+				
+				af = new File( df.getParentFile(), audioFileName );
+				if( !af.exists() ) {
+					af = null;
+				}
+			}
+			if( af == null ) {
+				audioFileName = df.getName().replace("_w_", "_a_");
+				audioFileName = audioFileName.replace(".dat", ".aud");
+				af = new File(df.getParentFile(), audioFileName);
+			}
+			
+			if( af.exists() ) {
+				session.setAudioFile( af.getPath() );
+			} else {
+				log.error("No audio file: {}", af );
+			}
+
 
 		} else if (name.endsWith("stp")) {
 

@@ -111,16 +111,16 @@ public class RUtil {
 		 * reevaluation of the library path as soon as loadLibrary() is called�
 		 */
 
-		Field fieldSysPath;
-		try {
-			fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths");
-			fieldSysPath.setAccessible(true);
-			fieldSysPath.set(null, null);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// c:\opt\tools\R\R-2.15.0\bin\i386
+		// Disabled as of JDK17
+
+		// DISABLED Field fieldSysPath;
+		// DISABLED try {
+		// DISABLED     fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths");
+		// DISABLED     fieldSysPath.setAccessible(true);
+		// DISABLED     fieldSysPath.set(null, null);
+		// DISABLED } catch (Exception e) {
+		// DISABLED     e.printStackTrace();
+		// DISABLED }
 
 		if (sep == '\\') {
 			// windows
