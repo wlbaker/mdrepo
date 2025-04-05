@@ -161,7 +161,7 @@ public class ImportFileSelectionPanel extends JPanel implements WizardPanelInter
 
 	@Override
 	public boolean finish() {
-		GuiUtil.showMessage("probaby need:  next(); ");
+		// GuiUtil.showMessage("probably need:  next(); ");
 		return true;
 	}
 

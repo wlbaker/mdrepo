@@ -134,8 +134,8 @@ import idea.tsoffline.vizwiz.VizWizard;
 @Slf4j
 public class AppFrame extends JFrame  {
 	public static final String APP_NAME = "\u03C3PAD";
-	public static final String APP_VERSION = "0.6.4";
-	public static final String APP_RELEASE = "June 3, 2019";
+	public static final String APP_VERSION = "0.7.1";
+	public static final String APP_RELEASE = "March 29, 2025";
 
 	protected String subject_name;
 
