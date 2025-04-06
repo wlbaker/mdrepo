@@ -132,7 +132,7 @@ import idea.tsoffline.vizwiz.VizWizard;
  */
 @SuppressWarnings("serial")
 @Slf4j
-public class AppFrame extends JFrame  {
+public class AppFrame extends JFrame {
 	public static final String APP_NAME = "\u03C3PAD";
 	public static final String APP_VERSION = "0.7.1";
 	public static final String APP_RELEASE = "March 29, 2025";
@@ -296,13 +296,12 @@ public class AppFrame extends JFrame  {
 	}
 
 	private void initAdditionalComponents() {
-		// TODO Auto-generated method stub
 
 		JMenu zoomMenu = new JMenu();
 		zoomMenu.setText("Zoom");
 		zoomMenu.setIcon(null);
 		zoomMenu.setMnemonic('Z');
-		for( int sz : new int [ ] { 10, 14, 18, 22 } ){
+		for (int sz : new int[] { 10, 14, 18, 22 }) {
 			JMenuItem mi = new JMenuItem();
 			mi.setText("" + sz);
 			mi.setEnabled(true);
@@ -310,21 +309,25 @@ public class AppFrame extends JFrame  {
 			zoomMenu.add(mi);
 		}
 
-		menu2.add( zoomMenu );
+		menu2.add(zoomMenu);
 	}
-	
+
 	protected void setZoom(ActionEvent e, int sz) {
 		TsBaseCanvas.refreshFonts(sz);
-		LegendTool.refreshFonts( sz );
-		RulerComponent.refreshFonts( sz + 1);
-		CursorLocatorTool.refreshFonts( sz - 1);
-		AnnotationEditorTool.refreshFonts( sz );
-		TsPSwingCanvas.refreshFonts( sz - 2);
+		LegendTool.refreshFonts(sz);
+		RulerComponent.refreshFonts(sz + 1);
+		CursorLocatorTool.refreshFonts(sz - 1);
+		AnnotationEditorTool.refreshFonts(sz);
+		TsPSwingCanvas.refreshFonts(sz - 2);
+		
+		//tpanel.getCanvas1().scaleToFit();
+		tpanel.getCanvas1().resizeFonts();
+		tpanel.redraw();
 	}
 
 	protected void submitMessage() throws IOException, URISyntaxException {
 
-		String to = "william.l.baker2.civ@mail.mil";
+		String to = "william.l.baker2@gmail.com";
 		String cc = "bbaker@softhorizons.com";
 		String subject = "SigmaPAD%20Application%20Feedback";
 
@@ -445,29 +448,28 @@ public class AppFrame extends JFrame  {
 					session.setDataFile(df.getName());
 				}
 			}
-			
+
 			// Find audiofile
 			String audioFileName = session.getAudioFile();
 			File af = null;
-			if( audioFileName != null ) {
-				
-				af = new File( df.getParentFile(), audioFileName );
-				if( !af.exists() ) {
+			if (audioFileName != null) {
+
+				af = new File(df.getParentFile(), audioFileName);
+				if (!af.exists()) {
 					af = null;
 				}
 			}
-			if( af == null ) {
+			if (af == null) {
 				audioFileName = df.getName().replace("_w_", "_a_");
 				audioFileName = audioFileName.replace(".dat", ".aud");
 				af = new File(df.getParentFile(), audioFileName);
 			}
-			
-			if( af.exists() ) {
-				session.setAudioFile( af.getPath() );
-			} else {
-				log.error("No audio file: {}", af );
-			}
 
+			if (af.exists()) {
+				session.setAudioFile(af.getPath());
+			} else {
+				log.error("No audio file: {}", af);
+			}
 
 		} else if (name.endsWith("stp")) {
 
@@ -509,11 +511,10 @@ public class AppFrame extends JFrame  {
 
 		GuiUtil.doDialog("Open Study", this, openWiz, null);
 
-		
 		if (openWiz.isFinished()) {
 			log.info("ADDED OPEN SESSION");
 			File file = openWiz.__getLocalFile();
-			
+
 			try {
 				// OpenStudyWizard.openDataImporter(file); // the
 				session = getSessionInfoStep1(file);
@@ -527,15 +528,15 @@ public class AppFrame extends JFrame  {
 			study_importer = openWiz.getImporter();
 			session = openWiz.getSession();
 			File sessionDir = openWiz.getSessionDir();
-			
+
 			/*
 			 * This is used when picking the menu item "Save Session"
 			 */
-			session.setDataFile( sessionDir.getPath() );
+			session.setDataFile(sessionDir.getPath());
 
-			study_importer = openSessionFiles(study_importer, session, sessionDir );
+			study_importer = openSessionFiles(study_importer, session, sessionDir);
 			subject = (study_importer == null) ? null : study_importer.getSubjectInfo();
-			
+
 		}
 
 	}
@@ -564,7 +565,8 @@ public class AppFrame extends JFrame  {
 		}
 
 		// don't load sigs that are already loaded
-		log.error("FIXME: dont load signals that are already loaded 071219 sz: " + sigs.size() + " sigs: "+ sigs.toArray() );
+		log.error("FIXME: dont load signals that are already loaded 071219 sz: " + sigs.size() + " sigs: "
+				+ sigs.toArray());
 //		Iterator<RpMetric> ii = sigs.iterator();
 //		while (ii.hasNext()) {
 //			RpMetric sig = ii.next();
@@ -591,7 +593,12 @@ public class AppFrame extends JFrame  {
 					if (state == StateValue.STARTED) {
 						enableAllMenuItems(false);
 						// start-load-job does this...but it probably shouldnt
-						canv.setDisplayLayout(DisplayLayout.GD_ONE);
+
+						if (session.getTsoBands() != null && session.getTsoBands().size() > 0) {
+							canv.setDisplayLayout(session.getTsoBands());
+						} else {
+							canv.setDisplayLayout(DisplayLayout.GD_ONE);
+						}
 						canv.reset();
 					} else if (state == StateValue.DONE) {
 						if (!JobManager.isFinished()) {
@@ -635,23 +642,23 @@ public class AppFrame extends JFrame  {
 		return worker;
 	}
 
-	PiSubjectImporter openSessionFiles( PiSubjectImporter importer, TsoSession session, File sessionDir ) {
+	PiSubjectImporter openSessionFiles(PiSubjectImporter importer, TsoSession session, File sessionDir) {
 
 		try {
-			if( importer == null ) {
-				File dataFile = new File( session.getDataFile() );
-				if( dataFile.exists() == false ) {
-					dataFile = new File( sessionDir, session.getDataFile() );
+			if (importer == null) {
+				File dataFile = new File(session.getDataFile());
+				if (dataFile.exists() == false) {
+					dataFile = new File(sessionDir, session.getDataFile());
 				}
-				if( dataFile.exists() == false ) {
-					GuiUtil.showMessage("Cannot open data file: " + session.getDataFile() );
+				if (dataFile.exists() == false) {
+					GuiUtil.showMessage("Cannot open data file: " + session.getDataFile());
 					return null;
 				}
-				study_importer = PiImporterUtil.getImporterFromFile( dataFile );
+				study_importer = PiImporterUtil.getImporterFromFile(dataFile);
 				study_importer.connect();
 				importer = study_importer;
 			}
-			_startDataLoadJob( importer, session);
+			_startDataLoadJob(importer, session);
 
 //			if (dataFile == null) {
 //				this.setTitle(APP_NAME);
@@ -767,8 +774,8 @@ public class AppFrame extends JFrame  {
 			if (layer_info == null) {
 				log.error("could not find signal: {}/{}", devName, sigName);
 			} else {
-				if( layer_info.getName() != null ) {
-					sig.setName( layer_info.getName() );
+				if (layer_info.getName() != null) {
+					sig.setName(layer_info.getName());
 				}
 				applyTsoSignalInfo(sig, layer_info);
 				applyCalibrationInfo(sig, layer_info);
@@ -836,8 +843,8 @@ public class AppFrame extends JFrame  {
 
 	private void applyTsoSignalInfo(HPSplitableLayer sig, TsoSignalLayerType layer_info) {
 		AffineTransform t = new AffineTransform(1, 0, 0, 1, 0, 0);
-		if( sig.getChildrenCount() == 0 ) {
-			log.error("no children for signal: {}", sig.getName() );
+		if (sig.getChildrenCount() == 0) {
+			log.error("no children for signal: {}", sig.getName());
 			return;
 		}
 		HPPathLayer layer = (HPPathLayer) sig.getChild(0);
@@ -925,21 +932,21 @@ public class AppFrame extends JFrame  {
 		TsPSwingCanvas canvas = tpanel.getCanvas1();
 
 		/*
-		 * The layers have already been added to the canvas, but
-		 * the band may have been re-assigned by the session info. 
+		 * The layers have already been added to the canvas, but the band may have been
+		 * re-assigned by the session info.
 		 * 
-		 * It is safe to add layers multiple times.  Duplicate information
-		 * will not be created.
+		 * It is safe to add layers multiple times. Duplicate information will not be
+		 * created.
 		 */
-		for (HPSplitableLayer layer : canvas.getSigs() ) {
-			
-			if (layer.isLoaded()) {
+		for (HPSplitableLayer layer : canvas.getSigs()) {
+
+			//if (layer.isLoaded()) {
 				// band_id will be -1 if no band assigned
 				int band_id = layer.getBandId();
 				if (band_id >= 0) {
-					canvas.addDataLayer(band_id, (HPSplitableLayer)layer );
+					canvas.addDataLayer(band_id, (HPSplitableLayer) layer);
 				}
-			}
+			//}
 		}
 
 	}
@@ -976,7 +983,7 @@ public class AppFrame extends JFrame  {
 	private void applySessionAnnotations(TsoSession session) {
 
 		TsPSwingCanvas canv = tpanel.getCanvas1();
-		
+
 		List<TsoAnnotationInfoType> infos = session.getTsoAnnotations();
 		for (TsoAnnotationInfoType info : infos) {
 			String layerName = info.getLayerName();
@@ -1493,7 +1500,7 @@ public class AppFrame extends JFrame  {
 	}
 
 	private void annotationsMenuItemActionPerformed(ActionEvent e) {
-		AnnotationExplorer panel = new AnnotationExplorer( tpanel.getCanvas1() );
+		AnnotationExplorer panel = new AnnotationExplorer(tpanel.getCanvas1());
 		GuiUtil.doDialog("Annotations", this, panel, null);
 
 		Date dt = panel.getSelectedTime();
@@ -1523,7 +1530,7 @@ public class AppFrame extends JFrame  {
 	}
 
 	private void b2bAnnotationsActionPerformed(ActionEvent e) {
-		B2BAnnotationExplorer panel = new B2BAnnotationExplorer( getCanvas() );
+		B2BAnnotationExplorer panel = new B2BAnnotationExplorer(getCanvas());
 		GuiUtil.doDialog("B2B Annotations", this, panel, null);
 	}
 
@@ -1812,52 +1819,48 @@ public class AppFrame extends JFrame  {
 		javaScriptMenuItem = new JMenuItem();
 		analysisMenuItem = new JMenuItem();
 
-		//======== this ========
+		// ======== this ========
 		setTitle("tsOffline");
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 
-		//======== panel1 ========
+		// ======== panel1 ========
 		{
 			panel1.setBorder(null);
-			panel1.setLayout(new FormLayout(
-				"[101dlu,default], $lcgap, default:grow",
-				""));
+			panel1.setLayout(new FormLayout("[101dlu,default], $lcgap, default:grow", ""));
 		}
 		contentPane.add(panel1, BorderLayout.PAGE_END);
 
-		//======== panel4 ========
+		// ======== panel4 ========
 		{
-			panel4.setLayout(new FormLayout(
-				"default:grow",
-				"default, 1px"));
+			panel4.setLayout(new FormLayout("default:grow", "default, 1px"));
 
-			//======== menuBar ========
+			// ======== menuBar ========
 			{
 
-				//======== menu1 ========
+				// ======== menu1 ========
 				{
 					menu1.setText("File");
 					menu1.setMnemonic('F');
 
-					//---- setupMenuItem ----
+					// ---- setupMenuItem ----
 					setupMenuItem.setText("Setup");
 					setupMenuItem.addActionListener(e -> setupActionPerformed(e));
 					menu1.add(setupMenuItem);
 					menu1.addSeparator();
 
-					//---- newMenuItem ----
+					// ---- newMenuItem ----
 					newMenuItem.setText("New");
 					newMenuItem.addActionListener(e -> newMenuItemActionPerformed(e));
 					menu1.add(newMenuItem);
 
-					//---- openMenuItem ----
+					// ---- openMenuItem ----
 					openMenuItem.setText("Open");
 					openMenuItem.setMnemonic('O');
 					openMenuItem.addActionListener(e -> openMenuItemActionPerformed(e));
 					menu1.add(openMenuItem);
 
-					//---- saveMenuItem ----
+					// ---- saveMenuItem ----
 					saveMenuItem.setText("Save Session");
 					saveMenuItem.setMnemonic('S');
 					saveMenuItem.setEnabled(false);
@@ -1865,14 +1868,14 @@ public class AppFrame extends JFrame  {
 					saveMenuItem.addActionListener(e -> saveMenuItemActionPerformed(e));
 					menu1.add(saveMenuItem);
 
-					//---- closeMenuItem ----
+					// ---- closeMenuItem ----
 					closeMenuItem.setText("Close");
 					closeMenuItem.setEnabled(false);
 					closeMenuItem.addActionListener(e -> closeMenuItemActionPerformed(e));
 					menu1.add(closeMenuItem);
 					menu1.addSeparator();
 
-					//---- exportMenuItem ----
+					// ---- exportMenuItem ----
 					exportMenuItem.setText("Export");
 					exportMenuItem.setMnemonic('E');
 					exportMenuItem.setEnabled(false);
@@ -1880,48 +1883,48 @@ public class AppFrame extends JFrame  {
 					menu1.add(exportMenuItem);
 					menu1.addSeparator();
 
-					//---- r0 ----
+					// ---- r0 ----
 					r0.setText("text");
 					menu1.add(r0);
 
-					//---- r1 ----
+					// ---- r1 ----
 					r1.setText("text");
 					menu1.add(r1);
 
-					//---- r2 ----
+					// ---- r2 ----
 					r2.setText("text");
 					menu1.add(r2);
 
-					//---- r3 ----
+					// ---- r3 ----
 					r3.setText("text");
 					menu1.add(r3);
 
-					//---- r4 ----
+					// ---- r4 ----
 					r4.setText("text");
 					menu1.add(r4);
 
-					//---- r5 ----
+					// ---- r5 ----
 					r5.setText("text");
 					menu1.add(r5);
 
-					//---- r6 ----
+					// ---- r6 ----
 					r6.setText("text");
 					menu1.add(r6);
 
-					//---- r7 ----
+					// ---- r7 ----
 					r7.setText("text");
 					menu1.add(r7);
 
-					//---- r8 ----
+					// ---- r8 ----
 					r8.setText("text");
 					menu1.add(r8);
 
-					//---- r9 ----
+					// ---- r9 ----
 					r9.setText("text");
 					menu1.add(r9);
 					menu1.addSeparator();
 
-					//---- exitMenuItem ----
+					// ---- exitMenuItem ----
 					exitMenuItem.setText("Exit");
 					exitMenuItem.setMnemonic('X');
 					exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK));
@@ -1930,96 +1933,96 @@ public class AppFrame extends JFrame  {
 				}
 				menuBar.add(menu1);
 
-				//======== menu2 ========
+				// ======== menu2 ========
 				{
 					menu2.setText("View");
 					menu2.setIcon(null);
 					menu2.setMnemonic('V');
 
-					//---- studyMenuItem ----
+					// ---- studyMenuItem ----
 					studyMenuItem.setText("Study");
 					studyMenuItem.setEnabled(false);
 					studyMenuItem.addActionListener(e -> studyMenuItemActionPerformed(e));
 					menu2.add(studyMenuItem);
 
-					//---- annotationsMenuItem ----
+					// ---- annotationsMenuItem ----
 					annotationsMenuItem.setText("Annotations");
 					annotationsMenuItem.setEnabled(false);
 					annotationsMenuItem.addActionListener(e -> annotationsMenuItemActionPerformed(e));
 					menu2.add(annotationsMenuItem);
 
-					//---- phasesMenuItem ----
+					// ---- phasesMenuItem ----
 					phasesMenuItem.setText("Phases");
 					phasesMenuItem.addActionListener(e -> phasesMenuItemActionPerformed(e));
 					menu2.add(phasesMenuItem);
 
-					//---- b2bAnnotations ----
+					// ---- b2bAnnotations ----
 					b2bAnnotations.setText("B2B Annotations");
 					b2bAnnotations.addActionListener(e -> b2bAnnotationsActionPerformed(e));
 					menu2.add(b2bAnnotations);
 					menu2.addSeparator();
 
-					//---- cboxShowGraphTimeline ----
+					// ---- cboxShowGraphTimeline ----
 					cboxShowGraphTimeline.setText("Graph Timeline");
 					cboxShowGraphTimeline.setEnabled(false);
 					cboxShowGraphTimeline.addActionListener(e -> cboxShowGraphTimelineActionPerformed(e));
 					menu2.add(cboxShowGraphTimeline);
 
-					//---- cboxShowLegend ----
+					// ---- cboxShowLegend ----
 					cboxShowLegend.setText("Graph Legend");
 					cboxShowLegend.setEnabled(false);
 					cboxShowLegend.addActionListener(e -> cboxShowLegendActionPerformed(e));
 					menu2.add(cboxShowLegend);
 
-					//---- cboxCursorValue ----
+					// ---- cboxCursorValue ----
 					cboxCursorValue.setText("Cursor Value");
 					cboxCursorValue.setEnabled(false);
 					cboxCursorValue.addActionListener(e -> cboxCursorValueActionPerformed(e));
 					menu2.add(cboxCursorValue);
 
-					//---- cboxNavigation ----
+					// ---- cboxNavigation ----
 					cboxNavigation.setText("Navigation Assistance");
 					cboxNavigation.setEnabled(false);
 					cboxNavigation.addActionListener(e -> cboxNavigationActionPerformed(e));
 					menu2.add(cboxNavigation);
 					menu2.addSeparator();
 
-					//---- reset ----
+					// ---- reset ----
 					reset.setText("Reset");
 					reset.addActionListener(e -> resetActionPerformed(e));
 					menu2.add(reset);
 
-					//---- preferencesMenuItem ----
+					// ---- preferencesMenuItem ----
 					preferencesMenuItem.setText("Preferences");
 					preferencesMenuItem.addActionListener(e -> preferencesMenuItemActionPerformed(e));
 					menu2.add(preferencesMenuItem);
 				}
 				menuBar.add(menu2);
 
-				//======== menu3 ========
+				// ======== menu3 ========
 				{
 					menu3.setText("Run");
 					menu3.setMnemonic('R');
 
-					//---- consoleMenuItem ----
+					// ---- consoleMenuItem ----
 					consoleMenuItem.setText("Console");
 					consoleMenuItem.setMnemonic('C');
 					consoleMenuItem.addActionListener(e -> consoleMenuItemActionPerformed(e));
 					menu3.add(consoleMenuItem);
 
-					//---- rScriptMenuItem ----
+					// ---- rScriptMenuItem ----
 					rScriptMenuItem.setText("R Script");
 					rScriptMenuItem.setEnabled(false);
 					menu3.add(rScriptMenuItem);
 
-					//---- javaScriptMenuItem ----
+					// ---- javaScriptMenuItem ----
 					javaScriptMenuItem.setText("Java Script");
 					javaScriptMenuItem.setEnabled(false);
 					javaScriptMenuItem.addActionListener(e -> javaScriptMenuItemActionPerformed(e));
 					menu3.add(javaScriptMenuItem);
 					menu3.addSeparator();
 
-					//---- analysisMenuItem ----
+					// ---- analysisMenuItem ----
 					analysisMenuItem.setText("Analysis");
 					analysisMenuItem.setEnabled(false);
 					analysisMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_MASK));

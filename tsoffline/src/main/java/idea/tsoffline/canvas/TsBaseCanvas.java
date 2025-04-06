@@ -63,7 +63,7 @@ public class TsBaseCanvas extends PSwingCanvas {
 	public static final String ADD_FORMULA_PROPERTY = "ADD_FORMULA_LAYER";
 
 	private static PropertyChangeSupport psupport;
-	private   LinkedList<HPSplitableLayer> annotationModel= new LinkedList<HPSplitableLayer>();
+	private LinkedList<HPSplitableLayer> annotationModel = new LinkedList<HPSplitableLayer>();
 	protected List<HPSplitableLayer> layers = new LinkedList<HPSplitableLayer>();
 
 	@Getter
@@ -118,23 +118,23 @@ public class TsBaseCanvas extends PSwingCanvas {
 	protected PLayer axisLayer;
 	@Getter
 	protected PLayer phaseLayer;
-	
+
 	protected static Font ticFont;
 	private static int baseFontSize;
 
 	private Timer redraw_timer;
 	Double analysisPoint;
 	static {
-		refreshFonts( 14 );
+		refreshFonts(14);
 	}
-	
-	public static void refreshFonts( int baseFontSize ) {
+
+	public static void refreshFonts(int baseFontSize) {
 		TsBaseCanvas.baseFontSize = baseFontSize;
-		ticFont = new Font("Ariel", Font.BOLD, baseFontSize + 4); // 14);		
+		ticFont = new Font("Ariel", Font.BOLD, baseFontSize + 4); // 14);
 	}
 
 	public TsBaseCanvas() {
-		
+
 		psupport = new PropertyChangeSupport(this);
 		resetAll();
 		initKeyListener();
@@ -154,17 +154,18 @@ public class TsBaseCanvas extends PSwingCanvas {
 		// Surprisingly, this is not the default!
 		this.setPanEventHandler(null);
 		this.setZoomEventHandler(null);
-		
+
 	}
 
-	// replace the SWING property change listener with our own, so that we can remove SWING from this class completely
+	// replace the SWING property change listener with our own, so that we can
+	// remove SWING from this class completely
 	@Override
 	public void addPropertyChangeListener(String prop, PropertyChangeListener listener) {
 		psupport.addPropertyChangeListener(prop, listener);
 	}
-	
+
 	@Override
-	public void addPropertyChangeListener( PropertyChangeListener listener) {
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		psupport.addPropertyChangeListener(listener);
 	}
 
@@ -315,15 +316,20 @@ public class TsBaseCanvas extends PSwingCanvas {
 	}
 
 	public PLayer getAnnotationLayer(String layerName) {
+		
 		PLayer editLayer = null;
 
 		// use the last layer as the editable layer
-		Iterator<HPSplitableLayer> ii = annotationModel.iterator();
-		while (ii.hasNext()) {
-			HPSplitableLayer info = ii.next();
-			if (layerName.equals(info.getName())) {
-				editLayer = info;
-				break;
+		if (layerName == null) {
+			log.error("Unexpected null layerName");
+		} else {
+			Iterator<HPSplitableLayer> ii = annotationModel.iterator();
+			while (ii.hasNext()) {
+				HPSplitableLayer info = ii.next();
+				if (layerName.equals(info.getName())) {
+					editLayer = info;
+					break;
+				}
 			}
 		}
 
@@ -333,6 +339,7 @@ public class TsBaseCanvas extends PSwingCanvas {
 	public List<HPSplitableLayer> getAnnotationModel() {
 		return annotationModel;
 	}
+
 	public void removeAnnotationLayer(String loc) {
 
 		Iterator<HPSplitableLayer> ii = annotationModel.iterator();
@@ -349,8 +356,6 @@ public class TsBaseCanvas extends PSwingCanvas {
 		log.error("FIXME: add clearData();");
 		AppModel.setDirty(false);
 	}
-
-
 
 	/**
 	 * This route adds/removes the phase layer to/from each of the band cameras to
@@ -704,7 +709,7 @@ public class TsBaseCanvas extends PSwingCanvas {
 			}
 		}
 		for (PCamera cam : bandCameras) {
-			 MutableAttributeSet props = cam.getClientProperties();
+			MutableAttributeSet props = cam.getClientProperties();
 			double weight = ((Number) props.getAttribute(BAND_WEIGHT)).doubleValue();
 			double band_h = avail_h * weight / totalWeight - BAND_SPACING;
 			if (weight < 0) {
@@ -1226,7 +1231,7 @@ public class TsBaseCanvas extends PSwingCanvas {
 			// we have a unique name
 		}
 		RpMetric m = new RpMetric("val", null, name, RpLinearUnit.unit, DataTyp.STRING_TYP);
-		HPSplitableLayer layer = new HPAnnotationLayer(m );
+		HPSplitableLayer layer = new HPAnnotationLayer(m);
 		layer.setPaint(color);
 		layer.setDefaultColor(color);
 		layer.setSource(source);
@@ -1241,15 +1246,13 @@ public class TsBaseCanvas extends PSwingCanvas {
 //		info.setSource(source);
 //		info.setName( name );
 //		layer.addAttribute("sig", info); // sig);
-		
+
 		annotationModel.addLast(layer); // last layer is the editable layer
 		// sig.setSignalLayer(layer); // bi-directional link
-
 
 		psupport.firePropertyChange(ADD_ANNOTATION_PROPERTY, null, layer);
 		return layer;
 	}
-
 
 	public void addDataLayer(int band_id, HPSplitableLayer layer) {
 		if (layer instanceof HPSplitableLayer) {
@@ -1273,11 +1276,12 @@ public class TsBaseCanvas extends PSwingCanvas {
 	 * 
 	 * @param camera
 	 * 
-	 * Camera to which the layer should be added.  If this is null, then the first camera is used.
+	 *               Camera to which the layer should be added. If this is null,
+	 *               then the first camera is used.
 	 * 
 	 * @param layer
 	 * 
-	 * Data layer to add to the camera
+	 *               Data layer to add to the camera
 	 */
 	private void _addSignalLayer(PCamera camera, HPSplitableLayer layer) {
 
@@ -1287,10 +1291,10 @@ public class TsBaseCanvas extends PSwingCanvas {
 			log.error("Cannot add non-splittable layer");
 			return;
 		}
-		
-		// we may be adding the layer to a new band...so don't duplicate in 
+
+		// we may be adding the layer to a new band...so don't duplicate in
 		// it's always safe to attempt to remove
-		layers.remove( layer );  
+		layers.remove(layer);
 		layers.add(layer);
 
 		if (camera == null) {
@@ -1335,29 +1339,27 @@ public class TsBaseCanvas extends PSwingCanvas {
 		layers.toArray(arr);
 		return arr;
 	}
-	
+
 	public HPSplitableLayer[] getAnnotations() {
 
 		HPSplitableLayer[] arr = new HPSplitableLayer[annotationModel.size()];
 		annotationModel.toArray(arr);
 		return arr;
 	}
-	
 
 	public HPSplitableLayer findSignal(String loc) {
-		for( HPSplitableLayer layer : layers) {
-			if( loc.equals( layer.getLocation() ) ) {
+		for (HPSplitableLayer layer : layers) {
+			if (loc.equals(layer.getLocation())) {
 				return layer;
 			}
 		}
-		for( HPSplitableLayer layer : annotationModel) {
-			if( loc.equals( layer.getLocation() ) ) {
+		for (HPSplitableLayer layer : annotationModel) {
+			if (loc.equals(layer.getLocation())) {
 				return layer;
 			}
 		}
 		return null;
 	}
-
 
 	public void addPActivityListener(PActivityDelegate pad) {
 		pactivityListener = pad;

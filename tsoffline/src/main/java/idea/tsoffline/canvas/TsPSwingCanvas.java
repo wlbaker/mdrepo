@@ -499,9 +499,9 @@ public class TsPSwingCanvas extends TsBaseCanvas {
 				drawOverviewBlock(timelineCamera, zero.getViewTransform(), origin_data.getX(), visibleDataWidth);
 			}
 
-			// legendCamera.setVisible(showLegend);
+
 			if (legendVisible) {
-				// drawBoundingBox(legendCamera.getBoundsReference());
+
 				double left = 0;
 				for (PCamera cam : bandCameras) {
 					if (cam == null)
@@ -1163,6 +1163,11 @@ public class TsPSwingCanvas extends TsBaseCanvas {
 	}
 
 	private void zoomToMousePosition(PCamera cam, int xdir, int ydir) {
+		
+		if( cam == null) {
+			log.error("Unexpected null camera.");
+			return;
+		}
 
 		Point2D mouse_pos = getMousePosition();
 		if (mouse_pos != null) {
@@ -2369,6 +2374,11 @@ public class TsPSwingCanvas extends TsBaseCanvas {
 		for (PCamera cam : bandCameras) {
 			scaleToFit(cam, null);
 		}
+	}
+
+	// recalculate bounding boxes and layouts, probably due to font resize
+	public void resizeFonts() { 
+		thisComponentResized(null);
 	}
 
 }
