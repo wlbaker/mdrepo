@@ -1,6 +1,6 @@
 # DIALOG TIMERANGE
 # DIALOG SIGNAL WAVEFORM SignalToGraph
-# DIALOG SIGNAL MEASUREMENT Beat_Segmentation
+# DIALOG SIGNAL ANNOTATION Beat_Segmentation
 # DIALOG PROMPT Align_First_Pt[T/F]
 #
 # option color-scale-by-length

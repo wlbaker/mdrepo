@@ -260,8 +260,7 @@ public class HPSplitableLayer extends PLayer {
 //
 	@SuppressWarnings("unchecked")
 	public Collection<PNode> getNodes() {
-		GuiUtil.showMessage("FIXME: getNodes() returning first segment only");
-		log.error( "FIXME: getNodes()...returning first segment only");
+		log.warn( "FIXME: getNodes()...returning first segment only");
 		
 		List ref = getChildrenReference();
 		PNode child = (PNode) ref.get(0);

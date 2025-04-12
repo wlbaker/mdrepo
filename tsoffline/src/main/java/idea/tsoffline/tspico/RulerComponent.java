@@ -32,7 +32,7 @@ import idea.tsoffline.canvas.Ruler;
 @Slf4j
 public class RulerComponent extends Ruler {
 
-	Color theme_ruler_color = Color.WHITE;
+	Color theme_ruler_color = new Color(220,220,220);
 	Color theme_y_range_color = Color.GREEN;
 
 	private static int baseFontSize;
@@ -351,7 +351,7 @@ public class RulerComponent extends Ruler {
 		}
 
 		wilkinson.setLooseFlag(true);
-		Label labels = wilkinson.search(y1, y2, 6);
+		Label labels = wilkinson.search(y1, y2, 4);
 		if (labels == null) {
 			return;
 		}
@@ -420,7 +420,7 @@ public class RulerComponent extends Ruler {
 			PText pt_label = new PText(df.format(tic_value / divisor) + suffix);
 			pt_label.setFont(ticFont);
 			pt_label.setX(xBase - 8 - pt_label.getWidth()); // center around tic
-			pt_label.setY(y - 6); // center the font around the tic
+			pt_label.setY(y - baseFontSize / 2 - 2 ); // center the font around the tic
 			pt_label.setTextPaint(theme_ruler_color); // y_ruler.color
 			axisLayer.addChild(pt_label);
 

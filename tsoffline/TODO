@@ -1,3 +1,13 @@
+April 6:
+     1- Scale the graphics without screweing up the rwave
+     2- Ensamble average and Waterfall
+DONE 3- Remember the font size
+DONE 4- ruler tics to line up with numbers
+?    5- AOP/LVP legend should be smaller than numbers
+DONE 6- Soften the white of the numbers
+
+
+---------------------------------------------------
 1- HDF5 storage as VARR's
 2- Cookbook on reading waveforms into R from HDF5
 3- Python plugin
@@ -13,8 +23,6 @@ Q2: What is AN in the TsControlPanel?
 DONE 080917 : See B2B-step4 and DerivedUtil getMean()
 
 
-... Swing and Equinox 
-... export save to .dat
 
 [RUBAL] Here are some suggestions for futures for Sigma-PAD (not in a priority order)
 
@@ -36,15 +44,6 @@ DONE 062817    6)	Piecewise bias and gain adjustments
 
 TODO
 
-DONE 062817 : Need to start and stop export at exact positions indicated.
-DONE 062817	: --> particularly important when exporting a single beat
-DONE 061817 : Could not merge annotations with simple WF export...got no WF data!
-
-
-DONE 030317   0- Sequential Order in signal nodes [add to check] [no errors found!]
-DONE 040317   1- Export Layers
-DONE 040317   2- Offsets for Beat boundary...to get EDP into the beat
-DONE 030317   3- Mucky EDITS...cannot grab and delete point
 4- Applying filters to a session
 5- Ctrl-Z
 6- Auto-timestamp w Save
@@ -57,13 +56,3 @@ DONE 040317   10- Add events to arbitrary layers
 13- Export DAT
 14- Y-scale in PhasePlanePlot LVP changed when the 0.5/1.0/2.0/5.0 speed indicator was changed.
  
-
-Fix overlapping points when algorithm run twice
-
-Feb 23, 2017 TODO:
-- figure out how to get line numbers out of rengine for debugging..how does JGR do it?  RStudio?
-Nov 27, 2016 TODO:
-* BIOIMP...change sample frequency
-* Kreyer paper #2
-* Finish calibration procedure
-

@@ -49,6 +49,7 @@ import idea.tsoffline.AppModel;
 import idea.tsoffline.HPAnnotationLayer;
 import idea.tsoffline.HPSplitableLayer;
 import idea.tsoffline.LayerUtil;
+import idea.tsoffline.TimeseriesType;
 import idea.tsoffline.canvas.edit.PanViewBoundsEdit;
 import idea.tsoffline.canvas.edit.TransformEdit;
 import idea.tsoffline.tspico.AnnotationEditorTool;
@@ -130,7 +131,7 @@ public class TsBaseCanvas extends PSwingCanvas {
 
 	public static void refreshFonts(int baseFontSize) {
 		TsBaseCanvas.baseFontSize = baseFontSize;
-		ticFont = new Font("Ariel", Font.BOLD, baseFontSize + 4); // 14);
+		ticFont = new Font("Ariel", Font.BOLD, baseFontSize ); // 14);
 	}
 
 	public TsBaseCanvas() {
@@ -593,7 +594,7 @@ public class TsBaseCanvas extends PSwingCanvas {
 		PAffineTransform vt = cam.getViewTransform();
 
 		PAffineTransform[] arr = { tr, vt };
-		double top = cam.getY() + 10;
+		double top = cam.getY() + baseFontSize / 2 - 2;
 		double left = cam.getX() + 10;
 		for (PAffineTransform t : arr) {
 			PText pt_label = new PText(t.toString());
@@ -603,7 +604,7 @@ public class TsBaseCanvas extends PSwingCanvas {
 			pt_label.setTextPaint(theme_ruler_color); // y_ruler.color
 			axisLayer.addChild(pt_label);
 
-			top += 14;
+			top += baseFontSize; //
 		}
 
 		// top = cam.getY() + 10;
@@ -1236,6 +1237,7 @@ public class TsBaseCanvas extends PSwingCanvas {
 		layer.setDefaultColor(color);
 		layer.setSource(source);
 		layer.setName(name);
+		layer.setTyp( TimeseriesType.TT_ANNOTATION );
 
 		m.setSamplesPerPacket(100);
 		log.error("FIXME: SETTING A BOGUS STRING LENGTH FOR " + name);

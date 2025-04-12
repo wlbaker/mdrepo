@@ -549,7 +549,7 @@ public class LegendTool extends PBasicInputEventHandler {
 			pt_label.setTextPaint(sig.getPaint()); // y_ruler.color
 			pt_label.addInputEventListener(this);
 			axisLayer.addChild(pt_label);
-			top += LegendTool.baseFontSize + 5;
+			top += LegendTool.baseFontSize + LegendTool.baseFontSize/3;
 		}
 
 		top += 15;
@@ -576,7 +576,7 @@ public class LegendTool extends PBasicInputEventHandler {
 
 			for (String attr : attrs) {
 
-				PText attr_label = new PText(attr);
+				PText attr_label = new PText(attr + "?ATTR");
 
 				attr_label.setFont(ticFont);
 				attr_label.setX(left + 20); // center around tic
@@ -1697,7 +1697,7 @@ public class LegendTool extends PBasicInputEventHandler {
 				axisLayer.addChild(pt_label);
 			}
 
-			curr_y += 20;
+			curr_y += baseFontSize + 15;  // 
 		}
 
 		return curr_y + 20;

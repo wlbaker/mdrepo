@@ -1,7 +1,7 @@
 #
 # DIALOG TIMERANGE
 # DIALOG SIGNAL WAVEFORM SignalToGraph
-# DIALOG SIGNAL MEASUREMENT Beat_Segmentation
+# DIALOG SIGNAL ANNOTATION Beat_Segmentation
 #
 # NOTE: you may want to adjust the x-axis length (time) as indicated below
 #

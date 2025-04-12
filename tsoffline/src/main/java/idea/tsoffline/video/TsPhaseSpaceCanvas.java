@@ -765,7 +765,7 @@ public class TsPhaseSpaceCanvas extends TsBaseCanvas {
 			theme_axis_background = Color.LIGHT_GRAY;
 			theme_tick_color = Color.WHITE;
 			theme_slider_color = Color.LIGHT_GRAY;
-			theme_ruler_color = Color.WHITE;
+			theme_ruler_color = new Color(220, 220, 220);
 			theme_border_color = Color.BLUE;
 			theme_y_range_color = Color.GREEN;
 			theme_spotter_color = Color.RED.darker();

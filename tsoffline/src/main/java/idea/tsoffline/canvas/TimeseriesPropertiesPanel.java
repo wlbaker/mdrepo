@@ -275,7 +275,7 @@ public class TimeseriesPropertiesPanel extends JPanel
 				}
 				break;
 			case TT_DATA:
-				detail = "Data";
+				detail = "Waveform";
 				break;
 			case TT_TRACE:
 				detail = "Trace";

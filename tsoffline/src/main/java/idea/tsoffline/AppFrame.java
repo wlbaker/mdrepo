@@ -134,8 +134,8 @@ import idea.tsoffline.vizwiz.VizWizard;
 @Slf4j
 public class AppFrame extends JFrame {
 	public static final String APP_NAME = "\u03C3PAD";
-	public static final String APP_VERSION = "0.7.1";
-	public static final String APP_RELEASE = "March 29, 2025";
+	public static final String APP_VERSION = "0.7.2";
+	public static final String APP_RELEASE = "April 12, 2025";
 
 	protected String subject_name;
 
@@ -262,6 +262,7 @@ public class AppFrame extends JFrame {
 		manager = new DisplayManager(tpanel = new TsControlPanel(), null); // 06MAR17
 																			// WLB
 																			// dpanel);
+		loadPrefs();
 		tpanel.getCanvas1().setName("primary");
 		// 06MAR17 WLB dpanel.addPropertyChangeListener("selected_signal",
 		// tpanel);
@@ -295,6 +296,18 @@ public class AppFrame extends JFrame {
 
 	}
 
+	private void loadPrefs() {
+		String zoom = PrefUtil.getUserPref("zoom", "22");
+		if( zoom != null ) {
+			try {
+				int iZoom = Integer.parseInt( zoom );
+				setZoom(null, iZoom, false);
+			} catch (NumberFormatException e) {
+				log.warn("Could not parse zoom: {}", zoom);
+			}
+		}
+	}
+
 	private void initAdditionalComponents() {
 
 		JMenu zoomMenu = new JMenu();
@@ -305,20 +318,24 @@ public class AppFrame extends JFrame {
 			JMenuItem mi = new JMenuItem();
 			mi.setText("" + sz);
 			mi.setEnabled(true);
-			mi.addActionListener(e -> setZoom(e, sz));
+			mi.addActionListener(e -> setZoom(e, sz, true));
 			zoomMenu.add(mi);
 		}
 
 		menu2.add(zoomMenu);
 	}
 
-	protected void setZoom(ActionEvent e, int sz) {
+	protected void setZoom(ActionEvent e, int sz, boolean saveMe ) {
+		
+		if( saveMe ) {
+			PrefUtil.saveUserPref("zoom", "" + sz);
+		}
 		TsBaseCanvas.refreshFonts(sz);
-		LegendTool.refreshFonts(sz);
-		RulerComponent.refreshFonts(sz + 1);
+		LegendTool.refreshFonts(sz - 2);
+		RulerComponent.refreshFonts(sz );
 		CursorLocatorTool.refreshFonts(sz - 1);
 		AnnotationEditorTool.refreshFonts(sz);
-		TsPSwingCanvas.refreshFonts(sz - 2);
+		TsPSwingCanvas.refreshFonts(sz - 4);
 		
 		//tpanel.getCanvas1().scaleToFit();
 		tpanel.getCanvas1().resizeFonts();
@@ -736,6 +753,7 @@ public class AppFrame extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
 	}
 
 	private void resetActionPerformed(ActionEvent e) {
