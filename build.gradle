@@ -38,10 +38,10 @@ subprojects {
     }
 
     dependencies {
-    implementation 'org.projectlombok:lombok:1.18.36'
-    annotationProcessor 'org.projectlombok:lombok:1.18.36'
-    testImplementation 'org.projectlombok:lombok:1.18.36'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
+        implementation 'org.projectlombok:lombok:1.18.36'
+        annotationProcessor 'org.projectlombok:lombok:1.18.36'
+        testImplementation 'org.projectlombok:lombok:1.18.36'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
     }
 
     publishing {
@@ -53,6 +53,7 @@ subprojects {
     }
 
     task sourceJar(type: Jar) {
+        archiveClassifier.set( "sources" )
         from sourceSets.main.allJava
     }
 
@@ -61,10 +62,7 @@ subprojects {
             maven(MavenPublication) {
                 from components.java
     
-                artifact sourceJar {
-                    classifier "sources"
-                }
-    
+                artifact tasks.sourceJar
             }
         }
     }
