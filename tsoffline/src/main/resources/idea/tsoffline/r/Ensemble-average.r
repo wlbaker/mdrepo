@@ -1,6 +1,6 @@
 # DIALOG TIMERANGE
 # DIALOG SIGNAL WAVEFORM SignalToGraph
-# DIALOG SIGNAL ANNOTATION Beat_Segmentation
+# DIALOG SIGNAL MEASUREMENT Beat_Segmentation
 # DIALOG PROMPT Align_First_Pt[T/F]
 #
 # option color-scale-by-length
@@ -13,6 +13,7 @@ require( scales )
 fiducial_lead <- -0.15
 fiducial_lag <- -0.15
 plot_range <- c(30,120)
+plot_domain <- c(0,1.0)
 align_first_pt <- FALSE
 
 startSecs <- app$getParam("TIMERANGE", "startSecs" )
@@ -83,7 +84,7 @@ update <- function( stopSecs ) {
 	idx <- 0
 
 	plot( x=0, main=paste( subject ), type='l', 
-		xlim=c(0,0.6), ylim=plot_range, 
+		xlim=plot_domain, ylim=plot_range, 
 		xlab=paste( "Ensemble Average:", sig_name), 
 		sub=paste("LL[", fiducial_lead, ",", fiducial_lag, "] SS[", startSecs, ",", stopSecs, "] beats:", n_beats, sep=""  ), 
 		ylab="Pressure" )
@@ -110,6 +111,8 @@ update <- function( stopSecs ) {
 		if( is.na( zero ) ) {
 			# skip
 		} else {
+			# CHEAT -- wlb 2025 -- don't know why mm has more than one beat
+			mm <- mm[1]
 			if( is.na(mm) ) {
 				mm[r] <- beat[ r ]
 			} else {
